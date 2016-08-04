@@ -7,18 +7,20 @@
 //
 
 #import "LPPagerViewController.h"
+#import "LPNewsListViewController.h"
 
 @interface LPPagerViewController ()
 @end
 
 @implementation LPPagerViewController
 
+#pragma mark - lifeCycle
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        self.contentTopEdging = 44;
-        self.collectionLayoutEdging = 8;
-        self.barStyle = TYPagerBarStyleProgressBounceView;
+        
+        [self configureController];
     }
     return self;
 }
@@ -26,11 +28,18 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        self.contentTopEdging = 44;
-        self.collectionLayoutEdging = 8;
-        self.barStyle = TYPagerBarStyleProgressBounceView;
+        
+        [self configureController];
     }
     return self;
+}
+
+- (void)configureController
+{
+    self.adjustStatusBarHeight = YES;
+    self.contentTopEdging = 44;
+    self.collectionLayoutEdging = 8;
+    self.barStyle = TYPagerBarStyleProgressBounceView;
 }
 
 - (void)viewDidLoad {
@@ -38,8 +47,7 @@
     // Do any additional setup after loading the view.
     self.pagerBarImageView.image = [UIImage imageNamed:@"img_pgsubject_headerbg"];
     self.normalTextColor = [UIColor whiteColor];
-    //self.selectedTextColor =
-    self.adjustStatusBarHeight = YES;
+    self.selectedTextColor = RGB_255(255, 198, 62);
     self.cellSpacing = 8;
     self.progressBottomEdging = 3;
 }
@@ -64,8 +72,7 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
-    UIViewController *VC = [[UIViewController alloc]init];
-    VC.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
+    LPNewsListViewController *VC = [[LPNewsListViewController alloc]init];
     return VC;
 }
 

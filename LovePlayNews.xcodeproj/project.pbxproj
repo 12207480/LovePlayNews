@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */; };
+		2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC851D517B580048B5C2 /* TYClassInfo.m */; };
+		2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */; };
+		2B00AC9B1D517CF90048B5C2 /* LPNewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC961D517CF90048B5C2 /* LPNewsListViewController.m */; };
+		2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC981D517CF90048B5C2 /* LPPagerViewController.m */; };
+		2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC9E1D517D2A0048B5C2 /* LPNewsInfoModel.m */; };
+		2B00ACA51D517E5E0048B5C2 /* TYModelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACA21D517E5E0048B5C2 /* TYModelRequest.m */; };
+		2B00ACA61D517E5E0048B5C2 /* TYResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACA41D517E5E0048B5C2 /* TYResponseObject.m */; };
+		2B00ACB31D51AB230048B5C2 /* LPNewsRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACB21D51AB230048B5C2 /* LPNewsRequestOperation.m */; };
+		2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */; };
+		2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */; };
+		2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C5811D534F9300F436DE /* LPNewsCellNode.m */; };
 		2B8174261D4EE5A200BA297C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174251D4EE5A200BA297C /* main.m */; };
 		2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174281D4EE5A200BA297C /* AppDelegate.m */; };
 		2B81742C1D4EE5A200BA297C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B81742B1D4EE5A200BA297C /* ViewController.m */; };
@@ -42,7 +54,6 @@
 		2B8175041D4F417300BA297C /* TYTabButtonPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174FD1D4F417300BA297C /* TYTabButtonPagerController.m */; };
 		2B8175051D4F417300BA297C /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174FF1D4F417300BA297C /* TYTabPagerController.m */; };
 		2B8175061D4F417300BA297C /* TYTabTitleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8175021D4F417300BA297C /* TYTabTitleViewCell.m */; };
-		2B8175091D4F41EF00BA297C /* LPPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8175081D4F41EF00BA297C /* LPPagerViewController.m */; };
 		839FD15DECF634F4D5927990 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4EEAED047A0965E216D28E /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +68,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B00AC821D517B580048B5C2 /* NSObject+TYJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TYJSONModel.h"; sourceTree = "<group>"; };
+		2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TYJSONModel.m"; sourceTree = "<group>"; };
+		2B00AC841D517B580048B5C2 /* TYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYClassInfo.h; sourceTree = "<group>"; };
+		2B00AC851D517B580048B5C2 /* TYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYClassInfo.m; sourceTree = "<group>"; };
+		2B00AC861D517B580048B5C2 /* TYJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYJSONModel.h; sourceTree = "<group>"; };
+		2B00AC871D517B580048B5C2 /* TYPropertyInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPropertyInfo.h; sourceTree = "<group>"; };
+		2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPropertyInfo.m; sourceTree = "<group>"; };
+		2B00AC951D517CF90048B5C2 /* LPNewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsListViewController.h; sourceTree = "<group>"; };
+		2B00AC961D517CF90048B5C2 /* LPNewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsListViewController.m; sourceTree = "<group>"; };
+		2B00AC971D517CF90048B5C2 /* LPPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPagerViewController.h; sourceTree = "<group>"; };
+		2B00AC981D517CF90048B5C2 /* LPPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPagerViewController.m; sourceTree = "<group>"; };
+		2B00AC9D1D517D2A0048B5C2 /* LPNewsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsInfoModel.h; sourceTree = "<group>"; };
+		2B00AC9E1D517D2A0048B5C2 /* LPNewsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsInfoModel.m; sourceTree = "<group>"; };
+		2B00ACA11D517E5E0048B5C2 /* TYModelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYModelRequest.h; sourceTree = "<group>"; };
+		2B00ACA21D517E5E0048B5C2 /* TYModelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYModelRequest.m; sourceTree = "<group>"; };
+		2B00ACA31D517E5E0048B5C2 /* TYResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYResponseObject.h; sourceTree = "<group>"; };
+		2B00ACA41D517E5E0048B5C2 /* TYResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYResponseObject.m; sourceTree = "<group>"; };
+		2B00ACA91D517FC30048B5C2 /* LPRequestURLInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPRequestURLInfo.h; sourceTree = "<group>"; };
+		2B00ACB11D51AB230048B5C2 /* LPNewsRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsRequestOperation.h; sourceTree = "<group>"; };
+		2B00ACB21D51AB230048B5C2 /* LPNewsRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsRequestOperation.m; sourceTree = "<group>"; };
+		2B57C57B1D53293A00F436DE /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		2B57C5801D534F9300F436DE /* LPNewsCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCellNode.h; sourceTree = "<group>"; };
+		2B57C5811D534F9300F436DE /* LPNewsCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCellNode.m; sourceTree = "<group>"; };
 		2B8174211D4EE5A200BA297C /* LovePlayNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LovePlayNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8174251D4EE5A200BA297C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B8174271D4EE5A200BA297C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -132,8 +168,6 @@
 		2B8175001D4F417300BA297C /* TYTabTitleCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabTitleCellProtocol.h; sourceTree = "<group>"; };
 		2B8175011D4F417300BA297C /* TYTabTitleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabTitleViewCell.h; sourceTree = "<group>"; };
 		2B8175021D4F417300BA297C /* TYTabTitleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabTitleViewCell.m; sourceTree = "<group>"; };
-		2B8175071D4F41EF00BA297C /* LPPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPagerViewController.h; sourceTree = "<group>"; };
-		2B8175081D4F41EF00BA297C /* LPPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPagerViewController.m; sourceTree = "<group>"; };
 		2B8DA28A1D504031007FAD3D /* LovePlayNews-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LovePlayNews-Prefix.pch"; sourceTree = "<group>"; };
 		36DF8056EEA0B7032221AF7F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A4EEAED047A0965E216D28E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +201,89 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2B00AC811D517B580048B5C2 /* TYJSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				2B00AC821D517B580048B5C2 /* NSObject+TYJSONModel.h */,
+				2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */,
+				2B00AC841D517B580048B5C2 /* TYClassInfo.h */,
+				2B00AC851D517B580048B5C2 /* TYClassInfo.m */,
+				2B00AC861D517B580048B5C2 /* TYJSONModel.h */,
+				2B00AC871D517B580048B5C2 /* TYPropertyInfo.h */,
+				2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */,
+			);
+			path = TYJSONModel;
+			sourceTree = "<group>";
+		};
+		2B00AC941D517CF90048B5C2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2B00AC971D517CF90048B5C2 /* LPPagerViewController.h */,
+				2B00AC981D517CF90048B5C2 /* LPPagerViewController.m */,
+				2B00AC951D517CF90048B5C2 /* LPNewsListViewController.h */,
+				2B00AC961D517CF90048B5C2 /* LPNewsListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2B00AC991D517CF90048B5C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B00AC9D1D517D2A0048B5C2 /* LPNewsInfoModel.h */,
+				2B00AC9E1D517D2A0048B5C2 /* LPNewsInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2B00AC9A1D517CF90048B5C2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B57C5801D534F9300F436DE /* LPNewsCellNode.h */,
+				2B57C5811D534F9300F436DE /* LPNewsCellNode.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2B00ACA01D517E5E0048B5C2 /* NetWorking */ = {
+			isa = PBXGroup;
+			children = (
+				2B00ACA81D517EAD0048B5C2 /* Base */,
+				2B00ACA71D517E900048B5C2 /* News */,
+			);
+			path = NetWorking;
+			sourceTree = "<group>";
+		};
+		2B00ACA71D517E900048B5C2 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				2B00ACB11D51AB230048B5C2 /* LPNewsRequestOperation.h */,
+				2B00ACB21D51AB230048B5C2 /* LPNewsRequestOperation.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
+		2B00ACA81D517EAD0048B5C2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2B00ACA91D517FC30048B5C2 /* LPRequestURLInfo.h */,
+				2B00ACA11D517E5E0048B5C2 /* TYModelRequest.h */,
+				2B00ACA21D517E5E0048B5C2 /* TYModelRequest.m */,
+				2B00ACA31D517E5E0048B5C2 /* TYResponseObject.h */,
+				2B00ACA41D517E5E0048B5C2 /* TYResponseObject.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		2B57C57A1D53293A00F436DE /* MBProgressHUD+MJ */ = {
+			isa = PBXGroup;
+			children = (
+				2B57C57B1D53293A00F436DE /* MBProgressHUD+MJ.h */,
+				2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */,
+				2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */,
+			);
+			path = "MBProgressHUD+MJ";
+			sourceTree = "<group>";
+		};
 		2B8174181D4EE5A200BA297C = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +309,7 @@
 			children = (
 				2B81744C1D4EF8ED00BA297C /* Modeuls */,
 				2B8174971D4F2B4400BA297C /* Foundation */,
+				2B00ACA01D517E5E0048B5C2 /* NetWorking */,
 				2B81744D1D4EF90D00BA297C /* Vender */,
 				2B8174271D4EE5A200BA297C /* AppDelegate.h */,
 				2B8174281D4EE5A200BA297C /* AppDelegate.m */,
@@ -237,6 +355,8 @@
 		2B81744D1D4EF90D00BA297C /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2B57C57A1D53293A00F436DE /* MBProgressHUD+MJ */,
+				2B00AC811D517B580048B5C2 /* TYJSONModel */,
 				2B8174F91D4F417300BA297C /* TYPagerController */,
 				2B8174E21D4F39A400BA297C /* TYHttpManager */,
 			);
@@ -253,7 +373,9 @@
 		2B8174511D4EF9F800BA297C /* News */ = {
 			isa = PBXGroup;
 			children = (
-				2B81750A1D4F422A00BA297C /* Controller */,
+				2B00AC941D517CF90048B5C2 /* Controller */,
+				2B00AC991D517CF90048B5C2 /* Model */,
+				2B00AC9A1D517CF90048B5C2 /* View */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -287,7 +409,6 @@
 		2B8174971D4F2B4400BA297C /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				2B8174E11D4F38E300BA297C /* NetWorking */,
 				2B8174981D4F2B4400BA297C /* Category */,
 				2B8174C21D4F2B4400BA297C /* Header */,
 				2B8174C51D4F2B4400BA297C /* Tool */,
@@ -415,13 +536,6 @@
 			path = Recommend;
 			sourceTree = "<group>";
 		};
-		2B8174E11D4F38E300BA297C /* NetWorking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetWorking;
-			sourceTree = "<group>";
-		};
 		2B8174E21D4F39A400BA297C /* TYHttpManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,15 +572,6 @@
 				2B8175021D4F417300BA297C /* TYTabTitleViewCell.m */,
 			);
 			path = TYPagerController;
-			sourceTree = "<group>";
-		};
-		2B81750A1D4F422A00BA297C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2B8175071D4F41EF00BA297C /* LPPagerViewController.h */,
-				2B8175081D4F41EF00BA297C /* LPPagerViewController.m */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 		E4B6DB557612E44BF1E31BF1 /* Pods */ = {
@@ -564,6 +669,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
+				2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,36 +737,46 @@
 			files = (
 				2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */,
 				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
+				2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */,
+				2B00ACA51D517E5E0048B5C2 /* TYModelRequest.m in Sources */,
+				2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */,
+				2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */,
 				2B8174CC1D4F2B4400BA297C /* NSString+Pinyin.m in Sources */,
 				2B8174F31D4F39A400BA297C /* TYBatchRequest.m in Sources */,
 				2B8174E01D4F32BF00BA297C /* LPNavigationController.m in Sources */,
+				2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */,
 				2B8174D01D4F2B4400BA297C /* UIImage+Clip.m in Sources */,
 				2B8174DC1D4F2BFE00BA297C /* LPTabBarController.m in Sources */,
 				2B8174F61D4F39A400BA297C /* TYHttpRequest.m in Sources */,
 				2B8175051D4F417300BA297C /* TYTabPagerController.m in Sources */,
+				2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */,
 				2B8174CE1D4F2B4400BA297C /* UIBarButtonItem+Item.m in Sources */,
 				2B8174C71D4F2B4400BA297C /* NSData+Encrypt.m in Sources */,
 				2B8174F41D4F39A400BA297C /* TYChainRequest.m in Sources */,
 				2B8174F21D4F39A400BA297C /* TYBaseRequest.m in Sources */,
 				2B81742C1D4EE5A200BA297C /* ViewController.m in Sources */,
+				2B00ACA61D517E5E0048B5C2 /* TYResponseObject.m in Sources */,
 				2B8174CD1D4F2B4400BA297C /* NSString+Size.m in Sources */,
 				2B8175031D4F417300BA297C /* TYPagerController.m in Sources */,
+				2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */,
 				2B8174C61D4F2B4400BA297C /* NSData+Base64.m in Sources */,
 				2B8174F51D4F39A400BA297C /* TYHttpManager.m in Sources */,
+				2B00AC9B1D517CF90048B5C2 /* LPNewsListViewController.m in Sources */,
 				2B8174D31D4F2B4400BA297C /* UIImage+Snap.m in Sources */,
 				2B8174F71D4F39A400BA297C /* TYRequstConfigure.m in Sources */,
 				2B8175061D4F417300BA297C /* TYTabTitleViewCell.m in Sources */,
 				2B8174D51D4F2B4400BA297C /* UIView+Frame.m in Sources */,
 				2B8175041D4F417300BA297C /* TYTabButtonPagerController.m in Sources */,
 				2B8174CB1D4F2B4400BA297C /* NSString+MD5.m in Sources */,
-				2B8175091D4F41EF00BA297C /* LPPagerViewController.m in Sources */,
 				2B8174D61D4F2B4400BA297C /* UIView+Nib.m in Sources */,
 				2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */,
 				2B8174F81D4F39A400BA297C /* TYResponseCache.m in Sources */,
 				2B8174C81D4F2B4400BA297C /* NSDate+Compare.m in Sources */,
 				2B8174CA1D4F2B4400BA297C /* NSString+Encrypt.m in Sources */,
+				2B00ACB31D51AB230048B5C2 /* LPNewsRequestOperation.m in Sources */,
 				2B8174261D4EE5A200BA297C /* main.m in Sources */,
 				2B8174D11D4F2B4400BA297C /* UIImage+Color.m in Sources */,
+				2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */,
 				2B8174C91D4F2B4400BA297C /* NSString+Base64.m in Sources */,
 				2B8174CF1D4F2B4400BA297C /* UIColor+Hex.m in Sources */,
 			);
