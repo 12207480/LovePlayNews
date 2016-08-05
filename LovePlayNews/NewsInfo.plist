@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>newsPageInfos</key>
+	<array>
+		<dict>
+			<key>topId</key>
+			<string></string>
+			<key>title</key>
+			<string>头条</string>
+		</dict>
+		<dict>
+			<key>topId</key>
+			<string>T1461396384709</string>
+			<key>title</key>
+			<string>网游</string>
+		</dict>
+		<dict>
+			<key>topId</key>
+			<string>T1461396358842</string>
+			<key>title</key>
+			<string>手游</string>
+		</dict>
+		<dict>
+			<key>topId</key>
+			<string>T1461396291717</string>
+			<key>title</key>
+			<string>主机</string>
+		</dict>
+		<dict>
+			<key>topId</key>
+			<string>T1461396413033</string>
+			<key>title</key>
+			<string>电竞</string>
+		</dict>
+		<dict>
+			<key>topId</key>
+			<string>T1461396489605</string>
+			<key>title</key>
+			<string>暴雪</string>
+		</dict>
+	</array>
+</dict>
+</plist>
