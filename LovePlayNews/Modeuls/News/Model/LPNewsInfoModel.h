@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *docid;
 @property (nonatomic, assign) BOOL fromTopicSource;
 @property (nonatomic, strong) NSArray *imgextra;
-@property (nonatomic, strong) NSString *imgsrc;
+@property (nonatomic, strong) NSArray *imgsrc;
 @property (nonatomic, strong) NSString *lmodify;
 @property (nonatomic, strong) NSString *ltitle;
 @property (nonatomic, strong) NSString *postid;

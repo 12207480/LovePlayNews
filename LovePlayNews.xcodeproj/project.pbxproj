@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0056211D5418A900DDA531 /* JPFPSStatus.m */; };
 		2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */; };
 		2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC851D517B580048B5C2 /* TYClassInfo.m */; };
 		2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */; };
@@ -68,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B0056201D5418A900DDA531 /* JPFPSStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFPSStatus.h; sourceTree = "<group>"; };
+		2B0056211D5418A900DDA531 /* JPFPSStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFPSStatus.m; sourceTree = "<group>"; };
 		2B00AC821D517B580048B5C2 /* NSObject+TYJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TYJSONModel.h"; sourceTree = "<group>"; };
 		2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TYJSONModel.m"; sourceTree = "<group>"; };
 		2B00AC841D517B580048B5C2 /* TYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYClassInfo.h; sourceTree = "<group>"; };
@@ -199,6 +202,15 @@
 				4A4EEAED047A0965E216D28E /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B00561F1D5418A900DDA531 /* JPFPSStatus */ = {
+			isa = PBXGroup;
+			children = (
+				2B0056201D5418A900DDA531 /* JPFPSStatus.h */,
+				2B0056211D5418A900DDA531 /* JPFPSStatus.m */,
+			);
+			path = JPFPSStatus;
 			sourceTree = "<group>";
 		};
 		2B00AC811D517B580048B5C2 /* TYJSONModel */ = {
@@ -355,6 +367,7 @@
 		2B81744D1D4EF90D00BA297C /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2B00561F1D5418A900DDA531 /* JPFPSStatus */,
 				2B57C57A1D53293A00F436DE /* MBProgressHUD+MJ */,
 				2B00AC811D517B580048B5C2 /* TYJSONModel */,
 				2B8174F91D4F417300BA297C /* TYPagerController */,
@@ -758,6 +771,7 @@
 				2B00ACA61D517E5E0048B5C2 /* TYResponseObject.m in Sources */,
 				2B8174CD1D4F2B4400BA297C /* NSString+Size.m in Sources */,
 				2B8175031D4F417300BA297C /* TYPagerController.m in Sources */,
+				2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */,
 				2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */,
 				2B8174C61D4F2B4400BA297C /* NSData+Base64.m in Sources */,
 				2B8174F51D4F39A400BA297C /* TYHttpManager.m in Sources */,
@@ -893,6 +907,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LovePlayNews/LovePlayNews-Prefix.pch";
 				INFOPLIST_FILE = LovePlayNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -911,6 +926,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LovePlayNews/LovePlayNews-Prefix.pch";
 				INFOPLIST_FILE = LovePlayNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

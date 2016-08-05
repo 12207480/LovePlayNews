@@ -20,7 +20,7 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
-        [self configureController];
+        [self configurePagerStyles];
     }
     return self;
 }
@@ -29,12 +29,12 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         
-        [self configureController];
+        [self configurePagerStyles];
     }
     return self;
 }
 
-- (void)configureController
+- (void)configurePagerStyles
 {
     self.adjustStatusBarHeight = YES;
     self.contentTopEdging = 44;
