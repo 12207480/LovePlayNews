@@ -10,4 +10,7 @@
 
 @interface LPNewsListViewController : ASViewController
 
+@property (nonatomic, strong) NSString *newsTitle;
+@property (nonatomic, strong) NSString *newsTopId;
+
 @end

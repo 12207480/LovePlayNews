@@ -19,6 +19,8 @@
 // Data
 @property (nonatomic, strong) NSArray *newsList;
 
+@property (nonatomic, assign) NSInteger curIndexPage;
+
 @end
 
 @implementation LPNewsListViewController
@@ -46,20 +48,45 @@
 
 - (void)loadData
 {
+    _curIndexPage = 0;
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
-    TYModelRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithPageIndex:0];
+    TYModelRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
     [newsListRequest loadWithSuccessBlock:^(TYModelRequest *request) {
         _newsList = request.responseObject.data;
         [_tableNode.view reloadData];
+        _curIndexPage++;
         [MBProgressHUD hideHUDForView:self.view];
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
     }];
 }
 
-- (void)loadMoreData
+- (void)loadMoreDataWithContext:(ASBatchContext *)context
 {
+    if (context) {
+        [context beginBatchFetching];
+    }
     
+    TYModelRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
+    [newsListRequest loadWithSuccessBlock:^(TYModelRequest *request) {
+        NSArray *newsList = request.responseObject.data;
+        if (newsList.count > 0) {
+             NSMutableArray *indexPaths = [NSMutableArray array];
+            for (NSInteger row = _newsList.count; row<_newsList.count+newsList.count; ++row) {
+                [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+            }
+           _newsList = [_newsList arrayByAddingObjectsFromArray:newsList];
+            [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+            _curIndexPage++;
+        }
+        if (context) {
+            [context completeBatchFetching:YES];
+        }
+    } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
+        if (context) {
+            [context completeBatchFetching:YES];
+        }
+    }];
 }
 
 #pragma mark - ASTableDataSource
@@ -79,10 +106,15 @@
     return cellNodeBlock;
 }
 
-//- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context
-//{
-//    
-//}
+- (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView
+{
+    return _newsList.count;
+}
+
+- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context
+{
+    [self loadMoreDataWithContext:context];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

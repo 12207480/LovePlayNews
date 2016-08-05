@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0056211D5418A900DDA531 /* JPFPSStatus.m */; };
+		2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B0056231D54392200DDA531 /* NewsInfo.plist */; };
 		2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */; };
 		2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC851D517B580048B5C2 /* TYClassInfo.m */; };
 		2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		2B0056201D5418A900DDA531 /* JPFPSStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFPSStatus.h; sourceTree = "<group>"; };
 		2B0056211D5418A900DDA531 /* JPFPSStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFPSStatus.m; sourceTree = "<group>"; };
+		2B0056231D54392200DDA531 /* NewsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewsInfo.plist; sourceTree = "<group>"; };
 		2B00AC821D517B580048B5C2 /* NSObject+TYJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TYJSONModel.h"; sourceTree = "<group>"; };
 		2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TYJSONModel.m"; sourceTree = "<group>"; };
 		2B00AC841D517B580048B5C2 /* TYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYClassInfo.h; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				2B8174301D4EE5A200BA297C /* Assets.xcassets */,
 				2B8DA28A1D504031007FAD3D /* LovePlayNews-Prefix.pch */,
 				2B8174351D4EE5A300BA297C /* Info.plist */,
+				2B0056231D54392200DDA531 /* NewsInfo.plist */,
 				2B8174241D4EE5A200BA297C /* Supporting Files */,
 			);
 			path = LovePlayNews;
@@ -683,6 +686,7 @@
 			files = (
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
 				2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */,
+				2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,6 @@
 
 @interface LPNewsRequestOperation : NSObject
 
-+ (TYModelRequest *)requestNewsListWithPageIndex:(NSInteger)pageIndex;
++ (TYModelRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex;
 
 @end

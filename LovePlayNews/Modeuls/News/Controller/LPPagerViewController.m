@@ -10,6 +10,7 @@
 #import "LPNewsListViewController.h"
 
 @interface LPPagerViewController ()
+@property (nonatomic, strong) NSArray *newsPageInfos;
 @end
 
 @implementation LPPagerViewController
@@ -38,18 +39,8 @@
 {
     self.adjustStatusBarHeight = YES;
     self.contentTopEdging = 44;
-    self.collectionLayoutEdging = 8;
+    self.collectionLayoutEdging = 12;
     self.barStyle = TYPagerBarStyleProgressBounceView;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.pagerBarImageView.image = [UIImage imageNamed:@"img_pgsubject_headerbg"];
-    self.normalTextColor = [UIColor whiteColor];
-    self.selectedTextColor = RGB_255(255, 198, 62);
-    self.cellSpacing = 8;
-    self.progressBottomEdging = 3;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,22 +49,47 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.pagerBarImageView.image = [UIImage imageNamed:@"img_pgsubject_headerbg"];
+    self.normalTextColor = [UIColor whiteColor];
+    self.selectedTextColor = RGB_255(255, 198, 62);
+    self.cellSpacing = 20;
+    self.progressBottomEdging = 3;
+    
+    [self loadData];
+}
+
+- (void)loadData
+{
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"NewsInfo" ofType:@"plist"];
+    NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    _newsPageInfos = [data objectForKey:@"newsPageInfos"];
+}
+
 #pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController
 {
-    return 30;
+    return _newsPageInfos.count;
 }
 
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
 {
-    return index %2 == 0 ? [NSString stringWithFormat:@"Tab %ld",index]:[NSString stringWithFormat:@"Tab Tab %ld",index];
+    NSDictionary *newsPageInfo = _newsPageInfos[index];
+    NSString *title = [newsPageInfo objectForKey:@"title"];
+    return title ? title : @"";
 }
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
-    LPNewsListViewController *VC = [[LPNewsListViewController alloc]init];
-    return VC;
+    NSDictionary *newsPageInfo = _newsPageInfos[index];
+    LPNewsListViewController *newsVC = [[LPNewsListViewController alloc]init];
+    newsVC.newsTitle = [newsPageInfo objectForKey:@"title"];
+    newsVC.newsTopId = [newsPageInfo objectForKey:@"topId"];
+    return newsVC;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -14,6 +14,8 @@
 @property (nonatomic, strong) ASTextNode *titleNode;
 @property (nonatomic, strong) ASNetworkImageNode *imageNode;
 @property (nonatomic, strong) ASDisplayNode *underLineNode;
+@property (nonatomic, strong) ASImageNode *replyImageNode;
+@property (nonatomic, strong) ASTextNode *replyTextNode;
 @end
 
 @implementation LPNewsCellNode
@@ -29,6 +31,10 @@
         [self addImageNode];
         
         [self addUnderLineNode];
+        
+        [self addReplyTextNode];
+        
+        [self addReplyImageNode];
     }
     return self;
 }
@@ -62,21 +68,43 @@
     _underLineNode = underLineNode;
 }
 
-//- (void)addReplyImageNode
-//{
-//    ASImageNode *replyImageNode = [[ASImageNode alloc]init];
-//    replyImageNode.image = 
-//}
+- (void)addReplyImageNode
+{
+    ASImageNode *replyImageNode = [[ASImageNode alloc]init];
+    replyImageNode.layerBacked = YES;
+    replyImageNode.contentMode = UIViewContentModeCenter;
+    replyImageNode.image = [UIImage imageNamed:@"common_chat_new"];
+    [self addSubnode:replyImageNode];
+    _replyImageNode = replyImageNode;
+}
+
+- (void)addReplyTextNode
+{
+    ASTextNode *replyTextNode = [[ASTextNode alloc]init];
+    replyTextNode.layerBacked = YES;
+    replyTextNode.maximumNumberOfLines = 1;
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:10.0f] ,NSForegroundColorAttributeName: RGB_255(150, 150, 150)};
+    replyTextNode.attributedText = [[NSAttributedString alloc]initWithString:@(_newsInfo.replyCount).stringValue attributes:attrs];
+    [self addSubnode:replyTextNode];
+    _replyTextNode = replyTextNode;
+}
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
     _imageNode.preferredFrameSize = CGSizeMake(84, 62);
     _titleNode.flexShrink = YES;
-    ASStackLayoutSpec *horStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:10 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStart children:@[_imageNode,_titleNode]];
+    _underLineNode.preferredFrameSize = CGSizeMake(constrainedSize.max.width, 0.5);
+    _replyImageNode.preferredFrameSize = CGSizeMake(11, 11);
+    
+    ASStackLayoutSpec *horReplayStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:5 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsCenter children:@[_replyImageNode,_replyTextNode]];
+    
+    ASStackLayoutSpec *verContentStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:0 justifyContent:ASStackLayoutJustifyContentSpaceBetween alignItems:ASStackLayoutAlignItemsStart children:@[_titleNode,horReplayStackLayout]];
+    verContentStackLayout.flexShrink = YES;
+    
+    ASStackLayoutSpec *horStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:10 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStretch children:@[_imageNode,verContentStackLayout]];
     
      ASInsetLayoutSpec *insetLayout = [ASInsetLayoutSpec insetLayoutSpecWithInsets:UIEdgeInsetsMake(10, 10, 10, 10) child:horStackLayout];
     
-    _underLineNode.preferredFrameSize = CGSizeMake(constrainedSize.max.width, 0.5);
     ASStackLayoutSpec *verStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:0 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStart children:@[insetLayout,_underLineNode]];
     return verStackLayout;
 }

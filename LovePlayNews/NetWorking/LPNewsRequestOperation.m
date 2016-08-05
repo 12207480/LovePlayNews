@@ -10,10 +10,14 @@
 
 @implementation LPNewsRequestOperation
 
-+ (TYModelRequest *)requestNewsListWithPageIndex:(NSInteger)pageIndex
++ (TYModelRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex
 {
     TYModelRequest *request = [TYModelRequest requestWithModelClass:[LPNewsInfoModel class]];
-    request.URLString = [NSString stringWithFormat:@"%@%ld/%d",NewsListURL,pageIndex,20];
+    if (topId.length > 0) {
+        request.URLString = [NSString stringWithFormat:@"%@/%@/%ld/%d",NewsListURL,topId,pageIndex*20,20];
+    }else {
+        request.URLString = [NSString stringWithFormat:@"%@%ld/%d",NewsListURL,pageIndex*20,20];
+    }
     return request;
 }
 
