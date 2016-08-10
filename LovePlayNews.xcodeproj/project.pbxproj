@@ -58,6 +58,7 @@
 		2B8175061D4F417300BA297C /* TYTabTitleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8175021D4F417300BA297C /* TYTabTitleViewCell.m */; };
 		2B8A00F91D5AB5F700F04812 /* LPNewsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A00F81D5AB5F700F04812 /* LPNewsDetailModel.m */; };
 		2B8A00FC1D5AB77800F04812 /* LPNewsCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A00FB1D5AB77800F04812 /* LPNewsCommonModel.m */; };
+		2B8A00FE1D5AD07200F04812 /* News.css in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A00FD1D5AD07200F04812 /* News.css */; };
 		839FD15DECF634F4D5927990 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4EEAED047A0965E216D28E /* libPods.a */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
@@ -181,6 +182,7 @@
 		2B8A00F81D5AB5F700F04812 /* LPNewsDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsDetailModel.m; sourceTree = "<group>"; };
 		2B8A00FA1D5AB77800F04812 /* LPNewsCommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommonModel.h; sourceTree = "<group>"; };
 		2B8A00FB1D5AB77800F04812 /* LPNewsCommonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommonModel.m; sourceTree = "<group>"; };
+		2B8A00FD1D5AD07200F04812 /* News.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = News.css; sourceTree = "<group>"; };
 		2B8DA28A1D504031007FAD3D /* LovePlayNews-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LovePlayNews-Prefix.pch"; sourceTree = "<group>"; };
 		36DF8056EEA0B7032221AF7F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A4EEAED047A0965E216D28E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,6 +353,7 @@
 				2B81742B1D4EE5A200BA297C /* ViewController.m */,
 				2B8174301D4EE5A200BA297C /* Assets.xcassets */,
 				2B8DA28A1D504031007FAD3D /* LovePlayNews-Prefix.pch */,
+				2B8A00FD1D5AD07200F04812 /* News.css */,
 				2B8174351D4EE5A300BA297C /* Info.plist */,
 				2B0056231D54392200DDA531 /* NewsInfo.plist */,
 				2B8174241D4EE5A200BA297C /* Supporting Files */,
@@ -704,6 +707,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B8A00FE1D5AD07200F04812 /* News.css in Resources */,
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
 				2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */,
 				2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */,

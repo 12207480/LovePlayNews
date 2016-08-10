@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+    font-weight:normal;
+    font-size:17px;
+    line-height:24px;
+    font-family:"Heiti SC";
+/*    font-family:"Iowan Old Style Roman";*/
+    color:#333333;
+    margin-left:10px;
+    margin-right:10px;
+/*    word-spacing:6px;*/
+    background:#f6f6f6
+}
+
+p{
+    display:block;
+    color:#333333;
+}
+
+
+
+table
+{
+    border-collapse:collapse;
+    border-spacing:0;
+    width:100%
+}
+
+table th,table td
+{
+    border:1px #cccccc
+    solid;font-weight:normal;
+    font-size:13px;
+    line-height:20px;
+    font-family:"Heiti SC";
+    color:#555555;
+    padding:5px 3px;
+}
+
+a
+{
+    color:#328fde;
+    text-decoration:none;
+}
+
+img
+{
+    width:100%;
+    margin:10px auto:
+}

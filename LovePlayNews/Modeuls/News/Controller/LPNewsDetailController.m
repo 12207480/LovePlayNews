@@ -9,11 +9,15 @@
 #import "LPNewsDetailController.h"
 #import "LPWebCellNode.h"
 #import "LPNewsRequestOperation.h"
+#import "MBProgressHUD+MJ.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
+
+// Data
+@property (nonatomic, strong) LPNewsDetailModel *newsDetail;
 
 @end
 
@@ -48,11 +52,13 @@
 - (void)loadData
 {
     LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
-    
+    [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
-        
+        _newsDetail = request.responseObject.data;
+        [_tableNode.view reloadData];
+        [MBProgressHUD hideHUDForView:self.view];
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
-        
+        [MBProgressHUD hideHUDForView:self.view];
     }];
     
 }
@@ -61,14 +67,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return _newsDetail ? 1: 0;
 }
 
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //http://m.wx.233.com/news/home/newsdetail?newsId=53772&fsClassId=339
     ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
-        LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithURL:[NSURL URLWithString:@"http://play.163.com/16/0808/00/BTTGG4TT00314V8J.html"]];
+        //LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithURL:[NSURL URLWithString:@"http://play.163.com/16/0808/00/BTTGG4TT00314V8J.html"]];
+        LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:_newsDetail.article.body];
         return cellNode;
     };
     return cellNodeBlock;

@@ -12,4 +12,6 @@
 
 - (instancetype)initWithURL:(NSURL *)URL;
 
+- (instancetype)initWithHtmlBody:(NSString *)htmlBody;
+
 @end
