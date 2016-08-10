@@ -6,12 +6,13 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsListViewController.h"
+#import "LPNewsListController.h"
 #import "LPNewsRequestOperation.h"
 #import "MBProgressHUD+MJ.h"
 #import "LPNewsCellNode.h"
+#import "LPNewsDetailController.h"
 
-@interface LPNewsListViewController ()<ASTableDelegate, ASTableDataSource>
+@interface LPNewsListController ()<ASTableDelegate, ASTableDataSource>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
@@ -23,7 +24,7 @@
 
 @end
 
-@implementation LPNewsListViewController
+@implementation LPNewsListController
 
 - (instancetype)init
 {
@@ -41,6 +42,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self loadData];
@@ -50,8 +52,8 @@
 {
     _curIndexPage = 0;
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
-    TYModelRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
-    [newsListRequest loadWithSuccessBlock:^(TYModelRequest *request) {
+    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
+    [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         _newsList = request.responseObject.data;
         [_tableNode.view reloadData];
         _curIndexPage++;
@@ -67,8 +69,8 @@
         [context beginBatchFetching];
     }
     
-    TYModelRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
-    [newsListRequest loadWithSuccessBlock:^(TYModelRequest *request) {
+    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
+    [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         NSArray *newsList = request.responseObject.data;
         if (newsList.count > 0) {
              NSMutableArray *indexPaths = [NSMutableArray array];
@@ -114,6 +116,16 @@
 - (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context
 {
     [self loadMoreDataWithContext:context];
+}
+
+#pragma mark - ASTableDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LPNewsInfoModel *newsInfo = _newsList[indexPath.row];
+    LPNewsDetailController *detail = [[LPNewsDetailController alloc]init];
+    detail.newsId = newsInfo.docid;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

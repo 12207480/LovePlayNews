@@ -8,7 +8,7 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@interface LPNewsListViewController : ASViewController
+@interface LPNewsListController : ASViewController
 
 @property (nonatomic, strong) NSString *newsTitle;
 @property (nonatomic, strong) NSString *newsTopId;

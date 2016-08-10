@@ -6,9 +6,9 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "TYModelRequest.h"
+#import "LPHttpRequest.h"
 
-@implementation TYModelRequest
+@implementation LPHttpRequest
 
 @dynamic responseObject;
 

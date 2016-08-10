@@ -7,7 +7,7 @@
 //
 
 #import "LPPagerViewController.h"
-#import "LPNewsListViewController.h"
+#import "LPNewsListController.h"
 
 @interface LPPagerViewController ()
 @property (nonatomic, strong) NSArray *newsPageInfos;
@@ -52,7 +52,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.pagerBarImageView.image = [UIImage imageNamed:@"img_pgsubject_headerbg"];
     self.normalTextColor = [UIColor whiteColor];
     self.selectedTextColor = RGB_255(255, 198, 62);
@@ -86,7 +85,7 @@
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
     NSDictionary *newsPageInfo = _newsPageInfos[index];
-    LPNewsListViewController *newsVC = [[LPNewsListViewController alloc]init];
+    LPNewsListController *newsVC = [[LPNewsListController alloc]init];
     newsVC.newsTitle = [newsPageInfo objectForKey:@"title"];
     newsVC.newsTopId = [newsPageInfo objectForKey:@"topId"];
     return newsVC;

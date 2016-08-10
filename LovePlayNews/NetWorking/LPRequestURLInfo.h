@@ -13,4 +13,6 @@
 
 #define NewsListURL @"/user/article/list/"
 
+#define NewsDetailURL @"/news/appDetail/"
+
 #endif /* LPRequestURLInfo_h */

@@ -7,11 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TYModelRequest.h"
+#import "LPHttpRequest.h"
 #import "LPNewsInfoModel.h"
+#import "LPNewsDetailModel.h"
 
 @interface LPNewsRequestOperation : NSObject
 
-+ (TYModelRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex;
++ (LPHttpRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex;
+
++ (LPHttpRequest *)requestNewsDetailWithNewsId:(NSString *)newsId;
 
 @end

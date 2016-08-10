@@ -24,17 +24,17 @@
 {
     // 设置导航栏的标题颜色，字体
     NSDictionary* textAttrs = @{NSForegroundColorAttributeName:
-                                    [UIColor blackColor],
+                                    [UIColor whiteColor],
                                 NSFontAttributeName:
                                     [UIFont fontWithName:@"Helvetica"size:18.0],
                                 };
     [self.navigationBar setTitleTextAttributes:textAttrs];
     
     //设置导航栏的背景图片
-//    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_pgsubject_headerbg"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_pgsubject_headerbg"] forBarMetrics:UIBarMetricsDefault];
     
     // 去掉导航栏底部阴影
-//    [self.navigationBar setShadowImage:[[UIImage alloc]init]];
+    [self.navigationBar setShadowImage:[[UIImage alloc]init]];
     
 }
 

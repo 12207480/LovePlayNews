@@ -10,7 +10,7 @@
 #import "TYResponseObject.h"
 #import "LPRequestURLInfo.h"
 
-@interface TYModelRequest : TYHttpRequest
+@interface LPHttpRequest : TYHttpRequest
 
 @property (nonatomic, strong, readonly) TYResponseObject *responseObject;
 
@@ -19,5 +19,7 @@
 - (instancetype)initWithModelClass:(Class)modelClass;
 
 + (instancetype)requestWithModelClass:(Class)modelClass;
+
+
 
 @end
