@@ -81,7 +81,7 @@
 }
 
 #pragma mark - WKWebView
-
+// WKWebView 加载本地css有bug
 - (void)addWkWebView
 {
     WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
@@ -165,7 +165,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
-    _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue];
+    _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue]+10;
     NSLog(@"webViewHeight %.f",_webViewHeight);
     [self setNeedsLayout];
 }
