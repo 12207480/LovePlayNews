@@ -10,8 +10,8 @@
 #import "UITabBarController+AddChildVC.h"
 #import "LPNavigationController.h"
 #import "LPPagerViewController.h"
-#import "UIImage+Color.h"
 #import "ViewController.h"
+#import "UIImage+Color.h"
 
 @interface LPTabBarController ()
 
@@ -48,20 +48,24 @@
     }else {
         [self.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.96]]];
     }
+    
+    [[UITabBarItem appearanceWhenContainedIn:[LPTabBarController class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:113/255.0 green:113/255.0 blue:113/255.0 alpha:1.0] } forState:UIControlStateNormal];
+    
+    [[UITabBarItem appearanceWhenContainedIn:[LPTabBarController class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:218/255.0 green:85/255.0 blue:107/255.0 alpha:1.0] } forState:UIControlStateSelected];
 }
 
 - (void)configureChildViewConstrollers
 {
     UIEdgeInsets imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     UIOffset titlePosition = UIOffsetMake(0, -2);
+
+    [self addChildViewControllerWithClass:[LPPagerViewController class] title:@"资讯" image:@"icon_zx_nomal_pgall" selectedImage:@"icon_zx_pressed_pgall" imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
     
-    [self addChildViewControllerWithClass:[LPPagerViewController class] title:@"资讯" image:@"icon_pgsubject_news_nomal" selectedImage:@"icon_pgsubject_news_focus" imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    [self addChildViewControllerWithClass:[ViewController class] title:@"精选" image:@"icon_jx_nomal_pgall" selectedImage:@"icon_jx_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
     
-    [self addChildViewControllerWithClass:[ViewController class] title:@"精选" image:@"icon_pgsubject_recommend_nomal" selectedImage:@"icon_pgsubject_recommend_focus"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    [self addChildViewControllerWithClass:[ViewController class] title:@"社区" image:@"icon_sq_nomal_pgall" selectedImage:@"icon_sq_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
     
-    [self addChildViewControllerWithClass:[ViewController class] title:@"社区" image:@"icon_pgsubject_bbs_nomal" selectedImage:@"icon_pgsubject_bbs_focus"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
-    
-    [self addChildViewControllerWithClass:[ViewController class] title:@"我" image:@"icon_pgsubject_my_nomal" selectedImage:@"icon_pgsubject_my_focus"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    [self addChildViewControllerWithClass:[ViewController class] title:@"我" image:@"icon_w_nomal_pgall" selectedImage:@"icon_w_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
 }
 
 - (void)didReceiveMemoryWarning {

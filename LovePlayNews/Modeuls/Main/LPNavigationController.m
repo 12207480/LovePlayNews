@@ -31,11 +31,26 @@
     [self.navigationBar setTitleTextAttributes:textAttrs];
     
     //设置导航栏的背景图片
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"img_pgsubject_headerbg"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:34/255.0 green:34/255.0 blue:34/255.0 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
     
     // 去掉导航栏底部阴影
     [self.navigationBar setShadowImage:[[UIImage alloc]init]];
     
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = (CGRect){CGPointZero,CGSizeMake(1.0, 1.0)};
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 #pragma mark - override

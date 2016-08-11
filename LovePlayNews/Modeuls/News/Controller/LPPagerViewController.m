@@ -52,9 +52,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.pagerBarImageView.image = [UIImage imageNamed:@"img_pgsubject_headerbg"];
+    self.pagerBarView.backgroundColor = RGB_255(34, 34, 34);
     self.normalTextColor = [UIColor whiteColor];
-    self.selectedTextColor = RGB_255(255, 198, 62);
+    self.selectedTextColor = RGB_255(237, 67, 89);
     self.cellSpacing = 20;
     self.progressBottomEdging = 3;
     
