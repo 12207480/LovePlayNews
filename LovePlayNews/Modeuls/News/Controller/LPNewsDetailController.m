@@ -65,7 +65,7 @@
     [headerView.goBackBtn addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
     _tableNode.view.parallaxHeader.view = headerView;
     _tableNode.view.parallaxHeader.height = 165;
-    _tableNode.view.parallaxHeader.minimumHeight = 20;
+    _tableNode.view.parallaxHeader.minimumHeight = 64;
     _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
     _headerView = headerView;
 }
