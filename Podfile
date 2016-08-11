@@ -6,3 +6,4 @@ pod 'MJRefresh'
 pod 'SDWebImage'
 pod 'Masonry'
 pod "AsyncDisplayKit"
+pod "MXParallaxHeader"

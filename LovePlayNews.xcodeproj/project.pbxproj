@@ -59,6 +59,9 @@
 		2B8A00F91D5AB5F700F04812 /* LPNewsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A00F81D5AB5F700F04812 /* LPNewsDetailModel.m */; };
 		2B8A00FC1D5AB77800F04812 /* LPNewsCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A00FB1D5AB77800F04812 /* LPNewsCommonModel.m */; };
 		2B8A00FE1D5AD07200F04812 /* News.css in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A00FD1D5AD07200F04812 /* News.css */; };
+		2B8A01011D5B2C0F00F04812 /* LPNewsTitleHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8A01001D5B2C0F00F04812 /* LPNewsTitleHeaderView.m */; };
+		2B8A01071D5B2C9200F04812 /* LPNewsTitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */; };
+		2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */; };
 		839FD15DECF634F4D5927990 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4EEAED047A0965E216D28E /* libPods.a */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
@@ -183,7 +186,12 @@
 		2B8A00FA1D5AB77800F04812 /* LPNewsCommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommonModel.h; sourceTree = "<group>"; };
 		2B8A00FB1D5AB77800F04812 /* LPNewsCommonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommonModel.m; sourceTree = "<group>"; };
 		2B8A00FD1D5AD07200F04812 /* News.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = News.css; sourceTree = "<group>"; };
+		2B8A00FF1D5B2C0F00F04812 /* LPNewsTitleHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsTitleHeaderView.h; sourceTree = "<group>"; };
+		2B8A01001D5B2C0F00F04812 /* LPNewsTitleHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsTitleHeaderView.m; sourceTree = "<group>"; };
+		2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPNewsTitleHeaderView.xib; sourceTree = "<group>"; };
 		2B8DA28A1D504031007FAD3D /* LovePlayNews-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LovePlayNews-Prefix.pch"; sourceTree = "<group>"; };
+		2B93A4431D5C0C9A0016B53F /* LPNewsBreifCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsBreifCellNode.h; sourceTree = "<group>"; };
+		2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsBreifCellNode.m; sourceTree = "<group>"; };
 		36DF8056EEA0B7032221AF7F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4A4EEAED047A0965E216D28E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6783DD127E52C5CADF460396 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -276,6 +284,11 @@
 				2B57C5811D534F9300F436DE /* LPNewsCellNode.m */,
 				B0ED94B91D5604CD009B11C4 /* LPWebCellNode.h */,
 				B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */,
+				2B93A4431D5C0C9A0016B53F /* LPNewsBreifCellNode.h */,
+				2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */,
+				2B8A00FF1D5B2C0F00F04812 /* LPNewsTitleHeaderView.h */,
+				2B8A01001D5B2C0F00F04812 /* LPNewsTitleHeaderView.m */,
+				2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -711,6 +724,7 @@
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
 				2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */,
 				2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */,
+				2B8A01071D5B2C9200F04812 /* LPNewsTitleHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,11 +792,13 @@
 			files = (
 				2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */,
 				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
+				2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */,
 				2B8A00FC1D5AB77800F04812 /* LPNewsCommonModel.m in Sources */,
 				2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */,
 				2B00ACA51D517E5E0048B5C2 /* LPHttpRequest.m in Sources */,
 				2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */,
 				2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */,
+				2B8A01011D5B2C0F00F04812 /* LPNewsTitleHeaderView.m in Sources */,
 				2B8174CC1D4F2B4400BA297C /* NSString+Pinyin.m in Sources */,
 				2B8174F31D4F39A400BA297C /* TYBatchRequest.m in Sources */,
 				2B8174E01D4F32BF00BA297C /* LPNavigationController.m in Sources */,

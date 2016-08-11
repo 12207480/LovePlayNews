@@ -10,11 +10,15 @@
 #import "LPWebCellNode.h"
 #import "LPNewsRequestOperation.h"
 #import "MBProgressHUD+MJ.h"
+#import "MXParallaxHeader.h"
+#import "LPNewsTitleHeaderView.h"
+#import "UIView+Nib.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
+@property (nonatomic, strong) LPNewsTitleHeaderView *headerView;
 
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
@@ -33,20 +37,49 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
-    _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableNode.view.tableFooterView = [[UIView alloc]init];
+    
+    [self configureTableView];
+    
+    [self addHeaderView];
     
     [self loadData];
+}
+
+- (void)configureTableView
+{
+    _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableNode.view.tableFooterView = [[UIView alloc]init];
+}
+
+- (void)addHeaderView
+{
+    LPNewsTitleHeaderView *headerView = [LPNewsTitleHeaderView loadInstanceFromNib];
+    [headerView.goBackBtn addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
+    _tableNode.view.parallaxHeader.view = headerView;
+    _tableNode.view.parallaxHeader.height = 165;
+    _tableNode.view.parallaxHeader.minimumHeight = 20;
+    _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    _headerView = headerView;
+}
+
+- (void)configureHeaderView
+{
+    NSString *title = _newsDetail.article.title;
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:title];
+    [attributedString addAttributes:@{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold" size:24.0f] ,NSForegroundColorAttributeName: [UIColor whiteColor]} range:NSMakeRange(0, [title length])];
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:12];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [title length])];
+    _headerView.titleLabel.attributedText = attributedString;
+    _headerView.timeLabel.text = [NSString stringWithFormat:@"%@  %@",_newsDetail.article.source,_newsDetail.article.ptime];
 }
 
 - (void)loadData
@@ -55,12 +88,33 @@
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         _newsDetail = request.responseObject.data;
-        [_tableNode.view reloadData];
-        [MBProgressHUD hideHUDForView:self.view];
+        [self configureHeaderView];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self replaceDetailImageWithArticle:_newsDetail.article];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_tableNode.view reloadData];
+                [MBProgressHUD hideHUDForView:self.view];
+            });
+        });
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
     }];
     
+}
+
+- (void)replaceDetailImageWithArticle:(LPNewsArticleModel *)article
+{
+    NSMutableString *body = [NSMutableString stringWithString:article.body];
+    for (LPNewsDetailImgeInfo *image in article.img) {
+        NSString *replaceString = [NSString stringWithFormat:@"<img src=\"%@\"/>",image.src];
+        [body replaceOccurrencesOfString:image.ref withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(0, body.length)];
+    }
+    _newsDetail.article.body = [body copy];
+}
+
+- (void)goBackAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - ASTableDataSource
@@ -72,10 +126,9 @@
 
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //http://m.wx.233.com/news/home/newsdetail?newsId=53772&fsClassId=339
+    NSString *body = _newsDetail.article.body;
     ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
-        //LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithURL:[NSURL URLWithString:@"http://play.163.com/16/0808/00/BTTGG4TT00314V8J.html"]];
-        LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:_newsDetail.article.body];
+        LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
         return cellNode;
     };
     return cellNodeBlock;
