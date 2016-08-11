@@ -8,8 +8,10 @@
 
 #import "LPWebCellNode.h"
 #import <WebKit/WebKit.h>
+#import "JTSImageViewController.h"
+#import "LPWebViewController.h"
 
-@interface LPWebCellNode () <WKNavigationDelegate,UIWebViewDelegate>
+@interface LPWebCellNode () <WKNavigationDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) WKWebView *wkWebView;
 
@@ -24,8 +26,6 @@
 @end
 
 @implementation LPWebCellNode
-
-
 
 - (instancetype)initWithURL:(NSURL *)URL
 {
@@ -49,6 +49,8 @@
 
     [self addWebView];
     
+    [self addWebViewTapGesture];
+    
     if (_htmlBody) {
         [self loadWebHtml];
     }else if (_URL) {
@@ -69,6 +71,14 @@
     [webView.scrollView setScrollsToTop:NO];
     [self.view addSubview:webView];
     _webView = webView;
+}
+
+- (void)addWebViewTapGesture
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(webViewTapAction:)];
+    tap.delegate = self;
+    tap.cancelsTouchesInView = NO;
+    [self.webView addGestureRecognizer:tap];
 }
 
 - (void)loadWebURL
@@ -116,18 +126,96 @@
     [htmlString appendString:@"<link rel =\"stylesheet\" href = \""];
     [htmlString appendString:cssName];
     [htmlString appendString:@"\" type=\"text/css\" />"];
-    
     [htmlString appendString:@"</head>"];
     [htmlString appendString:@"<body>"];
-    
     [htmlString appendString:html];
-    
     [htmlString appendString:@"</body>"];
-    
     [htmlString appendString:@"</html>"];
-    NSLog(@"%@",htmlString);
     return htmlString;
 }
+
+#pragma mark - action
+// 点击图片
+- (void)webViewTapAction:(UITapGestureRecognizer *)tap{
+    
+    CGPoint pt = [tap locationInView:self.webView];
+    NSString *imgURL = [NSString stringWithFormat:@"document.elementFromPoint(%f, %f).src", pt.x, pt.y];
+    NSString *urlToSave = [self.webView stringByEvaluatingJavaScriptFromString:imgURL];
+    
+    if (urlToSave.length > 0) {
+        NSLog(@"%@",urlToSave);
+        [self showImageURL:urlToSave point:pt];
+    }
+}
+
+- (void)showImageURL:(NSString *)url point:(CGPoint)point{
+    if(![url hasPrefix:@"http"])return;
+    JTSImageInfo *imageInfo = [[JTSImageInfo alloc] init];
+    imageInfo.imageURL = [NSURL URLWithString:url];
+    imageInfo.referenceView = self.view;
+    
+    JTSImageViewController *imageViewer = [[JTSImageViewController alloc]
+                                           initWithImageInfo:imageInfo
+                                           mode:JTSImageViewControllerMode_Image
+                                           backgroundStyle:JTSImageViewControllerBackgroundOption_Blurred];
+    [imageViewer showFromViewController:self.viewController.navigationController transition:JTSImageViewControllerTransition_FromOffscreen];
+    
+}
+
+- (UIViewController *)viewController
+{
+    for (UIView* next = [self.view superview]; next; next =
+         next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController
+                                          class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *str =request.URL.absoluteString;
+    if (navigationType == UIWebViewNavigationTypeLinkClicked &&[str hasPrefix:@"http"] ) {
+        NSLog(@"URL == %@",str);
+        LPWebViewController *webViewController = [[LPWebViewController alloc] initWithURLString:str];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+        [self.viewController presentViewController:navigationController animated:YES completion:nil];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue]+10;
+    NSLog(@"webViewHeight %.f",_webViewHeight);
+    [self setNeedsLayout];
+}
+
+#pragma mark - WKNavigationDelegate
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    [webView evaluateJavaScript:@"document.body.offsetHeight"completionHandler:^(id result,NSError * error) {
+        //获取页面高度，并重置webview的frame
+        _webViewHeight = [result floatValue];
+        NSLog(@"webViewHeight %.f",_webViewHeight);
+        [self setNeedsLayout];
+    }];
+}
+
+#pragma mark - layout
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize
 {
@@ -161,27 +249,6 @@
         [_webView loadHTMLString:@"" baseURL:nil];
         _webView = nil;
     }
-}
-
-#pragma mark - UIWebViewDelegate
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
-    _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue]+10;
-    NSLog(@"webViewHeight %.f",_webViewHeight);
-    [self setNeedsLayout];
-}
-
-#pragma mark - WKNavigationDelegate
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
-{
-    [webView evaluateJavaScript:@"document.body.offsetHeight"completionHandler:^(id result,NSError * error) {
-        //获取页面高度，并重置webview的frame
-        _webViewHeight = [result floatValue];
-        NSLog(@"webViewHeight %.f",_webViewHeight);
-        [self setNeedsLayout];
-    }];
 }
 
 @end

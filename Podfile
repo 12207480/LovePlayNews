@@ -7,3 +7,5 @@ pod 'SDWebImage'
 pod 'Masonry'
 pod "AsyncDisplayKit"
 pod "MXParallaxHeader"
+pod "TOWebViewController"
+pod "JTSImageViewController"
