@@ -14,6 +14,7 @@
 #import "MXParallaxHeader.h"
 #import "LPNewsTitleHeaderView.h"
 #import "UIView+Nib.h"
+#import "LPNewsTitleSectionView.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
 
 @end
+
+static NSString *headerId = @"LPNewsTitleSectionView";
 
 @implementation LPNewsDetailController
 
@@ -63,6 +66,8 @@
 {
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableNode.view.tableFooterView = [[UIView alloc]init];
+    
+    [_tableNode.view registerClass:[LPNewsTitleSectionView class] forHeaderFooterViewReuseIdentifier:headerId];
 }
 
 - (void)addHeaderView
@@ -127,7 +132,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -135,7 +140,6 @@
     switch (section) {
         case 0:
             return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
-            
         default:
             return 0;
     }
@@ -177,6 +181,34 @@
     }
     
     return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if(section > 0) {
+        LPNewsTitleSectionView *sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
+        switch (section) {
+            case 1:
+                sectionView.title = @"热门跟帖";
+                break;
+            case 2:
+                sectionView.title = @"猜你喜欢";
+                break;
+            default:
+                break;
+        }
+        
+        return sectionView;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section > 0) {
+        return 28;
+    }
+    return 0;
 }
 
 - (void)didReceiveMemoryWarning {
