@@ -7,13 +7,10 @@
 //
 
 #import "LPWebCellNode.h"
-#import <WebKit/WebKit.h>
 #import "JTSImageViewController.h"
 #import "LPWebViewController.h"
 
-@interface LPWebCellNode () <WKNavigationDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>
-
-@property (nonatomic,strong) WKWebView *wkWebView;
+@interface LPWebCellNode () <UIWebViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic,weak) UIWebView *webView;
 
@@ -90,29 +87,6 @@
 {
     NSURL *cssURL = [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"News" ofType:@"css"]];
     [_webView loadHTMLString:[self handleWithHtmlBody:_htmlBody] baseURL:cssURL];
-}
-
-#pragma mark - WKWebView
-// WKWebView 加载本地css有bug
-- (void)addWkWebView
-{
-    WKWebView *webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
-    webView.navigationDelegate = self;
-    webView.scrollView.bounces = NO;
-    [webView.scrollView setScrollsToTop:NO];
-    [self.view addSubview:webView];
-    _wkWebView = webView;
-}
-
-- (void)loadWkWebURL
-{
-    [_wkWebView loadRequest:[NSURLRequest requestWithURL:_URL]];
-}
-
-- (void)loadWkWebHtml
-{
-    // [NSURL fileURLWithPath:[[NSBundle mainBundle]pathForResource:@"News" ofType:@"css"]]
-    [_wkWebView loadHTMLString:[self handleWithHtmlBody:_htmlBody] baseURL:nil];
 }
 
 #pragma mark - private
@@ -198,21 +172,9 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
-    _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue]+10;
+    _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue]+12;
     NSLog(@"webViewHeight %.f",_webViewHeight);
     [self setNeedsLayout];
-}
-
-#pragma mark - WKNavigationDelegate
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
-{
-    [webView evaluateJavaScript:@"document.body.offsetHeight"completionHandler:^(id result,NSError * error) {
-        //获取页面高度，并重置webview的frame
-        _webViewHeight = [result floatValue];
-        NSLog(@"webViewHeight %.f",_webViewHeight);
-        [self setNeedsLayout];
-    }];
 }
 
 #pragma mark - layout
@@ -225,30 +187,14 @@
 - (void)layout
 {
     [super layout];
-    
-    if (_wkWebView) {
-        _wkWebView.frame = CGRectMake(0, 0, self.calculatedSize.width,_webViewHeight);
-        _wkWebView.scrollView.scrollEnabled = NO;
-    }
-    
-    if (_webView) {
-        _webView.frame = CGRectMake(0, 0, self.calculatedSize.width,_webViewHeight);
-    }
+    _webView.frame = CGRectMake(0, 0, self.calculatedSize.width,_webViewHeight);
 }
 
 - (void)dealloc{
     
-    if (_wkWebView) {
-        _wkWebView.navigationDelegate = nil;
-        [_wkWebView loadHTMLString:@"" baseURL:nil];
-        _wkWebView = nil;
-    }
-    
-    if (_webView) {
-        _webView.delegate = nil;
-        [_webView loadHTMLString:@"" baseURL:nil];
-        _webView = nil;
-    }
+    _webView.delegate = nil;
+    [_webView loadHTMLString:@"" baseURL:nil];
+    _webView = nil;
 }
 
 @end

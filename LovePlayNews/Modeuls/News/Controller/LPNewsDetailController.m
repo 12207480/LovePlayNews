@@ -38,12 +38,6 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -131,35 +125,55 @@
 
 #pragma mark - ASTableDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
+    switch (section) {
+        case 0:
+            return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
+            
+        default:
+            return 0;
+    }
 }
 
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *body = _newsDetail.article.body;
-    ASCellNode *(^webCellNodeBlock)() = ^ASCellNode *() {
-        LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
-        return cellNode;
-    };
-    NSString *brief = _newsDetail.article.digest;
-    ASCellNode *(^briefCellNodeBlock)() = ^ASCellNode *() {
-        LPNewsBreifCellNode *cellNode = [[LPNewsBreifCellNode alloc] initWithBreif:brief];
-        return cellNode;
-    };
-    
-    if (_newsDetail.article.digest.length <= 0 ) {
-        return webCellNodeBlock;
-    }
-    
-    switch (indexPath.row) {
-        case 0:
-            return briefCellNodeBlock;
-        case 1:
+    if (indexPath.section == 0) {
+        // section 0
+        NSString *body = _newsDetail.article.body;
+        ASCellNode *(^webCellNodeBlock)() = ^ASCellNode *() {
+            LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
+            return cellNode;
+        };
+        NSString *brief = _newsDetail.article.digest;
+        ASCellNode *(^briefCellNodeBlock)() = ^ASCellNode *() {
+            LPNewsBreifCellNode *cellNode = [[LPNewsBreifCellNode alloc] initWithBreif:brief];
+            return cellNode;
+        };
+        
+        if (_newsDetail.article.digest.length <= 0 ) {
             return webCellNodeBlock;
-        default:
-            break;
+        }
+        
+        switch (indexPath.row) {
+            case 0:
+                return briefCellNodeBlock;
+            case 1:
+                return webCellNodeBlock;
+            default:
+                break;
+        }
+    }else if (indexPath.section == 1){
+        // section 1
+        
+    }else if (indexPath.section == 2) {
+        // section 2
+        
     }
     
     return nil;
