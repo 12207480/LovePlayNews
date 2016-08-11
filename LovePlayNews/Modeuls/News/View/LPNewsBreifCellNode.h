@@ -10,4 +10,6 @@
 
 @interface LPNewsBreifCellNode : ASCellNode
 
+- (instancetype)initWithBreif:(NSString *)breif;
+
 @end

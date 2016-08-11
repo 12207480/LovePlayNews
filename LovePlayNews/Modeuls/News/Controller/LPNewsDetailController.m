@@ -8,6 +8,7 @@
 
 #import "LPNewsDetailController.h"
 #import "LPWebCellNode.h"
+#import "LPNewsBreifCellNode.h"
 #import "LPNewsRequestOperation.h"
 #import "MBProgressHUD+MJ.h"
 #import "MXParallaxHeader.h"
@@ -121,17 +122,36 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _newsDetail ? 1: 0;
+    return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
 }
 
 - (ASCellNodeBlock)tableView:(ASTableView *)tableView nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *body = _newsDetail.article.body;
-    ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
+    ASCellNode *(^webCellNodeBlock)() = ^ASCellNode *() {
         LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
         return cellNode;
     };
-    return cellNodeBlock;
+    NSString *brief = _newsDetail.article.digest;
+    ASCellNode *(^briefCellNodeBlock)() = ^ASCellNode *() {
+        LPNewsBreifCellNode *cellNode = [[LPNewsBreifCellNode alloc] initWithBreif:brief];
+        return cellNode;
+    };
+    
+    if (_newsDetail.article.digest.length <= 0 ) {
+        return webCellNodeBlock;
+    }
+    
+    switch (indexPath.row) {
+        case 0:
+            return briefCellNodeBlock;
+        case 1:
+            return webCellNodeBlock;
+        default:
+            break;
+    }
+    
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {
