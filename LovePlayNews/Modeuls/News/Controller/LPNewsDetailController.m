@@ -98,11 +98,12 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
-        _newsDetail = request.responseObject.data;
-        [self configureHeaderView];
+         LPNewsDetailModel *newsDetail = request.responseObject.data;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self replaceDetailImageWithArticle:_newsDetail.article];
+            [self replaceDetailImageWithArticle:newsDetail.article];
             dispatch_async(dispatch_get_main_queue(), ^{
+                _newsDetail = newsDetail;
+                [self configureHeaderView];
                 [_tableNode.view reloadData];
                 [MBProgressHUD hideHUDForView:self.view];
             });
@@ -110,18 +111,19 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
     }];
-    
 }
 
 - (void)replaceDetailImageWithArticle:(LPNewsArticleModel *)article
 {
     NSMutableString *body = [NSMutableString stringWithString:article.body];
     for (LPNewsDetailImgeInfo *image in article.img) {
-        NSString *replaceString = [NSString stringWithFormat:@"<img src=\"%@\"/>",image.src];
+        NSString *replaceString = [NSString stringWithFormat:@"<img src=\"%@\" alt=\"%@\" />",image.src,image.alt?image.alt:@""];
         [body replaceOccurrencesOfString:image.ref withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(0, body.length)];
     }
-    _newsDetail.article.body = [body copy];
+    article.body = [body copy];
 }
+
+#pragma mark - action
 
 - (void)goBackAction
 {
