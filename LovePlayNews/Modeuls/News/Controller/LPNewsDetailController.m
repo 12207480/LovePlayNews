@@ -25,6 +25,8 @@
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
 
+@property (nonatomic, strong) NSArray *hotComments;
+
 @end
 
 static NSString *headerId = @"LPNewsTitleSectionView";
@@ -93,6 +95,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     _headerView.timeLabel.text = [NSString stringWithFormat:@"%@  %@",_newsDetail.article.source,_newsDetail.article.ptime];
 }
 
+#pragma mark - load data
+
 - (void)loadData
 {
     LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
@@ -101,8 +105,10 @@ static NSString *headerId = @"LPNewsTitleSectionView";
          LPNewsDetailModel *newsDetail = request.responseObject.data;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self replaceDetailImageWithArticle:newsDetail.article];
+            NSArray *hotComments = [self hotCommentsWithTie:newsDetail.tie];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _newsDetail = newsDetail;
+                _hotComments = hotComments;
                 [self configureHeaderView];
                 [_tableNode.view reloadData];
                 [MBProgressHUD hideHUDForView:self.view];
@@ -121,6 +127,20 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         [body replaceOccurrencesOfString:image.ref withString:replaceString options:NSCaseInsensitiveSearch range:NSMakeRange(0, body.length)];
     }
     article.body = [body copy];
+}
+
+- (NSArray *)hotCommentsWithTie:(LPNewsCommonModel *)tie
+{
+    NSArray *hotComments = [[tie.comments allValues] sortedArrayUsingComparator:^NSComparisonResult(LPNewsCommonItem *obj1, LPNewsCommonItem *obj2) {
+        if (obj1.vote < obj2.vote) {
+            return NSOrderedDescending;
+        }else if (obj1.vote > obj2.vote) {
+            return NSOrderedAscending;
+        }else {
+            return NSOrderedSame;
+        }
+    }];
+    return hotComments;
 }
 
 #pragma mark - action
@@ -142,6 +162,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     switch (section) {
         case 0:
             return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
+        case 1:
+            return 0;
         default:
             return 0;
     }
@@ -187,7 +209,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(section > 0) {
+    if(section > 0 && _hotComments.count > 0) {
         LPNewsTitleSectionView *sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
         switch (section) {
             case 1:
@@ -207,7 +229,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section > 0) {
+    if ( section > 0 && _hotComments.count > 0) {
         return 28;
     }
     return 0;

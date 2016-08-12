@@ -9,11 +9,17 @@
 #import "LPNewsSampleCommentNode.h"
 
 @interface LPNewsSampleCommentNode ()
-
+@property (nonatomic,strong) LPNewsCommonItem *item;
 @end
 
 @implementation LPNewsSampleCommentNode
 
-
+- (instancetype)initWithCommentItem:(LPNewsCommonItem *)item
+{
+    if (self = [super init]) {
+        _item = item;
+    }
+    return self;
+}
 
 @end

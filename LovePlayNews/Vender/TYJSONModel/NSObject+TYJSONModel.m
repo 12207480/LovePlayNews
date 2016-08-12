@@ -117,6 +117,9 @@
                     if (class) {
                         // 包含 就调用数组的 转模型方法
                         value = [(NSArray *)value ty_ModelArrayWithClass:class];
+                    }else if ([self respondsToSelector:@selector(shouldCustomUnkownValueWithKey:)] && [self shouldCustomUnkownValueWithKey:key] && [self respondsToSelector:@selector(customValueWithKey:unkownValueArray:)]) {
+                        // 自定义处理未知value
+                        value = [self customValueWithKey:key unkownValueArray:value];
                     }
                 }else {
                     // property 不是数组类型 返回数据有误
@@ -129,13 +132,17 @@
                     value = [propertyInfo.typeClass ty_ModelWithDictonary:value];
                 }else if ([propertyInfo.typeClass isSubclassOfClass:[NSDictionary class]]) {
                     // property 是 字典类型
+                    Class class = nil;
                     if (modelClassDic) {
                         // 字典 里 是否包含模型
-                        Class class = [modelClassDic objectForKey:key];
-                        if (class) {
-                            // 包含 就调用字典的 转模型方法
-                            value = [(NSDictionary *)value ty_ModelDictionaryWithClass:class];
-                        }
+                        class = [modelClassDic objectForKey:key];
+                    }
+                    if (class) {
+                        // 包含 就调用字典的 转模型方法
+                        value = [(NSDictionary *)value ty_ModelDictionaryWithClass:class];
+                    }else if ([self respondsToSelector:@selector(shouldCustomUnkownValueWithKey:)] && [self shouldCustomUnkownValueWithKey:key] && [self respondsToSelector:@selector(customValueWithKey:unkownValueDic:)]) {
+                        // 自定义处理未知value
+                        value = [self customValueWithKey:key unkownValueDic:value];
                     }
                 }else {
                     // property 不是 字典类型 返回数据有误

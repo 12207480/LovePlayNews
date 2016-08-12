@@ -21,6 +21,15 @@
 // 忽略某些属性
 + (NSArray *)ignoreModelProperties;
 
+// 是否自定义未识别（不能处理的）value
+- (BOOL)shouldCustomUnkownValueWithKey:(NSString *)key;
+
+// 处理未识别（不能处理的）字典value 返回自定义的value
+- (id)customValueWithKey:(NSString *)key unkownValueDic:(NSDictionary *)unkownValueDic;
+
+// 处理未识别（不能处理的）数组value 返回自定义的value
+- (id)customValueWithKey:(NSString *)key unkownValueArray:(NSArray *)unkownValueArray;
+
 @end
 
 @interface NSObject (TYJSONModel) <TYJSONModel>
