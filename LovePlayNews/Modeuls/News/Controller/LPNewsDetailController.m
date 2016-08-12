@@ -15,6 +15,7 @@
 #import "LPNewsTitleHeaderView.h"
 #import "UIView+Nib.h"
 #import "LPNewsTitleSectionView.h"
+#import "LPNewsCommentCellNode.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
@@ -24,7 +25,6 @@
 
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
-
 @property (nonatomic, strong) NSArray *hotComments;
 
 @end
@@ -35,7 +35,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (instancetype)init
 {
-    _tableNode = [[ASTableNode alloc] init];
+    _tableNode = [[ASTableNode alloc] initWithStyle:UITableViewStyleGrouped];
     if (self = [super initWithNode:_tableNode]) {
         _tableNode.delegate = self;
         _tableNode.dataSource = self;
@@ -61,7 +61,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = RGB_255(247, 247, 247);;
 }
 
 - (void)configureTableView
@@ -80,6 +80,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     _tableNode.view.parallaxHeader.height = 165;
     _tableNode.view.parallaxHeader.minimumHeight = 64;
     _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    _tableNode.view.parallaxHeader.contentView.layer.zPosition = 1;
     _headerView = headerView;
 }
 
@@ -140,6 +141,11 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             return NSOrderedSame;
         }
     }];
+    
+    for (LPNewsCommonItem *item in hotComments) {
+        item.content = [item.content stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+    }
+    
     return hotComments;
 }
 
@@ -163,7 +169,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         case 0:
             return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
         case 1:
-            return 0;
+            return _hotComments.count;
         default:
             return 0;
     }
@@ -198,7 +204,12 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         }
     }else if (indexPath.section == 1){
         // section 1
-        
+        LPNewsCommonItem *item = _hotComments[indexPath.row];
+        ASCellNode *(^commentCellNodeBlock)() = ^ASCellNode *() {
+            LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItem:item];
+            return cellNode;
+        };
+        return commentCellNodeBlock;
     }else if (indexPath.section == 2) {
         // section 2
         
@@ -232,7 +243,12 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     if ( section > 0 && _hotComments.count > 0) {
         return 28;
     }
-    return 0;
+    return 0.1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
 }
 
 - (void)didReceiveMemoryWarning {

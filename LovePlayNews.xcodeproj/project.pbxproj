@@ -19,7 +19,7 @@
 		2B00ACA61D517E5E0048B5C2 /* TYResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACA41D517E5E0048B5C2 /* TYResponseObject.m */; };
 		2B00ACB31D51AB230048B5C2 /* LPNewsRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACB21D51AB230048B5C2 /* LPNewsRequestOperation.m */; };
 		2B3913F11D5C7D510068B1D8 /* LPNewsTitleSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3913F01D5C7D510068B1D8 /* LPNewsTitleSectionView.m */; };
-		2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentNode.m */; };
+		2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m */; };
 		2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */; };
 		2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */; };
 		2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C5811D534F9300F436DE /* LPNewsCellNode.m */; };
@@ -106,8 +106,8 @@
 		2B00ACB21D51AB230048B5C2 /* LPNewsRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsRequestOperation.m; sourceTree = "<group>"; };
 		2B3913EF1D5C7D510068B1D8 /* LPNewsTitleSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsTitleSectionView.h; sourceTree = "<group>"; };
 		2B3913F01D5C7D510068B1D8 /* LPNewsTitleSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsTitleSectionView.m; sourceTree = "<group>"; };
-		2B50AB2A1D5D5C5C00FB77AE /* LPNewsCommentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentNode.h; sourceTree = "<group>"; };
-		2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentNode.m; sourceTree = "<group>"; };
+		2B50AB2A1D5D5C5C00FB77AE /* LPNewsCommentCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentCellNode.h; sourceTree = "<group>"; };
+		2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentCellNode.m; sourceTree = "<group>"; };
 		2B57C57B1D53293A00F436DE /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -295,8 +295,8 @@
 				2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */,
 				B0ED94B91D5604CD009B11C4 /* LPWebCellNode.h */,
 				B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */,
-				2B50AB2A1D5D5C5C00FB77AE /* LPNewsCommentNode.h */,
-				2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentNode.m */,
+				2B50AB2A1D5D5C5C00FB77AE /* LPNewsCommentCellNode.h */,
+				2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m */,
 				2B8A00FF1D5B2C0F00F04812 /* LPNewsTitleHeaderView.h */,
 				2B8A01001D5B2C0F00F04812 /* LPNewsTitleHeaderView.m */,
 				2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */,
@@ -866,7 +866,7 @@
 				2B8174CB1D4F2B4400BA297C /* NSString+MD5.m in Sources */,
 				2B8174D61D4F2B4400BA297C /* UIView+Nib.m in Sources */,
 				2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */,
-				2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentNode.m in Sources */,
+				2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m in Sources */,
 				2B8174F81D4F39A400BA297C /* TYResponseCache.m in Sources */,
 				2B8174C81D4F2B4400BA297C /* NSDate+Compare.m in Sources */,
 				2B8174CA1D4F2B4400BA297C /* NSString+Encrypt.m in Sources */,
