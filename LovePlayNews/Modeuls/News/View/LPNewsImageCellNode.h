@@ -1,13 +1,13 @@
 //
-//  LPNewsCellNode.h
+//  LPNewsImageCellNode.h
 //  LovePlayNews
 //
-//  Created by tany on 16/8/4.
+//  Created by tany on 16/8/12.
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
 #import "LPNewsBaseCellNode.h"
 
-@interface LPNewsCellNode : LPNewsBaseCellNode
+@interface LPNewsImageCellNode : LPNewsBaseCellNode
 
 @end

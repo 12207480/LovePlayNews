@@ -10,6 +10,7 @@
 #import "LPNewsRequestOperation.h"
 #import "MBProgressHUD+MJ.h"
 #import "LPNewsCellNode.h"
+#import "LPNewsImageCellNode.h"
 #import "LPNewsDetailController.h"
 
 @interface LPNewsListController ()<ASTableDelegate, ASTableDataSource>
@@ -102,7 +103,15 @@
 {
     LPNewsInfoModel *newsInfo = _newsList[indexPath.row];
     ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
-        LPNewsCellNode *cellNode = [[LPNewsCellNode alloc] initWithNewsInfo:newsInfo];
+        LPNewsBaseCellNode *cellNode = nil;
+        switch (newsInfo.showType) {
+            case 2:
+                cellNode = [[LPNewsImageCellNode alloc] initWithNewsInfo:newsInfo];
+                break;
+            default:
+                cellNode = [[LPNewsCellNode alloc] initWithNewsInfo:newsInfo];
+                break;
+        }
         return cellNode;
     };
     return cellNodeBlock;

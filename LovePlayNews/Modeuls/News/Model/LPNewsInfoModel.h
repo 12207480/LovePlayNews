@@ -13,7 +13,6 @@
 @property (nonatomic, strong) NSString *boardid;
 @property (nonatomic, strong) NSString *digest;
 @property (nonatomic, strong) NSString *docid;
-@property (nonatomic, assign) BOOL fromTopicSource;
 @property (nonatomic, strong) NSArray *imgextra;
 @property (nonatomic, strong) NSArray *imgsrc;
 @property (nonatomic, strong) NSString *lmodify;

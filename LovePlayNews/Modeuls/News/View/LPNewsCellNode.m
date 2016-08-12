@@ -9,7 +9,6 @@
 #import "LPNewsCellNode.h"
 
 @interface LPNewsCellNode ()
-@property (nonatomic, strong) LPNewsInfoModel *newsInfo;
 
 @property (nonatomic, strong) ASTextNode *titleNode;
 @property (nonatomic, strong) ASNetworkImageNode *imageNode;
@@ -22,9 +21,7 @@
 
 - (instancetype)initWithNewsInfo:(LPNewsInfoModel *)newsInfo
 {
-    if (self = [super init]) {
-        
-        _newsInfo = newsInfo;
+    if (self = [super initWithNewsInfo:newsInfo]) {
         
         [self addTitleNode];
         
@@ -45,7 +42,7 @@
     titleNode.layerBacked = YES;
     titleNode.maximumNumberOfLines = 2;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(36, 36, 36)};
-    titleNode.attributedText = [[NSAttributedString alloc]initWithString:_newsInfo.title attributes:attrs];
+    titleNode.attributedText = [[NSAttributedString alloc]initWithString:self.newsInfo.title attributes:attrs];
     [self addSubnode:titleNode];
     _titleNode = titleNode;
 }
@@ -54,7 +51,7 @@
 {
     ASNetworkImageNode *imageNode = [[ASNetworkImageNode alloc]init];
     imageNode.layerBacked = YES;
-    imageNode.URL = [NSURL URLWithString:_newsInfo.imgsrc.firstObject];
+    imageNode.URL = [NSURL URLWithString:self.newsInfo.imgsrc.firstObject];
     [self addSubnode:imageNode];
     _imageNode = imageNode;
 }
@@ -84,7 +81,7 @@
     replyTextNode.layerBacked = YES;
     replyTextNode.maximumNumberOfLines = 1;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:10.0f] ,NSForegroundColorAttributeName: RGB_255(150, 150, 150)};
-    replyTextNode.attributedText = [[NSAttributedString alloc]initWithString:@(_newsInfo.replyCount).stringValue attributes:attrs];
+    replyTextNode.attributedText = [[NSAttributedString alloc]initWithString:@(self.newsInfo.replyCount).stringValue attributes:attrs];
     [self addSubnode:replyTextNode];
     _replyTextNode = replyTextNode;
 }
