@@ -30,17 +30,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtH-3A-0zD">
-                            <rect key="frame" x="11" y="30" width="30" height="25"/>
+                            <rect key="frame" x="8" y="30" width="36" height="26"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="25" id="Wlh-sg-nFq"/>
-                                <constraint firstAttribute="width" constant="30" id="gOW-jM-hgL"/>
+                                <constraint firstAttribute="height" constant="26" id="Wlh-sg-nFq"/>
+                                <constraint firstAttribute="width" constant="36" id="gOW-jM-hgL"/>
                             </constraints>
                             <state key="normal" image="back2_pgnews"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="wtH-3A-0zD" firstAttribute="leading" secondItem="Maj-Yv-Lvn" secondAttribute="leading" constant="11" id="P8A-qH-ae6"/>
+                        <constraint firstItem="wtH-3A-0zD" firstAttribute="leading" secondItem="Maj-Yv-Lvn" secondAttribute="leading" constant="8" id="P8A-qH-ae6"/>
                         <constraint firstItem="wtH-3A-0zD" firstAttribute="top" secondItem="Maj-Yv-Lvn" secondAttribute="top" constant="30" id="ROZ-is-WMj"/>
                         <constraint firstAttribute="height" constant="64" id="kkb-ya-LQc"/>
                     </constraints>

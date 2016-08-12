@@ -6,13 +6,16 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsSampleCommentNode.h"
+#import "LPNewsCommentNode.h"
 
-@interface LPNewsSampleCommentNode ()
+@interface LPNewsCommentNode ()
+
 @property (nonatomic,strong) LPNewsCommonItem *item;
+
+
 @end
 
-@implementation LPNewsSampleCommentNode
+@implementation LPNewsCommentNode
 
 - (instancetype)initWithCommentItem:(LPNewsCommonItem *)item
 {
@@ -20,6 +23,11 @@
         _item = item;
     }
     return self;
+}
+
+- (void)addImageNode
+{
+    
 }
 
 @end

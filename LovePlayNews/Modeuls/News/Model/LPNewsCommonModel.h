@@ -26,7 +26,7 @@
 @end
 
 @interface LPNewsCommonUser : NSObject
-
+@property (nonatomic, strong) NSString *avatar;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *nickname;
 

@@ -9,7 +9,7 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "LPNewsCommonModel.h"
 
-@interface LPNewsSampleCommentNode : ASCellNode
+@interface LPNewsCommentNode : ASCellNode
 
 - (instancetype)initWithCommentItem:(LPNewsCommonItem *)item;
 
