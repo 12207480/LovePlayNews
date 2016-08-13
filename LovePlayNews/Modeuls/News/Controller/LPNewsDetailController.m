@@ -36,12 +36,20 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (instancetype)init
 {
-    _tableNode = [[ASTableNode alloc] initWithStyle:UITableViewStyleGrouped];
-    if (self = [super initWithNode:_tableNode]) {
-        _tableNode.delegate = self;
-        _tableNode.dataSource = self;
+    if (self = [super initWithNode:[ASDisplayNode new]]) {
+        
+        [self addTableNode];
     }
     return self;
+}
+
+- (void)addTableNode
+{
+    _tableNode = [[ASTableNode alloc] initWithStyle:UITableViewStyleGrouped];
+    _tableNode.backgroundColor = RGB_255(247, 247, 247);
+    _tableNode.delegate = self;
+    _tableNode.dataSource = self;
+    [self.node addSubnode:_tableNode];
 }
 
 - (void)viewDidLoad {
@@ -57,12 +65,17 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     [self loadData];
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _tableNode.frame = self.node.frame;
+}
+
 - (void)configureController
 {
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = RGB_255(247, 247, 247);
 }
 
 - (void)configureTableView
@@ -113,7 +126,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
                 _hotComments = hotComments;
                 [self configureHeaderView];
                 [_tableNode.view reloadData];
-                [MBProgressHUD hideHUDForView:self.view];
+//                [MBProgressHUD hideHUDForView:self.view];
             });
         });
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
@@ -186,6 +199,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
             [cellNode setWebViewDidFinishLoad:^{
                 weakSelf.webViewFinishLoad = YES;
+                [MBProgressHUD hideHUDForView:self.view];
             }];
             return cellNode;
         };
