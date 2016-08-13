@@ -35,7 +35,9 @@
 - (instancetype)initWithHtmlBody:(NSString *)htmlBody
 {
     if (self = [super init]) {
+        _webViewHeight = kScreenHeight-156;
         _htmlBody = htmlBody;
+        self.backgroundColor = RGB_255(247, 247, 247);
     }
     return self;
 }
@@ -60,6 +62,7 @@
 - (void)addWebView
 {
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+    webView.backgroundColor = RGB_255(247, 247, 247);
     webView.scalesPageToFit = NO;
     webView.delegate = self;
     webView.scrollView.bounces = NO;
@@ -174,6 +177,9 @@
     
     _webViewHeight = [[webView stringByEvaluatingJavaScriptFromString: @"document.body.offsetHeight"]floatValue]+12;
     NSLog(@"webViewHeight %.f",_webViewHeight);
+    if (_webViewDidFinishLoad) {
+        _webViewDidFinishLoad();
+    }
     [self setNeedsLayout];
 }
 

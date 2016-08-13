@@ -20,7 +20,6 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
-        
         self.contentView.backgroundColor = RGB_255(236, 236, 236);
         
         [self addLeftLineView];

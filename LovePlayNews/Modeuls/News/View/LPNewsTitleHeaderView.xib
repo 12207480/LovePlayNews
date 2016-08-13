@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -30,20 +30,26 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtH-3A-0zD">
-                            <rect key="frame" x="8" y="30" width="36" height="26"/>
+                            <rect key="frame" x="2" y="20" width="52" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="26" id="Wlh-sg-nFq"/>
-                                <constraint firstAttribute="width" constant="36" id="gOW-jM-hgL"/>
+                                <constraint firstAttribute="height" constant="44" id="Wlh-sg-nFq"/>
+                                <constraint firstAttribute="width" constant="52" id="gOW-jM-hgL"/>
                             </constraints>
                             <state key="normal" image="back2_pgnews"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="wtH-3A-0zD" firstAttribute="leading" secondItem="Maj-Yv-Lvn" secondAttribute="leading" constant="8" id="P8A-qH-ae6"/>
+                        <constraint firstItem="wtH-3A-0zD" firstAttribute="leading" secondItem="Maj-Yv-Lvn" secondAttribute="leading" constant="2" id="P8A-qH-ae6"/>
                         <constraint firstItem="wtH-3A-0zD" firstAttribute="top" secondItem="Maj-Yv-Lvn" secondAttribute="top" constant="30" id="ROZ-is-WMj"/>
                         <constraint firstAttribute="height" constant="64" id="kkb-ya-LQc"/>
+                        <constraint firstAttribute="bottom" secondItem="wtH-3A-0zD" secondAttribute="bottom" id="yRN-fZ-cFF"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ROZ-is-WMj"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>

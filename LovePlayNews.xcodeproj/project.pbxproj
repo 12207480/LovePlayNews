@@ -67,9 +67,9 @@
 		2B8A01071D5B2C9200F04812 /* LPNewsTitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */; };
 		2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */; };
 		2B93A44E1D5C451A0016B53F /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B93A44D1D5C451A0016B53F /* LPWebViewController.m */; };
-		839FD15DECF634F4D5927990 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A4EEAED047A0965E216D28E /* libPods.a */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
+		E357D7E046B64CA4481D29A3 /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BE5A6C2A2F97D7937B6DD6 /* libPods-LovePlayNews.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,9 +207,9 @@
 		2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsBreifCellNode.m; sourceTree = "<group>"; };
 		2B93A44C1D5C451A0016B53F /* LPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebViewController.h; sourceTree = "<group>"; };
 		2B93A44D1D5C451A0016B53F /* LPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWebViewController.m; sourceTree = "<group>"; };
-		36DF8056EEA0B7032221AF7F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		4A4EEAED047A0965E216D28E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6783DD127E52C5CADF460396 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.debug.xcconfig"; sourceTree = "<group>"; };
+		97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.release.xcconfig"; sourceTree = "<group>"; };
+		A4BE5A6C2A2F97D7937B6DD6 /* libPods-LovePlayNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LovePlayNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0ED94B61D55FD66009B11C4 /* LPNewsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsDetailController.h; sourceTree = "<group>"; };
 		B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsDetailController.m; sourceTree = "<group>"; };
 		B0ED94B91D5604CD009B11C4 /* LPWebCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebCellNode.h; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				839FD15DECF634F4D5927990 /* libPods.a in Frameworks */,
+				E357D7E046B64CA4481D29A3 /* libPods-LovePlayNews.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,14 +235,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		29C6B71F3E3BF85FC5B20A8F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4A4EEAED047A0965E216D28E /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		2B00561F1D5418A900DDA531 /* JPFPSStatus */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,8 +354,8 @@
 				2B8174231D4EE5A200BA297C /* LovePlayNews */,
 				2B81743D1D4EE5A300BA297C /* LovePlayNewsTests */,
 				2B8174221D4EE5A200BA297C /* Products */,
-				E4B6DB557612E44BF1E31BF1 /* Pods */,
-				29C6B71F3E3BF85FC5B20A8F /* Frameworks */,
+				EC84F2E6B155A93AFE66C4D9 /* Pods */,
+				D5748F0D14D53ECA7691478E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -668,11 +660,19 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
-		E4B6DB557612E44BF1E31BF1 /* Pods */ = {
+		D5748F0D14D53ECA7691478E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6783DD127E52C5CADF460396 /* Pods.debug.xcconfig */,
-				36DF8056EEA0B7032221AF7F /* Pods.release.xcconfig */,
+				A4BE5A6C2A2F97D7937B6DD6 /* libPods-LovePlayNews.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC84F2E6B155A93AFE66C4D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */,
+				97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -684,12 +684,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B8174431D4EE5A300BA297C /* Build configuration list for PBXNativeTarget "LovePlayNews" */;
 			buildPhases = (
-				AFF53E26BB1AA41926B60624 /* Check Pods Manifest.lock */,
+				E32801633CCA8F808AF95508 /* [CP] Check Pods Manifest.lock */,
 				2B81741D1D4EE5A200BA297C /* Sources */,
 				2B81741E1D4EE5A200BA297C /* Frameworks */,
 				2B81741F1D4EE5A200BA297C /* Resources */,
-				DF2B219DB35FF33C5F29F04E /* Embed Pods Frameworks */,
-				2AE425F61CE479E8F2370781 /* Copy Pods Resources */,
+				97F013CC1DA4FEDB5F2D64E3 /* [CP] Embed Pods Frameworks */,
+				5BC40A668E4E507DE509A0FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -780,49 +780,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2AE425F61CE479E8F2370781 /* Copy Pods Resources */ = {
+		5BC40A668E4E507DE509A0FB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AFF53E26BB1AA41926B60624 /* Check Pods Manifest.lock */ = {
+		97F013CC1DA4FEDB5F2D64E3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E32801633CCA8F808AF95508 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		DF2B219DB35FF33C5F29F04E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -996,7 +996,7 @@
 		};
 		2B8174441D4EE5A300BA297C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6783DD127E52C5CADF460396 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1015,7 +1015,7 @@
 		};
 		2B8174451D4EE5A300BA297C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36DF8056EEA0B7032221AF7F /* Pods.release.xcconfig */;
+			baseConfigurationReference = 97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

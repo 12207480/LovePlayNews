@@ -23,7 +23,6 @@
 {
     if (self = [super init]) {
         _breif = breif;
-        self.backgroundColor = RGB_255(247, 247, 247);
         
         [self addleftLineNode];
         

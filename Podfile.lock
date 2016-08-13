@@ -23,7 +23,6 @@ PODS:
     - AsyncDisplayKit/Core
     - PINRemoteImage/iOS (>= 3.0.0-beta.2)
   - JTSImageViewController (1.5.1)
-  - Masonry (1.0.1)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.1)
   - MXParallaxHeader (0.5.0)
@@ -32,35 +31,41 @@ PODS:
     - PINCache (>= 2.1)
   - PINRemoteImage/iOS (3.0.0-beta.2):
     - PINRemoteImage/Core
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
   - TOWebViewController (2.2.4):
     - TOWebViewController/Core (= 2.2.4)
   - TOWebViewController/Core (2.2.4)
+  - YYCache (1.0.3)
+  - YYImage (1.0.3):
+    - YYImage/Core (= 1.0.3)
+  - YYImage/Core (1.0.3)
+  - YYWebImage (1.0.4):
+    - YYCache
+    - YYImage
 
 DEPENDENCIES:
   - AFNetworking
   - AsyncDisplayKit
   - JTSImageViewController
-  - Masonry
   - MBProgressHUD
   - MJRefresh
   - MXParallaxHeader
-  - SDWebImage
   - TOWebViewController
+  - YYWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AsyncDisplayKit: ab57b10cd058797015c77be10407f3dc13027c85
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 70a47c5543b567cdaf70ead5a6e99ce820652eb9
   MXParallaxHeader: c7dfdf8d769a8eb868a431ec3aeaf994a147b8bc
   PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
   PINRemoteImage: 197554c5ba57a6ae90f5db441651180039fc9062
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   TOWebViewController: f6b234d2be45dbf81d2a71a1f9480f8f3cc6501a
+  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+  YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
+  YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 7745b9a6cc27410fcefe95e11c217122f11786b8
+
+COCOAPODS: 1.0.1

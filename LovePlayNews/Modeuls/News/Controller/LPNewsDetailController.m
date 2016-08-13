@@ -26,6 +26,7 @@
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
 @property (nonatomic, strong) NSArray *hotComments;
+@property (nonatomic, assign) BOOL webViewFinishLoad;
 
 @end
 
@@ -61,7 +62,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = RGB_255(247, 247, 247);;
+    self.view.backgroundColor = RGB_255(247, 247, 247);
 }
 
 - (void)configureTableView
@@ -100,8 +101,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (void)loadData
 {
-    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
+    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
          LPNewsDetailModel *newsDetail = request.responseObject.data;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -167,7 +168,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 {
     switch (section) {
         case 0:
-            return _newsDetail ? (_newsDetail.article.digest.length > 0 ? 2 : 1 ) : 0;
+            return _newsDetail.article.digest.length > 0 ? 2 : 1;
         case 1:
             return _hotComments.count;
         default:
@@ -180,8 +181,12 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     if (indexPath.section == 0) {
         // section 0
         NSString *body = _newsDetail.article.body;
+        __typeof (self) __weak weakSelf = self;
         ASCellNode *(^webCellNodeBlock)() = ^ASCellNode *() {
             LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
+            [cellNode setWebViewDidFinishLoad:^{
+                weakSelf.webViewFinishLoad = YES;
+            }];
             return cellNode;
         };
         NSString *brief = _newsDetail.article.digest;
@@ -220,8 +225,9 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(section > 0 && _hotComments.count > 0) {
+    if(section > 0 && _hotComments.count > 0 && _webViewFinishLoad) {
         LPNewsTitleSectionView *sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
+
         switch (section) {
             case 1:
                 sectionView.title = @"热门跟帖";
@@ -240,7 +246,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if ( section > 0 && _hotComments.count > 0) {
+    if ( section > 0 && _hotComments.count > 0 && _webViewFinishLoad) {
         return 28;
     }
     return 0.1;

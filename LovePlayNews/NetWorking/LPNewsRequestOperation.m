@@ -25,7 +25,7 @@
 {
     LPHttpRequest *request = [LPHttpRequest requestWithModelClass:[LPNewsDetailModel class]];
     request.URLString = [NSString stringWithFormat:@"%@/%@",NewsDetailURL,newsId];
-    request.parameters = @{@"tieVersion":@"v2",@"platform":@"ios"};
+    request.parameters = @{@"tieVersion":@"v2",@"platform":@"ios",@"width":@(kScreenWidth*2),@"height":@(kScreenHeight*2),@"decimal":@"75"};
     return request;
 }
 

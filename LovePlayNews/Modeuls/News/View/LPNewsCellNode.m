@@ -7,14 +7,16 @@
 //
 
 #import "LPNewsCellNode.h"
+#import <YYWebImage.h>
 
 @interface LPNewsCellNode ()
 
 @property (nonatomic, strong) ASTextNode *titleNode;
-@property (nonatomic, strong) ASNetworkImageNode *imageNode;
+@property (nonatomic, strong) ASDisplayNode *imageNode;
 @property (nonatomic, strong) ASDisplayNode *underLineNode;
 @property (nonatomic, strong) ASImageNode *replyImageNode;
 @property (nonatomic, strong) ASTextNode *replyTextNode;
+@property (nonatomic, weak) UIImageView *imageView;
 @end
 
 @implementation LPNewsCellNode
@@ -36,6 +38,21 @@
     return self;
 }
 
+- (void)didLoad
+{
+    [super didLoad];
+    
+    [self addImageView];
+}
+
+- (void)addImageView
+{
+    UIImageView *imageView = [[UIImageView alloc]init];
+    imageView.yy_imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://timge8.126.net/image?w=750&h=20000&quality=70&url=%@",self.newsInfo.imgsrc.firstObject]];
+    [self.view addSubview:imageView];
+    _imageView = imageView;
+}
+
 - (void)addTitleNode
 {
     ASTextNode *titleNode = [[ASTextNode alloc]init];
@@ -49,9 +66,9 @@
 
 - (void)addImageNode
 {
-    ASNetworkImageNode *imageNode = [[ASNetworkImageNode alloc]init];
+    ASDisplayNode *imageNode = [[ASDisplayNode alloc]init];
     imageNode.layerBacked = YES;
-    imageNode.URL = [NSURL URLWithString:self.newsInfo.imgsrc.firstObject];
+//    imageNode.URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://timge8.126.net/image?w=750&h=20000&quality=70&url=%@",self.newsInfo.imgsrc.firstObject]];
     [self addSubnode:imageNode];
     _imageNode = imageNode;
 }
@@ -106,5 +123,10 @@
     return verStackLayout;
 }
 
+- (void)layout
+{
+    [super layout];
+    _imageView.frame = _imageNode.frame;
+}
 
 @end

@@ -10,6 +10,8 @@
 
 @interface LPWebCellNode : ASCellNode
 
+@property (nonatomic, copy) void (^webViewDidFinishLoad)(void);
+
 - (instancetype)initWithURL:(NSURL *)URL;
 
 - (instancetype)initWithHtmlBody:(NSString *)htmlBody;
