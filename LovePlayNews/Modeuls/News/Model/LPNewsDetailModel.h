@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *shareLink;
 @property (nonatomic, strong) NSString *source;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSArray *relative_sys;
 
 @end
 
@@ -37,6 +38,17 @@
 @property (nonatomic, strong) NSString *pixel;
 @property (nonatomic, strong) NSString *ref;
 @property (nonatomic, strong) NSString *src;
+
+@end
+
+@interface LPNewsFavorInfo : NSObject
+
+@property (nonatomic, strong) NSString *docID;
+@property (nonatomic, strong) NSString *id;
+@property (nonatomic, strong) NSString *imgsrc;
+@property (nonatomic, strong) NSString *ptime;
+@property (nonatomic, strong) NSString *source;
+@property (nonatomic, strong) NSString *title;
 
 @end
 

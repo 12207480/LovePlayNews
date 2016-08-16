@@ -16,6 +16,7 @@
 #import "UIView+Nib.h"
 #import "LPNewsTitleSectionView.h"
 #import "LPNewsCommentCellNode.h"
+#import "LPNewsFavorCellNode.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
@@ -26,6 +27,7 @@
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
 @property (nonatomic, strong) NSArray *hotComments;
+@property (nonatomic, strong) NSArray *favors;
 @property (nonatomic, assign) BOOL webViewFinishLoad;
 
 @end
@@ -124,9 +126,9 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             dispatch_async(dispatch_get_main_queue(), ^{
                 _newsDetail = newsDetail;
                 _hotComments = hotComments;
+                _favors = newsDetail.article.relative_sys;
                 [self configureHeaderView];
                 [_tableNode.view reloadData];
-//                [MBProgressHUD hideHUDForView:self.view];
             });
         });
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
@@ -174,7 +176,14 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _hotComments.count > 0 ? 2:1;
+    NSInteger numberOfSections = 1;
+    if (_hotComments.count > 0) {
+        ++numberOfSections;
+    }
+    if (_favors.count > 0) {
+        ++numberOfSections;
+    }
+    return numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -184,6 +193,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             return _newsDetail.article.digest.length > 0 ? 2 : 1;
         case 1:
             return _hotComments.count;
+        case 2:
+            return _favors.count;
         default:
             return 0;
     }
@@ -231,7 +242,12 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         return commentCellNodeBlock;
     }else if (indexPath.section == 2) {
         // section 2
-        
+        LPNewsFavorInfo *favorInfo = _favors[indexPath.row];
+        ASCellNode *(^favorCellNodeBlock)() = ^ASCellNode *() {
+            LPNewsFavorCellNode *cellNode = [[LPNewsFavorCellNode alloc] initWithFavors:favorInfo];
+            return cellNode;
+        };
+        return favorCellNodeBlock;
     }
     
     return nil;
@@ -269,6 +285,29 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.1;
+}
+
+#pragma mark - ASTableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 1:
+        {
+            
+        }
+            break;
+        case 2:
+        {
+            LPNewsFavorInfo *favorInfo = _favors[indexPath.row];
+            LPNewsDetailController *detail = [[LPNewsDetailController alloc]init];
+            detail.newsId = favorInfo.docID;
+            [self.navigationController pushViewController:detail animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

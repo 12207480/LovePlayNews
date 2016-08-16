@@ -17,11 +17,15 @@
 
 + (NSDictionary *)modelClassInArrayOrDictonary
 {
-    return @{@"img":[LPNewsDetailImgeInfo class]};
+    return @{@"img":[LPNewsDetailImgeInfo class],@"relative_sys":[LPNewsFavorInfo class]};
 }
 
 @end
 
 @implementation LPNewsDetailImgeInfo
+
+@end
+
+@implementation LPNewsFavorInfo
 
 @end

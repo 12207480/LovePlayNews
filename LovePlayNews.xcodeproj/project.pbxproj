@@ -25,6 +25,8 @@
 		2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */; };
 		2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */; };
 		2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C5811D534F9300F436DE /* LPNewsCellNode.m */; };
+		2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */; };
+		2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */; };
 		2B8174261D4EE5A200BA297C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174251D4EE5A200BA297C /* main.m */; };
 		2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174281D4EE5A200BA297C /* AppDelegate.m */; };
 		2B81742C1D4EE5A200BA297C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B81742B1D4EE5A200BA297C /* ViewController.m */; };
@@ -67,6 +69,7 @@
 		2B8A01071D5B2C9200F04812 /* LPNewsTitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */; };
 		2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */; };
 		2B93A44E1D5C451A0016B53F /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B93A44D1D5C451A0016B53F /* LPWebViewController.m */; };
+		2BA925041D62FAB600F6C46B /* NSURL+Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA925031D62FAB600F6C46B /* NSURL+Parameters.m */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
 		E357D7E046B64CA4481D29A3 /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4BE5A6C2A2F97D7937B6DD6 /* libPods-LovePlayNews.a */; };
@@ -119,6 +122,10 @@
 		2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		2B57C5801D534F9300F436DE /* LPNewsCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCellNode.h; sourceTree = "<group>"; };
 		2B57C5811D534F9300F436DE /* LPNewsCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCellNode.m; sourceTree = "<group>"; };
+		2B6CC49D1D631E9900CE3F33 /* LPNewsFavorCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsFavorCellNode.h; sourceTree = "<group>"; };
+		2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsFavorCellNode.m; sourceTree = "<group>"; };
+		2B6CC4A01D6323A900CE3F33 /* NSDictionary+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Params.h"; sourceTree = "<group>"; };
+		2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Params.m"; sourceTree = "<group>"; };
 		2B8174211D4EE5A200BA297C /* LovePlayNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LovePlayNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8174251D4EE5A200BA297C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B8174271D4EE5A200BA297C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -207,6 +214,8 @@
 		2B93A4441D5C0C9A0016B53F /* LPNewsBreifCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsBreifCellNode.m; sourceTree = "<group>"; };
 		2B93A44C1D5C451A0016B53F /* LPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebViewController.h; sourceTree = "<group>"; };
 		2B93A44D1D5C451A0016B53F /* LPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWebViewController.m; sourceTree = "<group>"; };
+		2BA925021D62FAB600F6C46B /* NSURL+Parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Parameters.h"; sourceTree = "<group>"; };
+		2BA925031D62FAB600F6C46B /* NSURL+Parameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Parameters.m"; sourceTree = "<group>"; };
 		4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.debug.xcconfig"; sourceTree = "<group>"; };
 		97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.release.xcconfig"; sourceTree = "<group>"; };
 		A4BE5A6C2A2F97D7937B6DD6 /* libPods-LovePlayNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LovePlayNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +308,8 @@
 				B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */,
 				2B50AB2A1D5D5C5C00FB77AE /* LPNewsCommentCellNode.h */,
 				2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m */,
+				2B6CC49D1D631E9900CE3F33 /* LPNewsFavorCellNode.h */,
+				2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */,
 				2B8A00FF1D5B2C0F00F04812 /* LPNewsTitleHeaderView.h */,
 				2B8A01001D5B2C0F00F04812 /* LPNewsTitleHeaderView.m */,
 				2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */,
@@ -487,6 +498,7 @@
 		2B8174981D4F2B4400BA297C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				2BA925011D62FAA600F6C46B /* NSURL */,
 				2B8174991D4F2B4400BA297C /* NSDate */,
 				2B8174A01D4F2B4400BA297C /* NSString */,
 				2B8174AB1D4F2B4400BA297C /* UIBarButtonItem */,
@@ -658,6 +670,17 @@
 			);
 			name = Controller;
 			path = controller;
+			sourceTree = "<group>";
+		};
+		2BA925011D62FAA600F6C46B /* NSURL */ = {
+			isa = PBXGroup;
+			children = (
+				2B6CC4A01D6323A900CE3F33 /* NSDictionary+Params.h */,
+				2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */,
+				2BA925021D62FAB600F6C46B /* NSURL+Parameters.h */,
+				2BA925031D62FAB600F6C46B /* NSURL+Parameters.m */,
+			);
+			path = NSURL;
 			sourceTree = "<group>";
 		};
 		D5748F0D14D53ECA7691478E /* Frameworks */ = {
@@ -837,6 +860,7 @@
 				2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */,
 				2B8A00FC1D5AB77800F04812 /* LPNewsCommonModel.m in Sources */,
 				2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */,
+				2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */,
 				2B00ACA51D517E5E0048B5C2 /* LPHttpRequest.m in Sources */,
 				2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */,
 				2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */,
@@ -854,6 +878,7 @@
 				2B8174F61D4F39A400BA297C /* TYHttpRequest.m in Sources */,
 				2B8175051D4F417300BA297C /* TYTabPagerController.m in Sources */,
 				2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */,
+				2BA925041D62FAB600F6C46B /* NSURL+Parameters.m in Sources */,
 				2B8174CE1D4F2B4400BA297C /* UIBarButtonItem+Item.m in Sources */,
 				2B8174C71D4F2B4400BA297C /* NSData+Encrypt.m in Sources */,
 				2B8174F41D4F39A400BA297C /* TYChainRequest.m in Sources */,
@@ -865,6 +890,7 @@
 				B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */,
 				2B8175031D4F417300BA297C /* TYPagerController.m in Sources */,
 				2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */,
+				2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */,
 				2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */,
 				2B8174C61D4F2B4400BA297C /* NSData+Base64.m in Sources */,
 				2B8174F51D4F39A400BA297C /* TYHttpManager.m in Sources */,

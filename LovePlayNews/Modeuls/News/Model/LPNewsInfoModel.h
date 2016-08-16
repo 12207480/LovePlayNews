@@ -10,12 +10,10 @@
 
 @interface LPNewsInfoModel : NSObject
 
-@property (nonatomic, strong) NSString *boardid;
 @property (nonatomic, strong) NSString *digest;
 @property (nonatomic, strong) NSString *docid;
 @property (nonatomic, strong) NSArray *imgextra;
 @property (nonatomic, strong) NSArray *imgsrc;
-@property (nonatomic, strong) NSString *lmodify;
 @property (nonatomic, strong) NSString *ltitle;
 @property (nonatomic, strong) NSString *postid;
 @property (nonatomic, assign) NSInteger priority;
@@ -24,10 +22,6 @@
 @property (nonatomic, assign) NSInteger showType;
 @property (nonatomic, strong) NSString *subtitle;
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *tname;
 @property (nonatomic, strong) NSString *topicId;
-@property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSString *url3w;
-@property (nonatomic, assign) BOOL userOrder;
 
 @end
