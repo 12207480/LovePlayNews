@@ -82,7 +82,7 @@
     ASTextNode *contentNode = [[ASTextNode alloc]init];
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
-    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(34, 34, 34)};
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(88, 88, 88)};
     contentNode.attributedText = [[NSAttributedString alloc]initWithString:_item.content attributes:attrs];
     [self addSubnode:contentNode];
     _contentNode = contentNode;
