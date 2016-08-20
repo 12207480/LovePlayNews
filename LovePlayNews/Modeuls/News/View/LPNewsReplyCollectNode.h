@@ -8,7 +8,7 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
-@interface LPNewsReplayCollectNode : ASDisplayNode
+@interface LPNewsReplyCollectNode : ASDisplayNode
 
 - (instancetype)initWithCommentItems:(NSDictionary *)commentItems floors:(NSArray *)floors;
 

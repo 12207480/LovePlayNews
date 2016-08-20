@@ -177,7 +177,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger numberOfSections = 1;
-    if (_hotComments.count > 0) {
+    if (_newsDetail.tie.commentIds.count > 0) {
         ++numberOfSections;
     }
     if (_favors.count > 0) {
@@ -192,7 +192,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         case 0:
             return _newsDetail.article.digest.length > 0 ? 2 : 1;
         case 1:
-            return _hotComments.count;
+            return _newsDetail.tie.commentIds.count;
         case 2:
             return _favors.count;
         default:
@@ -235,8 +235,11 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     }else if (indexPath.section == 1){
         // section 1
         LPNewsCommonItem *item = _hotComments[indexPath.row];
+        NSString *floor = _newsDetail.tie.commentIds[indexPath.row];
+        NSArray *floors = [floor componentsSeparatedByString:@","];
         ASCellNode *(^commentCellNodeBlock)() = ^ASCellNode *() {
-            LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItem:item];
+            //LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItem:item];
+            LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItems:_newsDetail.tie.comments floors:floors];
             return cellNode;
         };
         return commentCellNodeBlock;

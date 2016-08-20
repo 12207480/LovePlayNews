@@ -7,11 +7,16 @@
 //
 
 #import "LPNewsCommentCellNode.h"
+#import "LPNewsReplyCollectNode.h"
 
 @interface LPNewsCommentCellNode ()
 
 // Data
 @property (nonatomic,strong) LPNewsCommonItem *item;
+
+// Data
+@property (nonatomic, strong) NSDictionary *commentItems;
+@property (nonatomic, strong) NSArray *floors;
 
 // UI
 @property (nonatomic, strong) ASTextNode *nameNode;
@@ -20,6 +25,7 @@
 @property (nonatomic, strong) ASNetworkImageNode *imageNode;
 @property (nonatomic, strong) ASTextNode *voteNode;
 @property (nonatomic, strong) ASDisplayNode *underLineNode;
+@property (nonatomic, strong) LPNewsReplyCollectNode *replaysNode;
 
 @end
 
@@ -29,6 +35,8 @@
 {
     if (self = [super init]) {
         _item = item;
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         [self addImageNode];
         
@@ -44,6 +52,36 @@
     }
     return self;
 }
+
+- (instancetype)initWithCommentItems:(NSDictionary *)commentItems floors:(NSArray *)floors
+{
+    if (self = [super init]) {
+        _commentItems = commentItems;
+        _floors = floors;
+        _item = [commentItems objectForKey:floors.lastObject];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        [self addImageNode];
+        
+        [self addNameNode];
+        
+        [self addLocationNode];
+        
+        if (floors.count > 1) {
+            [self addReplaysNode];
+        }
+        
+        [self addContentNode];
+        
+        [self addVoteNode];
+        
+        [self addUnderLineNode];
+        
+    }
+    return self;
+}
+
 - (void)addImageNode
 {
     ASNetworkImageNode *imageNode = [[ASNetworkImageNode alloc]init];
@@ -77,12 +115,20 @@
     _locationNode = locationNode;
 }
 
+- (void)addReplaysNode
+{
+    LPNewsReplyCollectNode *replaysNode = [[LPNewsReplyCollectNode alloc]initWithCommentItems:_commentItems floors:_floors];
+    replaysNode.layerBacked = YES;
+    [self addSubnode:replaysNode];
+    _replaysNode = replaysNode;
+}
+
 - (void)addContentNode
 {
     ASTextNode *contentNode = [[ASTextNode alloc]init];
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
-    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(88, 88, 88)};
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(61, 61, 61)};
     contentNode.attributedText = [[NSAttributedString alloc]initWithString:_item.content attributes:attrs];
     [self addSubnode:contentNode];
     _contentNode = contentNode;
@@ -118,7 +164,8 @@
     horTopStackLayout.spacingBefore = -3;
     
     _contentNode.flexShrink = YES;
-    ASStackLayoutSpec *verLeftStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:12 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStretch children:@[horTopStackLayout,_contentNode]];
+    NSArray *verLeftStackArray = _replaysNode ? @[horTopStackLayout,_replaysNode,_contentNode] :@[horTopStackLayout,_contentNode];
+    ASStackLayoutSpec *verLeftStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:12 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStretch children:verLeftStackArray];
     verLeftStackLayout.flexGrow = YES;
     verLeftStackLayout.flexShrink  = YES;
     

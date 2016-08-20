@@ -6,10 +6,10 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsReplayCollectNode.h"
-#import "LPNewsReplayNode.h"
+#import "LPNewsReplyCollectNode.h"
+#import "LPNewsReplyNode.h"
 
-@interface LPNewsReplayCollectNode ()
+@interface LPNewsReplyCollectNode ()
 
 // Data
 @property (nonatomic, strong) NSDictionary *commentItems;
@@ -20,14 +20,14 @@
 
 @end
 
-@implementation LPNewsReplayCollectNode
+@implementation LPNewsReplyCollectNode
 
 - (instancetype)initWithCommentItems:(NSDictionary *)commentItems floors:(NSArray *)floors
 {
     if (self = [super init]) {
         _commentItems = commentItems;
         _floors = floors;
-        
+        self.backgroundColor = RGB_255(248, 249, 241);
         [self addReplayNodes];
     }
     return self;
@@ -36,11 +36,26 @@
 - (void)addReplayNodes
 {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:_floors.count];
-    [_floors enumerateObjectsUsingBlock:^(LPNewsCommonItem *item, NSUInteger idx, BOOL *stop) {
-        LPNewsReplayNode *node = [[LPNewsReplayNode alloc]initWithCommentItem:item floor:idx];
-        [array addObject:node];
+    NSInteger count = _floors.count;
+    
+    [_floors enumerateObjectsUsingBlock:^(NSString *floor, NSUInteger idx, BOOL *stop) {
+        if (idx < count-1) {
+            LPNewsCommonItem *item = [_commentItems objectForKey:floor];
+            LPNewsReplyNode *node = [[LPNewsReplyNode alloc]initWithCommentItem:item floor:idx+1];
+            node.layerBacked = YES;
+            [self addSubnode:node];
+            [array addObject:node];
+        }
     }];
+    
     _replayNodes = [array copy];
+}
+
+- (void)didLoad
+{
+    [super didLoad];
+    self.layer.borderColor = RGB_255(218, 218, 218).CGColor;
+    self.layer.borderWidth = 0.5;
 }
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize

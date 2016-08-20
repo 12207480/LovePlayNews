@@ -6,9 +6,9 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsReplayNode.h"
+#import "LPNewsReplyNode.h"
 
-@interface LPNewsReplayNode ()
+@interface LPNewsReplyNode ()
 
 // Data
 @property (nonatomic,strong) LPNewsCommonItem *item;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation LPNewsReplayNode
+@implementation LPNewsReplyNode
 
 - (instancetype)initWithCommentItem:(LPNewsCommonItem *)item floor:(NSInteger)floor;
 {
@@ -68,7 +68,7 @@
     ASTextNode *contentNode = [[ASTextNode alloc]init];
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
-    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(88, 88, 88)};
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(61, 61, 61)};
     contentNode.attributedText = [[NSAttributedString alloc]initWithString:_item.content attributes:attrs];
     [self addSubnode:contentNode];
     _contentNode = contentNode;

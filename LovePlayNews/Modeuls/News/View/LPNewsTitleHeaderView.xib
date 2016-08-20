@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -41,15 +41,9 @@
                     <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="wtH-3A-0zD" firstAttribute="leading" secondItem="Maj-Yv-Lvn" secondAttribute="leading" id="P8A-qH-ae6"/>
-                        <constraint firstItem="wtH-3A-0zD" firstAttribute="top" secondItem="Maj-Yv-Lvn" secondAttribute="top" constant="30" id="ROZ-is-WMj"/>
                         <constraint firstAttribute="height" constant="64" id="kkb-ya-LQc"/>
                         <constraint firstAttribute="bottom" secondItem="wtH-3A-0zD" secondAttribute="bottom" id="yRN-fZ-cFF"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="ROZ-is-WMj"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,20 +53,12 @@
                 <constraint firstAttribute="bottom" secondItem="HTT-PR-PW6" secondAttribute="bottom" constant="5" id="DbN-rK-i5l"/>
                 <constraint firstItem="HTT-PR-PW6" firstAttribute="leading" secondItem="YWd-bz-TZL" secondAttribute="leading" constant="15" id="IQl-wE-j6G"/>
                 <constraint firstItem="HTT-PR-PW6" firstAttribute="top" secondItem="kjm-1R-7Le" secondAttribute="bottom" constant="6" id="Zwh-RF-gxs"/>
-                <constraint firstItem="kjm-1R-7Le" firstAttribute="top" secondItem="YWd-bz-TZL" secondAttribute="top" constant="15" id="cFu-PK-uvI"/>
                 <constraint firstAttribute="trailing" secondItem="kjm-1R-7Le" secondAttribute="trailing" constant="15" id="ldi-ZE-T0G"/>
-                <constraint firstAttribute="bottom" secondItem="HTT-PR-PW6" secondAttribute="bottom" constant="10" id="v8I-eL-akF"/>
                 <constraint firstItem="Maj-Yv-Lvn" firstAttribute="top" secondItem="YWd-bz-TZL" secondAttribute="top" id="xH2-at-NPA"/>
                 <constraint firstAttribute="trailing" secondItem="Maj-Yv-Lvn" secondAttribute="trailing" id="z6m-HG-0FE"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="cFu-PK-uvI"/>
-                    <exclude reference="v8I-eL-akF"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="goBackBtn" destination="wtH-3A-0zD" id="fB9-6Q-1jt"/>
                 <outlet property="timeLabel" destination="HTT-PR-PW6" id="02v-js-1Sp"/>

@@ -13,4 +13,6 @@
 
 - (instancetype)initWithCommentItem:(LPNewsCommonItem *)item;
 
+- (instancetype)initWithCommentItems:(NSDictionary *)commentItems floors:(NSArray *)floors;
+
 @end
