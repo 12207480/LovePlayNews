@@ -87,10 +87,6 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)addNavBarView
 {
     LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
-    __typeof (self) __weak weakSelf = self;
-    [navBar setNavBackHandle:^{
-        [weakSelf goBackAction];
-    }];
     [self.node.view addSubview:navBar];
     _navBar = navBar;
 }
