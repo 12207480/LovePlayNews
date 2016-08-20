@@ -72,6 +72,9 @@
 		2BB90FF11D66F21D002B2B17 /* LPNewsReplyNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB90FF01D66F21D002B2B17 /* LPNewsReplyNode.m */; };
 		2BB90FF41D670417002B2B17 /* LPNewsReplyCollectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB90FF31D670417002B2B17 /* LPNewsReplyCollectNode.m */; };
 		A0AC7548470CCBA46E294FCF /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368E49576CDBD8B779D43C5 /* libPods-LovePlayNews.a */; };
+		B08D88F11D685E870048557C /* LPNewsCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F01D685E870048557C /* LPNewsCommentController.m */; };
+		B08D88F51D68635C0048557C /* LPNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F41D68635C0048557C /* LPNavigationBarView.m */; };
+		B08D88F71D6863930048557C /* LPNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08D88F61D6863930048557C /* LPNavigationBarView.xib */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
 /* End PBXBuildFile section */
@@ -213,6 +216,11 @@
 		2BB90FF31D670417002B2B17 /* LPNewsReplyCollectNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsReplyCollectNode.m; sourceTree = "<group>"; };
 		4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.debug.xcconfig"; sourceTree = "<group>"; };
 		97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.release.xcconfig"; sourceTree = "<group>"; };
+		B08D88EF1D685E870048557C /* LPNewsCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentController.h; sourceTree = "<group>"; };
+		B08D88F01D685E870048557C /* LPNewsCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentController.m; sourceTree = "<group>"; };
+		B08D88F31D68635C0048557C /* LPNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNavigationBarView.h; sourceTree = "<group>"; };
+		B08D88F41D68635C0048557C /* LPNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNavigationBarView.m; sourceTree = "<group>"; };
+		B08D88F61D6863930048557C /* LPNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPNavigationBarView.xib; sourceTree = "<group>"; };
 		B0ED94B61D55FD66009B11C4 /* LPNewsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsDetailController.h; sourceTree = "<group>"; };
 		B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsDetailController.m; sourceTree = "<group>"; };
 		B0ED94B91D5604CD009B11C4 /* LPWebCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebCellNode.h; sourceTree = "<group>"; };
@@ -263,6 +271,8 @@
 				2B00AC961D517CF90048B5C2 /* LPNewsListController.m */,
 				B0ED94B61D55FD66009B11C4 /* LPNewsDetailController.h */,
 				B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */,
+				B08D88EF1D685E870048557C /* LPNewsCommentController.h */,
+				B08D88F01D685E870048557C /* LPNewsCommentController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -460,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				2B8174541D4F2A2400BA297C /* Controller */,
+				B08D88F21D6863300048557C /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -673,6 +684,16 @@
 			path = NSURL;
 			sourceTree = "<group>";
 		};
+		B08D88F21D6863300048557C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B08D88F31D68635C0048557C /* LPNavigationBarView.h */,
+				B08D88F41D68635C0048557C /* LPNavigationBarView.m */,
+				B08D88F61D6863930048557C /* LPNavigationBarView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		D5748F0D14D53ECA7691478E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -754,6 +775,7 @@
 			files = (
 				2B8A00FE1D5AD07200F04812 /* News.css in Resources */,
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
+				B08D88F71D6863930048557C /* LPNavigationBarView.xib in Resources */,
 				2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */,
 				2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */,
 				2B8A01071D5B2C9200F04812 /* LPNewsTitleHeaderView.xib in Resources */,
@@ -816,6 +838,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */,
+				B08D88F51D68635C0048557C /* LPNavigationBarView.m in Sources */,
 				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
 				2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */,
 				2B8A00FC1D5AB77800F04812 /* LPNewsCommonModel.m in Sources */,
@@ -853,6 +876,7 @@
 				2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */,
 				2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */,
 				2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */,
+				B08D88F11D685E870048557C /* LPNewsCommentController.m in Sources */,
 				2B8174C61D4F2B4400BA297C /* NSData+Base64.m in Sources */,
 				2B8174F51D4F39A400BA297C /* TYHttpManager.m in Sources */,
 				2B00AC9B1D517CF90048B5C2 /* LPNewsListController.m in Sources */,

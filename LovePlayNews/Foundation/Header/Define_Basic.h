@@ -25,13 +25,13 @@ __weak typeof(obj) weak_##obj = obj; \
 #define kIsIOS8Later ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
 //状态栏预留的高度
-#define kHeightInViewForStatus (kIsIOS7 ? 20 : 0)
+#define kHeightInViewForStatus (kIsIOS7Later ? 20 : 0)
 
 //状态条占的高度
-#define kHeightForStatus (kIsIOS7 ? 0 : 20)
+#define kHeightForStatus (kIsIOS7Later ? 0 : 20)
 
 //导航栏高度
-#define kNavBarHeight (kIsIOS7 ? 64 : 44)
+#define kNavBarHeight (kIsIOS7Later ? 64 : 44)
 
 //屏幕高度
 #define kScreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
@@ -40,7 +40,7 @@ __weak typeof(obj) weak_##obj = obj; \
 #define kScreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
 
 //app高度
-#define kApplicationHeight (kIsIOS7 ? CGRectGetHeight([UIScreen mainScreen].bounds):CGRectGetHeight([[UIScreen mainScreen] applicationFrame]))
+#define kApplicationHeight (kIsIOS7Later ? CGRectGetHeight([UIScreen mainScreen].bounds):CGRectGetHeight([[UIScreen mainScreen] applicationFrame]))
 
 //颜色 两种参数
 #define RGB_255(r,g,b) [UIColor colorWithRed:(float)r/255.0 green:(float)g/255.0 blue:(float)b/255.0 alpha:1]

@@ -17,13 +17,14 @@
 #import "LPNewsTitleSectionView.h"
 #import "LPNewsCommentCellNode.h"
 #import "LPNewsFavorCellNode.h"
+#import "LPNavigationBarView.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
 @property (nonatomic, strong) LPNewsTitleHeaderView *headerView;
-
+@property (nonatomic, weak) LPNavigationBarView *navBar;
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
 @property (nonatomic, strong) NSArray *hotComments;
@@ -62,6 +63,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     
     [self configureTableView];
     
+    [self addNavBarView];
+    
     [self addHeaderView];
     
     [self loadData];
@@ -70,7 +73,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _tableNode.frame = self.node.frame;
+    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.node.frame), kNavBarHeight);
+    _tableNode.frame = CGRectMake(0, kNavBarHeight, CGRectGetWidth(self.node.frame), CGRectGetHeight(self.node.frame) - kNavBarHeight);
 }
 
 - (void)configureController
@@ -78,6 +82,17 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+- (void)addNavBarView
+{
+    LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
+    __typeof (self) __weak weakSelf = self;
+    [navBar setNavBackHandle:^{
+        [weakSelf goBackAction];
+    }];
+    [self.node.view addSubview:navBar];
+    _navBar = navBar;
 }
 
 - (void)configureTableView
@@ -93,10 +108,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     LPNewsTitleHeaderView *headerView = [LPNewsTitleHeaderView loadInstanceFromNib];
     [headerView.goBackBtn addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
     _tableNode.view.parallaxHeader.view = headerView;
-    _tableNode.view.parallaxHeader.height = 165;
-    _tableNode.view.parallaxHeader.minimumHeight = 64;
+    _tableNode.view.parallaxHeader.height = 100;
     _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
-    _tableNode.view.parallaxHeader.contentView.layer.zPosition = 1;
     _headerView = headerView;
 }
 
