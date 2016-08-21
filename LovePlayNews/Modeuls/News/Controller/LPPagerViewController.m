@@ -53,6 +53,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.pagerBarView.backgroundColor = RGB_255(34, 34, 34);
+    self.progressColor = RGB_255(237, 67, 89);
     self.normalTextColor = [UIColor whiteColor];
     self.selectedTextColor = RGB_255(237, 67, 89);
     self.cellSpacing = 20;
