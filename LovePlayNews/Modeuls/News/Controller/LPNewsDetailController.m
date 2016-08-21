@@ -13,11 +13,13 @@
 #import "MBProgressHUD+MJ.h"
 #import "MXParallaxHeader.h"
 #import "LPNewsTitleHeaderView.h"
+#import "LPNewsCommentFooterView.h"
 #import "UIView+Nib.h"
 #import "LPNewsTitleSectionView.h"
 #import "LPNewsCommentCellNode.h"
 #import "LPNewsFavorCellNode.h"
 #import "LPNavigationBarView.h"
+#import "LPNewsCommentController.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
@@ -34,6 +36,7 @@
 @end
 
 static NSString *headerId = @"LPNewsTitleSectionView";
+static NSString *footerId = @"LPNewsCommentFooterView";
 
 @implementation LPNewsDetailController
 
@@ -80,7 +83,6 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)configureController
 {
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -97,6 +99,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     
     [_tableNode.view registerClass:[LPNewsTitleSectionView class] forHeaderFooterViewReuseIdentifier:headerId];
+    [_tableNode.view registerClass:[LPNewsCommentFooterView class] forHeaderFooterViewReuseIdentifier:footerId];
 }
 
 - (void)addHeaderView
@@ -179,6 +182,12 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)goBackAction
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)gotoCommentViewController
+{
+    LPNewsCommentController *commentVC = [[LPNewsCommentController alloc]init];
+    [self.navigationController pushViewController:commentVC animated:YES];
 }
 
 #pragma mark - ASTableDataSource
@@ -286,6 +295,20 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     return nil;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 1 && _hotComments.count > 0 && _webViewFinishLoad) {
+        LPNewsCommentFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerId];
+        footerView.title = @"查看更多跟帖";
+        __typeof (self) __weak weakSelf = self;
+        [footerView setClickedHandle:^{
+            [weakSelf gotoCommentViewController];
+        }];
+        return footerView;
+    }
+    return nil;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ( section > 0 && _hotComments.count > 0 && _webViewFinishLoad) {
@@ -296,6 +319,9 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if ( section == 1 && _hotComments.count > 0 && _webViewFinishLoad) {
+        return 36;
+    }
     return 0.1;
 }
 

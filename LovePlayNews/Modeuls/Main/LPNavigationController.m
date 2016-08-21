@@ -8,7 +8,7 @@
 
 #import "LPNavigationController.h"
 
-@interface LPNavigationController ()
+@interface LPNavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -17,7 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     [self configureNavBarTheme];
+    
+    self.interactivePopGestureRecognizer.delegate = self;
+    
+    [self configureNavBarTheme];
 }
 
 - (void)configureNavBarTheme

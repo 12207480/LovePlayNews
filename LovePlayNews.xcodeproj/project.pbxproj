@@ -76,6 +76,7 @@
 		B08D88F51D68635C0048557C /* LPNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F41D68635C0048557C /* LPNavigationBarView.m */; };
 		B08D88F71D6863930048557C /* LPNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08D88F61D6863930048557C /* LPNavigationBarView.xib */; };
 		B0D8293F1D68871E000B9D84 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D8293E1D68871E000B9D84 /* UIView+ViewController.m */; };
+		B0D829421D688B39000B9D84 /* LPNewsCommentFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D829411D688B39000B9D84 /* LPNewsCommentFooterView.m */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
 /* End PBXBuildFile section */
@@ -224,6 +225,8 @@
 		B08D88F61D6863930048557C /* LPNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPNavigationBarView.xib; sourceTree = "<group>"; };
 		B0D8293D1D68871E000B9D84 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
 		B0D8293E1D68871E000B9D84 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
+		B0D829401D688B39000B9D84 /* LPNewsCommentFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentFooterView.h; sourceTree = "<group>"; };
+		B0D829411D688B39000B9D84 /* LPNewsCommentFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentFooterView.m; sourceTree = "<group>"; };
 		B0ED94B61D55FD66009B11C4 /* LPNewsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsDetailController.h; sourceTree = "<group>"; };
 		B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsDetailController.m; sourceTree = "<group>"; };
 		B0ED94B91D5604CD009B11C4 /* LPWebCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebCellNode.h; sourceTree = "<group>"; };
@@ -315,6 +318,8 @@
 				2B8A01061D5B2C9200F04812 /* LPNewsTitleHeaderView.xib */,
 				2B3913EF1D5C7D510068B1D8 /* LPNewsTitleSectionView.h */,
 				2B3913F01D5C7D510068B1D8 /* LPNewsTitleSectionView.m */,
+				B0D829401D688B39000B9D84 /* LPNewsCommentFooterView.h */,
+				B0D829411D688B39000B9D84 /* LPNewsCommentFooterView.m */,
 				2BB90FEF1D66F21D002B2B17 /* LPNewsReplyNode.h */,
 				2BB90FF01D66F21D002B2B17 /* LPNewsReplyNode.m */,
 				2BB90FF21D670417002B2B17 /* LPNewsReplyCollectNode.h */,
@@ -889,6 +894,7 @@
 				2B8174D31D4F2B4400BA297C /* UIImage+Snap.m in Sources */,
 				2B8174F71D4F39A400BA297C /* TYRequstConfigure.m in Sources */,
 				2B8175061D4F417300BA297C /* TYTabTitleViewCell.m in Sources */,
+				B0D829421D688B39000B9D84 /* LPNewsCommentFooterView.m in Sources */,
 				2B8174D51D4F2B4400BA297C /* UIView+Frame.m in Sources */,
 				2B8175041D4F417300BA297C /* TYTabButtonPagerController.m in Sources */,
 				2B8174CB1D4F2B4400BA297C /* NSString+MD5.m in Sources */,

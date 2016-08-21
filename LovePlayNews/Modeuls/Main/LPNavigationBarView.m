@@ -25,6 +25,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    
 }
 
 #pragma mark - action

@@ -142,7 +142,7 @@
     voteNode.layerBacked = YES;
     voteNode.maximumNumberOfLines = 1;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:12.0f] ,NSForegroundColorAttributeName: RGB_255(163, 163, 163)};
-    voteNode.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%ld顶",_item.vote] attributes:attrs];
+    voteNode.attributedText = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%ld顶",(long)_item.vote] attributes:attrs];
     [self addSubnode:voteNode];
     _voteNode = voteNode;
 }
