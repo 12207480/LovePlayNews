@@ -253,7 +253,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
         }
     }else if (indexPath.section == 1){
         // section 1
-        LPNewsCommonItem *item = _hotComments[indexPath.row];
+        //LPNewsCommonItem *item = _hotComments[indexPath.row];
         NSString *floor = _newsDetail.tie.commentIds[indexPath.row];
         NSArray *floors = [floor componentsSeparatedByString:@","];
         ASCellNode *(^commentCellNodeBlock)() = ^ASCellNode *() {
@@ -358,15 +358,5 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     _tableNode.delegate = nil;
     _tableNode.dataSource = nil;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
