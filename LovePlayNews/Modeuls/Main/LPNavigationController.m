@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.enableRightGesture = YES;
     self.interactivePopGestureRecognizer.delegate = self;
     
     [self configureNavBarTheme];
@@ -56,13 +56,19 @@
     return image;
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return self.enableRightGesture;
+}
+
 #pragma mark - override
 
 // override pushViewController
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count >= 1) {
-        
         viewController.hidesBottomBarWhenPushed = YES;
     }
     
