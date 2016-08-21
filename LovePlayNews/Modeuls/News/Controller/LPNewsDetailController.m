@@ -128,7 +128,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (void)loadData
 {
-    [MBProgressHUD showMessage:@"加载中..." toView:_tableNode.view];
+    [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
     
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
@@ -229,7 +229,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
             LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
             [cellNode setWebViewDidFinishLoad:^{
                 weakSelf.webViewFinishLoad = YES;
-                [MBProgressHUD hideHUDForView:weakSelf.tableNode.view];
+                [MBProgressHUD hideHUDForView:weakSelf.view];
             }];
             return cellNode;
         };
@@ -333,7 +333,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     switch (indexPath.section) {
         case 1:
         {
-            
+            [self gotoCommentViewController];
         }
             break;
         case 2:
