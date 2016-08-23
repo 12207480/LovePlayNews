@@ -40,7 +40,7 @@
     
     [_floors enumerateObjectsUsingBlock:^(NSString *floor, NSUInteger idx, BOOL *stop) {
         if (idx < count-1) {
-            LPNewsCommonItem *item = [_commentItems objectForKey:floor];
+            LPNewsCommentItem *item = [_commentItems objectForKey:floor];
             LPNewsReplyNode *node = [[LPNewsReplyNode alloc]initWithCommentItem:item floor:idx+1];
             node.layerBacked = YES;
             [self addSubnode:node];

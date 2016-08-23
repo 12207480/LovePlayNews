@@ -7,10 +7,10 @@
 //
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
-#import "LPNewsCommonModel.h"
+#import "LPNewsCommentModel.h"
 
 @interface LPNewsReplyNode : ASDisplayNode
 
-- (instancetype)initWithCommentItem:(LPNewsCommonItem *)item floor:(NSInteger)floor;
+- (instancetype)initWithCommentItem:(LPNewsCommentItem *)item floor:(NSInteger)floor;
 
 @end

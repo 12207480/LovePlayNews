@@ -15,4 +15,8 @@
 
 #define NewsDetailURL @"/news/appDetail/"
 
+#define NewsHotCommentURL @"/news/v2/hottie/"
+
+#define NewsNewCommentURL @"/news/v2/newtie/"
+
 #endif /* LPRequestURLInfo_h */

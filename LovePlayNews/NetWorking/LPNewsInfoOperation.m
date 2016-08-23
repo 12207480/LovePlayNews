@@ -6,17 +6,18 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsRequestOperation.h"
+#import "LPNewsInfoOperation.h"
 
-@implementation LPNewsRequestOperation
+@implementation LPNewsInfoOperation
 
 + (LPHttpRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex
 {
+    int pageCount = 20;
     LPHttpRequest *request = [LPHttpRequest requestWithModelClass:[LPNewsInfoModel class]];
     if (topId.length > 0) {
-        request.URLString = [NSString stringWithFormat:@"%@/%@/%ld/%d",NewsListURL,topId,pageIndex*20,20];
+        request.URLString = [NSString stringWithFormat:@"%@/%@/%ld/%d",NewsListURL,topId,(long)pageIndex*pageCount,pageCount];
     }else {
-        request.URLString = [NSString stringWithFormat:@"%@%ld/%d",NewsListURL,pageIndex*20,20];
+        request.URLString = [NSString stringWithFormat:@"%@%ld/%d",NewsListURL,(long)pageIndex*pageCount,pageCount];
     }
     return request;
 }

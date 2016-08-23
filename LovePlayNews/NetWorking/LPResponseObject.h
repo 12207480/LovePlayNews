@@ -13,15 +13,16 @@ typedef NS_ENUM(NSInteger, TYStauteCode) {
     TYStauteSuccessCode = 0,
 };
 
-@interface TYResponseObject : NSObject<TYHttpResponseParser>
+@interface LPResponseObject : NSObject<TYHttpResponseParser>
 
 @property (nonatomic, strong) NSString *msg;
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, strong) id data;// data数据
-//@property (nonatomic, strong) id json; // josn数据
 //@property (nonatomic, assign) NSUInteger pgIndex;//第几页
 //@property (nonatomic, assign) NSUInteger pgSize;
 //@property (nonatomic, assign) NSUInteger count;//总消息条数
+
+@property (nonatomic, assign, readonly) Class modelClass;
 
 // 初始化方法
 - (instancetype)initWithModelClass:(Class)modelClass;

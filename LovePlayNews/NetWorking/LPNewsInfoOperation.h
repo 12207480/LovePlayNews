@@ -11,7 +11,7 @@
 #import "LPNewsInfoModel.h"
 #import "LPNewsDetailModel.h"
 
-@interface LPNewsRequestOperation : NSObject
+@interface LPNewsInfoOperation : NSObject
 
 + (LPHttpRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex;
 

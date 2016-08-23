@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LPNewsCommonModel.h"
+#import "LPNewsCommentModel.h"
 
 @class LPNewsArticleModel;
 @interface LPNewsDetailModel : NSObject
 
 @property (nonatomic, strong) LPNewsArticleModel *article;
-@property (nonatomic, strong) LPNewsCommonModel *tie;
+@property (nonatomic, strong) LPNewsCommentModel *tie;
 
 @end
 

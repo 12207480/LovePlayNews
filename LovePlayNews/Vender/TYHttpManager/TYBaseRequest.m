@@ -115,7 +115,7 @@
     }
     
     if (_embedAccesory && [_embedAccesory respondsToSelector:@selector(requestDidFail:error:)]) {
-        [_delegate requestDidFail:self error:error];
+        [_embedAccesory requestDidFail:self error:error];
     }
 }
 

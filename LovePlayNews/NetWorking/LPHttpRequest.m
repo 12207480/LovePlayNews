@@ -20,7 +20,7 @@
 - (instancetype)initWithModelClass:(Class)modelClass
 {
     if (self = [super init]) {
-        self.responseParser = [[TYResponseObject alloc]initWithModelClass:modelClass];
+        self.responseParser = [[LPResponseObject alloc]initWithModelClass:modelClass];
     }
     return self;
 }

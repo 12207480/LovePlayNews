@@ -8,24 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LPNewsCommonModel : NSObject
-
+@interface LPNewsCommentModel : NSObject
 @property (nonatomic, strong) NSArray *commentIds;
 @property (nonatomic, strong) NSDictionary *comments;
 
 @end
 
-@class LPNewsCommonUser;
-@interface LPNewsCommonItem : NSObject
+@class LPNewsCommentUser;
+@interface LPNewsCommentItem : NSObject
 
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *createTime;
 @property (nonatomic, strong) NSString *siteName;
-@property (nonatomic, strong) LPNewsCommonUser *user;
+@property (nonatomic, strong) LPNewsCommentUser *user;
 @property (nonatomic, assign) NSInteger vote;
 @end
 
-@interface LPNewsCommonUser : NSObject
+@interface LPNewsCommentUser : NSObject
 @property (nonatomic, strong) NSString *avatar;
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSString *nickname;

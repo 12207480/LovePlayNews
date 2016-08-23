@@ -9,7 +9,7 @@
 #import "LPNewsDetailController.h"
 #import "LPWebCellNode.h"
 #import "LPNewsBreifCellNode.h"
-#import "LPNewsRequestOperation.h"
+#import "LPNewsInfoOperation.h"
 #import "MBProgressHUD+MJ.h"
 #import "MXParallaxHeader.h"
 #import "LPNewsTitleHeaderView.h"
@@ -129,8 +129,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)loadData
 {
     [MBProgressHUD showMessage:@"加载中..." toView:self.view];
-    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsDetailWithNewsId:_newsId];
-    
+    LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsDetailWithNewsId:_newsId];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
          LPNewsDetailModel *newsDetail = request.responseObject.data;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -159,9 +158,9 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     article.body = [body copy];
 }
 
-- (NSArray *)hotCommentsWithTie:(LPNewsCommonModel *)tie
+- (NSArray *)hotCommentsWithTie:(LPNewsCommentModel *)tie
 {
-    NSArray *hotComments = [[tie.comments allValues] sortedArrayUsingComparator:^NSComparisonResult(LPNewsCommonItem *obj1, LPNewsCommonItem *obj2) {
+    NSArray *hotComments = [[tie.comments allValues] sortedArrayUsingComparator:^NSComparisonResult(LPNewsCommentItem *obj1, LPNewsCommentItem *obj2) {
         if (obj1.vote < obj2.vote) {
             return NSOrderedDescending;
         }else if (obj1.vote > obj2.vote) {
@@ -171,7 +170,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
         }
     }];
     
-    for (LPNewsCommonItem *item in hotComments) {
+    for (LPNewsCommentItem *item in hotComments) {
         item.content = [item.content stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
     }
     
@@ -188,10 +187,16 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)gotoCommentViewController
 {
     LPNewsCommentController *commentVC = [[LPNewsCommentController alloc]init];
+    commentVC.newsId = self.newsId;
     [self.navigationController pushViewController:commentVC animated:YES];
 }
 
 #pragma mark - ASTableDataSource
+
+- (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView
+{
+    return NO;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

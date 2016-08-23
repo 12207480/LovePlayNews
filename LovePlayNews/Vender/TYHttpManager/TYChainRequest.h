@@ -23,6 +23,8 @@ typedef void (^TYChainRequestFailureBlock)(TYChainRequest *request,NSError *erro
 
 - (void)addRequest:(id<TYRequestProtocol>)request;
 
+- (void)addRequestArray:(NSArray *)requestArray;
+
 - (void)cancleRequest:(id<TYRequestProtocol>)request;
 
 // 设置回调block

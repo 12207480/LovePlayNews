@@ -10,6 +10,6 @@
 
 @interface LPNavigationController : UINavigationController
 
-@property (nonatomic, assign) BOOL enableRightGesture;
+@property (nonatomic, assign) BOOL enableRightGesture; // default YES
 
 @end

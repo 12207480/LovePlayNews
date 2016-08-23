@@ -11,11 +11,12 @@
 @interface LPNewsReplyNode ()
 
 // Data
-@property (nonatomic,strong) LPNewsCommonItem *item;
+@property (nonatomic,strong) LPNewsCommentItem *item;
 @property (nonatomic,assign) NSInteger floor;
 
 // UI
 @property (nonatomic, strong) ASTextNode *nameNode;
+@property (nonatomic, strong) ASTextNode *locationNode;
 @property (nonatomic, strong) ASTextNode *floorNode;
 @property (nonatomic, strong) ASTextNode *contentNode;
 @property (nonatomic, strong) ASDisplayNode *underLineNode;
@@ -24,13 +25,15 @@
 
 @implementation LPNewsReplyNode
 
-- (instancetype)initWithCommentItem:(LPNewsCommonItem *)item floor:(NSInteger)floor;
+- (instancetype)initWithCommentItem:(LPNewsCommentItem *)item floor:(NSInteger)floor;
 {
     if (self = [super init]) {
         _item = item;
         _floor = floor;
         
         [self addNameNode];
+        
+        [self addLocationNode];
         
         [self addFloorNode];
         
@@ -52,6 +55,17 @@
     _nameNode = nameNode;
 }
 
+- (void)addLocationNode
+{
+    ASTextNode *locationNode = [[ASTextNode alloc]init];
+    locationNode.layerBacked = YES;
+    locationNode.maximumNumberOfLines = 1;
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:11.0f] ,NSForegroundColorAttributeName: RGB_255(163, 163, 163)};
+    locationNode.attributedText = [[NSAttributedString alloc]initWithString:_item.user.location?_item.user.location : @"火星" attributes:attrs];
+    [self addSubnode:locationNode];
+    _locationNode = locationNode;
+}
+
 - (void)addFloorNode
 {
     ASTextNode *floorNode = [[ASTextNode alloc]init];
@@ -71,7 +85,7 @@
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(51, 51, 51)};
-    contentNode.attributedText = [[NSAttributedString alloc]initWithString:_item.content attributes:attrs];
+    contentNode.attributedText = [[NSAttributedString alloc]initWithString:kUnNilStr(_item.content) attributes:attrs];
     [self addSubnode:contentNode];
     _contentNode = contentNode;
 }
@@ -87,10 +101,10 @@
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
-    _nameNode.flexGrow = YES;
     _contentNode.flexShrink = YES;
-    
-    ASStackLayoutSpec *horTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:0 justifyContent:ASStackLayoutJustifyContentSpaceBetween alignItems:ASStackLayoutAlignItemsStart children:@[_nameNode,_floorNode]];
+    ASStackLayoutSpec *horLeftTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:6 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStart children:@[_nameNode,_locationNode]];
+    horLeftTopStackLayout.flexGrow = YES;
+    ASStackLayoutSpec *horTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:0 justifyContent:ASStackLayoutJustifyContentSpaceBetween alignItems:ASStackLayoutAlignItemsStart children:@[horLeftTopStackLayout,_floorNode]];
     horTopStackLayout.flexGrow = YES;
 
     ASStackLayoutSpec *verTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:12 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStretch children:@[horTopStackLayout,_contentNode]];

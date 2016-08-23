@@ -6,10 +6,10 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsCommonModel.h"
+#import "LPNewsCommentModel.h"
 #import "TYJSONModel.h"
 
-@implementation LPNewsCommonModel
+@implementation LPNewsCommentModel
 
 - (BOOL)shouldCustomUnkownValueWithKey:(NSString *)key
 {
@@ -24,7 +24,7 @@
     if ([key isEqualToString:@"comments"]) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:unkownValueDic.count];
         [unkownValueDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *top) {
-            dic[key] = [LPNewsCommonItem ty_ModelWithDictonary:obj];
+            dic[key] = [LPNewsCommentItem ty_ModelWithDictonary:obj];
         }];
         return [dic copy];
     }
@@ -33,16 +33,16 @@
 
 @end
 
-@implementation LPNewsCommonItem
+@implementation LPNewsCommentItem
 
 + (NSDictionary *)modelClassInArrayOrDictonary
 {
-    return @{@"user":[LPNewsCommonUser class]};
+    return @{@"user":[LPNewsCommentUser class]};
 }
 
 @end
 
 
-@implementation LPNewsCommonUser
+@implementation LPNewsCommentUser
 
 @end

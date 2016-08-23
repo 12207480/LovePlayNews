@@ -10,4 +10,6 @@
 
 @interface LPNewsCommentController : ASViewController
 
+@property (nonatomic, strong) NSString *newsId;
+
 @end

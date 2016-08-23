@@ -7,12 +7,12 @@
 //
 
 #import "TYHttpRequest.h"
-#import "TYResponseObject.h"
+#import "LPResponseObject.h"
 #import "LPRequestURLInfo.h"
 
 @interface LPHttpRequest : TYHttpRequest
 
-@property (nonatomic, strong, readonly) TYResponseObject *responseObject;
+@property (nonatomic, strong, readonly) LPResponseObject *responseObject;
 
 @property (nonatomic, strong) NSString *identifier;
 

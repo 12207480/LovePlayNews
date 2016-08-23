@@ -6,14 +6,14 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "TYResponseObject.h"
+#import "LPResponseObject.h"
 #import "TYJSONModel.h"
 
-@interface TYResponseObject ()
+@interface LPResponseObject ()
 @property (nonatomic, assign) Class modelClass;
 @end
 
-@implementation TYResponseObject
+@implementation LPResponseObject
 
 - (instancetype)initWithModelClass:(Class)modelClass
 {

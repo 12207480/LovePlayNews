@@ -12,7 +12,7 @@
 @interface LPNewsCommentCellNode ()
 
 // Data
-@property (nonatomic,strong) LPNewsCommonItem *item;
+@property (nonatomic,strong) LPNewsCommentItem *item;
 
 // Data
 @property (nonatomic, strong) NSDictionary *commentItems;
@@ -31,7 +31,7 @@
 
 @implementation LPNewsCommentCellNode
 
-- (instancetype)initWithCommentItem:(LPNewsCommonItem *)item
+- (instancetype)initWithCommentItem:(LPNewsCommentItem *)item
 {
     if (self = [super init]) {
         _item = item;
@@ -87,6 +87,7 @@
     ASNetworkImageNode *imageNode = [[ASNetworkImageNode alloc]init];
     imageNode.layerBacked = YES;
     imageNode.cornerRadius = 2;
+    imageNode.clipsToBounds = YES;
     imageNode.defaultImage = [UIImage imageNamed:@"defult_pho"];
     imageNode.URL = [NSURL URLWithString:_item.user.avatar];
     [self addSubnode:imageNode];
@@ -131,7 +132,7 @@
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(51, 51, 51)};
-    contentNode.attributedText = [[NSAttributedString alloc]initWithString:_item.content attributes:attrs];
+    contentNode.attributedText = [[NSAttributedString alloc]initWithString:kUnNilStr(_item.content) attributes:attrs];
     [self addSubnode:contentNode];
     _contentNode = contentNode;
 }

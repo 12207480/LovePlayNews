@@ -7,7 +7,7 @@
 //
 
 #import "LPNewsListController.h"
-#import "LPNewsRequestOperation.h"
+#import "LPNewsInfoOperation.h"
 #import "MBProgressHUD+MJ.h"
 #import "LPNewsCellNode.h"
 #import "LPNewsImageCellNode.h"
@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSArray *newsList;
 
 @property (nonatomic, assign) NSInteger curIndexPage;
+@property (nonatomic, assign) BOOL haveMore;
 
 @end
 
@@ -51,53 +52,69 @@
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [self loadData];
+    [self loadMoreDataWithContext:nil];
 }
 
-- (void)loadData
-{
-    _curIndexPage = 0;
-    [MBProgressHUD showMessage:@"加载中..." toView:self.view];
-    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
-    [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
-        _newsList = request.responseObject.data;
-        [_tableNode.view reloadData];
-        _curIndexPage++;
-        [MBProgressHUD hideHUDForView:self.view];
-    } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view];
-    }];
-}
+#pragma mark - load Data
 
 - (void)loadMoreDataWithContext:(ASBatchContext *)context
 {
     if (context) {
         [context beginBatchFetching];
+    }else {
+        _curIndexPage = 0;
+        _haveMore = YES;
+        [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     }
     
-    LPHttpRequest *newsListRequest = [LPNewsRequestOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
+    LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         NSArray *newsList = request.responseObject.data;
-        if (newsList.count > 0) {
-             NSMutableArray *indexPaths = [NSMutableArray array];
-            for (NSInteger row = _newsList.count; row<_newsList.count+newsList.count; ++row) {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+        if (_newsList.count > 0) {
+            if (newsList.count > 0) {
+                NSMutableArray *indexPaths = [NSMutableArray array];
+                for (NSInteger row = _newsList.count; row<_newsList.count+newsList.count; ++row) {
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+                }
+                _newsList = [_newsList arrayByAddingObjectsFromArray:newsList];
+                [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+                _curIndexPage++;
+                _haveMore = YES;
+            }else {
+                _haveMore = NO;
             }
-           _newsList = [_newsList arrayByAddingObjectsFromArray:newsList];
-            [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+        }else {
+           _newsList = request.responseObject.data;
+            [_tableNode.view reloadData];
             _curIndexPage++;
+            _haveMore = YES;
         }
+        
         if (context) {
             [context completeBatchFetching:YES];
+        }else {
+            [MBProgressHUD hideHUDForView:self.view];
         }
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         if (context) {
             [context completeBatchFetching:YES];
+        }else {
+            [MBProgressHUD hideHUDForView:self.view];
         }
     }];
 }
 
 #pragma mark - ASTableDataSource
+
+- (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView
+{
+    return _newsList.count && _haveMore;
+}
+
+- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context
+{
+    [self loadMoreDataWithContext:context];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -120,16 +137,6 @@
         return cellNode;
     };
     return cellNodeBlock;
-}
-
-- (BOOL)shouldBatchFetchForTableView:(ASTableView *)tableView
-{
-    return _newsList.count;
-}
-
-- (void)tableView:(ASTableView *)tableView willBeginBatchFetchWithContext:(ASBatchContext *)context
-{
-    [self loadMoreDataWithContext:context];
 }
 
 #pragma mark - ASTableDelegate

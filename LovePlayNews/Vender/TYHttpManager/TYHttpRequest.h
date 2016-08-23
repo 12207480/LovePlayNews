@@ -7,6 +7,8 @@
 //
 
 #import "TYBaseRequest.h"
+#import "TYBatchRequest.h"
+#import "TYChainRequest.h"
 
 @class TYHttpRequest;
 // 请求数据解析 protocol
