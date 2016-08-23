@@ -12,6 +12,7 @@
 #import "LPNewsCellNode.h"
 #import "LPNewsImageCellNode.h"
 #import "LPNewsDetailController.h"
+#import "LPRefreshGifHeader.h"
 
 @interface LPNewsListController ()<ASTableDelegate, ASTableDataSource>
 
@@ -52,10 +53,17 @@
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    [self loadMoreDataWithContext:nil];
+    LPRefreshGifHeader *header = [LPRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    _tableNode.view.mj_header = header;
+    [header beginRefreshing];
 }
 
 #pragma mark - load Data
+
+- (void)loadData
+{
+    [self loadMoreDataWithContext:nil];
+}
 
 - (void)loadMoreDataWithContext:(ASBatchContext *)context
 {
@@ -64,7 +72,6 @@
     }else {
         _curIndexPage = 0;
         _haveMore = YES;
-        [MBProgressHUD showMessage:@"加载中..." toView:self.view];
     }
     
     LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
@@ -93,13 +100,13 @@
         if (context) {
             [context completeBatchFetching:YES];
         }else {
-            [MBProgressHUD hideHUDForView:self.view];
+            [_tableNode.view.mj_header endRefreshing];
         }
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         if (context) {
             [context completeBatchFetching:YES];
         }else {
-            [MBProgressHUD hideHUDForView:self.view];
+            [_tableNode.view.mj_header endRefreshing];
         }
     }];
 }

@@ -101,7 +101,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     
     _curIndexPage = 0;
     _haveMore = YES;
-    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage pageSize:10];
+    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage pageSize:12];
     
     TYBatchRequest *batchRequest = [[TYBatchRequest alloc]init];
     [batchRequest addRequestArray:@[hotCommentsRequest,newCommentsRequest]];
@@ -128,7 +128,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         [context beginBatchFetching];
     }
     
-    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage pageSize:10];
+    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage pageSize:12];
     [newCommentsRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         LPNewsCommentModel *newestComments = request.responseObject.data;
         if (newestComments.commentIds.count > 0) {
