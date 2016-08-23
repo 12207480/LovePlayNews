@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) TYRequstConfigure *requestConfiguration;// session configure
 
-
 + (TYHttpManager *)sharedInstance;
 
 - (void)addRequest:(id<TYRequestProtocol>)request;

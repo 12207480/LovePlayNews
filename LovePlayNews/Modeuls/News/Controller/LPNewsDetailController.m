@@ -326,7 +326,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if ( section == 1 && _hotComments.count > 0 && _webViewFinishLoad) {
-        return 36;
+        return 40;
     }
     return 0.1;
 }

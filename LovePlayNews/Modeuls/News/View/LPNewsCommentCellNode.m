@@ -127,8 +127,8 @@
 - (void)addContentNode
 {
     ASTextNode *contentNode = [[ASTextNode alloc]init];
-    contentNode.placeholderEnabled = YES;
-    contentNode.placeholderColor = RGB_255(245, 245, 245);
+//    contentNode.placeholderEnabled = YES;
+//    contentNode.placeholderColor = RGB_255(245, 245, 245);
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(51, 51, 51)};

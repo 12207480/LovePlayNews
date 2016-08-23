@@ -24,7 +24,8 @@
     if ([key isEqualToString:@"comments"]) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:unkownValueDic.count];
         [unkownValueDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *top) {
-            dic[key] = [LPNewsCommentItem ty_ModelWithDictonary:obj];
+            LPNewsCommentItem *item = [LPNewsCommentItem ty_ModelWithDictonary:obj];
+            dic[key] = item;
         }];
         return [dic copy];
     }

@@ -22,6 +22,16 @@
     return sharedInstance;
 }
 
++ (dispatch_queue_t)completeQueue {
+    static dispatch_queue_t completeQueue = NULL;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        completeQueue = dispatch_queue_create("com.TYHttpManager.completeQueue", DISPATCH_QUEUE_SERIAL);
+        dispatch_set_target_queue(completeQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+    });
+    return completeQueue;
+}
+
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -61,7 +71,7 @@
     }else {
         manager = [AFHTTPSessionManager manager];
     }
-    
+    manager.completionQueue = [[self class] completeQueue];
     return manager;
 }
 

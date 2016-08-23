@@ -149,7 +149,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             for (NSInteger row = newestComments.commentIds.count; row<_newestComments.commentIds.count+newestComments.commentIds.count; ++row) {
                 [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:1]];
             }
-            NSMutableDictionary *dic = [_newestComments.comments mutableCopy];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:_newestComments.comments];
             [dic addEntriesFromDictionary:newestComments.comments];
             _newestComments.comments  = [dic copy];
             _newestComments.commentIds = [_newestComments.commentIds arrayByAddingObjectsFromArray:newestComments.commentIds];

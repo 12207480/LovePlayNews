@@ -60,7 +60,7 @@
     ASTextNode *locationNode = [[ASTextNode alloc]init];
     locationNode.layerBacked = YES;
     locationNode.maximumNumberOfLines = 1;
-    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:11.0f] ,NSForegroundColorAttributeName: RGB_255(163, 163, 163)};
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:11.0f] ,NSForegroundColorAttributeName: RGB_255(138, 138, 138)};
     locationNode.attributedText = [[NSAttributedString alloc]initWithString:_item.user.location?_item.user.location : @"火星" attributes:attrs];
     [self addSubnode:locationNode];
     _locationNode = locationNode;
@@ -80,8 +80,6 @@
 - (void)addContentNode
 {
     ASTextNode *contentNode = [[ASTextNode alloc]init];
-    contentNode.placeholderEnabled = YES;
-    contentNode.placeholderColor = RGB_255(245, 245, 245);
     contentNode.layerBacked = YES;
     contentNode.maximumNumberOfLines = 0;
     NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15.0f] ,NSForegroundColorAttributeName: RGB_255(51, 51, 51)};

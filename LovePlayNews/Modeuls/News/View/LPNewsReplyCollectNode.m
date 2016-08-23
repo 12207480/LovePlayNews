@@ -37,16 +37,21 @@
 {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:_floors.count];
     NSInteger count = _floors.count;
-    
-    [_floors enumerateObjectsUsingBlock:^(NSString *floor, NSUInteger idx, BOOL *stop) {
+    NSInteger idx = 0;
+    NSInteger floorIdx = 0;
+    for (NSString *floor in _floors) {
         if (idx < count-1) {
             LPNewsCommentItem *item = [_commentItems objectForKey:floor];
-            LPNewsReplyNode *node = [[LPNewsReplyNode alloc]initWithCommentItem:item floor:idx+1];
-            node.layerBacked = YES;
-            [self addSubnode:node];
-            [array addObject:node];
+            if (item.content) {
+                LPNewsReplyNode *node = [[LPNewsReplyNode alloc]initWithCommentItem:item floor:floorIdx+1];
+                node.layerBacked = YES;
+                [self addSubnode:node];
+                [array addObject:node];
+                ++floorIdx;
+            }
         }
-    }];
+        ++idx;
+    }
     
     _replayNodes = [array copy];
 }
