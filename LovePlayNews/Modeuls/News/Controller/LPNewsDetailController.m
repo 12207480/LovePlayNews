@@ -29,7 +29,7 @@
 @property (nonatomic, weak) LPNavigationBarView *navBar;
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
-@property (nonatomic, strong) NSArray *hotComments;
+//@property (nonatomic, strong) NSArray *hotComments;
 @property (nonatomic, strong) NSArray *favors;
 @property (nonatomic, assign) BOOL webViewFinishLoad;
 
@@ -134,10 +134,10 @@ static NSString *footerId = @"LPNewsCommentFooterView";
          LPNewsDetailModel *newsDetail = request.responseObject.data;
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self replaceDetailImageWithArticle:newsDetail.article];
-            NSArray *hotComments = [self hotCommentsWithTie:newsDetail.tie];
+//            NSArray *hotComments = [self hotCommentsWithTie:newsDetail.tie];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _newsDetail = newsDetail;
-                _hotComments = hotComments;
+//                _hotComments = hotComments;
                 _favors = newsDetail.article.relative_sys;
                 [self configureHeaderView];
                 [_tableNode.view reloadData];
@@ -158,24 +158,24 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     article.body = [body copy];
 }
 
-- (NSArray *)hotCommentsWithTie:(LPNewsCommentModel *)tie
-{
-    NSArray *hotComments = [[tie.comments allValues] sortedArrayUsingComparator:^NSComparisonResult(LPNewsCommentItem *obj1, LPNewsCommentItem *obj2) {
-        if (obj1.vote < obj2.vote) {
-            return NSOrderedDescending;
-        }else if (obj1.vote > obj2.vote) {
-            return NSOrderedAscending;
-        }else {
-            return NSOrderedSame;
-        }
-    }];
-    
-    for (LPNewsCommentItem *item in hotComments) {
-        item.content = [item.content stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
-    }
-    
-    return hotComments;
-}
+//- (NSArray *)hotCommentsWithTie:(LPNewsCommentModel *)tie
+//{
+//    NSArray *hotComments = [[tie.comments allValues] sortedArrayUsingComparator:^NSComparisonResult(LPNewsCommentItem *obj1, LPNewsCommentItem *obj2) {
+//        if (obj1.vote < obj2.vote) {
+//            return NSOrderedDescending;
+//        }else if (obj1.vote > obj2.vote) {
+//            return NSOrderedAscending;
+//        }else {
+//            return NSOrderedSame;
+//        }
+//    }];
+//    
+//    for (LPNewsCommentItem *item in hotComments) {
+//        item.content = [item.content stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+//    }
+//    
+//    return hotComments;
+//}
 
 #pragma mark - action
 
@@ -259,8 +259,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     }else if (indexPath.section == 1){
         // section 1
         //LPNewsCommonItem *item = _hotComments[indexPath.row];
-        NSString *floor = _newsDetail.tie.commentIds[indexPath.row];
-        NSArray *floors = [floor componentsSeparatedByString:@","];
+        NSArray *floors = _newsDetail.tie.commentIds[indexPath.row];
         ASCellNode *(^commentCellNodeBlock)() = ^ASCellNode *() {
             //LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItem:item];
             LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItems:_newsDetail.tie.comments floors:floors];
@@ -282,7 +281,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(section > 0 && _hotComments.count > 0 && _webViewFinishLoad) {
+    if(section > 0 && _newsDetail.tie.commentIds.count > 0 && _webViewFinishLoad) {
         LPNewsTitleSectionView *sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
 
         switch (section) {
@@ -303,7 +302,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    if (section == 1 && _hotComments.count > 0 && _webViewFinishLoad) {
+    if (section == 1 && _newsDetail.tie.commentIds.count > 0 && _webViewFinishLoad) {
         LPNewsCommentFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:footerId];
         footerView.title = @"查看更多跟帖";
         __typeof (self) __weak weakSelf = self;
@@ -317,7 +316,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if ( section > 0 && _hotComments.count > 0 && _webViewFinishLoad) {
+    if ( section > 0 && _newsDetail.tie.commentIds.count > 0 && _webViewFinishLoad) {
         return 28;
     }
     return 0.1;
@@ -325,7 +324,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if ( section == 1 && _hotComments.count > 0 && _webViewFinishLoad) {
+    if ( section == 1 && _newsDetail.tie.commentIds.count > 0 && _webViewFinishLoad) {
         return 40;
     }
     return 0.1;

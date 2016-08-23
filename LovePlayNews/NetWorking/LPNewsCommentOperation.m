@@ -21,7 +21,7 @@
 
 + (LPHttpRequest *)requestNewCommentWithNewsId:(NSString *)newsId pageIndex:(NSInteger)pageIndex
 {
-    int pageCount = 20;
+    int pageCount = 10;
     LPHttpRequest *request = [[LPHttpRequest alloc]init];
     request.responseParser = [[LPCustomResponse alloc]initWithModelClass:[LPNewsCommentModel class]];
     request.URLString = [NSString stringWithFormat:@"%@%@/%ld/%d/6/2/2",NewsNewCommentURL,newsId,(long)pageIndex*pageCount,pageCount];

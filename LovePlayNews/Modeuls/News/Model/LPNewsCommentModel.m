@@ -15,6 +15,8 @@
 {
     if ([key isEqualToString:@"comments"]) {
         return YES;
+    }else if([key isEqualToString:@"commentIds"]) {
+        return YES;
     }
     return NO;
 }
@@ -30,6 +32,19 @@
         return [dic copy];
     }
     return unkownValueDic;
+}
+
+- (id)customValueWithKey:(NSString *)key unkownValueArray:(NSArray *)unkownValueArray
+{
+    if([key isEqualToString:@"commentIds"]) {
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:unkownValueArray.count];
+        for (NSString *floor in unkownValueArray) {
+            NSArray *floors = [floor componentsSeparatedByString:@","];
+            [array addObject:floors];
+        }
+        return [array copy];
+    }
+    return unkownValueArray;
 }
 
 @end

@@ -111,9 +111,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             LPHttpRequest *newRequest = request.batchRequstArray[1];
             _hotComments = hotRequest.responseObject.data;
             _newestComments = newRequest.responseObject.data;
-            _hotComments.commentIds = [self dealWithCommentIds:_hotComments.commentIds];
-            _newestComments.commentIds = [self dealWithCommentIds:_newestComments.commentIds];
-            
+
             [_tableNode.view reloadData];
             ++_curIndexPage;
             _haveMore = YES;
@@ -122,16 +120,6 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     } failureBlock:^(TYBatchRequest *request, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view];
     }];
-}
-
-- (NSArray *)dealWithCommentIds:(NSArray *)commentIds
-{
-    NSMutableArray *tmp = [NSMutableArray arrayWithCapacity:commentIds.count];
-    for (NSString *floor in commentIds) {
-        NSArray *floors = [floor componentsSeparatedByString:@","];
-        [tmp addObject:floors];
-    }
-    return [tmp copy];
 }
 
 - (void)loadMoreDataWithContext:(ASBatchContext *)context
@@ -144,15 +132,18 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     [newCommentsRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         LPNewsCommentModel *newestComments = request.responseObject.data;
         if (newestComments.commentIds.count > 0) {
-            newestComments.commentIds = [self dealWithCommentIds:newestComments.commentIds];
+            
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:_newestComments.comments];
+            [dic addEntriesFromDictionary:newestComments.comments];
+            _newestComments.comments  = [dic copy];
+            
             NSMutableArray *indexPaths = [NSMutableArray array];
             for (NSInteger row = newestComments.commentIds.count; row<_newestComments.commentIds.count+newestComments.commentIds.count; ++row) {
                 [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:1]];
             }
-            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:_newestComments.comments];
-            [dic addEntriesFromDictionary:newestComments.comments];
-            _newestComments.comments  = [dic copy];
+            
             _newestComments.commentIds = [_newestComments.commentIds arrayByAddingObjectsFromArray:newestComments.commentIds];
+            
             [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
             _curIndexPage++;
             _haveMore = YES;
@@ -162,12 +153,10 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         if (context) {
             [context completeBatchFetching:YES];
         }
-        
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         if (context) {
             [context completeBatchFetching:YES];
         }
-
     }];
 }
 
