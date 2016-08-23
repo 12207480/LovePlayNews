@@ -19,12 +19,11 @@
     return request;
 }
 
-+ (LPHttpRequest *)requestNewCommentWithNewsId:(NSString *)newsId pageIndex:(NSInteger)pageIndex
++ (LPHttpRequest *)requestNewCommentWithNewsId:(NSString *)newsId pageIndex:(NSInteger)pageIndex pageSize:(NSInteger)pageSize
 {
-    int pageCount = 10;
     LPHttpRequest *request = [[LPHttpRequest alloc]init];
     request.responseParser = [[LPCustomResponse alloc]initWithModelClass:[LPNewsCommentModel class]];
-    request.URLString = [NSString stringWithFormat:@"%@%@/%ld/%d/6/2/2",NewsNewCommentURL,newsId,(long)pageIndex*pageCount,pageCount];
+    request.URLString = [NSString stringWithFormat:@"%@%@/%ld/%d/6/2/2",NewsNewCommentURL,newsId,(long)pageIndex*pageSize,(int)pageSize];
     return request;
 }
 

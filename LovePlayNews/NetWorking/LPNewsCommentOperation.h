@@ -14,6 +14,6 @@
 
 + (LPHttpRequest *)requestHotCommentWithNewsId:(NSString *)newsId;
 
-+ (LPHttpRequest *)requestNewCommentWithNewsId:(NSString *)newsId pageIndex:(NSInteger)pageIndex;
++ (LPHttpRequest *)requestNewCommentWithNewsId:(NSString *)newsId pageIndex:(NSInteger)pageIndex pageSize:(NSInteger)pageSize;
 
 @end

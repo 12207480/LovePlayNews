@@ -19,6 +19,7 @@
 		2B00ACA61D517E5E0048B5C2 /* LPResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACA41D517E5E0048B5C2 /* LPResponseObject.m */; };
 		2B00ACB31D51AB230048B5C2 /* LPNewsInfoOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACB21D51AB230048B5C2 /* LPNewsInfoOperation.m */; };
 		2B01C9C31D6BE4EF00D56364 /* LPCustomResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B01C9C21D6BE4EF00D56364 /* LPCustomResponse.m */; };
+		2B01C9C91D6C4C6700D56364 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B01C9C81D6C4C6700D56364 /* ViewController.m */; };
 		2B3913F11D5C7D510068B1D8 /* LPNewsTitleSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3913F01D5C7D510068B1D8 /* LPNewsTitleSectionView.m */; };
 		2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m */; };
 		2B50AB2F1D5DCA9000FB77AE /* LPNewsImageCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2E1D5DCA9000FB77AE /* LPNewsImageCellNode.m */; };
@@ -30,7 +31,6 @@
 		2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */; };
 		2B8174261D4EE5A200BA297C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174251D4EE5A200BA297C /* main.m */; };
 		2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174281D4EE5A200BA297C /* AppDelegate.m */; };
-		2B81742C1D4EE5A200BA297C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B81742B1D4EE5A200BA297C /* ViewController.m */; };
 		2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B8174301D4EE5A200BA297C /* Assets.xcassets */; };
 		2B8174C61D4F2B4400BA297C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B81749B1D4F2B4400BA297C /* NSData+Base64.m */; };
 		2B8174C71D4F2B4400BA297C /* NSData+Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B81749D1D4F2B4400BA297C /* NSData+Encrypt.m */; };
@@ -110,6 +110,8 @@
 		2B00ACB21D51AB230048B5C2 /* LPNewsInfoOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsInfoOperation.m; sourceTree = "<group>"; };
 		2B01C9C11D6BE4EF00D56364 /* LPCustomResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPCustomResponse.h; sourceTree = "<group>"; };
 		2B01C9C21D6BE4EF00D56364 /* LPCustomResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPCustomResponse.m; sourceTree = "<group>"; };
+		2B01C9C71D6C4C6700D56364 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2B01C9C81D6C4C6700D56364 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2B3913EF1D5C7D510068B1D8 /* LPNewsTitleSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsTitleSectionView.h; sourceTree = "<group>"; };
 		2B3913F01D5C7D510068B1D8 /* LPNewsTitleSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsTitleSectionView.m; sourceTree = "<group>"; };
 		2B50AB2A1D5D5C5C00FB77AE /* LPNewsCommentCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentCellNode.h; sourceTree = "<group>"; };
@@ -131,8 +133,6 @@
 		2B8174251D4EE5A200BA297C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B8174271D4EE5A200BA297C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B8174281D4EE5A200BA297C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2B81742A1D4EE5A200BA297C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2B81742B1D4EE5A200BA297C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2B8174301D4EE5A200BA297C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B8174351D4EE5A300BA297C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B81743E1D4EE5A300BA297C /* LovePlayNewsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LovePlayNewsTests.m; sourceTree = "<group>"; };
@@ -406,8 +406,8 @@
 				2B81744D1D4EF90D00BA297C /* Vender */,
 				2B8174271D4EE5A200BA297C /* AppDelegate.h */,
 				2B8174281D4EE5A200BA297C /* AppDelegate.m */,
-				2B81742A1D4EE5A200BA297C /* ViewController.h */,
-				2B81742B1D4EE5A200BA297C /* ViewController.m */,
+				2B01C9C71D6C4C6700D56364 /* ViewController.h */,
+				2B01C9C81D6C4C6700D56364 /* ViewController.m */,
 				2B8174301D4EE5A200BA297C /* Assets.xcassets */,
 				2B8DA28A1D504031007FAD3D /* LovePlayNews-Prefix.pch */,
 				2B8A00FD1D5AD07200F04812 /* News.css */,
@@ -890,7 +890,6 @@
 				2B50AB331D5DCB1C00FB77AE /* LPNewsBaseCellNode.m in Sources */,
 				2B8174F21D4F39A400BA297C /* TYBaseRequest.m in Sources */,
 				2BB90FF11D66F21D002B2B17 /* LPNewsReplyNode.m in Sources */,
-				2B81742C1D4EE5A200BA297C /* ViewController.m in Sources */,
 				2B00ACA61D517E5E0048B5C2 /* LPResponseObject.m in Sources */,
 				2B8174CD1D4F2B4400BA297C /* NSString+Size.m in Sources */,
 				B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */,
@@ -918,6 +917,7 @@
 				2B8174CA1D4F2B4400BA297C /* NSString+Encrypt.m in Sources */,
 				2B00ACB31D51AB230048B5C2 /* LPNewsInfoOperation.m in Sources */,
 				2B8174261D4EE5A200BA297C /* main.m in Sources */,
+				2B01C9C91D6C4C6700D56364 /* ViewController.m in Sources */,
 				2B8174D11D4F2B4400BA297C /* UIImage+Color.m in Sources */,
 				2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */,
 				2BB90FF41D670417002B2B17 /* LPNewsReplyCollectNode.m in Sources */,

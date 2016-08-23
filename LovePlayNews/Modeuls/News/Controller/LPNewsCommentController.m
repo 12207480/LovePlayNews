@@ -101,7 +101,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
     
     _curIndexPage = 0;
     _haveMore = YES;
-    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage];
+    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage pageSize:10];
     
     TYBatchRequest *batchRequest = [[TYBatchRequest alloc]init];
     [batchRequest addRequestArray:@[hotCommentsRequest,newCommentsRequest]];
@@ -128,7 +128,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         [context beginBatchFetching];
     }
     
-    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage];
+    LPHttpRequest *newCommentsRequest = [LPNewsCommentOperation requestNewCommentWithNewsId:_newsId pageIndex:_curIndexPage pageSize:10];
     [newCommentsRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         LPNewsCommentModel *newestComments = request.responseObject.data;
         if (newestComments.commentIds.count > 0) {
@@ -138,7 +138,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             _newestComments.comments  = [dic copy];
             
             NSMutableArray *indexPaths = [NSMutableArray array];
-            for (NSInteger row = newestComments.commentIds.count; row<_newestComments.commentIds.count+newestComments.commentIds.count; ++row) {
+            for (NSInteger row = _newestComments.commentIds.count; row<_newestComments.commentIds.count+newestComments.commentIds.count; ++row) {
                 [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:1]];
             }
             
