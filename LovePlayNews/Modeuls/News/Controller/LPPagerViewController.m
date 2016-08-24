@@ -40,7 +40,7 @@
     self.adjustStatusBarHeight = YES;
     self.contentTopEdging = 44;
     self.collectionLayoutEdging = 12;
-    self.barStyle = TYPagerBarStyleProgressBounceView;
+    self.barStyle = TYPagerBarStyleProgressElasticView;
 }
 
 - (void)viewWillAppear:(BOOL)animated
