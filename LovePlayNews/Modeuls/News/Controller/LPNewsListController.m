@@ -77,7 +77,7 @@
     LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         NSArray *newsList = request.responseObject.data;
-        if (_newsList.count > 0) {
+        if (_newsList.count > 0 && _curIndexPage != 0) {
             if (newsList.count > 0) {
                 NSMutableArray *indexPaths = [NSMutableArray array];
                 for (NSInteger row = _newsList.count; row<_newsList.count+newsList.count; ++row) {
