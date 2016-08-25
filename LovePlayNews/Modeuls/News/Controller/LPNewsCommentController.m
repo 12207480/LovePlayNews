@@ -10,9 +10,9 @@
 #import "LPNavigationBarView.h"
 #import "UIView+Nib.h"
 #import "LPNewsCommentOperation.h"
-#import "MBProgressHUD+MJ.h"
 #import "LPNewsCommentCellNode.h"
 #import "LPNewsTitleSectionView.h"
+#import "LPLoadingView.h"
 
 @interface LPNewsCommentController ()<ASTableDelegate, ASTableDataSource>
 
@@ -96,7 +96,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (void)loadData
 {
-    [MBProgressHUD showMessage:@"加载中..." toView:self.view];
+    [LPLoadingView showLoadingInView:self.view edgeInset:UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0)];
     LPHttpRequest *hotCommentsRequest = [LPNewsCommentOperation requestHotCommentWithNewsId:_newsId];
     
     _curIndexPage = 0;
@@ -116,9 +116,9 @@ static NSString *headerId = @"LPNewsTitleSectionView";
             ++_curIndexPage;
             _haveMore = YES;
         }
-        [MBProgressHUD hideHUDForView:self.view];
+        [LPLoadingView hideLoadingForView:self.view];
     } failureBlock:^(TYBatchRequest *request, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view];
+        [LPLoadingView hideLoadingForView:self.view];
     }];
 }
 

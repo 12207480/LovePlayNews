@@ -58,7 +58,10 @@ typedef void(^AFConstructingBodyBlock)(id <AFMultipartFormData> formData);
 @property (nonatomic, weak) id<TYRequestDelegate> delegate; // 请求代理
 @property (nonatomic, strong) id<TYRequestDelegate> embedAccesory; // 嵌入请求代理 注意strong
 
-// 请求的URLString,或者 URL path ，baseURL use TYRequestConfigure.baseURL
+// baseURL 如果为空，则为全局或者本类requestConfigure.baseURL
+- (NSString *)baseURL;
+
+// 请求的URLString,或者 URL path
 - (NSString *)URLString;
 
 // 请求参数

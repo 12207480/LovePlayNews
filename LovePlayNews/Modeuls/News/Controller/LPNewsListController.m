@@ -8,7 +8,6 @@
 
 #import "LPNewsListController.h"
 #import "LPNewsInfoOperation.h"
-#import "MBProgressHUD+MJ.h"
 #import "LPNewsCellNode.h"
 #import "LPNewsImageCellNode.h"
 #import "LPNewsDetailController.h"
@@ -29,14 +28,25 @@
 
 @implementation LPNewsListController
 
+
+#pragma mark - life cycle
+
 - (instancetype)init
 {
-    _tableNode = [[ASTableNode alloc] init];
-    if (self = [super initWithNode:_tableNode]) {
-        _tableNode.delegate = self;
-        _tableNode.dataSource = self;
+    if (self = [super initWithNode:[ASDisplayNode new]]) {
+        
+        [self addTableNode];
     }
     return self;
+}
+
+- (void)addTableNode
+{
+    _tableNode = [[ASTableNode alloc] init];
+    _tableNode.backgroundColor = [UIColor whiteColor];
+    _tableNode.delegate = self;
+    _tableNode.dataSource = self;
+    [self.node addSubnode:_tableNode];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,14 +55,24 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _tableNode.frame = self.node.bounds;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor whiteColor];
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    [self addRefreshHeader];
+}
+
+- (void)addRefreshHeader
+{
     LPRefreshGifHeader *header = [LPRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableNode.view.mj_header = header;
     [header beginRefreshing];
@@ -67,17 +87,19 @@
 
 - (void)loadMoreDataWithContext:(ASBatchContext *)context
 {
+    NSInteger curIndexPage = _curIndexPage;
     if (context) {
         [context beginBatchFetching];
     }else {
-        _curIndexPage = 0;
+        curIndexPage = 0;
         _haveMore = YES;
     }
     
-    LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
+    LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:curIndexPage];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         NSArray *newsList = request.responseObject.data;
-        if (_newsList.count > 0 && _curIndexPage != 0) {
+        if (context) {
+            // 加载更多
             if (newsList.count > 0) {
                 NSMutableArray *indexPaths = [NSMutableArray array];
                 for (NSInteger row = _newsList.count; row<_newsList.count+newsList.count; ++row) {
@@ -91,9 +113,29 @@
                 _haveMore = NO;
             }
         }else {
-           _newsList = request.responseObject.data;
-            [_tableNode.view reloadData];
-            _curIndexPage++;
+            // 加载最新
+            if (_newsList.count == 0) {
+                _newsList = request.responseObject.data;
+                [_tableNode.view reloadData];
+                _curIndexPage++;
+            }else {
+                LPNewsInfoModel *infoModel = _newsList.firstObject;
+                NSMutableArray *indexPaths = [NSMutableArray array];
+                NSInteger index = 0;
+                for (LPNewsInfoModel *newInfoModel in newsList) {
+                    if ([newInfoModel.docid isEqualToString:infoModel.docid]) {
+                        break;
+                    }
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:index inSection:0]];
+                    ++index;
+                }
+                
+                if (indexPaths.count > 0) {
+                    NSArray *newAddList = [newsList objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, index)]];
+                    _newsList = [newAddList arrayByAddingObjectsFromArray:_newsList];
+                    [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                }
+            }
             _haveMore = YES;
         }
         

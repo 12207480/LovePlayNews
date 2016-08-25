@@ -10,7 +10,6 @@
 #import "LPWebCellNode.h"
 #import "LPNewsBreifCellNode.h"
 #import "LPNewsInfoOperation.h"
-#import "MBProgressHUD+MJ.h"
 #import "MXParallaxHeader.h"
 #import "LPNewsTitleHeaderView.h"
 #import "LPNewsCommentFooterView.h"
@@ -20,6 +19,7 @@
 #import "LPNewsFavorCellNode.h"
 #import "LPNavigationBarView.h"
 #import "LPNewsCommentController.h"
+#import "LPLoadingView.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
@@ -39,6 +39,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 static NSString *footerId = @"LPNewsCommentFooterView";
 
 @implementation LPNewsDetailController
+
+#pragma mark - life cycle
 
 - (instancetype)init
 {
@@ -80,17 +82,28 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     _tableNode.frame = CGRectMake(0, kNavBarHeight, CGRectGetWidth(self.node.frame), CGRectGetHeight(self.node.frame) - kNavBarHeight);
 }
 
-- (void)configureController
-{
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-}
-
 - (void)addNavBarView
 {
     LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
     [self.node.view addSubview:navBar];
     _navBar = navBar;
+}
+
+- (void)addHeaderView
+{
+    LPNewsTitleHeaderView *headerView = [LPNewsTitleHeaderView loadInstanceFromNib];
+    _tableNode.view.parallaxHeader.view = headerView;
+    _tableNode.view.parallaxHeader.height = 100;
+    _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    _headerView = headerView;
+}
+
+#pragma mark - configure
+
+- (void)configureController
+{
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
 - (void)configureTableView
@@ -100,16 +113,6 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     
     [_tableNode.view registerClass:[LPNewsTitleSectionView class] forHeaderFooterViewReuseIdentifier:headerId];
     [_tableNode.view registerClass:[LPNewsCommentFooterView class] forHeaderFooterViewReuseIdentifier:footerId];
-}
-
-- (void)addHeaderView
-{
-    LPNewsTitleHeaderView *headerView = [LPNewsTitleHeaderView loadInstanceFromNib];
-    [headerView.goBackBtn addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
-    _tableNode.view.parallaxHeader.view = headerView;
-    _tableNode.view.parallaxHeader.height = 100;
-    _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
-    _headerView = headerView;
 }
 
 - (void)configureHeaderView
@@ -128,7 +131,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (void)loadData
 {
-    [MBProgressHUD showMessage:@"加载中..." toView:self.view];
+    [LPLoadingView showLoadingInView:self.view edgeInset:UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0)];
     LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsDetailWithNewsId:_newsId];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
          LPNewsDetailModel *newsDetail = request.responseObject.data;
@@ -144,7 +147,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
             });
         });
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view];
+        [LPLoadingView hideLoadingForView:self.view];
     }];
 }
 
@@ -234,7 +237,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
             LPWebCellNode *cellNode = [[LPWebCellNode alloc] initWithHtmlBody:body];
             [cellNode setWebViewDidFinishLoad:^{
                 weakSelf.webViewFinishLoad = YES;
-                [MBProgressHUD hideHUDForView:weakSelf.view];
+                [LPLoadingView hideLoadingForView:weakSelf.view];
             }];
             return cellNode;
         };

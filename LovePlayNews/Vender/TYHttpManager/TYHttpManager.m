@@ -102,7 +102,7 @@
         return URLPath;
     }
     
-    NSString *baseURL = request.configuration ? request.configuration.baseURL : [TYRequstConfigure sharedInstance].baseURL;
+    NSString *baseURL = request.baseURL.length > 0 ? request.baseURL : (request.configuration ? request.configuration.baseURL : [TYRequstConfigure sharedInstance].baseURL);
     
     return [NSString stringWithFormat:@"%@%@",baseURL?baseURL:@"",URLPath];
 }

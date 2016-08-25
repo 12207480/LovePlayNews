@@ -11,8 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="kjm-1R-7Le">
-                    <rect key="frame" x="16" y="89" width="344" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="345" translatesAutoresizingMaskIntoConstraints="NO" id="kjm-1R-7Le">
+                    <rect key="frame" x="15" y="89" width="345" height="0.0"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -26,11 +26,11 @@
             </subviews>
             <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="kjm-1R-7Le" firstAttribute="leading" secondItem="YWd-bz-TZL" secondAttribute="leading" constant="16" id="66p-qI-wlT"/>
+                <constraint firstAttribute="trailing" secondItem="kjm-1R-7Le" secondAttribute="trailing" priority="750" constant="15" id="0M7-Ce-GqE"/>
+                <constraint firstItem="kjm-1R-7Le" firstAttribute="leading" secondItem="YWd-bz-TZL" secondAttribute="leading" constant="15" id="66p-qI-wlT"/>
                 <constraint firstAttribute="bottom" secondItem="HTT-PR-PW6" secondAttribute="bottom" constant="5" id="DbN-rK-i5l"/>
                 <constraint firstItem="HTT-PR-PW6" firstAttribute="leading" secondItem="YWd-bz-TZL" secondAttribute="leading" constant="15" id="IQl-wE-j6G"/>
                 <constraint firstItem="HTT-PR-PW6" firstAttribute="top" secondItem="kjm-1R-7Le" secondAttribute="bottom" constant="6" id="Zwh-RF-gxs"/>
-                <constraint firstAttribute="trailing" secondItem="kjm-1R-7Le" secondAttribute="trailing" constant="15" id="ldi-ZE-T0G"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

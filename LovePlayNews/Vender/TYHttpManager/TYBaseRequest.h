@@ -37,6 +37,8 @@ typedef void (^TYRequestFailureBlock)(id<TYRequestProtocol> request,NSError *err
 @property (nonatomic, weak) id<TYRequestDelegate> delegate; // 请求代理
 @property (nonatomic, strong) id<TYRequestDelegate> embedAccesory; // 完成请求代理 后调用 注意strong
 
+@property (nonatomic, assign) BOOL asynCompleteQueue; // 在异步线程中回调 默认NO
+
 #pragma mark - block
 @property (nonatomic, copy, readonly) TYRequestSuccessBlock successBlock; // 请求成功block
 @property (nonatomic, copy, readonly) TYRequestFailureBlock failureBlock; // 请求失败block
@@ -45,7 +47,10 @@ typedef void (^TYRequestFailureBlock)(id<TYRequestProtocol> request,NSError *err
 @property (nonatomic, copy) AFConstructingBodyBlock constructingBodyBlock;// post请求组装body block
 
 #pragma mark - request params
-// 请求的URLString 或者 URL path ，baseURL=全局或者本类requestConfigure.baseURL
+// baseURL 如果为空，则为全局或者本类requestConfigure.baseURL
+@property (nonatomic, strong) NSString *baseURL;
+
+// 请求的URLString 或者 URL path
 @property (nonatomic, strong) NSString *URLString;
 
 // 请求方法 默认GET

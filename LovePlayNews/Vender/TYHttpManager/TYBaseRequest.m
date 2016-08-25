@@ -89,8 +89,7 @@
 {
     _state = TYRequestStateFinish;
     
-    dispatch_async(dispatch_get_main_queue(),^{
-        
+    void (^finishBlock)() = ^{
         if ([_delegate respondsToSelector:@selector(requestDidFinish:)]) {
             [_delegate requestDidFinish:self];
         }
@@ -102,7 +101,13 @@
         if (_embedAccesory && [_embedAccesory respondsToSelector:@selector(requestDidFinish:)]) {
             [_embedAccesory requestDidFinish:self];
         }
-    });
+    };
+    
+    if (_asynCompleteQueue) {
+        finishBlock();
+    }else {
+        dispatch_async(dispatch_get_main_queue(),finishBlock);
+    }
 }
 
 // 请求失败
@@ -110,8 +115,7 @@
 {
     _state = TYRequestStateError;
     
-    dispatch_async(dispatch_get_main_queue(),^{
-        
+    void (^failBlock)() = ^{
         if ([_delegate respondsToSelector:@selector(requestDidFail:error:)]) {
             [_delegate requestDidFail:self error:error];
         }
@@ -123,9 +127,14 @@
         if (_embedAccesory && [_embedAccesory respondsToSelector:@selector(requestDidFail:error:)]) {
             [_embedAccesory requestDidFail:self error:error];
         }
-    });
+    };
+    
+    if (_asynCompleteQueue) {
+        failBlock();
+    }else {
+        dispatch_async(dispatch_get_main_queue(),failBlock);
+    }
 }
-
 // 清除block引用
 - (void)clearRequestBlock
 {

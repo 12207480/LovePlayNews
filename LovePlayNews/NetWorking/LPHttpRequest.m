@@ -12,14 +12,17 @@
 
 @dynamic responseObject;
 
-+ (void)load
+- (instancetype)init
 {
-    [TYRequstConfigure sharedInstance].baseURL = BaseURL;
+    if (self = [super init]) {
+        self.baseURL = BaseURL;
+    }
+    return self;
 }
 
 - (instancetype)initWithModelClass:(Class)modelClass
 {
-    if (self = [super init]) {
+    if (self = [self init]) {
         self.responseParser = [[LPResponseObject alloc]initWithModelClass:modelClass];
     }
     return self;

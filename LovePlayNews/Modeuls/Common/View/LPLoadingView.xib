@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Zsg-TC-O3d" customClass="LPLoadingView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新地图正在载入中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSf-9x-sKc">
+                    <rect key="frame" x="256" y="295" width="88" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勇士请稍等..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-aW-Fod">
+                    <rect key="frame" x="267" y="311" width="65" height="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading_step1" translatesAutoresizingMaskIntoConstraints="NO" id="4UD-9m-r81">
+                    <rect key="frame" x="290" y="236" width="19" height="49"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="9aa-aW-Fod" firstAttribute="centerX" secondItem="Zsg-TC-O3d" secondAttribute="centerX" id="CiO-53-f5y"/>
+                <constraint firstItem="eSf-9x-sKc" firstAttribute="top" secondItem="4UD-9m-r81" secondAttribute="bottom" constant="10" id="NW2-jF-A6Y"/>
+                <constraint firstItem="eSf-9x-sKc" firstAttribute="centerX" secondItem="Zsg-TC-O3d" secondAttribute="centerX" id="a1J-LF-2HB"/>
+                <constraint firstItem="4UD-9m-r81" firstAttribute="centerX" secondItem="Zsg-TC-O3d" secondAttribute="centerX" id="dfP-Es-NLa"/>
+                <constraint firstItem="eSf-9x-sKc" firstAttribute="centerY" secondItem="Zsg-TC-O3d" secondAttribute="centerY" constant="2" id="sOC-j3-tQC"/>
+                <constraint firstItem="9aa-aW-Fod" firstAttribute="top" secondItem="eSf-9x-sKc" secondAttribute="bottom" constant="2" id="x0O-cu-khw"/>
+            </constraints>
+            <connections>
+                <outlet property="detailLabel" destination="9aa-aW-Fod" id="jp5-7y-zea"/>
+                <outlet property="imageView" destination="4UD-9m-r81" id="zFL-xg-xkx"/>
+                <outlet property="titleLabel" destination="eSf-9x-sKc" id="QH1-nx-ZA5"/>
+            </connections>
+            <point key="canvasLocation" x="285" y="444"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="loading_step1" width="19" height="49"/>
+    </resources>
+</document>
