@@ -45,6 +45,8 @@ __weak typeof(obj) weak_##obj = obj; \
 //颜色 两种参数
 #define RGB_255(r,g,b) [UIColor colorWithRed:(float)r/255.0 green:(float)g/255.0 blue:(float)b/255.0 alpha:1]
 
+#define RGBA_255(r,g,b,a) [UIColor colorWithRed:(float)r/255.0 green:(float)g/255.0 blue:(float)b/255.0 alpha:a]
+
 //当前window
 #define kCurrentWindow [[UIApplication sharedApplication].windows firstObject]
 

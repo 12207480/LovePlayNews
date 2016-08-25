@@ -78,6 +78,29 @@
     [header beginRefreshing];
 }
 
+// 显示更新新闻条数
+- (void)showUpdateNewsCountView:(NSInteger)count
+{
+    CGFloat labelH = 25;
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), -labelH)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.text = [NSString stringWithFormat:@"发现%zd条新内容",count];
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = RGBA_255(238, 95, 112, 0.8);
+    [self.view insertSubview:label aboveSubview:_tableNode.view];
+    
+    // 移动动画
+    [UIView animateWithDuration:0.5 animations:^{
+        label.transform = CGAffineTransformMakeTranslation(0, labelH);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 delay:1.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            label.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [label removeFromSuperview];
+        }];
+    }];
+}
 #pragma mark - load Data
 
 - (void)loadData
@@ -134,6 +157,7 @@
                     NSArray *newAddList = [newsList objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, index)]];
                     _newsList = [newAddList arrayByAddingObjectsFromArray:_newsList];
                     [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                    [self showUpdateNewsCountView:newAddList.count];
                 }
             }
             _haveMore = YES;
