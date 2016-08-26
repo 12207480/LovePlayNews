@@ -21,29 +21,52 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 
 @implementation TYResponseCache
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        _queue = dispatch_queue_create([TYRequestManagerCacheDirectory UTF8String], DISPATCH_QUEUE_CONCURRENT);
-        [self createCachesDirectory];
-    }
-    return self;
++ (dispatch_queue_t)cacheQueue {
+    static dispatch_queue_t cacheQueue = NULL;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cacheQueue = dispatch_queue_create("com.TYResponseCache.cacheQueue", DISPATCH_QUEUE_CONCURRENT);
+        dispatch_set_target_queue(cacheQueue, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+    });
+    return cacheQueue;
 }
 
-- (void)createCachesDirectory
+- (dispatch_queue_t)queue
 {
-    _fileManager = [NSFileManager defaultManager];
-    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    _cachePath = [cachePath stringByAppendingPathComponent:TYRequestManagerCacheDirectory];
+    return [[self class] cacheQueue];
+}
+
+- (NSString *)cachePath
+{
+    if (_cachePath == nil) {
+        _cachePath = [self createCachesDirectory];
+    }
+    return _cachePath;
+}
+
+- (NSFileManager *)fileManager
+{
+    @synchronized (_fileManager) {
+        if (_fileManager == nil) {
+            _fileManager = [NSFileManager defaultManager];
+        }
+        return _fileManager;
+    }
+}
+
+- (NSString *)createCachesDirectory
+{
+    NSString *cachePathDic = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cachePath = [cachePathDic stringByAppendingPathComponent:TYRequestManagerCacheDirectory];
     BOOL isDirectory;
-    if (![_fileManager fileExistsAtPath:_cachePath isDirectory:&isDirectory]) {
+    if (![self.fileManager fileExistsAtPath:cachePath isDirectory:&isDirectory]) {
         __autoreleasing NSError *error = nil;
-        BOOL created = [_fileManager createDirectoryAtPath:_cachePath withIntermediateDirectories:YES attributes:nil error:&error];
+        BOOL created = [self.fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:&error];
         if (!created) {
             NSLog(@"<> - create cache directory failed with error:%@", error);
         }
     }
+    return cachePath;
 }
 
 - (NSString *)md5String:(NSString *)str
@@ -66,8 +89,9 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 - (void)setObject:(id<NSCoding>)object forKey:(NSString *)key
 {
     NSString *encodedKey = [self md5String:key];
-    dispatch_async(_queue, ^{
-        NSString *filePath = [_cachePath stringByAppendingPathComponent:encodedKey];
+    NSString *cachePath = self.cachePath;
+    dispatch_async([self queue], ^{
+        NSString *filePath = [cachePath stringByAppendingPathComponent:encodedKey];
         BOOL written = [NSKeyedArchiver archiveRootObject:object toFile:filePath];
         if (!written) {
             NSLog(@"<> - set object to file failed");
@@ -84,9 +108,9 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 {
     NSString *encodedKey = [self md5String:key];
     id<NSCoding> object = nil;
-    NSString *filePath = [_cachePath stringByAppendingPathComponent:encodedKey];
+    NSString *filePath = [self.cachePath stringByAppendingPathComponent:encodedKey];
     
-    if ([_fileManager fileExistsAtPath:filePath] ) {
+    if ([self.fileManager fileExistsAtPath:filePath] ) {
         NSDate *modificationDate = [self cacheDateFilePath:filePath];
         if (!overdueDate || modificationDate.timeIntervalSince1970 - overdueDate.timeIntervalSince1970 >= 0) {
             object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
@@ -100,10 +124,10 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 - (void)removeObjectForKey:(NSString *)key
 {
     NSString *encodedKey = [self md5String:key];
-    NSString *filePath = [_cachePath stringByAppendingPathComponent:encodedKey];
-    if ([_fileManager fileExistsAtPath:filePath]) {
+    NSString *filePath = [self.cachePath stringByAppendingPathComponent:encodedKey];
+    if ([self.fileManager fileExistsAtPath:filePath]) {
         __autoreleasing NSError *error = nil;
-        BOOL removed = [_fileManager removeItemAtPath:filePath error:&error];
+        BOOL removed = [self.fileManager removeItemAtPath:filePath error:&error];
         if (!removed) {
             NSLog(@"<> - remove item failed with error:%@", error);
         }
@@ -113,7 +137,7 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 - (void)removeAllObjects
 {
     __autoreleasing NSError *error;
-    BOOL removed = [_fileManager removeItemAtPath:_cachePath error:&error];
+    BOOL removed = [self.fileManager removeItemAtPath:self.cachePath error:&error];
     if (!removed) {
         NSLog(@" - remove cache directory failed with error:%@", error);
     }
@@ -124,7 +148,7 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 - (NSDate *)cacheDateFilePath:(NSString *)path {
     // get file attribute
     NSError *attributesRetrievalError = nil;
-    NSDictionary *attributes = [_fileManager attributesOfItemAtPath:path
+    NSDictionary *attributes = [self.fileManager attributesOfItemAtPath:path
                                                               error:&attributesRetrievalError];
     if (!attributes) {
         NSLog(@"Error get attributes for file at %@: %@", path, attributesRetrievalError);
@@ -136,7 +160,7 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
 - (void)trimToDate:(NSDate *)date
 {
     __autoreleasing NSError *error = nil;
-    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL URLWithString:_cachePath]
+    NSArray *files = [self.fileManager contentsOfDirectoryAtURL:[NSURL URLWithString:self.cachePath]
                                                    includingPropertiesForKeys:@[NSURLContentModificationDateKey]
                                                                       options:NSDirectoryEnumerationSkipsHiddenFiles
                                                                         error:&error];
@@ -144,13 +168,13 @@ static NSString * const TYRequestManagerCacheDirectory = @"TYRequestCacheDirecto
         NSLog(@" - get files error:%@", error);
     }
     
-    dispatch_async(_queue, ^{
+    dispatch_async([self queue], ^{
         for (NSURL *fileURL in files) {
             NSDictionary *dictionary = [fileURL resourceValuesForKeys:@[NSURLContentModificationDateKey] error:nil];
             NSDate *modificationDate = [dictionary objectForKey:NSURLContentModificationDateKey];
             if (modificationDate.timeIntervalSince1970 - date.timeIntervalSince1970 < 0) {
                 NSError *error = nil;
-                if ([_fileManager removeItemAtURL:fileURL error:&error]) {
+                if ([self.fileManager removeItemAtURL:fileURL error:&error]) {
                     NSLog(@"delete cache yes");
                 } else {
                     NSLog(@"delete cache no %@",fileURL.absoluteString);

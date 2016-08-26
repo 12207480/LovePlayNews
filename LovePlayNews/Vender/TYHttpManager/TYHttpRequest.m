@@ -18,13 +18,20 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _responseCache = [[TYResponseCache alloc]init];
         _cacheTimeInSeconds = 60*60*24*7;
     }
     return self;
 }
 
 #pragma mark - load reqeust
+
+- (id<TYHttpResponseCache>)responseCache
+{
+    if (_responseCache == nil) {
+        _responseCache = [[TYResponseCache alloc]init];
+    }
+    return _responseCache;
+}
 
 - (void)load
 {

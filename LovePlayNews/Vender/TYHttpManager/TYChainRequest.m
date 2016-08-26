@@ -126,10 +126,15 @@
     
 }
 
-- (void)dealloc
+- (void)clearBlocks
 {
     _successBlock = nil;
     _failureBlock = nil;
+}
+
+- (void)dealloc
+{
+    [self clearBlocks];
 }
 
 @end

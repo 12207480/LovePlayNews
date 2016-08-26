@@ -12,6 +12,7 @@
 #import "LPPagerViewController.h"
 #import "ViewController.h"
 #import "UIImage+Color.h"
+#import "LPRecommendController.h"
 
 @interface LPTabBarController ()
 
@@ -61,7 +62,7 @@
 
     [self addChildViewControllerWithClass:[LPPagerViewController class] title:@"资讯" image:@"icon_zx_nomal_pgall" selectedImage:@"icon_zx_pressed_pgall" imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
     
-    [self addChildViewControllerWithClass:[ViewController class] title:@"精选" image:@"icon_jx_nomal_pgall" selectedImage:@"icon_jx_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    [self addChildViewControllerWithClass:[LPRecommendController class] title:@"精选" image:@"icon_jx_nomal_pgall" selectedImage:@"icon_jx_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
     
     [self addChildViewControllerWithClass:[ViewController class] title:@"社区" image:@"icon_sq_nomal_pgall" selectedImage:@"icon_sq_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
     
