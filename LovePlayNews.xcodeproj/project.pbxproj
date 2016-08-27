@@ -80,6 +80,7 @@
 		2BB90FF41D670417002B2B17 /* LPNewsReplyCollectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB90FF31D670417002B2B17 /* LPNewsReplyCollectNode.m */; };
 		2BE9E1D41D6AFA6500834F08 /* LPNewsCommentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9E1D31D6AFA6500834F08 /* LPNewsCommentOperation.m */; };
 		A0AC7548470CCBA46E294FCF /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368E49576CDBD8B779D43C5 /* libPods-LovePlayNews.a */; };
+		B07A5DF11D7138E900C18C27 /* LPRecommendItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B07A5DF01D7138E900C18C27 /* LPRecommendItemCell.m */; };
 		B08D88F11D685E870048557C /* LPNewsCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F01D685E870048557C /* LPNewsCommentController.m */; };
 		B08D88F51D68635C0048557C /* LPNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F41D68635C0048557C /* LPNavigationBarView.m */; };
 		B08D88F71D6863930048557C /* LPNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08D88F61D6863930048557C /* LPNavigationBarView.xib */; };
@@ -241,6 +242,8 @@
 		2BE9E1D31D6AFA6500834F08 /* LPNewsCommentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentOperation.m; sourceTree = "<group>"; };
 		4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.debug.xcconfig"; sourceTree = "<group>"; };
 		97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.release.xcconfig"; sourceTree = "<group>"; };
+		B07A5DEF1D7138E900C18C27 /* LPRecommendItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPRecommendItemCell.h; sourceTree = "<group>"; };
+		B07A5DF01D7138E900C18C27 /* LPRecommendItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPRecommendItemCell.m; sourceTree = "<group>"; };
 		B08D88EF1D685E870048557C /* LPNewsCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentController.h; sourceTree = "<group>"; };
 		B08D88F01D685E870048557C /* LPNewsCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentController.m; sourceTree = "<group>"; };
 		B08D88F31D68635C0048557C /* LPNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNavigationBarView.h; sourceTree = "<group>"; };
@@ -759,6 +762,8 @@
 		2BAEC3C01D6FD4520048CBD3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B07A5DEF1D7138E900C18C27 /* LPRecommendItemCell.h */,
+				B07A5DF01D7138E900C18C27 /* LPRecommendItemCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -989,6 +994,7 @@
 				2B50AB2F1D5DCA9000FB77AE /* LPNewsImageCellNode.m in Sources */,
 				2B8174C91D4F2B4400BA297C /* NSString+Base64.m in Sources */,
 				2B8174CF1D4F2B4400BA297C /* UIColor+Hex.m in Sources */,
+				B07A5DF11D7138E900C18C27 /* LPRecommendItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
