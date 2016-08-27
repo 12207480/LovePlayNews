@@ -16,20 +16,24 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[LPTabBarController alloc]init];
-    [self.window makeKeyAndVisible];
+    [self addMainWindow];
     
 #if defined(DEBUG)||defined(_DEBUG)
     [[JPFPSStatus sharedInstance] open];
 #endif
     
     return YES;
+}
+
+- (void)addMainWindow
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[LPTabBarController alloc]init];
+    [self.window makeKeyAndVisible];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

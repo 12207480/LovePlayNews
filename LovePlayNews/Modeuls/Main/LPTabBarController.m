@@ -10,7 +10,6 @@
 #import "UITabBarController+AddChildVC.h"
 #import "LPNavigationController.h"
 #import "LPPagerViewController.h"
-#import "ViewController.h"
 #import "UIImage+Color.h"
 #import "LPRecommendController.h"
 
@@ -26,7 +25,7 @@
     
     [self configureTabBar];
     
-    [self configureChildViewConstrollers];
+    [self configureChildViewControllers];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -55,18 +54,56 @@
     [[UITabBarItem appearanceWhenContainedIn:[LPTabBarController class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:218/255.0 green:85/255.0 blue:107/255.0 alpha:1.0] } forState:UIControlStateSelected];
 }
 
-- (void)configureChildViewConstrollers
+- (void)configureChildViewControllers
 {
-    UIEdgeInsets imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    // 资讯
+    [self addNewsController];
+    
+    // 精选
+    [self addRecommendController];
+    
+    // 社区
+    [self addZoneController];
+    
+    // 我的
+    [self addMineController];
+}
+
+- (void)addNewsController
+{
+    UIEdgeInsets imageInsets = UIEdgeInsetsZero;
+    UIOffset titlePosition = UIOffsetMake(0, -2);
+    
+    LPPagerViewController *newsPagerController = [[LPPagerViewController alloc]init];
+    
+    [self addChildViewController:newsPagerController title:@"资讯" image:@"icon_zx_nomal_pgall" selectedImage:@"icon_zx_pressed_pgall" imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+}
+
+- (void)addRecommendController
+{
+    UIEdgeInsets imageInsets = UIEdgeInsetsZero;
     UIOffset titlePosition = UIOffsetMake(0, -2);
 
-    [self addChildViewControllerWithClass:[LPPagerViewController class] title:@"资讯" image:@"icon_zx_nomal_pgall" selectedImage:@"icon_zx_pressed_pgall" imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    LPRecommendController *recommendController = [[LPRecommendController alloc]init];
+    [self addChildViewController:recommendController title:@"精选" image:@"icon_jx_nomal_pgall" selectedImage:@"icon_jx_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+}
+
+- (void)addZoneController
+{
+    UIEdgeInsets imageInsets = UIEdgeInsetsZero;
+    UIOffset titlePosition = UIOffsetMake(0, -2);
     
-    [self addChildViewControllerWithClass:[LPRecommendController class] title:@"精选" image:@"icon_jx_nomal_pgall" selectedImage:@"icon_jx_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    UIViewController *zoneController = [[UIViewController alloc]init];
+    [self addChildViewController:zoneController title:@"社区" image:@"icon_sq_nomal_pgall" selectedImage:@"icon_sq_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+}
+
+- (void)addMineController
+{
+    UIEdgeInsets imageInsets = UIEdgeInsetsZero;
+    UIOffset titlePosition = UIOffsetMake(0, -2);
     
-    [self addChildViewControllerWithClass:[ViewController class] title:@"社区" image:@"icon_sq_nomal_pgall" selectedImage:@"icon_sq_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
-    
-    [self addChildViewControllerWithClass:[ViewController class] title:@"我" image:@"icon_w_nomal_pgall" selectedImage:@"icon_w_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
+    UIViewController *mineController = [[UIViewController alloc]init];
+    [self addChildViewController:mineController title:@"我" image:@"icon_w_nomal_pgall" selectedImage:@"icon_w_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
 }
 
 - (void)didReceiveMemoryWarning {

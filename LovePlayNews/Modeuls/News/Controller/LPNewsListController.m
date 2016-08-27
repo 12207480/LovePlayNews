@@ -67,7 +67,6 @@
     
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
     [self addRefreshHeader];
 }
 
