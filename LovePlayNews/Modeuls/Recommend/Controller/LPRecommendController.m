@@ -10,6 +10,7 @@
 #import "LPRecommendOperation.h"
 #import "LPRecommendItemCell.h"
 #import "LPLoadingView.h"
+#import "LPImagePagerCellNode.h"
 
 @interface LPRecommendController ()<ASCollectionDataSource, ASCollectionDelegate>
 
@@ -23,10 +24,13 @@
 
 @end
 
+#define kRecommendPagerHeight 113
 #define kRecommendItemWidth 98
 #define kRecommendItemHeight 102
 #define kRecommendItemHorEdge 16
 #define kRecommendItemVerEdge 20
+
+static NSString *footerId = @"UICollectionReusableView";
 
 @implementation LPRecommendController
 
@@ -44,11 +48,6 @@
     _flowLayout     = [[UICollectionViewFlowLayout alloc] init];
     _collectionNode = [[ASCollectionNode alloc] initWithCollectionViewLayout:_flowLayout];
     
-    _flowLayout.minimumInteritemSpacing = (kScreenWidth - 3*kRecommendItemWidth - 2*kRecommendItemHorEdge)/4;
-    _flowLayout.minimumLineSpacing = 35;
-    _flowLayout.sectionInset = UIEdgeInsetsMake(kRecommendItemVerEdge, kRecommendItemHorEdge, kRecommendItemVerEdge, kRecommendItemHorEdge);
-    _flowLayout.itemSize = CGSizeMake(kRecommendItemWidth, kRecommendItemHeight);
-    
     _collectionNode.backgroundColor = [UIColor whiteColor];
     _collectionNode.delegate = self;
     _collectionNode.dataSource = self;
@@ -59,6 +58,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionFooter];
     
     [self loadData];
 }
@@ -97,27 +98,109 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _topicDatas.count;
+    switch (section) {
+        case 0:
+            return 1;
+        case 1:
+            return _topicDatas.count;
+        default:
+            return 0;
+    }
 }
 
 - (ASCellNodeBlock)collectionView:(ASCollectionView *)collectionView nodeBlockForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LPRecommendItem *item = _topicDatas[indexPath.row];
-    ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
-        LPRecommendItemCell *cellNode = [[LPRecommendItemCell alloc]initWithItem:item];
+    switch (indexPath.section) {
+        case 0:
+        {
+            NSArray *imageInfos = _imageInfoDatas;
+            ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
+                LPImagePagerCellNode *cellNode = [[LPImagePagerCellNode alloc]initWithImageInfos:imageInfos];
+                return cellNode;
+            };
+            return cellNodeBlock;
+        }
+        case 1:
+        {
+            LPRecommendItem *item = _topicDatas[indexPath.row];
+            ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
+                LPRecommendItemCell *cellNode = [[LPRecommendItemCell alloc]initWithItem:item];
+                return cellNode;
+            };
+            return cellNodeBlock;
+        }
+        default:
+            return nil;
+    }
+}
+
+- (ASCellNode *)collectionView:(ASCollectionView *)collectionView nodeForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0 && [kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        
+        ASCellNode *cellNode = [[ASCellNode alloc]init];
+        cellNode.backgroundColor = RGB_255(241, 241, 241);
+        cellNode.preferredFrameSize = CGSizeMake(CGRectGetWidth(self.view.frame), 6);
         return cellNode;
-    };
-    return cellNodeBlock;
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return CGSizeMake(CGRectGetWidth(self.view.frame), 6);
+    }
+    return CGSizeZero;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    switch (section) {
+        case 1:
+            return UIEdgeInsetsMake(kRecommendItemVerEdge, kRecommendItemHorEdge, kRecommendItemVerEdge, kRecommendItemHorEdge);
+        case 0:
+            return UIEdgeInsetsMake(15, 0, 15, 0);
+        default:
+            return UIEdgeInsetsZero;
+    }
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    switch (section) {
+        case 1:
+            return 35;
+        default:
+            return 0;
+    }
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    switch (section) {
+        case 1:
+            return (kScreenWidth - 3*kRecommendItemWidth - 2*kRecommendItemHorEdge)/4;
+        default:
+            return 0;
+    }
 }
 
 - (ASSizeRange)collectionView:(ASCollectionView *)collectionView constrainedSizeForNodeAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ASSizeRangeMake(CGSizeMake(kRecommendItemWidth, kRecommendItemHeight),CGSizeMake(kRecommendItemWidth, kRecommendItemHeight));
+    switch (indexPath.section) {
+        case 0:
+            return ASSizeRangeMake(CGSizeMake(CGRectGetWidth(self.view.frame), kRecommendPagerHeight),CGSizeMake(CGRectGetWidth(self.view.frame), kRecommendPagerHeight));
+        case 1:
+            return ASSizeRangeMake(CGSizeMake(kRecommendItemWidth, kRecommendItemHeight),CGSizeMake(kRecommendItemWidth, kRecommendItemHeight));
+        default:
+            return ASSizeRangeMake(CGSizeZero,CGSizeZero);
+    }
 }
 
 - (void)didReceiveMemoryWarning {

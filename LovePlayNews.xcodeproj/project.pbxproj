@@ -86,6 +86,8 @@
 		B08D88F71D6863930048557C /* LPNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08D88F61D6863930048557C /* LPNavigationBarView.xib */; };
 		B0D8293F1D68871E000B9D84 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D8293E1D68871E000B9D84 /* UIView+ViewController.m */; };
 		B0D829421D688B39000B9D84 /* LPNewsCommentFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D829411D688B39000B9D84 /* LPNewsCommentFooterView.m */; };
+		B0E744C51D71B46700B011E5 /* LPImagePagerCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E744C41D71B46700B011E5 /* LPImagePagerCellNode.m */; };
+		B0E744C81D71B68200B011E5 /* LPImageInfoCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E744C71D71B68200B011E5 /* LPImageInfoCellNode.m */; };
 		B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */; };
 		B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED94BA1D5604CD009B11C4 /* LPWebCellNode.m */; };
 /* End PBXBuildFile section */
@@ -253,6 +255,10 @@
 		B0D8293E1D68871E000B9D84 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
 		B0D829401D688B39000B9D84 /* LPNewsCommentFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentFooterView.h; sourceTree = "<group>"; };
 		B0D829411D688B39000B9D84 /* LPNewsCommentFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentFooterView.m; sourceTree = "<group>"; };
+		B0E744C31D71B46700B011E5 /* LPImagePagerCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPImagePagerCellNode.h; sourceTree = "<group>"; };
+		B0E744C41D71B46700B011E5 /* LPImagePagerCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPImagePagerCellNode.m; sourceTree = "<group>"; };
+		B0E744C61D71B68200B011E5 /* LPImageInfoCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPImageInfoCellNode.h; sourceTree = "<group>"; };
+		B0E744C71D71B68200B011E5 /* LPImageInfoCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPImageInfoCellNode.m; sourceTree = "<group>"; };
 		B0ED94B61D55FD66009B11C4 /* LPNewsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsDetailController.h; sourceTree = "<group>"; };
 		B0ED94B71D55FD66009B11C4 /* LPNewsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsDetailController.m; sourceTree = "<group>"; };
 		B0ED94B91D5604CD009B11C4 /* LPWebCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebCellNode.h; sourceTree = "<group>"; };
@@ -764,6 +770,10 @@
 			children = (
 				B07A5DEF1D7138E900C18C27 /* LPRecommendItemCell.h */,
 				B07A5DF01D7138E900C18C27 /* LPRecommendItemCell.m */,
+				B0E744C31D71B46700B011E5 /* LPImagePagerCellNode.h */,
+				B0E744C41D71B46700B011E5 /* LPImagePagerCellNode.m */,
+				B0E744C61D71B68200B011E5 /* LPImageInfoCellNode.h */,
+				B0E744C71D71B68200B011E5 /* LPImageInfoCellNode.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -943,10 +953,12 @@
 				2B8A00F91D5AB5F700F04812 /* LPNewsDetailModel.m in Sources */,
 				B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */,
 				2B8174DC1D4F2BFE00BA297C /* LPTabBarController.m in Sources */,
+				B0E744C81D71B68200B011E5 /* LPImageInfoCellNode.m in Sources */,
 				2B3913F11D5C7D510068B1D8 /* LPNewsTitleSectionView.m in Sources */,
 				2BAEC3C61D6FD7F60048CBD3 /* LPRecommendOperation.m in Sources */,
 				B0D8293F1D68871E000B9D84 /* UIView+ViewController.m in Sources */,
 				2B8174F61D4F39A400BA297C /* TYHttpRequest.m in Sources */,
+				B0E744C51D71B46700B011E5 /* LPImagePagerCellNode.m in Sources */,
 				2B8175051D4F417300BA297C /* TYTabPagerController.m in Sources */,
 				2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */,
 				2B01C9C31D6BE4EF00D56364 /* LPCustomResponse.m in Sources */,
