@@ -28,7 +28,6 @@
 		2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C5811D534F9300F436DE /* LPNewsCellNode.m */; };
 		2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */; };
 		2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */; };
-		2B7C5DCD1D6D4413005B30B5 /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C5DCB1D6D4413005B30B5 /* LPWebViewController.m */; };
 		2B7C5DD01D6D4433005B30B5 /* LPRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C5DCF1D6D4433005B30B5 /* LPRefreshGifHeader.m */; };
 		2B7C5DD31D6D4448005B30B5 /* LPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C5DD21D6D4448005B30B5 /* LPLoadingView.m */; };
 		2B7C5DD51D6D9FCF005B30B5 /* LPLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B7C5DD41D6D9FCF005B30B5 /* LPLoadingView.xib */; };
@@ -80,6 +79,8 @@
 		2BB90FF41D670417002B2B17 /* LPNewsReplyCollectNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB90FF31D670417002B2B17 /* LPNewsReplyCollectNode.m */; };
 		2BE9E1D41D6AFA6500834F08 /* LPNewsCommentOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9E1D31D6AFA6500834F08 /* LPNewsCommentOperation.m */; };
 		A0AC7548470CCBA46E294FCF /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368E49576CDBD8B779D43C5 /* libPods-LovePlayNews.a */; };
+		B00A86BF1D728EF700B84F8F /* UIViewController+LPJump.m in Sources */ = {isa = PBXBuildFile; fileRef = B00A86BD1D728EF700B84F8F /* UIViewController+LPJump.m */; };
+		B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00A86C11D729E1100B84F8F /* LPWebViewController.m */; };
 		B07A5DF11D7138E900C18C27 /* LPRecommendItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B07A5DF01D7138E900C18C27 /* LPRecommendItemCell.m */; };
 		B08D88F11D685E870048557C /* LPNewsCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F01D685E870048557C /* LPNewsCommentController.m */; };
 		B08D88F51D68635C0048557C /* LPNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F41D68635C0048557C /* LPNavigationBarView.m */; };
@@ -136,8 +137,6 @@
 		2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsFavorCellNode.m; sourceTree = "<group>"; };
 		2B6CC4A01D6323A900CE3F33 /* NSDictionary+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Params.h"; sourceTree = "<group>"; };
 		2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Params.m"; sourceTree = "<group>"; };
-		2B7C5DCA1D6D4413005B30B5 /* LPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebViewController.h; sourceTree = "<group>"; };
-		2B7C5DCB1D6D4413005B30B5 /* LPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWebViewController.m; sourceTree = "<group>"; };
 		2B7C5DCE1D6D4433005B30B5 /* LPRefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPRefreshGifHeader.h; sourceTree = "<group>"; };
 		2B7C5DCF1D6D4433005B30B5 /* LPRefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPRefreshGifHeader.m; sourceTree = "<group>"; };
 		2B7C5DD11D6D4448005B30B5 /* LPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLoadingView.h; sourceTree = "<group>"; };
@@ -244,6 +243,10 @@
 		2BE9E1D31D6AFA6500834F08 /* LPNewsCommentOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentOperation.m; sourceTree = "<group>"; };
 		4D4BA0AA1064CB12BA750010 /* Pods-LovePlayNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.debug.xcconfig"; sourceTree = "<group>"; };
 		97F536CF2561A47B92A45EF3 /* Pods-LovePlayNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LovePlayNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-LovePlayNews/Pods-LovePlayNews.release.xcconfig"; sourceTree = "<group>"; };
+		B00A86BC1D728EF700B84F8F /* UIViewController+LPJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LPJump.h"; sourceTree = "<group>"; };
+		B00A86BD1D728EF700B84F8F /* UIViewController+LPJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LPJump.m"; sourceTree = "<group>"; };
+		B00A86C01D729E1100B84F8F /* LPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWebViewController.h; sourceTree = "<group>"; };
+		B00A86C11D729E1100B84F8F /* LPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWebViewController.m; sourceTree = "<group>"; };
 		B07A5DEF1D7138E900C18C27 /* LPRecommendItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPRecommendItemCell.h; sourceTree = "<group>"; };
 		B07A5DF01D7138E900C18C27 /* LPRecommendItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPRecommendItemCell.m; sourceTree = "<group>"; };
 		B08D88EF1D685E870048557C /* LPNewsCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentController.h; sourceTree = "<group>"; };
@@ -404,15 +407,6 @@
 				2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */,
 			);
 			path = "MBProgressHUD+MJ";
-			sourceTree = "<group>";
-		};
-		2B7C5DC91D6D4413005B30B5 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				2B7C5DCA1D6D4413005B30B5 /* LPWebViewController.h */,
-				2B7C5DCB1D6D4413005B30B5 /* LPWebViewController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		2B7C5DCC1D6D4413005B30B5 /* View */ = {
@@ -728,7 +722,7 @@
 		2B93A44A1D5C44B20016B53F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2B7C5DC91D6D4413005B30B5 /* Controller */,
+				B00A86B91D728EF700B84F8F /* Controller */,
 				2B7C5DCC1D6D4413005B30B5 /* View */,
 			);
 			path = Common;
@@ -776,6 +770,17 @@
 				B0E744C71D71B68200B011E5 /* LPImageInfoCellNode.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B00A86B91D728EF700B84F8F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B00A86C01D729E1100B84F8F /* LPWebViewController.h */,
+				B00A86C11D729E1100B84F8F /* LPWebViewController.m */,
+				B00A86BC1D728EF700B84F8F /* UIViewController+LPJump.h */,
+				B00A86BD1D728EF700B84F8F /* UIViewController+LPJump.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B08D88F21D6863300048557C /* View */ = {
@@ -932,10 +937,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00A86BF1D728EF700B84F8F /* UIViewController+LPJump.m in Sources */,
 				2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */,
 				B08D88F51D68635C0048557C /* LPNavigationBarView.m in Sources */,
 				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
 				2B7C5DD31D6D4448005B30B5 /* LPLoadingView.m in Sources */,
+				B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */,
 				2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */,
 				2B8A00FC1D5AB77800F04812 /* LPNewsCommentModel.m in Sources */,
 				2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */,
@@ -946,7 +953,6 @@
 				2B8A01011D5B2C0F00F04812 /* LPNewsTitleHeaderView.m in Sources */,
 				2B8174CC1D4F2B4400BA297C /* NSString+Pinyin.m in Sources */,
 				2B8174F31D4F39A400BA297C /* TYBatchRequest.m in Sources */,
-				2B7C5DCD1D6D4413005B30B5 /* LPWebViewController.m in Sources */,
 				2B8174E01D4F32BF00BA297C /* LPNavigationController.m in Sources */,
 				2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */,
 				2B8174D01D4F2B4400BA297C /* UIImage+Clip.m in Sources */,

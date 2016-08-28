@@ -7,8 +7,11 @@
 //
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+#import "LPTopicImageInfo.h"
 
 @interface LPImagePagerCellNode : ASCellNode
+
+@property (nonatomic, copy) void(^didSelectImageInfoHandle)(LPTopicImageInfo *);
 
 - (instancetype)initWithImageInfos:(NSArray *)imageInfos;
 

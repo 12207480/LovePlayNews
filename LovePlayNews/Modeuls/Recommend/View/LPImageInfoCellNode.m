@@ -22,7 +22,6 @@
 {
     if (self = [super init]) {
         _imageInfo = imageInfo;
-        
         [self addImageNode];
     }
     return self;

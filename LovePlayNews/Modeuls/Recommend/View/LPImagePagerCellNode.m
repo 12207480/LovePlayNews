@@ -23,7 +23,7 @@
 {
     if (self = [super init]) {
         _imageInfos = imageInfos;
-        
+        self.userInteractionEnabled = YES;
         [self addPagerNode];
     }
     return self;
@@ -48,6 +48,7 @@
 {
     [super didLoad];
     _pagerNode.view.pagingEnabled = NO;
+    _pagerNode.view.allowsSelection = YES;
     [_pagerNode reloadData];
 }
 
@@ -77,6 +78,15 @@
 - (ASSizeRange)pagerNode:(ASPagerNode *)pagerNode constrainedSizeForNodeAtIndexPath:(NSIndexPath *)indexPath
 {
     return ASSizeRangeMake(CGSizeMake(267, 113),CGSizeMake(267, 113));
+}
+
+#pragma mark - ASPagerDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_didSelectImageInfoHandle) {
+        _didSelectImageInfoHandle(_imageInfos[indexPath.row]);
+    }
 }
 
 @end

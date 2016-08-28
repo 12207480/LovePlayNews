@@ -11,12 +11,16 @@
 #import "LPRecommendItemCell.h"
 #import "LPLoadingView.h"
 #import "LPImagePagerCellNode.h"
+#import "LPNavigationBarView.h"
+#import "UIView+Nib.h"
+#import "UIViewController+LPJump.h"
 
 @interface LPRecommendController ()<ASCollectionDataSource, ASCollectionDelegate>
 
 // UI
 @property (nonatomic, strong) ASCollectionNode *collectionNode;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, weak) LPNavigationBarView *navBar;
 
 // Data
 @property (nonatomic, strong) NSArray *topicDatas;
@@ -55,19 +59,39 @@ static NSString *footerId = @"UICollectionReusableView";
     [self.node addSubnode:_collectionNode];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.view.backgroundColor = [UIColor whiteColor];
     [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionFooter];
     
+    [self addNavBarView];
+    
     [self loadData];
+}
+
+- (void)addNavBarView
+{
+    LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
+    navBar.title = @"精选";
+    [self.node.view addSubview:navBar];
+    _navBar = navBar;
 }
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _collectionNode.frame = self.view.bounds;
+    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.node.frame), kNavBarHeight);
+    _collectionNode.frame = CGRectMake(0, kNavBarHeight, CGRectGetWidth(self.node.frame), CGRectGetHeight(self.node.frame) - kNavBarHeight);
 }
 
 - (void)loadData
@@ -78,7 +102,7 @@ static NSString *footerId = @"UICollectionReusableView";
     TYBatchRequest *batchRequest = [[TYBatchRequest alloc]init];
     [batchRequest addRequestArray:@[imageInfosRequest,topicRequest]];
     
-    [LPLoadingView showLoadingInView:self.view];
+    [LPLoadingView showLoadingInView:self.view edgeInset:UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0)];
     [batchRequest loadWithSuccessBlock:^(TYBatchRequest *request) {
         if (request.requestCompleteCount >= 2) {
             LPHttpRequest *imageInfos = request.batchRequstArray[0];
@@ -119,8 +143,13 @@ static NSString *footerId = @"UICollectionReusableView";
         case 0:
         {
             NSArray *imageInfos = _imageInfoDatas;
+            __typeof (self) __weak weakSelf = self;
             ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
                 LPImagePagerCellNode *cellNode = [[LPImagePagerCellNode alloc]initWithImageInfos:imageInfos];
+                
+                [cellNode setDidSelectImageInfoHandle:^(LPTopicImageInfo *imageInfo) {
+                    [weakSelf gotoNewsDetailController:imageInfo.docid];
+                }];
                 return cellNode;
             };
             return cellNodeBlock;
@@ -149,6 +178,13 @@ static NSString *footerId = @"UICollectionReusableView";
         return cellNode;
     }
     return nil;
+}
+
+#pragma mark - ASCollectionDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%@",indexPath);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section

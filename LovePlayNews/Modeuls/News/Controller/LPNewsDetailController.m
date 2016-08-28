@@ -60,6 +60,12 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     [self.node addSubnode:_tableNode];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

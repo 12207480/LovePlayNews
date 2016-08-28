@@ -11,6 +11,7 @@
 @interface LPNavigationBarView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
@@ -26,6 +27,12 @@
 {
     [super awakeFromNib];
     
+}
+
+- (void)didMoveToSuperview
+{
+    [super didMoveToSuperview];
+    self.backBtn.hidden = self.viewController.navigationController.viewControllers.count <= 1;
 }
 
 #pragma mark - action
