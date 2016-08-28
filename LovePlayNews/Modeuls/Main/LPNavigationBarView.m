@@ -26,7 +26,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
 }
 
 - (void)didMoveToSuperview
