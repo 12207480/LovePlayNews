@@ -11,5 +11,6 @@ pod 'MXParallaxHeader', '~> 0.5.2'
 pod 'TOWebViewController'
 pod 'JTSImageViewController'
 pod 'YYWebImage'
+pod 'KMNavigationBarTransition'
 
 end

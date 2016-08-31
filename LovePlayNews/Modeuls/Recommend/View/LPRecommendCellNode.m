@@ -1,14 +1,14 @@
 //
-//  LPRecommendItemCell.m
+//  LPRecommendCellNode.m
 //  LovePlayNews
 //
 //  Created by tanyang on 16/8/27.
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPRecommendItemCell.h"
+#import "LPRecommendCellNode.h"
 
-@interface LPRecommendItemCell ()
+@interface LPRecommendCellNode ()
 
 @property (nonatomic, strong) LPRecommendItem *item;
 
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation LPRecommendItemCell
+@implementation LPRecommendCellNode
 
 - (instancetype)initWithItem:(LPRecommendItem *)item
 {

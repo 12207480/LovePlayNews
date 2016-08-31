@@ -39,14 +39,12 @@
 {
     self.tabBar.shadowImage = [UIImage imageNamed:@"tabbartop-line"];
     if (kIsIOS8Later) {
-        [self.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:237/255.0 green:239/255.0 blue:244/255.0 alpha:0.85]]];
+        [self.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:238/255.0 green:240/255.0 blue:245/255.0 alpha:0.78]]];
         // blur效果
         UIVisualEffectView *visualEfView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
         visualEfView.frame = CGRectMake(0, -1, CGRectGetWidth(self.tabBar.frame), CGRectGetHeight(self.tabBar.frame)+1);
         visualEfView.alpha = 1.0;
         [self.tabBar insertSubview:visualEfView atIndex:0];
-    }else {
-        [self.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.96]]];
     }
     
     [[UITabBarItem appearanceWhenContainedIn:[LPTabBarController class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor colorWithRed:113/255.0 green:113/255.0 blue:113/255.0 alpha:1.0] } forState:UIControlStateNormal];

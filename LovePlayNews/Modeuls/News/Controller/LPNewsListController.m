@@ -10,8 +10,11 @@
 #import "LPNewsInfoOperation.h"
 #import "LPNewsCellNode.h"
 #import "LPNewsImageCellNode.h"
+#import "LPNewsImageTitleCellNode.h"
 #import "LPNewsDetailController.h"
 #import "LPRefreshGifHeader.h"
+#import "LPLoadingView.h"
+#import "LPLoadFailedView.h"
 
 @interface LPNewsListController ()<ASTableDelegate, ASTableDataSource>
 
@@ -20,7 +23,6 @@
 
 // Data
 @property (nonatomic, strong) NSArray *newsList;
-
 @property (nonatomic, assign) NSInteger curIndexPage;
 @property (nonatomic, assign) BOOL haveMore;
 
@@ -34,7 +36,7 @@
 - (instancetype)init
 {
     if (self = [super initWithNode:[ASDisplayNode new]]) {
-        
+        _sourceType = 1;
         [self addTableNode];
     }
     return self;
@@ -49,12 +51,6 @@
     [self.node addSubnode:_tableNode];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
@@ -65,16 +61,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self configureTableView];
+    
+    [self addRefreshHeader];
+    
+    [self loadData];
+}
+
+- (void)configureTableView
+{
+    if (_extendedTabBarInset) {
+        _tableNode.view.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+        _tableNode.view.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
+    }
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self addRefreshHeader];
 }
 
 - (void)addRefreshHeader
 {
     LPRefreshGifHeader *header = [LPRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     _tableNode.view.mj_header = header;
-    [header beginRefreshing];
 }
 
 // 显示更新新闻条数
@@ -115,6 +122,9 @@
     }else {
         curIndexPage = 0;
         _haveMore = YES;
+        if (!_newsList) {
+            [LPLoadingView showLoadingInView:self.view];
+        }
     }
     
     LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:curIndexPage];
@@ -140,6 +150,7 @@
                 _newsList = request.responseObject.data;
                 [_tableNode.view reloadData];
                 _curIndexPage++;
+                [LPLoadingView hideLoadingForView:self.view];
             }else {
                 LPNewsInfoModel *infoModel = _newsList.firstObject;
                 NSMutableArray *indexPaths = [NSMutableArray array];
@@ -172,6 +183,13 @@
             [context completeBatchFetching:YES];
         }else {
             [_tableNode.view.mj_header endRefreshing];
+            [LPLoadingView hideLoadingForView:self.view];
+            if (_newsList.count == 0) {
+                __weak typeof(self) weakSelf = self;
+                [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+                    [weakSelf loadData];
+                }];
+            }
         }
     }];
 }
@@ -198,13 +216,17 @@
     LPNewsInfoModel *newsInfo = _newsList[indexPath.row];
     ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
         LPNewsBaseCellNode *cellNode = nil;
-        switch (newsInfo.showType) {
-            case 2:
-                cellNode = [[LPNewsImageCellNode alloc] initWithNewsInfo:newsInfo];
-                break;
-            default:
-                cellNode = [[LPNewsCellNode alloc] initWithNewsInfo:newsInfo];
-                break;
+        if (_sourceType == 0) {
+            cellNode = [[LPNewsImageTitleCellNode alloc] initWithNewsInfo:newsInfo];
+        }else {
+            switch (newsInfo.showType) {
+                case 2:
+                    cellNode = [[LPNewsImageCellNode alloc] initWithNewsInfo:newsInfo];
+                    break;
+                default:
+                    cellNode = [[LPNewsCellNode alloc] initWithNewsInfo:newsInfo];
+                    break;
+            }
         }
         return cellNode;
     };
@@ -226,14 +248,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)dealloc{
+    NSLog(@"LPNewsListController dealloc");
 }
-*/
 
 @end

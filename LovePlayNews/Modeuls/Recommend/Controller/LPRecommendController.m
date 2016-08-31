@@ -8,19 +8,17 @@
 
 #import "LPRecommendController.h"
 #import "LPRecommendOperation.h"
-#import "LPRecommendItemCell.h"
+#import "LPRecommendCellNode.h"
 #import "LPLoadingView.h"
 #import "LPImagePagerCellNode.h"
-#import "LPNavigationBarView.h"
-#import "UIView+Nib.h"
 #import "UIViewController+LPJump.h"
+#import "LPGameNewsController.h"
 
 @interface LPRecommendController ()<ASCollectionDataSource, ASCollectionDelegate>
 
 // UI
 @property (nonatomic, strong) ASCollectionNode *collectionNode;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, weak) LPNavigationBarView *navBar;
 
 // Data
 @property (nonatomic, strong) NSArray *topicDatas;
@@ -62,36 +60,23 @@ static NSString *footerId = @"UICollectionReusableView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionFooter];
-    
-    [self addNavBarView];
-    
-    [self loadData];
-}
-
-- (void)addNavBarView
-{
-    LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
-    navBar.title = @"精选";
-    [self.node.view addSubview:navBar];
-    _navBar = navBar;
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.node.frame), kNavBarHeight);
-    _collectionNode.frame = CGRectMake(0, kNavBarHeight, CGRectGetWidth(self.node.frame), CGRectGetHeight(self.node.frame) - kNavBarHeight);
+    _collectionNode.frame = self.node.bounds;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"精选";
+    self.view.backgroundColor = [UIColor whiteColor];
+    [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionFooter];
+    
+    [self loadData];
 }
 
 - (void)loadData
@@ -102,7 +87,7 @@ static NSString *footerId = @"UICollectionReusableView";
     TYBatchRequest *batchRequest = [[TYBatchRequest alloc]init];
     [batchRequest addRequestArray:@[imageInfosRequest,topicRequest]];
     
-    [LPLoadingView showLoadingInView:self.view edgeInset:UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0)];
+    [LPLoadingView showLoadingInView:self.view];
     [batchRequest loadWithSuccessBlock:^(TYBatchRequest *request) {
         if (request.requestCompleteCount >= 2) {
             LPHttpRequest *imageInfos = request.batchRequstArray[0];
@@ -116,6 +101,15 @@ static NSString *footerId = @"UICollectionReusableView";
     } failureBlock:^(TYBatchRequest *request, NSError *error) {
         [LPLoadingView hideLoadingForView:self.view];
     }];
+}
+
+- (void)gotoGameNewsControllerWithItem:(LPRecommendItem *)item
+{
+    LPGameNewsController *gameNewsVC = [[LPGameNewsController alloc]init];
+    gameNewsVC.newsTopId = item.topicId;
+    gameNewsVC.newsTitle = item.topicName;
+    gameNewsVC.sourceType = item.sourceType;
+    [self.navigationController pushViewController:gameNewsVC animated:YES];
 }
 
 #pragma mark - ASCollectionDataSource
@@ -158,7 +152,7 @@ static NSString *footerId = @"UICollectionReusableView";
         {
             LPRecommendItem *item = _topicDatas[indexPath.row];
             ASCellNode *(^cellNodeBlock)() = ^ASCellNode *() {
-                LPRecommendItemCell *cellNode = [[LPRecommendItemCell alloc]initWithItem:item];
+                LPRecommendCellNode *cellNode = [[LPRecommendCellNode alloc]initWithItem:item];
                 return cellNode;
             };
             return cellNodeBlock;
@@ -184,7 +178,10 @@ static NSString *footerId = @"UICollectionReusableView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@",indexPath);
+    if (indexPath.section == 1) {
+        LPRecommendItem *item = _topicDatas[indexPath.row];
+        [self gotoGameNewsControllerWithItem:item];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section

@@ -21,7 +21,6 @@ static NSArray *s_refreshingImages = nil;
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
     _edgeInset = UIEdgeInsetsZero;
     
     [self addAnimalImages];
@@ -120,12 +119,6 @@ static NSArray *s_refreshingImages = nil;
     }completion:^(BOOL finished) {
         [self hideNoAnimation];
     }];
-//    for (UIView *subView in view.subviews) {
-//        if ([subView isKindOfClass:[self class]]) {
-//            [((LPLoadingView *)subView).imageView stopAnimating];
-//            [subView removeFromSuperview];
-//        }
-//    }
 }
 
 - (void)hideNoAnimation

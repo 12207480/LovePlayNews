@@ -25,14 +25,16 @@
 
 - (void)configureNavBarTheme
 {
+    self.navigationBar.tintColor = [UIColor whiteColor];
+    
     // 设置导航栏的标题颜色，字体
     NSDictionary* textAttrs = @{NSForegroundColorAttributeName:
                                     [UIColor whiteColor],
                                 NSFontAttributeName:
-                                    [UIFont fontWithName:@"Helvetica"size:18.0],
+                                    [UIFont fontWithName:@"Helvetica"size:20.0],
                                 };
     [self.navigationBar setTitleTextAttributes:textAttrs];
-    
+
     //设置导航栏的背景图片
     [self.navigationBar setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:34/255.0 green:34/255.0 blue:34/255.0 alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
     
@@ -60,6 +62,9 @@
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (self.viewControllers.count <= 1) {
+        return NO;
+    }
     return self.enableRightGesture;
 }
 
@@ -70,9 +75,16 @@
 {
     if (self.viewControllers.count >= 1) {
         viewController.hidesBottomBarWhenPushed = YES;
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back2_pgnews"] style:UIBarButtonItemStylePlain target:self action:@selector(navGoBack)];
     }
-    
     [super pushViewController:viewController animated:animated];
+}
+
+#pragma mark - action
+
+- (void)navGoBack
+{
+    [self popViewControllerAnimated:YES];
 }
 
 

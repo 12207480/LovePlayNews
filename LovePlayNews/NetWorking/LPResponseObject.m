@@ -61,15 +61,12 @@
     _status = [[response objectForKey:@"code"] integerValue];
     _msg = [response objectForKey:@"message"];
     id json = [response objectForKey:@"info"];
-//    _pgIndex = [[response objectForKey:@"pgIndex"] integerValue];
-//    _pgSize = [[response objectForKey:@"pgSize"] integerValue];
-//    _count = [[response objectForKey:@"count"] integerValue];
     
     if (_modelClass) {
         if ([json isKindOfClass:[NSDictionary class]]) {
             _data = [[self modelClass] ty_ModelWithDictonary:json];
         }else if ([json isKindOfClass:[NSArray class]]) {
-            _data = [[self modelClass] ty_modelArrayWithDictionaryArray:json];
+            _data = [[self modelClass] ty_ModelArrayWithDictionaryArray:json];
         }
     }else {
         _data = json;

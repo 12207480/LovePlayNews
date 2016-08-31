@@ -47,9 +47,9 @@
 - (NSDictionary *)ty_ModelToDictonary;
 
 // dic array to model array
-+ (NSArray *)ty_modelArrayWithDictionaryArray:(NSArray *)dicArray;
++ (NSArray *)ty_ModelArrayWithDictionaryArray:(NSArray *)dicArray;
 // model array to dic array
-+ (NSArray *)ty_dictionaryArrayWithModelArray:(NSArray *)dicArray;
++ (NSArray *)ty_DictionaryArrayWithModelArray:(NSArray *)dicArray;
 
 // NSCoding
 - (void)ty_EncodeWithCoder:(NSCoder *)aCoder;

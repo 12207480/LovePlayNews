@@ -13,23 +13,21 @@
 #import "MXParallaxHeader.h"
 #import "LPNewsTitleHeaderView.h"
 #import "LPNewsCommentFooterView.h"
-#import "UIView+Nib.h"
 #import "LPNewsTitleSectionView.h"
 #import "LPNewsCommentCellNode.h"
 #import "LPNewsFavorCellNode.h"
-#import "LPNavigationBarView.h"
 #import "LPNewsCommentController.h"
 #import "LPLoadingView.h"
+#import "LPLoadFailedView.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
 @property (nonatomic, strong) LPNewsTitleHeaderView *headerView;
-@property (nonatomic, weak) LPNavigationBarView *navBar;
+
 // Data
 @property (nonatomic, strong) LPNewsDetailModel *newsDetail;
-//@property (nonatomic, strong) NSArray *hotComments;
 @property (nonatomic, strong) NSArray *favors;
 @property (nonatomic, assign) BOOL webViewFinishLoad;
 
@@ -63,18 +61,15 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self configureController];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self configureTableView];
-    
-    [self addNavBarView];
     
     [self addHeaderView];
     
@@ -84,15 +79,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.node.frame), kNavBarHeight);
-    _tableNode.frame = CGRectMake(0, kNavBarHeight, CGRectGetWidth(self.node.frame), CGRectGetHeight(self.node.frame) - kNavBarHeight);
-}
-
-- (void)addNavBarView
-{
-    LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
-    [self.node.view addSubview:navBar];
-    _navBar = navBar;
+    _tableNode.frame = self.node.bounds;
 }
 
 - (void)addHeaderView
@@ -105,12 +92,6 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 }
 
 #pragma mark - configure
-
-- (void)configureController
-{
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-}
 
 - (void)configureTableView
 {
@@ -137,23 +118,26 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 
 - (void)loadData
 {
-    [LPLoadingView showLoadingInView:self.view edgeInset:UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0)];
+    [LPLoadingView showLoadingInView:self.view];
     LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsDetailWithNewsId:_newsId];
+    newsListRequest.asynCompleteQueue = YES;
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
          LPNewsDetailModel *newsDetail = request.responseObject.data;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self replaceDetailImageWithArticle:newsDetail.article];
-//            NSArray *hotComments = [self hotCommentsWithTie:newsDetail.tie];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _newsDetail = newsDetail;
-//                _hotComments = hotComments;
-                _favors = newsDetail.article.relative_sys;
-                [self configureHeaderView];
-                [_tableNode.view reloadData];
-            });
+        [self replaceDetailImageWithArticle:newsDetail.article];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _newsDetail = newsDetail;
+            _favors = newsDetail.article.relative_sys;
+            [self configureHeaderView];
+            [_tableNode.view reloadData];
         });
     } failureBlock:^(LPHttpRequest *request, NSError *error) {
-        [LPLoadingView hideLoadingForView:self.view];
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [LPLoadingView hideLoadingForView:self.view];
+             __weak typeof(self) weakSelf = self;
+             [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+                 [weakSelf loadData];
+             }];
+        });
     }];
 }
 
@@ -166,25 +150,6 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     }
     article.body = [body copy];
 }
-
-//- (NSArray *)hotCommentsWithTie:(LPNewsCommentModel *)tie
-//{
-//    NSArray *hotComments = [[tie.comments allValues] sortedArrayUsingComparator:^NSComparisonResult(LPNewsCommentItem *obj1, LPNewsCommentItem *obj2) {
-//        if (obj1.vote < obj2.vote) {
-//            return NSOrderedDescending;
-//        }else if (obj1.vote > obj2.vote) {
-//            return NSOrderedAscending;
-//        }else {
-//            return NSOrderedSame;
-//        }
-//    }];
-//    
-//    for (LPNewsCommentItem *item in hotComments) {
-//        item.content = [item.content stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
-//    }
-//    
-//    return hotComments;
-//}
 
 #pragma mark - action
 
@@ -267,10 +232,8 @@ static NSString *footerId = @"LPNewsCommentFooterView";
         }
     }else if (indexPath.section == 1){
         // section 1
-        //LPNewsCommonItem *item = _hotComments[indexPath.row];
         NSArray *floors = _newsDetail.tie.commentIds[indexPath.row];
         ASCellNode *(^commentCellNodeBlock)() = ^ASCellNode *() {
-            //LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItem:item];
             LPNewsCommentCellNode *cellNode = [[LPNewsCommentCellNode alloc] initWithCommentItems:_newsDetail.tie.comments floors:floors];
             return cellNode;
         };
@@ -370,6 +333,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)dealloc{
     _tableNode.delegate = nil;
     _tableNode.dataSource = nil;
+    NSLog(@"LPNewsDetailController dealloc");
 }
 
 @end

@@ -14,5 +14,6 @@
 
 #import "Define_Basic.h"
 #import "Function_Basic.h"
+#import "Class_Basic.h"
 
 #endif /* LovePlayNews_Prefix_pch */

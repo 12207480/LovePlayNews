@@ -14,8 +14,6 @@
 
 @implementation LPNewsTitleHeaderView
 
-
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];

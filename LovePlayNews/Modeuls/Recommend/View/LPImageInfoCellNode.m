@@ -13,6 +13,7 @@
 @property (nonatomic, strong) LPTopicImageInfo *imageInfo;
 
 @property (nonatomic, strong) ASNetworkImageNode *imageNode;
+@property (nonatomic, strong) ASTextNode *titleNode;
 
 @end
 
@@ -22,7 +23,11 @@
 {
     if (self = [super init]) {
         _imageInfo = imageInfo;
+        
         [self addImageNode];
+        
+        [self addTitleNode];
+        
     }
     return self;
 }
@@ -39,11 +44,27 @@
     _imageNode = imageNode;
 }
 
+- (void)addTitleNode
+{
+    ASTextNode *titleNode = [[ASTextNode alloc]init];
+    titleNode.layerBacked = YES;
+    titleNode.maximumNumberOfLines = 1;
+    titleNode.backgroundColor = RGBA_255(0, 0, 0, 0.2);
+    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+    [paragraph setAlignment:NSTextAlignmentCenter];
+    NSDictionary *attrs = @{ NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14.0f] ,NSForegroundColorAttributeName: [UIColor whiteColor],NSParagraphStyleAttributeName:paragraph};
+    titleNode.attributedText = [[NSAttributedString alloc]initWithString:_imageInfo.title attributes:attrs];
+    [self addSubnode:titleNode];
+    _titleNode = titleNode;
+}
+
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
     _imageNode.preferredFrameSize = CGSizeMake(267, 113);
-    ASInsetLayoutSpec *insetLayout = [ASInsetLayoutSpec insetLayoutSpecWithInsets:UIEdgeInsetsZero child:_imageNode];
-    return insetLayout;
+    _titleNode.flexShrink = YES;
+    ASStackLayoutSpec *verStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:0 justifyContent:ASStackLayoutJustifyContentEnd alignItems:ASStackLayoutAlignItemsStretch children:@[_titleNode]];
+    ASOverlayLayoutSpec *overlayLayout = [ASOverlayLayoutSpec overlayLayoutSpecWithChild:_imageNode overlay:verStackLayout];
+    return overlayLayout;
 }
 
 @end

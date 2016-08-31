@@ -1,5 +1,5 @@
 //
-//  LPRecommendItemCell.h
+//  LPRecommendCellNode.h
 //  LovePlayNews
 //
 //  Created by tanyang on 16/8/27.
@@ -9,7 +9,7 @@
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 #import "LPRecommendItem.h"
 
-@interface LPRecommendItemCell : ASCellNode
+@interface LPRecommendCellNode : ASCellNode
 
 - (instancetype)initWithItem:(LPRecommendItem *)item;
 

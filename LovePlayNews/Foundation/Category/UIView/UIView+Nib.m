@@ -10,8 +10,6 @@
 
 @implementation UIView (TY_Nib)
 
-
-
 + (UINib *)loadNib
 {
     return [self loadNibNamed:NSStringFromClass([self class])];

@@ -23,6 +23,7 @@ PODS:
     - AsyncDisplayKit/Core
     - PINRemoteImage/iOS (>= 3.0.0-beta.3)
   - JTSImageViewController (1.5.1)
+  - KMNavigationBarTransition (0.0.10)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.1)
   - MXParallaxHeader (0.5.2)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - AFNetworking
   - AsyncDisplayKit (~> 1.9.90)
   - JTSImageViewController
+  - KMNavigationBarTransition
   - MBProgressHUD
   - MJRefresh
   - MXParallaxHeader (~> 0.5.2)
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AsyncDisplayKit: 926ded3ca3fb7026565e0e81f0e132fea4d3a6eb
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
+  KMNavigationBarTransition: 7a519f915cfe6fe09764b2061ea01043b445f7d2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 70a47c5543b567cdaf70ead5a6e99ce820652eb9
   MXParallaxHeader: 5070ba8e8af27ec793c0d32ae82cfd2318e59635
@@ -66,6 +69,6 @@ SPEC CHECKSUMS:
   YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
   YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: ff960d293a8152f84e0fc35cf693cf643cda97e7
+PODFILE CHECKSUM: 9628ad87852df30ce30af0147e09c19c5c47ae15
 
 COCOAPODS: 1.0.1

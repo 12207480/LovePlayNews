@@ -7,8 +7,6 @@
 //
 
 #import "LPNewsCommentController.h"
-#import "LPNavigationBarView.h"
-#import "UIView+Nib.h"
 #import "LPNewsCommentOperation.h"
 #import "LPNewsCommentCellNode.h"
 #import "LPNewsTitleSectionView.h"
@@ -18,7 +16,6 @@
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
-@property (nonatomic, weak) LPNavigationBarView *navBar;
 
 // Data
 @property (nonatomic, strong) LPNewsCommentModel *hotComments;
@@ -54,10 +51,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self configureController];
-    
-    [self addNavBarView];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     [self configureTableView];
     
@@ -67,28 +61,13 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.node.frame), kNavBarHeight);
-    _tableNode.frame = CGRectMake(0, kNavBarHeight, CGRectGetWidth(self.node.frame), CGRectGetHeight(self.node.frame) - kNavBarHeight);
-}
-
-- (void)configureController
-{
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-}
-
-- (void)addNavBarView
-{
-    LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
-    [self.node.view addSubview:navBar];
-    _navBar = navBar;
+    _tableNode.frame = self.node.bounds;
 }
 
 - (void)configureTableView
 {
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableNode.view.tableFooterView = [[UIView alloc]init];
-    
     [_tableNode.view registerClass:[LPNewsTitleSectionView class] forHeaderFooterViewReuseIdentifier:headerId];
 }
 
@@ -96,7 +75,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 - (void)loadData
 {
-    [LPLoadingView showLoadingInView:self.view edgeInset:UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0)];
+    [LPLoadingView showLoadingInView:self.view];
     LPHttpRequest *hotCommentsRequest = [LPNewsCommentOperation requestHotCommentWithNewsId:_newsId];
     
     _curIndexPage = 0;

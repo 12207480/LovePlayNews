@@ -52,6 +52,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // 把视图扩展到底部tabbar
+    self.edgesForExtendedLayout = UIRectEdgeBottom;
+    
     self.pagerBarView.backgroundColor = RGB_255(34, 34, 34);
     self.progressColor = RGB_255(237, 67, 89);
     self.normalTextColor = [UIColor whiteColor];
@@ -87,8 +90,9 @@
 {
     NSDictionary *newsPageInfo = _newsPageInfos[index];
     LPNewsListController *newsVC = [[LPNewsListController alloc]init];
-    newsVC.newsTitle = [newsPageInfo objectForKey:@"title"];
     newsVC.newsTopId = [newsPageInfo objectForKey:@"topId"];
+    // 扩展到底部tabbar
+    newsVC.extendedTabBarInset = YES;
     return newsVC;
 }
 

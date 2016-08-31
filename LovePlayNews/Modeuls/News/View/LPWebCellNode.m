@@ -78,6 +78,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(webViewTapAction:)];
     tap.delegate = self;
     tap.cancelsTouchesInView = NO;
+    tap.delaysTouchesBegan = YES;
     [self.webView addGestureRecognizer:tap];
 }
 
