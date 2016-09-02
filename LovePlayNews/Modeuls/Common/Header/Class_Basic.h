@@ -10,8 +10,11 @@
 #define Class_Basic_h
 
 #ifdef __OBJC__
+
 #import <UIKit/UIKit.h>
 #import "UIView+Nib.h"
+#import "NSString+LPImageURL.h"
+
 #endif
 
 #endif /* Class_Basic_h */

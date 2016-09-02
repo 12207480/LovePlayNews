@@ -41,7 +41,7 @@
 {
     ASNetworkImageNode *imageNode = [[ASNetworkImageNode alloc]init];
     imageNode.layerBacked = YES;
-    imageNode.URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://timge8.126.net/image?w=750&h=20000&quality=70&url=%@",_favor.imgsrc]];
+    imageNode.URL = [_favor.imgsrc appropriateImageURL];
     [self addSubnode:imageNode];
     _imageNode = imageNode;
 }

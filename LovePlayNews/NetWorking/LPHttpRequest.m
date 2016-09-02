@@ -14,15 +14,15 @@
 
 - (instancetype)init
 {
-    if (self = [super init]) {
-        self.baseURL = BaseURL;
+    if (self = [self initWithModelClass:nil]) {
     }
     return self;
 }
 
 - (instancetype)initWithModelClass:(Class)modelClass
 {
-    if (self = [self init]) {
+    if (self = [super init]) {
+        self.baseURL = BaseURL;
         self.responseParser = [[LPResponseObject alloc]initWithModelClass:modelClass];
     }
     return self;

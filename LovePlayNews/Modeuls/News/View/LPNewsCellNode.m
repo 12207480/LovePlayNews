@@ -49,7 +49,7 @@
 {
     UIImageView *imageView = [[UIImageView alloc]init];
     imageView.backgroundColor = RGB_255(245, 245, 245);
-    imageView.yy_imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://timge8.126.net/image?w=750&h=20000&quality=70&url=%@",self.newsInfo.imgsrc.firstObject]];
+    imageView.yy_imageURL = [self.newsInfo.imgsrc.firstObject appropriateImageURL];
     [self.view addSubview:imageView];
     _imageView = imageView;
 }
@@ -71,7 +71,6 @@
 {
     ASDisplayNode *imageNode = [[ASDisplayNode alloc]init];
     imageNode.layerBacked = YES;
-//    imageNode.URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://timge8.126.net/image?w=750&h=20000&quality=70&url=%@",self.newsInfo.imgsrc.firstObject]];
     [self addSubnode:imageNode];
     _imageNode = imageNode;
 }

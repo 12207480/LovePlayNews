@@ -39,7 +39,7 @@
     imageNode.placeholderColor = RGB_255(245, 245, 245);
     imageNode.contentMode = UIViewContentModeScaleToFill;
     imageNode.layerBacked = YES;
-    imageNode.URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://timge8.126.net/image?w=750&h=20000&quality=70&url=%@",_imageInfo.imgUrl]];
+    imageNode.URL = [_imageInfo.imgUrl appropriateImageURL];
     [self addSubnode:imageNode];
     _imageNode = imageNode;
 }

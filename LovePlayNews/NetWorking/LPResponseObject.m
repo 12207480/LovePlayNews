@@ -40,12 +40,18 @@
     
     // 根据 response 结构 应该为字典
     if (![response isKindOfClass:[NSDictionary class]]) {
+        if (!_modelClass) {
+            // _modelClass nil
+            _status = TYStauteSuccessCode;
+            return YES;
+        }
         *error = [NSError errorWithDomain:@"response is invalide, is not NSDictionary" code:-1  userInfo:nil];
         return NO;
     }
     
     // 获取自定义的状态码
-    NSInteger status = [[response objectForKey:@"code"] integerValue];
+    NSInteger status = [response objectForKey:@"code"] ? [[response objectForKey:@"code"] integerValue] : TYStauteSuccessCode;
+
     if (status != TYStauteSuccessCode) {
         _status = status;
         _msg = [response objectForKey:@"message"];
@@ -58,18 +64,26 @@
 
 - (id)parseResponse:(id)response request:(TYHttpRequest *)request
 {
-    _status = [[response objectForKey:@"code"] integerValue];
-    _msg = [response objectForKey:@"message"];
-    id json = [response objectForKey:@"info"];
-    
-    if (_modelClass) {
-        if ([json isKindOfClass:[NSDictionary class]]) {
-            _data = [[self modelClass] ty_ModelWithDictonary:json];
-        }else if ([json isKindOfClass:[NSArray class]]) {
-            _data = [[self modelClass] ty_ModelArrayWithDictionaryArray:json];
+    if ([response isKindOfClass:[NSDictionary class]]) {
+        _status = [response objectForKey:@"code"] ? [[response objectForKey:@"code"] integerValue] : TYStauteSuccessCode;
+        _msg = [response objectForKey:@"message"];
+        id json = [response objectForKey:@"info"];
+        
+        if (_modelClass) {
+            if ([json isKindOfClass:[NSDictionary class]]) {
+                _data = [[self modelClass] ty_ModelWithDictonary:json];
+            }else if ([json isKindOfClass:[NSArray class]]) {
+                _data = [[self modelClass] ty_ModelArrayWithDictionaryArray:json];
+            }
+        }else {
+            // _modelClass nil
+            _data = json ? json : response;
         }
+
     }else {
-        _data = json;
+        // _modelClass nil
+        _status = TYStauteSuccessCode;
+        _data = response;
     }
     return self;
 }
