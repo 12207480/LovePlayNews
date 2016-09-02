@@ -23,9 +23,12 @@
 		2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2B1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m */; };
 		2B50AB2F1D5DCA9000FB77AE /* LPNewsImageCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2E1D5DCA9000FB77AE /* LPNewsImageCellNode.m */; };
 		2B50AB331D5DCB1C00FB77AE /* LPNewsBaseCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB321D5DCB1C00FB77AE /* LPNewsBaseCellNode.m */; };
+		2B51A6B01D7806D900A4C7E3 /* LPADLaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A6AF1D7806D900A4C7E3 /* LPADLaunchController.m */; };
 		2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */; };
 		2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */; };
 		2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C5811D534F9300F436DE /* LPNewsCellNode.m */; };
+		2B5C40F11D7928C000296C3F /* UIImage+TYLaunchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C40F01D7928C000296C3F /* UIImage+TYLaunchImage.m */; };
+		2B5C40F71D79398E00296C3F /* LPADLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C40F61D79398E00296C3F /* LPADLaunchView.m */; };
 		2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */; };
 		2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */; };
 		2B7C5DD01D6D4433005B30B5 /* LPRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C5DCF1D6D4433005B30B5 /* LPRefreshGifHeader.m */; };
@@ -132,11 +135,17 @@
 		2B50AB2E1D5DCA9000FB77AE /* LPNewsImageCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsImageCellNode.m; sourceTree = "<group>"; };
 		2B50AB311D5DCB1C00FB77AE /* LPNewsBaseCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsBaseCellNode.h; sourceTree = "<group>"; };
 		2B50AB321D5DCB1C00FB77AE /* LPNewsBaseCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsBaseCellNode.m; sourceTree = "<group>"; };
+		2B51A6AE1D7806D900A4C7E3 /* LPADLaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPADLaunchController.h; sourceTree = "<group>"; };
+		2B51A6AF1D7806D900A4C7E3 /* LPADLaunchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPADLaunchController.m; sourceTree = "<group>"; };
 		2B57C57B1D53293A00F436DE /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		2B57C5801D534F9300F436DE /* LPNewsCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCellNode.h; sourceTree = "<group>"; };
 		2B57C5811D534F9300F436DE /* LPNewsCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCellNode.m; sourceTree = "<group>"; };
+		2B5C40EF1D7928C000296C3F /* UIImage+TYLaunchImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TYLaunchImage.h"; sourceTree = "<group>"; };
+		2B5C40F01D7928C000296C3F /* UIImage+TYLaunchImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TYLaunchImage.m"; sourceTree = "<group>"; };
+		2B5C40F51D79398E00296C3F /* LPADLaunchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPADLaunchView.h; sourceTree = "<group>"; };
+		2B5C40F61D79398E00296C3F /* LPADLaunchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPADLaunchView.m; sourceTree = "<group>"; };
 		2B6CC49D1D631E9900CE3F33 /* LPNewsFavorCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsFavorCellNode.h; sourceTree = "<group>"; };
 		2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsFavorCellNode.m; sourceTree = "<group>"; };
 		2B6CC4A01D6323A900CE3F33 /* NSDictionary+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Params.h"; sourceTree = "<group>"; };
@@ -561,6 +570,8 @@
 				2B8174DB1D4F2BFE00BA297C /* LPTabBarController.m */,
 				2B8174DE1D4F32BF00BA297C /* LPNavigationController.h */,
 				2B8174DF1D4F32BF00BA297C /* LPNavigationController.m */,
+				2B51A6AE1D7806D900A4C7E3 /* LPADLaunchController.h */,
+				2B51A6AF1D7806D900A4C7E3 /* LPADLaunchController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -649,6 +660,8 @@
 				2B8174B71D4F2B4400BA297C /* UIImage+Size.m */,
 				2B8174B81D4F2B4400BA297C /* UIImage+Snap.h */,
 				2B8174B91D4F2B4400BA297C /* UIImage+Snap.m */,
+				2B5C40EF1D7928C000296C3F /* UIImage+TYLaunchImage.h */,
+				2B5C40F01D7928C000296C3F /* UIImage+TYLaunchImage.m */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -809,6 +822,8 @@
 		B08D88F21D6863300048557C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2B5C40F51D79398E00296C3F /* LPADLaunchView.h */,
+				2B5C40F61D79398E00296C3F /* LPADLaunchView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -970,6 +985,7 @@
 				2B00ACA51D517E5E0048B5C2 /* LPHttpRequest.m in Sources */,
 				2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */,
 				2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */,
+				2B51A6B01D7806D900A4C7E3 /* LPADLaunchController.m in Sources */,
 				2B8A01011D5B2C0F00F04812 /* LPNewsTitleHeaderView.m in Sources */,
 				2B8174CC1D4F2B4400BA297C /* NSString+Pinyin.m in Sources */,
 				2B8174F31D4F39A400BA297C /* TYBatchRequest.m in Sources */,
@@ -993,11 +1009,13 @@
 				2B8174C71D4F2B4400BA297C /* NSData+Encrypt.m in Sources */,
 				2B8174F41D4F39A400BA297C /* TYChainRequest.m in Sources */,
 				2B50AB331D5DCB1C00FB77AE /* LPNewsBaseCellNode.m in Sources */,
+				2B5C40F11D7928C000296C3F /* UIImage+TYLaunchImage.m in Sources */,
 				2BAEC3C91D6FD8B50048CBD3 /* LPRecommendItem.m in Sources */,
 				2B8174F21D4F39A400BA297C /* TYBaseRequest.m in Sources */,
 				2BB90FF11D66F21D002B2B17 /* LPNewsReplyNode.m in Sources */,
 				2B00ACA61D517E5E0048B5C2 /* LPResponseObject.m in Sources */,
 				2B8174CD1D4F2B4400BA297C /* NSString+Size.m in Sources */,
+				2B5C40F71D79398E00296C3F /* LPADLaunchView.m in Sources */,
 				B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */,
 				2BA1A6F31D74350900BCED16 /* LPGameNewsController.m in Sources */,
 				2B8175031D4F417300BA297C /* TYPagerController.m in Sources */,

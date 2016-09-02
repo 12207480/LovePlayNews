@@ -68,6 +68,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.view layoutIfNeeded];
     
     [self configureTableView];
     

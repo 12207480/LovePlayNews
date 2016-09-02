@@ -79,6 +79,9 @@
 {
     if ([request serializerType] == TYRequestSerializerTypeJSON) {
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }else if ([request serializerType] == TYRequestSerializerTypeString) {
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
     }
     
     NSDictionary *headerFieldValue = [request headerFieldValues];

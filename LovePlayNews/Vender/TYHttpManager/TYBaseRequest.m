@@ -147,6 +147,7 @@
 - (void)dealloc
 {
     [self clearRequestBlock];
+    [_dataTask cancel];
     _delegate = nil;
 }
 

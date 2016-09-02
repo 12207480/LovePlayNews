@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LPTabBarController.h"
+#import "LPADLaunchController.h"
 #import "JPFPSStatus.h"
 
 @interface AppDelegate ()
@@ -20,6 +21,8 @@
     // Override point for customization after application launch.
     
     [self addMainWindow];
+    
+    [self addADLaunchController];
     
 #if defined(DEBUG)||defined(_DEBUG)
     [[JPFPSStatus sharedInstance] open];
@@ -34,6 +37,15 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [[LPTabBarController alloc]init];
     [self.window makeKeyAndVisible];
+}
+
+- (void)addADLaunchController
+{
+    UIViewController *rootViewController = self.window.rootViewController;
+    LPADLaunchController *launchController = [[LPADLaunchController alloc]init];
+    [rootViewController addChildViewController:launchController];
+    launchController.view.frame = rootViewController.view.frame;
+    [rootViewController.view addSubview:launchController.view];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

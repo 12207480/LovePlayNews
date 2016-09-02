@@ -10,7 +10,6 @@
 
 @interface LPGameNewsController : ASViewController
 
-@property (nonatomic, strong) NSString *newsTitle;
 @property (nonatomic, strong) NSString *newsTopId;
 @property (nonatomic, assign) NSInteger sourceType;
 @end

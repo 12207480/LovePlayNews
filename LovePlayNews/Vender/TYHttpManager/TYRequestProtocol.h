@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, TYRequestMethod) {
 typedef NS_ENUM(NSInteger , TYRequestSerializerType) {
     TYRequestSerializerTypeHTTP,
     TYRequestSerializerTypeJSON,
+    TYRequestSerializerTypeString
 };
 
 typedef NS_ENUM(NSUInteger, TYRequestState) {

@@ -30,15 +30,13 @@
 {
     [super viewWillLayoutSubviews];
     _newsListVC.view.frame = self.node.bounds;
-
-    NSLog(@"frame %@",NSStringFromCGRect(self.node.frame));
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = _newsTitle;
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.view layoutIfNeeded];
     
     [self addNewsListController];
 }

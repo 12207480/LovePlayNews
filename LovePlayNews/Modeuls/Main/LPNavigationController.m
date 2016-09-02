@@ -31,7 +31,7 @@
     NSDictionary* textAttrs = @{NSForegroundColorAttributeName:
                                     [UIColor whiteColor],
                                 NSFontAttributeName:
-                                    [UIFont fontWithName:@"Helvetica"size:20.0],
+                                    [UIFont fontWithName:@"Helvetica"size:18.0],
                                 };
     [self.navigationBar setTitleTextAttributes:textAttrs];
 

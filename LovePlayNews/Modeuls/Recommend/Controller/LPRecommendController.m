@@ -13,6 +13,7 @@
 #import "LPImagePagerCellNode.h"
 #import "UIViewController+LPJump.h"
 #import "LPGameNewsController.h"
+#import "LPLoadFailedView.h"
 
 @interface LPRecommendController ()<ASCollectionDataSource, ASCollectionDelegate>
 
@@ -27,9 +28,9 @@
 @end
 
 #define kRecommendPagerHeight 113
-#define kRecommendItemWidth 98
+#define kRecommendItemWidth (kScreenWidth > 320 ? 98 : 86)
 #define kRecommendItemHeight 102
-#define kRecommendItemHorEdge 16
+#define kRecommendItemHorEdge (kScreenWidth > 320 ? 16 : 10)
 #define kRecommendItemVerEdge 20
 
 static NSString *footerId = @"UICollectionReusableView";
@@ -49,7 +50,6 @@ static NSString *footerId = @"UICollectionReusableView";
 {
     _flowLayout     = [[UICollectionViewFlowLayout alloc] init];
     _collectionNode = [[ASCollectionNode alloc] initWithCollectionViewLayout:_flowLayout];
-    
     _collectionNode.backgroundColor = [UIColor whiteColor];
     _collectionNode.delegate = self;
     _collectionNode.dataSource = self;
@@ -100,6 +100,10 @@ static NSString *footerId = @"UICollectionReusableView";
         [LPLoadingView hideLoadingForView:self.view];
     } failureBlock:^(TYBatchRequest *request, NSError *error) {
         [LPLoadingView hideLoadingForView:self.view];
+        __weak typeof(self) weakSelf = self;
+        [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+            [weakSelf loadData];
+        }];
     }];
 }
 
@@ -107,7 +111,7 @@ static NSString *footerId = @"UICollectionReusableView";
 {
     LPGameNewsController *gameNewsVC = [[LPGameNewsController alloc]init];
     gameNewsVC.newsTopId = item.topicId;
-    gameNewsVC.newsTitle = item.topicName;
+    gameNewsVC.title = item.topicName;
     gameNewsVC.sourceType = item.sourceType;
     [self.navigationController pushViewController:gameNewsVC animated:YES];
 }
@@ -195,10 +199,10 @@ static NSString *footerId = @"UICollectionReusableView";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     switch (section) {
-        case 1:
-            return UIEdgeInsetsMake(kRecommendItemVerEdge, kRecommendItemHorEdge, kRecommendItemVerEdge, kRecommendItemHorEdge);
         case 0:
             return UIEdgeInsetsMake(15, 0, 15, 0);
+        case 1:
+            return UIEdgeInsetsMake(kRecommendItemVerEdge, kRecommendItemHorEdge, kRecommendItemVerEdge, kRecommendItemHorEdge);
         default:
             return UIEdgeInsetsZero;
     }
@@ -218,7 +222,7 @@ static NSString *footerId = @"UICollectionReusableView";
 {
     switch (section) {
         case 1:
-            return (kScreenWidth - 3*kRecommendItemWidth - 2*kRecommendItemHorEdge)/4;
+            return floor((kScreenWidth - 3*kRecommendItemWidth - 2*kRecommendItemHorEdge)/2);
         default:
             return 0;
     }
