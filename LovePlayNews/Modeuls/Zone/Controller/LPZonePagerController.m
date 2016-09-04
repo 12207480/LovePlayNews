@@ -1,19 +1,22 @@
 //
-//  LPPagerViewController.m
+//  LPZonePagerController.m
 //  LovePlayNews
 //
-//  Created by tany on 16/8/1.
+//  Created by tanyang on 16/9/4.
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPPagerViewController.h"
-#import "LPNewsListController.h"
+#import "LPZonePagerController.h"
 
-@interface LPPagerViewController ()
-@property (nonatomic, strong) NSArray *newsPageInfos;
+@interface LPZonePagerController ()
+
+@property (nonatomic, strong) NSArray *datas;
+
 @end
 
-@implementation LPPagerViewController
+#define kPagerControllerCount 3
+
+@implementation LPZonePagerController
 
 #pragma mark - lifeCycle
 
@@ -39,7 +42,6 @@
 {
     self.adjustStatusBarHeight = YES;
     self.contentTopEdging = 44;
-    self.collectionLayoutEdging = 12;
     self.barStyle = TYPagerBarStyleProgressElasticView;
 }
 
@@ -52,48 +54,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // 把视图扩展到底部tabbar
-    self.edgesForExtendedLayout = UIRectEdgeBottom;
     
+    _datas = @[@"热门推荐",@"爱玩社区",@"凯恩之角"];
+    
+    [self configureTabButtonPager];
+}
+
+- (void)configureTabButtonPager
+{
     self.pagerBarView.backgroundColor = RGB_255(34, 34, 34);
     self.progressColor = RGB_255(237, 67, 89);
     self.normalTextColor = [UIColor whiteColor];
     self.selectedTextColor = RGB_255(237, 67, 89);
+    self.cellWidth = 80;
     self.cellSpacing = 20;
+    self.collectionLayoutEdging = (kScreenWidth-_datas.count*(self.cellWidth+self.cellEdging)-(_datas.count-1)*self.cellSpacing)/2;
     self.progressBottomEdging = 3;
-    
-    [self loadData];
+    self.progressEdging = 16;
 }
-
-- (void)loadData
-{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"NewsInfo" ofType:@"plist"];
-    NSDictionary *data = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    _newsPageInfos = [data objectForKey:@"newsPageInfos"];
-}
-
-#pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController
 {
-    return _newsPageInfos.count;
+    return _datas.count;
 }
 
 - (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
 {
-    NSDictionary *newsPageInfo = _newsPageInfos[index];
-    NSString *title = [newsPageInfo objectForKey:@"title"];
-    return title ? title : @"";
+    return _datas[index];
 }
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
-    NSDictionary *newsPageInfo = _newsPageInfos[index];
-    LPNewsListController *newsVC = [[LPNewsListController alloc]init];
-    newsVC.newsTopId = [newsPageInfo objectForKey:@"topId"];
-    // 扩展到底部tabbar
-    newsVC.extendedTabBarInset = YES;
-    return newsVC;
+    UIViewController *vc = [[UIViewController alloc]init];
+    vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
+    return vc;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,10 +8,11 @@
 
 #import "LPTabBarController.h"
 #import "UITabBarController+AddChildVC.h"
-#import "LPNavigationController.h"
-#import "LPPagerViewController.h"
 #import "UIImage+Color.h"
+#import "LPNavigationController.h"
+#import "LPNewsPagerController.h"
 #import "LPRecommendController.h"
+#import "LPZonePagerController.h"
 
 @interface LPTabBarController ()
 
@@ -67,12 +68,14 @@
     [self addMineController];
 }
 
+#pragma mark - add childVC
+
 - (void)addNewsController
 {
     UIEdgeInsets imageInsets = UIEdgeInsetsZero;
     UIOffset titlePosition = UIOffsetMake(0, -2);
     
-    LPPagerViewController *newsPagerController = [[LPPagerViewController alloc]init];
+    LPNewsPagerController *newsPagerController = [[LPNewsPagerController alloc]init];
     
     [self addChildViewController:newsPagerController title:@"资讯" image:@"icon_zx_nomal_pgall" selectedImage:@"icon_zx_pressed_pgall" imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
 }
@@ -91,7 +94,7 @@
     UIEdgeInsets imageInsets = UIEdgeInsetsZero;
     UIOffset titlePosition = UIOffsetMake(0, -2);
     
-    UIViewController *zoneController = [[UIViewController alloc]init];
+    LPZonePagerController *zoneController = [[LPZonePagerController alloc]init];
     [self addChildViewController:zoneController title:@"社区" image:@"icon_sq_nomal_pgall" selectedImage:@"icon_sq_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
 }
 

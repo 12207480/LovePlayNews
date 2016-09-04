@@ -13,7 +13,7 @@
 		2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC851D517B580048B5C2 /* TYClassInfo.m */; };
 		2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */; };
 		2B00AC9B1D517CF90048B5C2 /* LPNewsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC961D517CF90048B5C2 /* LPNewsListController.m */; };
-		2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC981D517CF90048B5C2 /* LPPagerViewController.m */; };
+		2B00AC9C1D517CF90048B5C2 /* LPNewsPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC981D517CF90048B5C2 /* LPNewsPagerController.m */; };
 		2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC9E1D517D2A0048B5C2 /* LPNewsInfoModel.m */; };
 		2B00ACA51D517E5E0048B5C2 /* LPHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACA21D517E5E0048B5C2 /* LPHttpRequest.m */; };
 		2B00ACA61D517E5E0048B5C2 /* LPResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00ACA41D517E5E0048B5C2 /* LPResponseObject.m */; };
@@ -93,6 +93,7 @@
 		B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00A86C11D729E1100B84F8F /* LPWebViewController.m */; };
 		B07A5DF11D7138E900C18C27 /* LPRecommendCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B07A5DF01D7138E900C18C27 /* LPRecommendCellNode.m */; };
 		B08D88F11D685E870048557C /* LPNewsCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08D88F01D685E870048557C /* LPNewsCommentController.m */; };
+		B0CE0A651D7BC7C1001A18CE /* LPZonePagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CE0A641D7BC7C1001A18CE /* LPZonePagerController.m */; };
 		B0D8293F1D68871E000B9D84 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D8293E1D68871E000B9D84 /* UIView+ViewController.m */; };
 		B0D829421D688B39000B9D84 /* LPNewsCommentFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D829411D688B39000B9D84 /* LPNewsCommentFooterView.m */; };
 		B0E744C51D71B46700B011E5 /* LPImagePagerCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E744C41D71B46700B011E5 /* LPImagePagerCellNode.m */; };
@@ -115,8 +116,8 @@
 		2B00AC881D517B580048B5C2 /* TYPropertyInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPropertyInfo.m; sourceTree = "<group>"; };
 		2B00AC951D517CF90048B5C2 /* LPNewsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsListController.h; sourceTree = "<group>"; };
 		2B00AC961D517CF90048B5C2 /* LPNewsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsListController.m; sourceTree = "<group>"; };
-		2B00AC971D517CF90048B5C2 /* LPPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPagerViewController.h; sourceTree = "<group>"; };
-		2B00AC981D517CF90048B5C2 /* LPPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPagerViewController.m; sourceTree = "<group>"; };
+		2B00AC971D517CF90048B5C2 /* LPNewsPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsPagerController.h; sourceTree = "<group>"; };
+		2B00AC981D517CF90048B5C2 /* LPNewsPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsPagerController.m; sourceTree = "<group>"; };
 		2B00AC9D1D517D2A0048B5C2 /* LPNewsInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsInfoModel.h; sourceTree = "<group>"; };
 		2B00AC9E1D517D2A0048B5C2 /* LPNewsInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsInfoModel.m; sourceTree = "<group>"; };
 		2B00ACA11D517E5E0048B5C2 /* LPHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPHttpRequest.h; sourceTree = "<group>"; };
@@ -278,6 +279,8 @@
 		B07A5DF01D7138E900C18C27 /* LPRecommendCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPRecommendCellNode.m; sourceTree = "<group>"; };
 		B08D88EF1D685E870048557C /* LPNewsCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentController.h; sourceTree = "<group>"; };
 		B08D88F01D685E870048557C /* LPNewsCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCommentController.m; sourceTree = "<group>"; };
+		B0CE0A631D7BC7C1001A18CE /* LPZonePagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPZonePagerController.h; sourceTree = "<group>"; };
+		B0CE0A641D7BC7C1001A18CE /* LPZonePagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPZonePagerController.m; sourceTree = "<group>"; };
 		B0D8293D1D68871E000B9D84 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
 		B0D8293E1D68871E000B9D84 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
 		B0D829401D688B39000B9D84 /* LPNewsCommentFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCommentFooterView.h; sourceTree = "<group>"; };
@@ -330,8 +333,8 @@
 		2B00AC941D517CF90048B5C2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2B00AC971D517CF90048B5C2 /* LPPagerViewController.h */,
-				2B00AC981D517CF90048B5C2 /* LPPagerViewController.m */,
+				2B00AC971D517CF90048B5C2 /* LPNewsPagerController.h */,
+				2B00AC981D517CF90048B5C2 /* LPNewsPagerController.m */,
 				2B00AC951D517CF90048B5C2 /* LPNewsListController.h */,
 				2B00AC961D517CF90048B5C2 /* LPNewsListController.m */,
 				B0ED94B61D55FD66009B11C4 /* LPNewsDetailController.h */,
@@ -570,6 +573,9 @@
 		2B8174521D4EF9F800BA297C /* Zone */ = {
 			isa = PBXGroup;
 			children = (
+				B0CE0A601D7BC710001A18CE /* Controller */,
+				B0CE0A611D7BC710001A18CE /* Model */,
+				B0CE0A621D7BC710001A18CE /* View */,
 			);
 			path = Zone;
 			sourceTree = "<group>";
@@ -849,6 +855,29 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		B0CE0A601D7BC710001A18CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0CE0A631D7BC7C1001A18CE /* LPZonePagerController.h */,
+				B0CE0A641D7BC7C1001A18CE /* LPZonePagerController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B0CE0A611D7BC710001A18CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B0CE0A621D7BC710001A18CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D5748F0D14D53ECA7691478E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -999,13 +1028,14 @@
 				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
 				2B7C5DD31D6D4448005B30B5 /* LPLoadingView.m in Sources */,
 				B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */,
+				B0CE0A651D7BC7C1001A18CE /* LPZonePagerController.m in Sources */,
 				2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */,
 				2B8A00FC1D5AB77800F04812 /* LPNewsCommentModel.m in Sources */,
 				2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */,
 				2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */,
 				2B00ACA51D517E5E0048B5C2 /* LPHttpRequest.m in Sources */,
 				2B00AC9F1D517D2A0048B5C2 /* LPNewsInfoModel.m in Sources */,
-				2B00AC9C1D517CF90048B5C2 /* LPPagerViewController.m in Sources */,
+				2B00AC9C1D517CF90048B5C2 /* LPNewsPagerController.m in Sources */,
 				2B51A6B01D7806D900A4C7E3 /* LPADLaunchController.m in Sources */,
 				2B8A01011D5B2C0F00F04812 /* LPNewsTitleHeaderView.m in Sources */,
 				2B8174CC1D4F2B4400BA297C /* NSString+Pinyin.m in Sources */,
@@ -1252,6 +1282,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1326,6 +1357,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

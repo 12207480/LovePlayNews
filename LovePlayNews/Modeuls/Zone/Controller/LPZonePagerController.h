@@ -1,13 +1,13 @@
 //
-//  LPPagerViewController.h
+//  LPZonePagerController.h
 //  LovePlayNews
 //
-//  Created by tany on 16/8/1.
+//  Created by tanyang on 16/9/4.
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
 #import "TYTabButtonPagerController.h"
 
-@interface LPPagerViewController : TYTabButtonPagerController
+@interface LPZonePagerController : TYTabButtonPagerController
 
 @end
