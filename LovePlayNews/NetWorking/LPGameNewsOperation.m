@@ -6,9 +6,9 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "LPNewsInfoOperation.h"
+#import "LPGameNewsOperation.h"
 
-@implementation LPNewsInfoOperation
+@implementation LPGameNewsOperation
 
 + (LPHttpRequest *)requestNewsListWithTopId:(NSString *)topId pageIndex:(NSInteger)pageIndex
 {

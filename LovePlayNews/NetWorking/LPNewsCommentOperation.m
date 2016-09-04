@@ -15,7 +15,7 @@
 {
     LPHttpRequest *request = [[LPHttpRequest alloc]init];
     request.responseParser = [[LPCustomResponse alloc]initWithModelClass:[LPNewsCommentModel class]];
-    request.URLString = [NSString stringWithFormat:@"%@%@/0/10/11/2/2",NewsHotCommentURL,newsId];
+    request.URLString = [NSString stringWithFormat:@"%@%@/0/10/11/2/2",HotGameCommentURL,newsId];
     return request;
 }
 
@@ -23,7 +23,7 @@
 {
     LPHttpRequest *request = [[LPHttpRequest alloc]init];
     request.responseParser = [[LPCustomResponse alloc]initWithModelClass:[LPNewsCommentModel class]];
-    request.URLString = [NSString stringWithFormat:@"%@%@/%ld/%d/6/2/2",NewsNewCommentURL,newsId,(long)pageIndex*pageSize,(int)pageSize];
+    request.URLString = [NSString stringWithFormat:@"%@%@/%ld/%d/6/2/2",NewGameCommentURL,newsId,(long)pageIndex*pageSize,(int)pageSize];
     return request;
 }
 

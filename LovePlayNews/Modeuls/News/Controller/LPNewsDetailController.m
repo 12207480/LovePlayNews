@@ -9,7 +9,7 @@
 #import "LPNewsDetailController.h"
 #import "LPWebCellNode.h"
 #import "LPNewsBreifCellNode.h"
-#import "LPNewsInfoOperation.h"
+#import "LPGameNewsOperation.h"
 #import "MXParallaxHeader.h"
 #import "LPNewsTitleHeaderView.h"
 #import "LPNewsCommentFooterView.h"
@@ -120,7 +120,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)loadData
 {
     [LPLoadingView showLoadingInView:self.view];
-    LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsDetailWithNewsId:_newsId];
+    LPHttpRequest *newsListRequest = [LPGameNewsOperation requestNewsDetailWithNewsId:_newsId];
     newsListRequest.asynCompleteQueue = YES;
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
          LPNewsDetailModel *newsDetail = request.responseObject.data;

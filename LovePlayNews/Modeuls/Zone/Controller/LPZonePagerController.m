@@ -7,6 +7,7 @@
 //
 
 #import "LPZonePagerController.h"
+#import "LPHotZoneController.h"
 
 @interface LPZonePagerController ()
 
@@ -54,6 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     
     _datas = @[@"热门推荐",@"爱玩社区",@"凯恩之角"];
     
@@ -85,9 +87,20 @@
 
 - (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
 {
-    UIViewController *vc = [[UIViewController alloc]init];
-    vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
-    return vc;
+    switch (index) {
+        case 0:
+        {
+            LPHotZoneController *hotZoneVC = [[LPHotZoneController alloc]init];
+            return hotZoneVC;
+        }
+            
+        default:
+        {
+            UIViewController *vc = [[UIViewController alloc]init];
+            vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
+            return vc;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

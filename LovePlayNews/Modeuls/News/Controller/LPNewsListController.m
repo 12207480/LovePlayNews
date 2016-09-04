@@ -7,7 +7,7 @@
 //
 
 #import "LPNewsListController.h"
-#import "LPNewsInfoOperation.h"
+#import "LPGameNewsOperation.h"
 #import "LPNewsCellNode.h"
 #import "LPNewsImageCellNode.h"
 #import "LPNewsImageTitleCellNode.h"
@@ -127,7 +127,7 @@
         }
     }
     
-    LPHttpRequest *newsListRequest = [LPNewsInfoOperation requestNewsListWithTopId:_newsTopId pageIndex:curIndexPage];
+    LPHttpRequest *newsListRequest = [LPGameNewsOperation requestNewsListWithTopId:_newsTopId pageIndex:curIndexPage];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         NSArray *newsList = request.responseObject.data;
         if (context) {
