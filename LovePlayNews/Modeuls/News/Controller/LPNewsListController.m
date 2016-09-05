@@ -30,7 +30,6 @@
 
 @implementation LPNewsListController
 
-
 #pragma mark - life cycle
 
 - (instancetype)init

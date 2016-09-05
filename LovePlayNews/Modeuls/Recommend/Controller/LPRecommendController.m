@@ -37,6 +37,8 @@ static NSString *footerId = @"UICollectionReusableView";
 
 @implementation LPRecommendController
 
+#pragma mark - life cycle
+
 - (instancetype)init
 {
     if (self = [super initWithNode:[ASDisplayNode new]]) {
@@ -222,7 +224,7 @@ static NSString *footerId = @"UICollectionReusableView";
 {
     switch (section) {
         case 1:
-            return floor((kScreenWidth - 3*kRecommendItemWidth - 2*kRecommendItemHorEdge)/2);
+            return floor((CGRectGetWidth(collectionView.frame) - 3*kRecommendItemWidth - 2*kRecommendItemHorEdge)/2);
         default:
             return 0;
     }

@@ -31,6 +31,8 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 
 @implementation LPNewsCommentController
 
+#pragma mark - life cycle
+
 - (instancetype)init
 {
     if (self = [super initWithNode:[ASDisplayNode new]]) {

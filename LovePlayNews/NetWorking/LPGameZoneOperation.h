@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "LPHttpRequest.h"
 #import "LPHotZoneModel.h"
+#import "LPZoneDiscuzModel.h"
 
 @interface LPGameZoneOperation : NSObject
 
 + (LPHttpRequest *)requestHotZoneWithPageIndex:(NSInteger)pageIndex;
+
++ (LPHttpRequest *)requestZoneDiscuzWithIndex:(NSInteger)index;
 
 @end

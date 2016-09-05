@@ -18,4 +18,11 @@
     return request;
 }
 
++ (LPHttpRequest *)requestZoneDiscuzWithIndex:(NSInteger)index
+{
+    LPHttpRequest *request = [LPHttpRequest requestWithModelClass:[LPZoneDiscuzModel class]];
+    request.URLString = [NSString stringWithFormat:@"%@/%ld",ZoneDiscuzURL,(long)index];
+    return request;
+}
+
 @end

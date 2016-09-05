@@ -8,6 +8,7 @@
 
 #import "LPZonePagerController.h"
 #import "LPHotZoneController.h"
+#import "LPZoneDiscuzController.h"
 
 @interface LPZonePagerController ()
 
@@ -71,7 +72,7 @@
     self.normalTextColor = [UIColor whiteColor];
     self.selectedTextColor = RGB_255(237, 67, 89);
     self.cellWidth = 80;
-    self.cellSpacing = 16;
+    self.cellSpacing = 15;
     self.collectionLayoutEdging = (kScreenWidth-_datas.count*self.cellWidth-(_datas.count-1)*self.cellSpacing)/2;
     self.progressBottomEdging = 3;
     self.progressEdging = 16;
@@ -96,12 +97,17 @@
             hotZoneVC.extendedTabBarInset = YES;
             return hotZoneVC;
         }
-            
+        case 1:
+        case 2:
+        {
+            LPZoneDiscuzController *discuzVC = [[LPZoneDiscuzController alloc]init];
+            discuzVC.discuzId = index-1;
+            discuzVC.extendedTabBarInset = YES;
+            return discuzVC;
+        }
         default:
         {
-            UIViewController *vc = [[UIViewController alloc]init];
-            vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:arc4random()%255/255.0];
-            return vc;
+            return nil;
         }
     }
 }

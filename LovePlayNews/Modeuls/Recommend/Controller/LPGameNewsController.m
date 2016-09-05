@@ -18,6 +18,8 @@
 
 @implementation LPGameNewsController
 
+#pragma mark - life cycle
+
 - (instancetype)init
 {
     if (self = [super initWithNode:[ASDisplayNode new]]) {

@@ -21,5 +21,6 @@
 #define NewsRecommendImageInfosURL @"/news/config/config_focus_img/list/"
 
 #define HotGameZoneURL @"/news/discuz/forum_recommend_detail"
+#define ZoneDiscuzURL @"/news/discuz/discuz_model_v2/list/center"
 
 #endif /* LPRequestURLInfo_h */
