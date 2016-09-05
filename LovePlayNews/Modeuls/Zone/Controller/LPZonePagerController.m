@@ -56,6 +56,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    // 把视图扩展到底部tabbar
+    self.edgesForExtendedLayout = UIRectEdgeBottom;
     
     _datas = @[@"热门推荐",@"爱玩社区",@"凯恩之角"];
     
@@ -69,8 +71,8 @@
     self.normalTextColor = [UIColor whiteColor];
     self.selectedTextColor = RGB_255(237, 67, 89);
     self.cellWidth = 80;
-    self.cellSpacing = 20;
-    self.collectionLayoutEdging = (kScreenWidth-_datas.count*(self.cellWidth+self.cellEdging)-(_datas.count-1)*self.cellSpacing)/2;
+    self.cellSpacing = 16;
+    self.collectionLayoutEdging = (kScreenWidth-_datas.count*self.cellWidth-(_datas.count-1)*self.cellSpacing)/2;
     self.progressBottomEdging = 3;
     self.progressEdging = 16;
 }
@@ -91,6 +93,7 @@
         case 0:
         {
             LPHotZoneController *hotZoneVC = [[LPHotZoneController alloc]init];
+            hotZoneVC.extendedTabBarInset = YES;
             return hotZoneVC;
         }
             

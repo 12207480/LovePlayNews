@@ -54,6 +54,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDCycleScrollView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TOWebViewController-TOWebViewControllerLocalizable.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,12 +92,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>263C51C1086E38C30CD0C2EAA084B127</key>
+		<key>39AC7D03D30B62035F1D34327E4395B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F4E450F4B3D2398EBA691B5D4A25F7A</key>
+		<key>3E32252D6CBB5CA4E7B200B3E2A07F8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,7 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>55208CC17E534F52A317907D9BEA008D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>65FC464968B54AEEC9527E53FF8198E2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>660D690DA999BD2AF86B7910D33E7EFF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6CD8AA2931D7A8483BC715DD6611191C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -108,11 +133,6 @@
 			<true/>
 		</dict>
 		<key>70BC44266C6FFE30D2C57129458E070B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>79D7DDF812860DB4CA82FC9BAB2F8AFB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,22 +152,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96E55B50D998CE4C47252AE4D254428D</key>
+		<key>B324DB1567F34BD6B8679D887686591E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4B67EFE0A6FD8B9E6AD56BB821CDC85</key>
+		<key>BB0D8E74E388D7E803164CFD97C3CE43</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C28A65A1C6EDC367DD30B362F7ACC14F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F767C8D86AE588542CF0ECBF7309D38F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FDE1264682C9F7E16635877FB4FBB412</key>
 		<dict>
 			<key>primary</key>
 			<true/>

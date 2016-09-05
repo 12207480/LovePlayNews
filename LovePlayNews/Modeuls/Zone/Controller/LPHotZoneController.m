@@ -12,8 +12,9 @@
 #import "LPZonePostCellNode.h"
 #import "LPHotZoneSectionView.h"
 #import "LPLoadFailedView.h"
+#import "SDCycleScrollView.h"
 
-@interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource>
+@interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource, SDCycleScrollViewDelegate>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
@@ -68,10 +69,28 @@ static NSString * headerId = @"LPHotZoneSectionView";
 
 - (void)configureTableView
 {
+    if (_extendedTabBarInset) {
+        _tableNode.view.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
+        _tableNode.view.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
+    }
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     UINib *nib = [UINib nibWithNibName:headerId bundle:nil];
     [_tableNode.view registerNib:nib forHeaderFooterViewReuseIdentifier:headerId];
+}
+
+- (void)addCycleScrollView
+{
+    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 105) delegate:self placeholderImage:nil];
+    cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    cycleScrollView.currentPageDotColor = [UIColor whiteColor];
+    
+    NSMutableArray *imageURLs = [NSMutableArray array];
+    for (LPZoneFocus *focus in _focusList) {
+        [imageURLs addObject:focus.img];
+    }
+    cycleScrollView.imageURLStringsGroup = [imageURLs copy];
+    _tableNode.view.tableHeaderView = cycleScrollView;
 }
 
 #pragma mark - loadData
@@ -112,6 +131,7 @@ static NSString * headerId = @"LPHotZoneSectionView";
             _focusList = hotZoneModel.focusList;
             _forumList = hotZoneModel.forumList;
             _threadList = hotZoneModel.threadList;
+            [self addCycleScrollView];
             [_tableNode.view reloadData];
             ++_curIndexPage;
             _haveMore = YES;
@@ -157,13 +177,31 @@ static NSString * headerId = @"LPHotZoneSectionView";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    LPHotZoneSectionView *sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
-    return sectionView;
+    if (section == 0) {
+        LPHotZoneSectionView *sectionView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
+        return sectionView;
+    }
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 40;
+    if (section == 0) {
+        return 40;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+#pragma mark - SDCycleScrollViewDelegate
+
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

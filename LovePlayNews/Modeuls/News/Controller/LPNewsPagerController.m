@@ -56,9 +56,9 @@
     // 把视图扩展到底部tabbar
     self.edgesForExtendedLayout = UIRectEdgeBottom;
     
-    [self configureTabButtonPager];
-    
     [self loadData];
+    
+    [self configureTabButtonPager];
 }
 
 - (void)configureTabButtonPager
@@ -67,8 +67,9 @@
     self.progressColor = RGB_255(237, 67, 89);
     self.normalTextColor = [UIColor whiteColor];
     self.selectedTextColor = RGB_255(237, 67, 89);
-    self.cellSpacing = 20;
+    self.cellWidth = 38;
     self.collectionLayoutEdging = 12;
+    self.cellSpacing = (kScreenWidth - _newsPageInfos.count*self.cellWidth - 2*self.collectionLayoutEdging)/(_newsPageInfos.count-1);
     self.progressBottomEdging = 3;
 }
 

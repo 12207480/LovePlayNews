@@ -32,6 +32,11 @@ PODS:
     - PINCache (>= 3.0.0-beta)
   - PINRemoteImage/iOS (3.0.0-beta.3):
     - PINRemoteImage/Core
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - TOWebViewController (2.2.4):
     - TOWebViewController/Core (= 2.2.4)
   - TOWebViewController/Core (2.2.4)
@@ -51,6 +56,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - MXParallaxHeader (~> 0.5.2)
+  - SDCycleScrollView
   - TOWebViewController
   - YYWebImage
 
@@ -64,11 +70,13 @@ SPEC CHECKSUMS:
   MXParallaxHeader: 5070ba8e8af27ec793c0d32ae82cfd2318e59635
   PINCache: 6911fe422a633e18b3d3ddf2bd4f0e55e36e2892
   PINRemoteImage: 308731aa6534500e58fc211b9cc2bb7252df25ba
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   TOWebViewController: f6b234d2be45dbf81d2a71a1f9480f8f3cc6501a
   YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
   YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
   YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: 9628ad87852df30ce30af0147e09c19c5c47ae15
+PODFILE CHECKSUM: 5270ecb2fddd86cfbf6be1c46863b419d8f2f85a
 
 COCOAPODS: 1.0.1

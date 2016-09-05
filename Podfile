@@ -12,5 +12,6 @@ pod 'TOWebViewController'
 pod 'JTSImageViewController'
 pod 'YYWebImage'
 pod 'KMNavigationBarTransition'
+pod 'SDCycleScrollView'
 
 end

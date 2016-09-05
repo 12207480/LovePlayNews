@@ -10,4 +10,6 @@
 
 @interface LPHotZoneController : ASViewController
 
+@property (nonatomic, assign) BOOL extendedTabBarInset; // 扩展到底部tabbar
+
 @end
