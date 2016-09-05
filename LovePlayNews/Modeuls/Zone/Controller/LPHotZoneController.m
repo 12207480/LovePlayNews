@@ -11,6 +11,7 @@
 #import "LPLoadingView.h"
 #import "LPZonePostCellNode.h"
 #import "LPHotZoneSectionView.h"
+#import "LPLoadFailedView.h"
 
 @interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource>
 
@@ -117,8 +118,12 @@ static NSString * headerId = @"LPHotZoneSectionView";
             [LPLoadingView hideLoadingForView:self.view];
         }
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
-        
         [LPLoadingView hideLoadingForView:self.view];
+        __weak typeof(self) weakSelf = self;
+        [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+            [weakSelf loadData];
+        }];
+
     }];
     
 }

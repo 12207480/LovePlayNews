@@ -11,6 +11,7 @@
 #import "LPNewsCommentCellNode.h"
 #import "LPNewsTitleSectionView.h"
 #import "LPLoadingView.h"
+#import "LPLoadFailedView.h"
 
 @interface LPNewsCommentController ()<ASTableDelegate, ASTableDataSource>
 
@@ -99,6 +100,10 @@ static NSString *headerId = @"LPNewsTitleSectionView";
         [LPLoadingView hideLoadingForView:self.view];
     } failureBlock:^(TYBatchRequest *request, NSError *error) {
         [LPLoadingView hideLoadingForView:self.view];
+        __weak typeof(self) weakSelf = self;
+        [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+            [weakSelf loadData];
+        }];
     }];
 }
 
