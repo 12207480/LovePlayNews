@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Mkw-1d-nUg" customClass="LPMineHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_pgmy" translatesAutoresizingMaskIntoConstraints="NO" id="wRp-AJ-Tdu">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iO-DH-eja">
+                    <rect key="frame" x="136" y="35" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="MdX-em-g7g"/>
+                        <constraint firstAttribute="width" constant="48" id="ftl-Gf-aAk"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="mine_main_default_head"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdB-5d-obA">
+                    <rect key="frame" x="138" y="97" width="45" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="jdB-5d-obA" secondAttribute="bottom" constant="20" id="04y-CM-HUr"/>
+                <constraint firstAttribute="bottom" secondItem="wRp-AJ-Tdu" secondAttribute="bottom" id="2md-kl-PGf"/>
+                <constraint firstItem="jdB-5d-obA" firstAttribute="centerX" secondItem="Mkw-1d-nUg" secondAttribute="centerX" id="3no-Hx-4lO"/>
+                <constraint firstItem="wRp-AJ-Tdu" firstAttribute="leading" secondItem="Mkw-1d-nUg" secondAttribute="leading" id="Lx2-Om-adg"/>
+                <constraint firstItem="7iO-DH-eja" firstAttribute="top" secondItem="Mkw-1d-nUg" secondAttribute="top" constant="36" id="Qqr-gA-fHO"/>
+                <constraint firstItem="wRp-AJ-Tdu" firstAttribute="top" secondItem="Mkw-1d-nUg" secondAttribute="top" id="h1H-SI-M3s"/>
+                <constraint firstItem="7iO-DH-eja" firstAttribute="centerX" secondItem="Mkw-1d-nUg" secondAttribute="centerX" id="lbX-Bd-Cc3"/>
+                <constraint firstAttribute="trailing" secondItem="wRp-AJ-Tdu" secondAttribute="trailing" id="t3r-2X-PYr"/>
+                <constraint firstItem="jdB-5d-obA" firstAttribute="top" secondItem="7iO-DH-eja" secondAttribute="bottom" constant="14" id="xqy-XJ-rBJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Qqr-gA-fHO"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="253" y="312"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_pgmy" width="320" height="169"/>
+        <image name="mine_main_default_head" width="54" height="54"/>
+    </resources>
+</document>

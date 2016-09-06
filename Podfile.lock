@@ -55,7 +55,7 @@ DEPENDENCIES:
   - KMNavigationBarTransition
   - MBProgressHUD
   - MJRefresh
-  - MXParallaxHeader (~> 0.5.2)
+  - MXParallaxHeader
   - SDCycleScrollView
   - TOWebViewController
   - YYWebImage
@@ -77,6 +77,6 @@ SPEC CHECKSUMS:
   YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
   YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: 5270ecb2fddd86cfbf6be1c46863b419d8f2f85a
+PODFILE CHECKSUM: dee59075f025b68bce11a7a2980a3a2b19e47d4c
 
 COCOAPODS: 1.0.1

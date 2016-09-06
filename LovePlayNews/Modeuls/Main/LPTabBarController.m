@@ -13,6 +13,7 @@
 #import "LPNewsPagerController.h"
 #import "LPRecommendController.h"
 #import "LPZonePagerController.h"
+#import "LPMineViewController.h"
 
 @interface LPTabBarController ()
 
@@ -103,7 +104,7 @@
     UIEdgeInsets imageInsets = UIEdgeInsetsZero;
     UIOffset titlePosition = UIOffsetMake(0, -2);
     
-    UIViewController *mineController = [[UIViewController alloc]init];
+    LPMineViewController *mineController = [[LPMineViewController alloc]init];
     [self addChildViewController:mineController title:@"我" image:@"icon_w_nomal_pgall" selectedImage:@"icon_w_pressed_pgall"imageInsets:imageInsets titlePosition:titlePosition navControllerClass:[LPNavigationController class]];
 }
 
