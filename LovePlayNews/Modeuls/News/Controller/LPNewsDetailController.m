@@ -19,10 +19,12 @@
 #import "LPNewsCommentController.h"
 #import "LPLoadingView.h"
 #import "LPLoadFailedView.h"
+#import "LPNavigationBarView.h"
 
 @interface LPNewsDetailController ()<ASTableDelegate, ASTableDataSource>
 
 // UI
+@property (nonatomic, weak) LPNavigationBarView *navBar;
 @property (nonatomic, strong) ASTableNode *tableNode;
 @property (nonatomic, strong) LPNewsTitleHeaderView *headerView;
 
@@ -35,6 +37,8 @@
 
 static NSString *headerId = @"LPNewsTitleSectionView";
 static NSString *footerId = @"LPNewsCommentFooterView";
+
+#define kHeaderViewHeight 164
 
 @implementation LPNewsDetailController
 
@@ -58,17 +62,13 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     [self.node addSubnode:_tableNode];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view layoutIfNeeded];
+    
+    [self addNavBarView];
     
     [self configureTableView];
     
@@ -77,17 +77,32 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     [self loadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     _tableNode.frame = self.node.bounds;
+    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kNavBarHeight);
+}
+
+- (void)addNavBarView
+{
+    LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
+    [self.view addSubview:navBar];
+    _navBar = navBar;
+    _navBar.backgroundAlpha = 0;
 }
 
 - (void)addHeaderView
 {
     LPNewsTitleHeaderView *headerView = [LPNewsTitleHeaderView loadInstanceFromNib];
     _tableNode.view.parallaxHeader.view = headerView;
-    _tableNode.view.parallaxHeader.height = 100;
+    _tableNode.view.parallaxHeader.height = kHeaderViewHeight;
     _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
     _headerView = headerView;
 }
@@ -326,14 +341,25 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat headerViewHeight = kHeaderViewHeight;
+    if (offsetY <= 0) {
+        _navBar.backgroundAlpha = 0;
+    }else if (offsetY >= (headerViewHeight+kHeightForStatus)) {
+        _navBar.backgroundAlpha = 1.0;
+    }else {
+        _navBar.backgroundAlpha = offsetY/(headerViewHeight+kHeightForStatus);
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc{
-    _tableNode.delegate = nil;
-    _tableNode.dataSource = nil;
     DLog(@"LPNewsDetailController dealloc");
 }
 

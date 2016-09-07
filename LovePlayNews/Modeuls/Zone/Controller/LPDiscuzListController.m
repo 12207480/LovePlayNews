@@ -33,7 +33,7 @@
 
 @end
 
-#define NAVBAR_CHANGE_POINT 36
+#define kHeaderViewHeight 120
 
 @implementation LPDiscuzListController
 
@@ -60,7 +60,6 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-    _navBar.backgroundAlpha = 0;
 }
 
 - (void)viewWillLayoutSubviews
@@ -90,6 +89,7 @@
     LPNavigationBarView *navBar = [LPNavigationBarView loadInstanceFromNib];
     [self.view addSubview:navBar];
     _navBar = navBar;
+    _navBar.backgroundAlpha = 0;
 }
 
 - (void)configureTableView
@@ -102,7 +102,7 @@
 {
     LPDiscuzHeaderView *headerView = [LPDiscuzHeaderView loadInstanceFromNib];
     _tableNode.view.parallaxHeader.view = headerView;
-    _tableNode.view.parallaxHeader.height = 120;
+    _tableNode.view.parallaxHeader.height = kHeaderViewHeight;
     _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeBottomFill;
     _tableNode.view.parallaxHeader.contentView.layer.zPosition = 1;
     _headerView = headerView;
@@ -246,7 +246,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat headerViewHeight = CGRectGetHeight(_headerView.frame);
+    CGFloat headerViewHeight = kHeaderViewHeight;
     CGFloat offsetY = scrollView.contentOffset.y;
     if (offsetY <= 0) {
         _navBar.backgroundAlpha = 0;

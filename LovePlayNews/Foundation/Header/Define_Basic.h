@@ -34,7 +34,7 @@ __weak typeof(obj) weak_##obj = obj; \
 #define kHeightInViewForStatus (kIsIOS7Later ? 20 : 0)
 
 //状态条占的高度
-#define kHeightForStatus (kIsIOS7Later ? 0 : 20)
+#define kHeightForStatus 20
 
 //导航栏高度
 #define kNavBarHeight 64
