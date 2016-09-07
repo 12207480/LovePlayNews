@@ -9,40 +9,19 @@
 #import "LPResponseObject.h"
 #import "TYJSONModel.h"
 
-@interface LPResponseObject ()
-@property (nonatomic, assign) Class modelClass;
-@end
-
 @implementation LPResponseObject
-
-- (instancetype)initWithModelClass:(Class)modelClass
-{
-    if (self = [super init]) {
-        _modelClass = modelClass;
-    }
-    return self;
-}
 
 - (BOOL)isValidResponse:(id)response request:(TYHttpRequest *)request error:(NSError *__autoreleasing *)error
 {
-    if (!response) {
-        return NO;
-    }
-    
-    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)request.dataTask.response;
-    NSInteger responseStatusCode = [httpResponse statusCode];
-    
-    // StatusCode
-    if (responseStatusCode < 200 || responseStatusCode > 299) {
-        *error = [NSError errorWithDomain:@"invalid http request" code: responseStatusCode userInfo:nil];
+    if (![super isValidResponse:response request:request error:error]) {
         return NO;
     }
     
     // 根据 response 结构 应该为字典
     if (![response isKindOfClass:[NSDictionary class]]) {
-        if (!_modelClass) {
+        if (!self.modelClass) {
             // _modelClass nil
-            _status = TYStauteSuccessCode;
+            self.status = TYStauteSuccessCode;
             return YES;
         }
         *error = [NSError errorWithDomain:@"response is invalide, is not NSDictionary" code:-1  userInfo:nil];
@@ -51,47 +30,41 @@
     
     // 获取自定义的状态码
     NSInteger status = [response objectForKey:@"code"] ? [[response objectForKey:@"code"] integerValue] : TYStauteSuccessCode;
-
+    
     if (status != TYStauteSuccessCode) {
-        _status = status;
-        _msg = [response objectForKey:@"message"];
-        *error = [NSError errorWithDomain:_msg code:_status  userInfo:nil];
+        self.status = status;
+        self.msg = [response objectForKey:@"message"];
+        *error = [NSError errorWithDomain:self.msg code:self.status  userInfo:nil];
         return NO;
     }
-    
+
     return YES;
 }
 
 - (id)parseResponse:(id)response request:(TYHttpRequest *)request
 {
-    if ([response isKindOfClass:[NSDictionary class]]) {
-        _status = [response objectForKey:@"code"] ? [[response objectForKey:@"code"] integerValue] : TYStauteSuccessCode;
-        _msg = [response objectForKey:@"message"];
-        id json = [response objectForKey:@"info"];
-        
-        if (_modelClass) {
-            if ([json isKindOfClass:[NSDictionary class]]) {
-                _data = [[self modelClass] ty_ModelWithDictonary:json];
-            }else if ([json isKindOfClass:[NSArray class]]) {
-                _data = [[self modelClass] ty_ModelArrayWithDictionaryArray:json];
-            }
-        }else {
-            // _modelClass nil
-            _data = json ? json : response;
+    if (![response isKindOfClass:[NSDictionary class]]) {
+        // _modelClass nil
+        self.status = TYStauteSuccessCode;
+        return [super parseResponse:response request:request];
+    }
+    
+    // json to model
+    self.status = [response objectForKey:@"code"] ? [[response objectForKey:@"code"] integerValue] : TYStauteSuccessCode;
+    self.msg = [response objectForKey:@"message"];
+    id json = [response objectForKey:@"info"];
+    
+    if (self.modelClass) {
+        if ([json isKindOfClass:[NSDictionary class]]) {
+            self.data = [[self modelClass] ty_ModelWithDictonary:json];
+        }else if ([json isKindOfClass:[NSArray class]]) {
+            self.data = [[self modelClass] ty_ModelArrayWithDictionaryArray:json];
         }
-
     }else {
         // _modelClass nil
-        _status = TYStauteSuccessCode;
-        _data = response;
+        self.data = json ? json : response;
     }
     return self;
 }
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"\nstatus:%d\nmsg:%@\n",(int)_status,_msg];
-}
-
 
 @end

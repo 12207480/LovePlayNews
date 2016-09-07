@@ -33,8 +33,6 @@
 
 @property (nonatomic, assign, readonly) BOOL responseFromCache; // response是否来自缓存
 
-// request cache params
-
 // 是否请求缓存的response 默认NO
 @property (nonatomic, assign) BOOL requestFromCache;
 

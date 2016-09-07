@@ -10,11 +10,16 @@
 #import "LPHttpRequest.h"
 #import "LPHotZoneModel.h"
 #import "LPZoneDiscuzModel.h"
+#import "LPDiscuzListModel.h"
 
 @interface LPGameZoneOperation : NSObject
 
 + (LPHttpRequest *)requestHotZoneWithPageIndex:(NSInteger)pageIndex;
 
 + (LPHttpRequest *)requestZoneDiscuzWithIndex:(NSInteger)index;
+
++ (LPHttpRequest *)requestDiscuzImageWithFid:(NSString *)fid;
+
++ (LPHttpRequest *)requestDiscuzDetailWithFid:(NSString *)fid Index:(NSInteger)index;
 
 @end

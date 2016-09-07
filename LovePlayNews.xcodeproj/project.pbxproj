@@ -32,6 +32,14 @@
 		2B5C40FB1D79609700296C3F /* NSString+LPImageURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C40FA1D79609700296C3F /* NSString+LPImageURL.m */; };
 		2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */; };
 		2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */; };
+		2B7100021D7FB14B00A4D4FB /* TYResponseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7100011D7FB14B00A4D4FB /* TYResponseObject.m */; };
+		2B7100051D7FB60800A4D4FB /* LPDiscuzResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7100041D7FB60800A4D4FB /* LPDiscuzResponse.m */; };
+		2B7100081D7FBB2400A4D4FB /* LPDiscuzListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7100071D7FBB2400A4D4FB /* LPDiscuzListModel.m */; };
+		2B71000B1D7FEB7100A4D4FB /* LPDiscuzCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B71000A1D7FEB7100A4D4FB /* LPDiscuzCellNode.m */; };
+		2B71000E1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B71000D1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.m */; };
+		2B7100111D7FF42500A4D4FB /* LPDiscuzHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7100101D7FF42500A4D4FB /* LPDiscuzHeaderView.m */; };
+		2B7100131D7FF43400A4D4FB /* LPDiscuzHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B7100121D7FF43400A4D4FB /* LPDiscuzHeaderView.xib */; };
+		2B71FFFF1D7FAD6F00A4D4FB /* LPDiscuzListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B71FFFE1D7FAD6F00A4D4FB /* LPDiscuzListController.m */; };
 		2B7C5DD01D6D4433005B30B5 /* LPRefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C5DCF1D6D4433005B30B5 /* LPRefreshGifHeader.m */; };
 		2B7C5DD31D6D4448005B30B5 /* LPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C5DD21D6D4448005B30B5 /* LPLoadingView.m */; };
 		2B7C5DD51D6D9FCF005B30B5 /* LPLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B7C5DD41D6D9FCF005B30B5 /* LPLoadingView.xib */; };
@@ -173,6 +181,21 @@
 		2B6CC49E1D631E9900CE3F33 /* LPNewsFavorCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsFavorCellNode.m; sourceTree = "<group>"; };
 		2B6CC4A01D6323A900CE3F33 /* NSDictionary+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Params.h"; sourceTree = "<group>"; };
 		2B6CC4A11D6323A900CE3F33 /* NSDictionary+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Params.m"; sourceTree = "<group>"; };
+		2B7100001D7FB14B00A4D4FB /* TYResponseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYResponseObject.h; sourceTree = "<group>"; };
+		2B7100011D7FB14B00A4D4FB /* TYResponseObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYResponseObject.m; sourceTree = "<group>"; };
+		2B7100031D7FB60800A4D4FB /* LPDiscuzResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzResponse.h; sourceTree = "<group>"; };
+		2B7100041D7FB60800A4D4FB /* LPDiscuzResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzResponse.m; sourceTree = "<group>"; };
+		2B7100061D7FBB2400A4D4FB /* LPDiscuzListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzListModel.h; sourceTree = "<group>"; };
+		2B7100071D7FBB2400A4D4FB /* LPDiscuzListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzListModel.m; sourceTree = "<group>"; };
+		2B7100091D7FEB7100A4D4FB /* LPDiscuzCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzCellNode.h; sourceTree = "<group>"; };
+		2B71000A1D7FEB7100A4D4FB /* LPDiscuzCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzCellNode.m; sourceTree = "<group>"; };
+		2B71000C1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPTopDiscuzCellNode.h; sourceTree = "<group>"; };
+		2B71000D1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPTopDiscuzCellNode.m; sourceTree = "<group>"; };
+		2B71000F1D7FF42500A4D4FB /* LPDiscuzHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzHeaderView.h; sourceTree = "<group>"; };
+		2B7100101D7FF42500A4D4FB /* LPDiscuzHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzHeaderView.m; sourceTree = "<group>"; };
+		2B7100121D7FF43400A4D4FB /* LPDiscuzHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPDiscuzHeaderView.xib; sourceTree = "<group>"; };
+		2B71FFFD1D7FAD6F00A4D4FB /* LPDiscuzListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzListController.h; sourceTree = "<group>"; };
+		2B71FFFE1D7FAD6F00A4D4FB /* LPDiscuzListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzListController.m; sourceTree = "<group>"; };
 		2B7C5DCE1D6D4433005B30B5 /* LPRefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPRefreshGifHeader.h; sourceTree = "<group>"; };
 		2B7C5DCF1D6D4433005B30B5 /* LPRefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPRefreshGifHeader.m; sourceTree = "<group>"; };
 		2B7C5DD11D6D4448005B30B5 /* LPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLoadingView.h; sourceTree = "<group>"; };
@@ -476,6 +499,8 @@
 				2B00ACA41D517E5E0048B5C2 /* LPResponseObject.m */,
 				2B01C9C11D6BE4EF00D56364 /* LPCustomResponse.h */,
 				2B01C9C21D6BE4EF00D56364 /* LPCustomResponse.m */,
+				2B7100031D7FB60800A4D4FB /* LPDiscuzResponse.h */,
+				2B7100041D7FB60800A4D4FB /* LPDiscuzResponse.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -803,6 +828,8 @@
 				2B8174EF1D4F39A400BA297C /* TYRequstConfigure.m */,
 				2B8174F01D4F39A400BA297C /* TYResponseCache.h */,
 				2B8174F11D4F39A400BA297C /* TYResponseCache.m */,
+				2B7100001D7FB14B00A4D4FB /* TYResponseObject.h */,
+				2B7100011D7FB14B00A4D4FB /* TYResponseObject.m */,
 			);
 			path = TYHttpManager;
 			sourceTree = "<group>";
@@ -953,6 +980,8 @@
 				B08466E71D7C071500F5416A /* LPHotZoneController.m */,
 				2BEDE9201D7D4CFA0009DADB /* LPZoneDiscuzController.h */,
 				2BEDE9211D7D4CFA0009DADB /* LPZoneDiscuzController.m */,
+				2B71FFFD1D7FAD6F00A4D4FB /* LPDiscuzListController.h */,
+				2B71FFFE1D7FAD6F00A4D4FB /* LPDiscuzListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -964,6 +993,8 @@
 				B08466EA1D7C0C7E00F5416A /* LPHotZoneModel.m */,
 				2BEDE91D1D7D4A840009DADB /* LPZoneDiscuzModel.h */,
 				2BEDE91E1D7D4A840009DADB /* LPZoneDiscuzModel.m */,
+				2B7100061D7FBB2400A4D4FB /* LPDiscuzListModel.h */,
+				2B7100071D7FBB2400A4D4FB /* LPDiscuzListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -980,6 +1011,13 @@
 				2BEDE9241D7D6B060009DADB /* LPZoneDiscuzCellNode.m */,
 				2BEDE9261D7D74A40009DADB /* LPDiscuzHeaderNode.h */,
 				2BEDE9271D7D74A40009DADB /* LPDiscuzHeaderNode.m */,
+				2B7100091D7FEB7100A4D4FB /* LPDiscuzCellNode.h */,
+				2B71000A1D7FEB7100A4D4FB /* LPDiscuzCellNode.m */,
+				2B71000C1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.h */,
+				2B71000D1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.m */,
+				2B71000F1D7FF42500A4D4FB /* LPDiscuzHeaderView.h */,
+				2B7100101D7FF42500A4D4FB /* LPDiscuzHeaderView.m */,
+				2B7100121D7FF43400A4D4FB /* LPDiscuzHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1067,6 +1105,7 @@
 				2B8A00FE1D5AD07200F04812 /* News.css in Resources */,
 				2BBECF781D7E83D2006C71B2 /* LPMineHeaderView.xib in Resources */,
 				2BE4EF791D7577B600CD50D3 /* LPLoadFailedView.xib in Resources */,
+				2B7100131D7FF43400A4D4FB /* LPDiscuzHeaderView.xib in Resources */,
 				2B7C5DD51D6D9FCF005B30B5 /* LPLoadingView.xib in Resources */,
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
 				2BE4EF6B1D752BB700CD50D3 /* LPNavigationBarView.xib in Resources */,
@@ -1158,9 +1197,11 @@
 				2B8A00F91D5AB5F700F04812 /* LPNewsDetailModel.m in Sources */,
 				B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */,
 				2B8174DC1D4F2BFE00BA297C /* LPTabBarController.m in Sources */,
+				2B7100081D7FBB2400A4D4FB /* LPDiscuzListModel.m in Sources */,
 				2BEDE9221D7D4CFA0009DADB /* LPZoneDiscuzController.m in Sources */,
 				B0E744C81D71B68200B011E5 /* LPImageInfoCellNode.m in Sources */,
 				B08466E81D7C071500F5416A /* LPHotZoneController.m in Sources */,
+				2B71FFFF1D7FAD6F00A4D4FB /* LPDiscuzListController.m in Sources */,
 				2B3913F11D5C7D510068B1D8 /* LPNewsTitleSectionView.m in Sources */,
 				2BAEC3C61D6FD7F60048CBD3 /* LPRecommendOperation.m in Sources */,
 				B0D8293F1D68871E000B9D84 /* UIView+ViewController.m in Sources */,
@@ -1184,6 +1225,7 @@
 				2B8174CD1D4F2B4400BA297C /* NSString+Size.m in Sources */,
 				2B5C40F71D79398E00296C3F /* LPADLaunchView.m in Sources */,
 				B08466EB1D7C0C7E00F5416A /* LPHotZoneModel.m in Sources */,
+				2B71000B1D7FEB7100A4D4FB /* LPDiscuzCellNode.m in Sources */,
 				2BBECF661D7E5DA0006C71B2 /* LPTableViewItem.m in Sources */,
 				B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */,
 				2BA1A6F31D74350900BCED16 /* LPGameNewsController.m in Sources */,
@@ -1210,6 +1252,7 @@
 				2B8175041D4F417300BA297C /* TYTabButtonPagerController.m in Sources */,
 				2B8174CB1D4F2B4400BA297C /* NSString+MD5.m in Sources */,
 				2B8174D61D4F2B4400BA297C /* UIView+Nib.m in Sources */,
+				2B7100051D7FB60800A4D4FB /* LPDiscuzResponse.m in Sources */,
 				2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */,
 				2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m in Sources */,
 				2BE9E1D41D6AFA6500834F08 /* LPNewsCommentOperation.m in Sources */,
@@ -1224,11 +1267,14 @@
 				2B00ACB31D51AB230048B5C2 /* LPGameNewsOperation.m in Sources */,
 				2B8174261D4EE5A200BA297C /* main.m in Sources */,
 				2B8174D11D4F2B4400BA297C /* UIImage+Color.m in Sources */,
+				2B71000E1D7FEB8100A4D4FB /* LPTopDiscuzCellNode.m in Sources */,
+				2B7100021D7FB14B00A4D4FB /* TYResponseObject.m in Sources */,
 				2B00AC8B1D517B580048B5C2 /* TYPropertyInfo.m in Sources */,
 				2BBECF761D7E835E006C71B2 /* LPMineHeaderView.m in Sources */,
 				2BB90FF41D670417002B2B17 /* LPNewsReplyCollectNode.m in Sources */,
 				2B50AB2F1D5DCA9000FB77AE /* LPNewsImageCellNode.m in Sources */,
 				2B8174C91D4F2B4400BA297C /* NSString+Base64.m in Sources */,
+				2B7100111D7FF42500A4D4FB /* LPDiscuzHeaderView.m in Sources */,
 				2B8174CF1D4F2B4400BA297C /* UIColor+Hex.m in Sources */,
 				B07A5DF11D7138E900C18C27 /* LPRecommendCellNode.m in Sources */,
 			);
@@ -1350,7 +1396,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYCache\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYImage\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYWebImage\"",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1423,10 +1468,7 @@
 				INFOPLIST_FILE = LovePlayNews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

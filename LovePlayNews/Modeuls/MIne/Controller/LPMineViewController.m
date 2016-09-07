@@ -37,7 +37,7 @@ static NSString *tablePrizeCellId = @"LPPrizeViewCell";
     
     [self addTableView];
     
-    [self addHeaderView];
+    [self addTableHeaderView];
     
     [self registerdTableViewCells];
     
@@ -70,12 +70,12 @@ static NSString *tablePrizeCellId = @"LPPrizeViewCell";
     _tableView = tableView;
 }
 
-- (void)addHeaderView
+- (void)addTableHeaderView
 {
     LPMineHeaderView *headerView = [LPMineHeaderView loadInstanceFromNib];
     _tableView.parallaxHeader.view = headerView;
     _tableView.parallaxHeader.height = 135;
-    _tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
+    _tableView.parallaxHeader.mode = MXParallaxHeaderModeBottomFill;
     _tableView.parallaxHeader.contentView.layer.zPosition = 1;
 }
 

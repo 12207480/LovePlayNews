@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="0LO-aT-vXO" customClass="LPDiscuzHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DLf-VF-JIN">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7d-Vn-e9O">
+                    <rect key="frame" x="15" y="100" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-Ka-hmF">
+                    <rect key="frame" x="15" y="110" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="V7d-Vn-e9O" firstAttribute="leading" secondItem="0LO-aT-vXO" secondAttribute="leading" constant="15" id="8zu-gM-ZhV"/>
+                <constraint firstAttribute="bottom" secondItem="DLf-VF-JIN" secondAttribute="bottom" id="MJx-7U-euB"/>
+                <constraint firstItem="DLf-VF-JIN" firstAttribute="leading" secondItem="0LO-aT-vXO" secondAttribute="leading" id="Sv5-71-lJt"/>
+                <constraint firstItem="3qA-Ka-hmF" firstAttribute="top" secondItem="V7d-Vn-e9O" secondAttribute="bottom" constant="10" id="a4p-I7-ZKb"/>
+                <constraint firstItem="3qA-Ka-hmF" firstAttribute="leading" secondItem="0LO-aT-vXO" secondAttribute="leading" constant="15" id="a7n-Fr-egH"/>
+                <constraint firstAttribute="bottom" secondItem="3qA-Ka-hmF" secondAttribute="bottom" constant="10" id="f0d-Kb-Z9x"/>
+                <constraint firstAttribute="trailing" secondItem="DLf-VF-JIN" secondAttribute="trailing" id="l8h-Ne-5E1"/>
+                <constraint firstItem="DLf-VF-JIN" firstAttribute="top" secondItem="0LO-aT-vXO" secondAttribute="top" id="pNS-fS-h7h"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="descripLabel" destination="3qA-Ka-hmF" id="Rob-5b-fzF"/>
+                <outlet property="imageView" destination="DLf-VF-JIN" id="xWb-Yk-sG5"/>
+                <outlet property="titleLabel" destination="V7d-Vn-e9O" id="BAK-Gj-nHY"/>
+            </connections>
+            <point key="canvasLocation" x="334" y="386"/>
+        </view>
+    </objects>
+</document>

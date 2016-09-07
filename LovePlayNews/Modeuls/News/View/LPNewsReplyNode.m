@@ -100,10 +100,13 @@
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
     _contentNode.flexShrink = YES;
+    _nameNode.flexShrink = YES;
     ASStackLayoutSpec *horLeftTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:6 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStart children:@[_nameNode,_locationNode]];
     horLeftTopStackLayout.flexGrow = YES;
+    horLeftTopStackLayout.flexShrink = YES;
     ASStackLayoutSpec *horTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionHorizontal spacing:0 justifyContent:ASStackLayoutJustifyContentSpaceBetween alignItems:ASStackLayoutAlignItemsStart children:@[horLeftTopStackLayout,_floorNode]];
     horTopStackLayout.flexGrow = YES;
+    horTopStackLayout.flexShrink = YES;
 
     ASStackLayoutSpec *verTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:12 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStretch children:@[horTopStackLayout,_contentNode]];
     verTopStackLayout.flexGrow = YES;

@@ -22,5 +22,7 @@
 
 #define HotGameZoneURL @"/news/discuz/forum_recommend_detail"
 #define ZoneDiscuzURL @"/news/discuz/discuz_model_v2/list/center"
+#define DiscuzDetailURL @"http://bbs.d.163.com/api/mobile/index.php"
+#define ZoneDiscuzImageURL @"/news/discuz/discuz_model/fid_img"
 
 #endif /* LPRequestURLInfo_h */

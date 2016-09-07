@@ -14,6 +14,12 @@
 
 #endif
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
 // 弱引用
 #define WEAK_REF(obj)\
 __weak typeof(obj) weak_##obj = obj; \
@@ -31,7 +37,7 @@ __weak typeof(obj) weak_##obj = obj; \
 #define kHeightForStatus (kIsIOS7Later ? 0 : 20)
 
 //导航栏高度
-#define kNavBarHeight (kIsIOS7Later ? 64 : 44)
+#define kNavBarHeight 64
 
 //屏幕高度
 #define kScreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)

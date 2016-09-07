@@ -334,7 +334,7 @@ static NSString *footerId = @"LPNewsCommentFooterView";
 - (void)dealloc{
     _tableNode.delegate = nil;
     _tableNode.dataSource = nil;
-    NSLog(@"LPNewsDetailController dealloc");
+    DLog(@"LPNewsDetailController dealloc");
 }
 
 @end

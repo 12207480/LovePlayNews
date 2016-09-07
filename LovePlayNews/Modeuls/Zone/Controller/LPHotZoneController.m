@@ -127,6 +127,7 @@ static NSString * headerId = @"LPHotZoneSectionView";
             }else {
                 _haveMore = NO;
             }
+            [context completeBatchFetching:YES];
         }else {
             _focusList = hotZoneModel.focusList;
             _forumList = hotZoneModel.forumList;
@@ -139,11 +140,14 @@ static NSString * headerId = @"LPHotZoneSectionView";
         }
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         [LPLoadingView hideLoadingForView:self.view];
-        __weak typeof(self) weakSelf = self;
-        [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
-            [weakSelf loadData];
-        }];
-
+        if (context) {
+            [context completeBatchFetching:YES];
+        }else {
+            __weak typeof(self) weakSelf = self;
+            [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+                [weakSelf loadData];
+            }];
+        }
     }];
     
 }

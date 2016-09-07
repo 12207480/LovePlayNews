@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSString *title;
 
+@property (nonatomic, assign) CGFloat backgroundAlpha;
+
 @property (nonatomic, copy) void (^navBackHandle)(void);
 
 @end

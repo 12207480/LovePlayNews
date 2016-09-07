@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,6 +11,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brM-Ip-esp">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hxc-IA-eTf">
                     <rect key="frame" x="0.0" y="20" width="60" height="44"/>
                     <constraints>
@@ -30,18 +34,23 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="brM-Ip-esp" firstAttribute="leading" secondItem="cw0-nA-mHX" secondAttribute="leading" id="4bN-W1-VBh"/>
                 <constraint firstAttribute="bottom" secondItem="JQI-Ca-FXR" secondAttribute="bottom" id="dDD-2B-eS8"/>
                 <constraint firstAttribute="bottom" secondItem="Hxc-IA-eTf" secondAttribute="bottom" id="nP4-bb-8As"/>
                 <constraint firstItem="JQI-Ca-FXR" firstAttribute="top" secondItem="cw0-nA-mHX" secondAttribute="top" constant="20" id="oQ1-T0-1fU"/>
+                <constraint firstItem="brM-Ip-esp" firstAttribute="top" secondItem="cw0-nA-mHX" secondAttribute="top" id="p5O-aY-3jB"/>
                 <constraint firstItem="JQI-Ca-FXR" firstAttribute="centerX" secondItem="cw0-nA-mHX" secondAttribute="centerX" id="qf3-6z-iKe"/>
+                <constraint firstAttribute="bottom" secondItem="brM-Ip-esp" secondAttribute="bottom" id="wUo-WH-Bqw"/>
                 <constraint firstItem="Hxc-IA-eTf" firstAttribute="leading" secondItem="cw0-nA-mHX" secondAttribute="leading" id="yRc-if-1aO"/>
+                <constraint firstAttribute="trailing" secondItem="brM-Ip-esp" secondAttribute="trailing" id="z8S-37-xFV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backBtn" destination="Hxc-IA-eTf" id="l66-S0-tCF"/>
+                <outlet property="backgroundView" destination="brM-Ip-esp" id="ScQ-CD-lpO"/>
                 <outlet property="titleLabel" destination="JQI-Ca-FXR" id="LMg-G3-yWa"/>
             </connections>
             <point key="canvasLocation" x="303" y="179"/>

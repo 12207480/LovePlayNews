@@ -7,7 +7,6 @@
 //
 
 #import "LPResponseObject.h"
-#import "TYHttpRequest.h"
 
 @interface LPCustomResponse : LPResponseObject
 

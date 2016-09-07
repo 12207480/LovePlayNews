@@ -12,14 +12,12 @@
 
 @interface LPHttpRequest : TYHttpRequest
 
-@property (nonatomic, strong, readonly) LPResponseObject *responseObject;
+@property (nonatomic, strong, readonly) TYResponseObject *responseObject;
 
 @property (nonatomic, strong) NSString *identifier;
 
 - (instancetype)initWithModelClass:(Class)modelClass;
 
 + (instancetype)requestWithModelClass:(Class)modelClass;
-
-
 
 @end

@@ -248,7 +248,7 @@
 }
 
 - (void)dealloc{
-    NSLog(@"LPNewsListController dealloc");
+    DLog(@"LPNewsListController dealloc");
 }
 
 @end

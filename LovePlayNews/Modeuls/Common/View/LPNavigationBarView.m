@@ -12,16 +12,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
 
 @implementation LPNavigationBarView
-
-- (void)setTitle:(NSString *)title
-{
-    _title = title;
-    _titleLabel.text = title;
-}
 
 - (void)awakeFromNib
 {
@@ -32,6 +27,20 @@
 {
     [super didMoveToSuperview];
     self.backBtn.hidden = self.viewController.navigationController.viewControllers.count <= 1;
+}
+
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    _titleLabel.text = title;
+}
+
+- (void)setBackgroundAlpha:(CGFloat)backgroundAlpha
+{
+    _backgroundAlpha = backgroundAlpha;
+    if (_backgroundView) {
+        _backgroundView.alpha = backgroundAlpha;
+    }
 }
 
 #pragma mark - action

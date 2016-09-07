@@ -14,7 +14,9 @@
 
 - (instancetype)init
 {
-    if (self = [self initWithModelClass:nil]) {
+    if (self = [super init]) {
+        self.baseURL = BaseURL;
+        self.responseParser = [[TYResponseObject alloc]init];
     }
     return self;
 }

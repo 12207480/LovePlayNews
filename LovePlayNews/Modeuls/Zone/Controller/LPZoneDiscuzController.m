@@ -12,6 +12,7 @@
 #import "LPLoadFailedView.h"
 #import "LPZoneDiscuzCellNode.h"
 #import "LPDiscuzHeaderNode.h"
+#import "LPDiscuzListController.h"
 
 @interface LPZoneDiscuzController ()<ASCollectionDataSource, ASCollectionDelegate>
 
@@ -132,6 +133,15 @@
 }
 
 #pragma mark - ASCollectionDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    LPZoneDiscuzDetail *detailDiscuz = _discuzList[indexPath.section];
+    LPZoneDiscuzItem *item = detailDiscuz.detailList[indexPath.item];
+    LPDiscuzListController *discuzVC = [[LPDiscuzListController alloc]init];
+    discuzVC.fid = @(item.fid).stringValue;
+    [self.navigationController pushViewController:discuzVC animated:YES];
+}
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
