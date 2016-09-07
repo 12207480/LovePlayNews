@@ -62,6 +62,19 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     [self.node addSubnode:_tableNode];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _tableNode.frame = self.node.bounds;
+    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kNavBarHeight);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -75,19 +88,6 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     [self addHeaderView];
     
     [self loadData];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    _tableNode.frame = self.node.bounds;
-    _navBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), kNavBarHeight);
 }
 
 - (void)addNavBarView
@@ -347,10 +347,10 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     CGFloat headerViewHeight = kHeaderViewHeight;
     if (offsetY <= 0) {
         _navBar.backgroundAlpha = 0;
-    }else if (offsetY >= (headerViewHeight+kHeightForStatus)) {
+    }else if (offsetY >= headerViewHeight) {
         _navBar.backgroundAlpha = 1.0;
     }else {
-        _navBar.backgroundAlpha = offsetY/(headerViewHeight+kHeightForStatus);
+        _navBar.backgroundAlpha = offsetY/headerViewHeight;
     }
 }
 
