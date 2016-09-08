@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "908F8634B973B9A0D9CEA0F5D8403EF3"
+               BlueprintIdentifier = "660D690DA999BD2AF86B7910D33E7EFF"
                BuildableName = "libTOWebViewController.a"
                BlueprintName = "TOWebViewController"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "908F8634B973B9A0D9CEA0F5D8403EF3"
+            BlueprintIdentifier = "660D690DA999BD2AF86B7910D33E7EFF"
             BuildableName = "libTOWebViewController.a"
             BlueprintName = "TOWebViewController"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "908F8634B973B9A0D9CEA0F5D8403EF3"
-            BuildableName = "libTOWebViewController.a"
-            BlueprintName = "TOWebViewController"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

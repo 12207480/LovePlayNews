@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6619EC66B9BF6CE9B0E6EF80DB496CC3"
+               BlueprintIdentifier = "F767C8D86AE588542CF0ECBF7309D38F"
                BuildableName = "libAsyncDisplayKit.a"
                BlueprintName = "AsyncDisplayKit"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6619EC66B9BF6CE9B0E6EF80DB496CC3"
+            BlueprintIdentifier = "F767C8D86AE588542CF0ECBF7309D38F"
             BuildableName = "libAsyncDisplayKit.a"
             BlueprintName = "AsyncDisplayKit"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6619EC66B9BF6CE9B0E6EF80DB496CC3"
-            BuildableName = "libAsyncDisplayKit.a"
-            BlueprintName = "AsyncDisplayKit"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "406A338E4CBAC6EC2A352E605BE59803"
+               BlueprintIdentifier = "8F3B243A2117F94CD73AB6717D9B51A8"
                BuildableName = "libPINRemoteImage.a"
                BlueprintName = "PINRemoteImage"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "406A338E4CBAC6EC2A352E605BE59803"
+            BlueprintIdentifier = "8F3B243A2117F94CD73AB6717D9B51A8"
             BuildableName = "libPINRemoteImage.a"
             BlueprintName = "PINRemoteImage"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "406A338E4CBAC6EC2A352E605BE59803"
-            BuildableName = "libPINRemoteImage.a"
-            BlueprintName = "PINRemoteImage"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

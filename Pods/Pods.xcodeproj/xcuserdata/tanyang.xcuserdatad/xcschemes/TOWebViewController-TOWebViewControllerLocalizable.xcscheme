@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DCFC8976D6D379E473EAF8FAE1D03215"
+               BlueprintIdentifier = "39AC7D03D30B62035F1D34327E4395B8"
                BuildableName = "TOWebViewControllerLocalizable.bundle"
                BlueprintName = "TOWebViewController-TOWebViewControllerLocalizable"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DCFC8976D6D379E473EAF8FAE1D03215"
+            BlueprintIdentifier = "39AC7D03D30B62035F1D34327E4395B8"
             BuildableName = "TOWebViewControllerLocalizable.bundle"
             BlueprintName = "TOWebViewController-TOWebViewControllerLocalizable"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DCFC8976D6D379E473EAF8FAE1D03215"
-            BuildableName = "TOWebViewControllerLocalizable.bundle"
-            BlueprintName = "TOWebViewController-TOWebViewControllerLocalizable"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

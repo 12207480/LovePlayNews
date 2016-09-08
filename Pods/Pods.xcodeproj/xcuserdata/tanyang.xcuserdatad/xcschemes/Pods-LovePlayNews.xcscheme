@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D4E865F0E3FCB451AEC24C82C698FD55"
+               BlueprintIdentifier = "3E32252D6CBB5CA4E7B200B3E2A07F8E"
                BuildableName = "libPods-LovePlayNews.a"
                BlueprintName = "Pods-LovePlayNews"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4E865F0E3FCB451AEC24C82C698FD55"
+            BlueprintIdentifier = "3E32252D6CBB5CA4E7B200B3E2A07F8E"
             BuildableName = "libPods-LovePlayNews.a"
             BlueprintName = "Pods-LovePlayNews"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D4E865F0E3FCB451AEC24C82C698FD55"
-            BuildableName = "libPods-LovePlayNews.a"
-            BlueprintName = "Pods-LovePlayNews"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
