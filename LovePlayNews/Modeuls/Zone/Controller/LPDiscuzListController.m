@@ -216,7 +216,7 @@
 {
     switch (section) {
         case 0:
-            return 0;
+            return _topDiscuzs.count;
         case 1:
             return _discuzs.count;
         default:

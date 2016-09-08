@@ -13,6 +13,7 @@
 #import "LPHotZoneSectionView.h"
 #import "LPLoadFailedView.h"
 #import "SDCycleScrollView.h"
+#import "UIImage+Color.h"
 
 @interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource, SDCycleScrollViewDelegate>
 
@@ -84,6 +85,7 @@ static NSString * headerId = @"LPHotZoneSectionView";
     SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 105) delegate:self placeholderImage:nil];
     cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     cycleScrollView.currentPageDotColor = [UIColor whiteColor];
+    cycleScrollView.placeholderImage = [UIImage imageWithColor:RGB_255(245, 245, 245)];
     
     NSMutableArray *imageURLs = [NSMutableArray array];
     for (LPZoneFocus *focus in _focusList) {
