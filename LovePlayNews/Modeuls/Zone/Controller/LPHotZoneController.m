@@ -14,6 +14,7 @@
 #import "LPLoadFailedView.h"
 #import "SDCycleScrollView.h"
 #import "UIImage+Color.h"
+#import "LPDiscuzDetailController.h"
 
 @interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource, SDCycleScrollViewDelegate>
 
@@ -201,6 +202,14 @@ static NSString * headerId = @"LPHotZoneSectionView";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LPZoneThread *post = _threadList[indexPath.row];
+    LPDiscuzDetailController *discuzDetailVC = [[LPDiscuzDetailController alloc]init];
+    discuzDetailVC.tid = post.tid;
+    [self.navigationController pushViewController:discuzDetailVC animated:YES];
 }
 
 #pragma mark - SDCycleScrollViewDelegate

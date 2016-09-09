@@ -16,6 +16,7 @@
 #import "MXParallaxHeader.h"
 #import <YYWebImage.h>
 #import "LPNavigationBarView.h"
+#import "LPDiscuzDetailController.h"
 
 @interface LPDiscuzListController ()<ASTableDelegate, ASTableDataSource>
 
@@ -117,7 +118,7 @@
     [LPLoadingView showLoadingInView:self.view];
     
     LPHttpRequest *discuzImageRequest = [LPGameZoneOperation requestDiscuzImageWithFid:_fid];
-    LPHttpRequest *discuzListRequest = [LPGameZoneOperation requestDiscuzDetailWithFid:_fid Index:_curIndexPage];
+    LPHttpRequest *discuzListRequest = [LPGameZoneOperation requestDiscuzListWithFid:_fid Index:_curIndexPage];
     
     TYBatchRequest *batchRequest = [[TYBatchRequest alloc]init];
     [batchRequest addRequestArray:@[discuzImageRequest,discuzListRequest]];
@@ -134,8 +135,8 @@
             [_tableNode.view reloadData];
             ++_curIndexPage;
             _haveMore = YES;
-            [LPLoadingView hideLoadingForView:self.view];
         }
+        [LPLoadingView hideLoadingForView:self.view];
         
     } failureBlock:^(TYBatchRequest *request, NSError *error) {
         [LPLoadingView hideLoadingForView:self.view];
@@ -150,7 +151,7 @@
 - (void)loadMoreDataWithContext:(ASBatchContext *)context
 {
     [context beginBatchFetching];
-    LPHttpRequest *discuzRequest = [LPGameZoneOperation requestDiscuzDetailWithFid:_fid Index:_curIndexPage];
+    LPHttpRequest *discuzRequest = [LPGameZoneOperation requestDiscuzListWithFid:_fid Index:_curIndexPage];
     [discuzRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         LPDiscuzListModel *discuzModel = request.responseObject.data;
         NSArray *threadList = discuzModel.forum_threadlist;
@@ -242,6 +243,14 @@
         return cellNodeBlock;
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LPForumThread *item = indexPath.section == 0 ? _topDiscuzs[indexPath.row] : _discuzs[indexPath.row];
+    LPDiscuzDetailController *discuzDetailVC = [[LPDiscuzDetailController alloc]init];
+    discuzDetailVC.tid = item.tid;
+    [self.navigationController pushViewController:discuzDetailVC animated:YES];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

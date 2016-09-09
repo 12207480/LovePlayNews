@@ -11,6 +11,7 @@
 #import "LPHotZoneModel.h"
 #import "LPZoneDiscuzModel.h"
 #import "LPDiscuzListModel.h"
+#import "LPDiscuzDetailModel.h"
 
 @interface LPGameZoneOperation : NSObject
 
@@ -20,6 +21,8 @@
 
 + (LPHttpRequest *)requestDiscuzImageWithFid:(NSString *)fid;
 
-+ (LPHttpRequest *)requestDiscuzDetailWithFid:(NSString *)fid Index:(NSInteger)index;
++ (LPHttpRequest *)requestDiscuzListWithFid:(NSString *)fid Index:(NSInteger)index;
+
++ (LPHttpRequest *)requestDiscuzDetailWithTid:(NSString *)tid Index:(NSInteger)index;
 
 @end

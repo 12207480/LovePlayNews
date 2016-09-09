@@ -26,12 +26,21 @@
     return request;
 }
 
-+ (LPHttpRequest *)requestDiscuzDetailWithFid:(NSString *)fid Index:(NSInteger)index
++ (LPHttpRequest *)requestDiscuzListWithFid:(NSString *)fid Index:(NSInteger)index
 {
     LPHttpRequest *request = [[LPHttpRequest alloc]init];
     request.responseParser = [[LPDiscuzResponse alloc] initWithModelClass:[LPDiscuzListModel class]];
     request.URLString = [NSString stringWithFormat:@"%@",DiscuzDetailURL];
     request.parameters = @{@"version":@"163",@"module":@"forumdisplay",@"fid":fid?fid:@"",@"tpp":@"15",@"charset":@"utf-8",@"page":@(index).stringValue};
+    return request;
+}
+
++ (LPHttpRequest *)requestDiscuzDetailWithTid:(NSString *)tid Index:(NSInteger)index
+{
+    LPHttpRequest *request = [[LPHttpRequest alloc]init];
+    request.responseParser = [[LPDiscuzResponse alloc] initWithModelClass:[LPDiscuzDetailModel class]];
+    request.URLString = [NSString stringWithFormat:@"%@",DiscuzDetailURL];
+    request.parameters = @{@"version":@"163",@"module":@"viewthread",@"tid":tid?tid:@"",@"ppp":@"15",@"charset":@"utf-8",@"page":@(index).stringValue};
     return request;
 }
 

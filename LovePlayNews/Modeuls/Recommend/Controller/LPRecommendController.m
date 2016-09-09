@@ -11,9 +11,9 @@
 #import "LPRecommendCellNode.h"
 #import "LPLoadingView.h"
 #import "LPImagePagerCellNode.h"
-#import "UIViewController+LPJump.h"
 #import "LPGameNewsController.h"
 #import "LPLoadFailedView.h"
+#import "LPNewsDetailController.h"
 
 @interface LPRecommendController ()<ASCollectionDataSource, ASCollectionDelegate>
 
@@ -148,7 +148,9 @@ static NSString *footerId = @"UICollectionReusableView";
                 LPImagePagerCellNode *cellNode = [[LPImagePagerCellNode alloc]initWithImageInfos:imageInfos];
                 
                 [cellNode setDidSelectImageInfoHandle:^(LPTopicImageInfo *imageInfo) {
-                    [weakSelf gotoNewsDetailController:imageInfo.docid];
+                    LPNewsDetailController *detail = [[LPNewsDetailController alloc]init];
+                    detail.newsId = imageInfo.docid;
+                    [weakSelf.navigationController pushViewController:detail animated:YES];
                 }];
                 return cellNode;
             };
