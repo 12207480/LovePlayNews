@@ -40,6 +40,8 @@ PODS:
   - TOWebViewController (2.2.4):
     - TOWebViewController/Core (= 2.2.4)
   - TOWebViewController/Core (2.2.4)
+  - TYAttributedLabel (2.6.2)
+  - TYPagerController (1.0.2)
   - YYCache (1.0.3)
   - YYImage (1.0.3):
     - YYImage/Core (= 1.0.3)
@@ -58,6 +60,8 @@ DEPENDENCIES:
   - MXParallaxHeader
   - SDCycleScrollView
   - TOWebViewController
+  - TYAttributedLabel (~> 2.6.2)
+  - TYPagerController
   - YYWebImage
 
 SPEC CHECKSUMS:
@@ -73,10 +77,12 @@ SPEC CHECKSUMS:
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   TOWebViewController: f6b234d2be45dbf81d2a71a1f9480f8f3cc6501a
+  TYAttributedLabel: 1c1f1e7604043ba584e005d4fd3aee8a1a7a2020
+  TYPagerController: 0b3e3e589a217ff537d5f78e1e76594beaa4cfc6
   YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
   YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
   YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: dee59075f025b68bce11a7a2980a3a2b19e47d4c
+PODFILE CHECKSUM: 87b2e8cded2fb9245e8068831f0d7f452161f218
 
 COCOAPODS: 1.0.1

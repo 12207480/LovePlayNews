@@ -7,6 +7,7 @@
 //
 
 #import "LPDiscuzPostCell.h"
+#import <YYWebImage.h>
 
 @implementation LPDiscuzPostCell
 
@@ -15,10 +16,13 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setPost:(LPDiscuzPost *)post floor:(NSInteger)floor
+{
+    [self.iconView setYy_imageURL:[NSURL URLWithString:@"http://uc.bbs.d.163.com/images/noavatar_middle.gif"]];
+    self.nameLabel.text = post.author;
+    self.timeLabel.text = [post.dateline stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
+    self.floorLabel.text = @(floor).stringValue;
 }
+
 
 @end

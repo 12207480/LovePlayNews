@@ -16,6 +16,7 @@
 #import "MXParallaxHeader.h"
 #import "NSString+Size.h"
 #import <YYWebImage.h>
+#import "LPDiscuzPostCell.h"
 
 @interface LPDiscuzDetailController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -33,6 +34,7 @@
 @end
 
 static NSString *webViewCellId = @"LPDiscuzWebViewCell";
+static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
 #define kHeaderViewHeight 150
 
 @implementation LPDiscuzDetailController
@@ -102,6 +104,8 @@ static NSString *webViewCellId = @"LPDiscuzWebViewCell";
 {
     UINib *nib = [UINib nibWithNibName:webViewCellId bundle:nil];
     [_tableView registerNib:nib forCellReuseIdentifier:webViewCellId];
+    nib = [UINib nibWithNibName:discuzPostCelllId bundle:nil];
+    [_tableView registerNib:nib forCellReuseIdentifier:discuzPostCelllId];
 }
 
 #pragma mark - load Data
@@ -133,7 +137,7 @@ static NSString *webViewCellId = @"LPDiscuzWebViewCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _discuzPosts.count ? 1 : 0;
+    return _discuzPosts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,8 +159,11 @@ static NSString *webViewCellId = @"LPDiscuzWebViewCell";
             }];
         }
         return cell;
+    }else {
+        LPDiscuzPostCell *cell = [tableView dequeueReusableCellWithIdentifier:discuzPostCelllId forIndexPath:indexPath];
+        [cell setPost:post floor:indexPath.row+1];
+        return cell;
     }
-    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,7 +171,7 @@ static NSString *webViewCellId = @"LPDiscuzWebViewCell";
     if (indexPath.row == 0) {
         return _webViewHeight+kWebViewTopEdge;
     }
-    return 0;
+    return 60;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

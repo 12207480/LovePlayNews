@@ -13,5 +13,7 @@ pod 'YYWebImage'
 pod 'KMNavigationBarTransition'
 pod 'SDCycleScrollView'
 pod 'MXParallaxHeader'
+pod 'TYPagerController'
+pod 'TYAttributedLabel', '~> 2.6.2'
 
 end
