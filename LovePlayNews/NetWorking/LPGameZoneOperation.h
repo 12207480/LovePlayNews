@@ -23,6 +23,6 @@
 
 + (LPHttpRequest *)requestDiscuzListWithFid:(NSString *)fid Index:(NSInteger)index;
 
-+ (LPHttpRequest *)requestDiscuzDetailWithTid:(NSString *)tid Index:(NSInteger)index;
++ (LPHttpRequest *)requestDiscuzDetailWithTid:(NSString *)tid index:(NSInteger)index pageSize:(NSInteger)pageSize;
 
 @end

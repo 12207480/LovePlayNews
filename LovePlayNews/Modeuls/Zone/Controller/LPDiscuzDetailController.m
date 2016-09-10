@@ -18,6 +18,7 @@
 #import <YYWebImage.h>
 #import "LPDiscuzPostCell.h"
 #import "LPPostTextParser.h"
+#import <MJRefresh.h>
 
 @interface LPDiscuzDetailController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -31,6 +32,9 @@
 @property (nonatomic, strong) NSArray *discuzPosts;
 
 @property (nonatomic,assign) CGFloat webViewHeight;
+@property (nonatomic, assign) NSInteger curIndexPage;
+@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, assign) BOOL haveMore;
 
 @end
 
@@ -52,6 +56,8 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
     [self addTableView];
     
     [self addTableHeaderView];
+    
+    [self addFooterRefresh];
     
     [self registerCells];
     
@@ -109,31 +115,82 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
     [_tableView registerNib:nib forCellReuseIdentifier:discuzPostCelllId];
 }
 
+- (void)addFooterRefresh
+{
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    [footer setTitle:@"没有更多了" forState:MJRefreshStateNoMoreData];
+    footer.refreshingTitleHidden = YES;
+    _tableView.mj_footer = footer;
+}
+
 #pragma mark - load Data
 
 - (void)loadData
 {
+    _curIndexPage = 1;
+    _pageSize = 15;
+    _haveMore = YES;
     [LPLoadingView showLoadingInView:self.view];
-    LPHttpRequest *discuzDetailRequest = [LPGameZoneOperation requestDiscuzDetailWithTid:_tid Index:1];
+
+    LPHttpRequest *discuzDetailRequest = [LPGameZoneOperation requestDiscuzDetailWithTid:_tid index:_curIndexPage pageSize:_pageSize];
     discuzDetailRequest.asynCompleteQueue = YES;
     [discuzDetailRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         LPDiscuzDetailModel *discuzDetailModel = request.responseObject.data;
         _thread = discuzDetailModel.thread;
-        _discuzPosts = discuzDetailModel.postlist;
-        [self dividePostTextWithPosts:_discuzPosts];
-        [self parserTextContainerWithPosts:_discuzPosts];
+        NSArray *discuzPosts = discuzDetailModel.postlist;
+        [self dividePostTextWithPosts:discuzPosts];
+        [self parserTextContainerWithPosts:discuzPosts];
         CGFloat textHeight = [_thread.subject boundingSizeWithFont:_headerView.titleLabel.font constrainedToSize:CGSizeMake(CGRectGetWidth(self.view.frame), 300)].height;
         dispatch_async(dispatch_get_main_queue(), ^{
+            _discuzPosts = discuzPosts;
             _headerView.titleLabel.text = _thread.subject;
             _tableView.parallaxHeader.height = ceil(textHeight) + 80;
             [_tableView reloadData];
+            _curIndexPage++;
+            _haveMore = YES;
         });
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
-        [LPLoadingView hideLoadingForView:self.view];
-        __weak typeof(self) weakSelf = self;
-        [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
-            [weakSelf loadData];
-        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [LPLoadingView hideLoadingForView:self.view];
+            __weak typeof(self) weakSelf = self;
+            [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+                [weakSelf loadData];
+            }];
+        });
+    }];
+}
+
+- (void)loadMoreData
+{
+    LPHttpRequest *discuzDetailRequest = [LPGameZoneOperation requestDiscuzDetailWithTid:_tid index:_curIndexPage pageSize:_pageSize];
+    discuzDetailRequest.asynCompleteQueue = YES;
+    
+    [discuzDetailRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
+        LPDiscuzDetailModel *discuzDetailModel = request.responseObject.data;
+        NSArray *discuzPosts = discuzDetailModel.postlist;
+        [self dividePostTextWithPosts:discuzPosts];
+        [self parserTextContainerWithPosts:discuzPosts];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (discuzPosts.count > 0) {
+                NSMutableArray *indexPaths = [NSMutableArray array];
+                for (NSInteger row = _discuzPosts.count; row<_discuzPosts.count+discuzPosts.count; ++row) {
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:row inSection:0]];
+                }
+                _discuzPosts = [_discuzPosts arrayByAddingObjectsFromArray:discuzPosts];
+                [_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+                _curIndexPage++;
+            }
+            
+            if (discuzPosts.count < _pageSize) {
+                _haveMore = NO;
+                [_tableView.mj_footer endRefreshingWithNoMoreData];
+            }else {
+                _haveMore = YES;
+                [_tableView.mj_footer endRefreshing];
+            }
+        });
+    } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
+        [_tableView.mj_footer endRefreshing];
     }];
 }
 

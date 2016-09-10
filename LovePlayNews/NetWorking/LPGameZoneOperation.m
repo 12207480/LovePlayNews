@@ -35,12 +35,12 @@
     return request;
 }
 
-+ (LPHttpRequest *)requestDiscuzDetailWithTid:(NSString *)tid Index:(NSInteger)index
++ (LPHttpRequest *)requestDiscuzDetailWithTid:(NSString *)tid index:(NSInteger)index pageSize:(NSInteger)pageSize
 {
     LPHttpRequest *request = [[LPHttpRequest alloc]init];
     request.responseParser = [[LPDiscuzResponse alloc] initWithModelClass:[LPDiscuzDetailModel class]];
     request.URLString = [NSString stringWithFormat:@"%@",DiscuzDetailURL];
-    request.parameters = @{@"version":@"163",@"module":@"viewthread",@"tid":tid?tid:@"",@"ppp":@"15",@"charset":@"utf-8",@"page":@(index).stringValue};
+    request.parameters = @{@"version":@"163",@"module":@"viewthread",@"tid":tid?tid:@"",@"ppp":@(pageSize).stringValue,@"charset":@"utf-8",@"page":@(index).stringValue};
     return request;
 }
 

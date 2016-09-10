@@ -110,23 +110,61 @@
 
 - (void)loadData
 {
-    [self loadMoreDataWithContext:nil];
+    NSInteger curIndexPage = _curIndexPage;
+    curIndexPage = 0;
+    _haveMore = YES;
+    if (!_newsList) {
+        [LPLoadingView showLoadingInView:self.view];
+    }
+    
+    LPHttpRequest *newsListRequest = [LPGameNewsOperation requestNewsListWithTopId:_newsTopId pageIndex:curIndexPage];
+    [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
+        NSArray *newsList = request.responseObject.data;
+        // 加载最新
+        if (_newsList.count == 0) {
+            _newsList = request.responseObject.data;
+            [_tableNode.view reloadData];
+            _curIndexPage++;
+            [LPLoadingView hideLoadingForView:self.view];
+        }else {
+            LPNewsInfoModel *infoModel = _newsList.firstObject;
+            NSMutableArray *indexPaths = [NSMutableArray array];
+            NSInteger index = 0;
+            for (LPNewsInfoModel *newInfoModel in newsList) {
+                if ([newInfoModel.docid isEqualToString:infoModel.docid]) {
+                    break;
+                }
+                [indexPaths addObject:[NSIndexPath indexPathForRow:index inSection:0]];
+                ++index;
+            }
+            if (indexPaths.count > 0) {
+                NSArray *newAddList = [newsList objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, index)]];
+                _newsList = [newAddList arrayByAddingObjectsFromArray:_newsList];
+                [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                [self showUpdateNewsCountView:newAddList.count];
+            }
+        }
+        _haveMore = YES;
+        [_tableNode.view.mj_header endRefreshing];
+    }failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
+        [_tableNode.view.mj_header endRefreshing];
+        [LPLoadingView hideLoadingForView:self.view];
+        if (_newsList.count == 0) {
+            __weak typeof(self) weakSelf = self;
+            [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
+                [weakSelf loadData];
+            }];
+        }
+    }];
 }
 
 - (void)loadMoreDataWithContext:(ASBatchContext *)context
 {
-    NSInteger curIndexPage = _curIndexPage;
     if (context) {
         [context beginBatchFetching];
-    }else {
-        curIndexPage = 0;
-        _haveMore = YES;
-        if (!_newsList) {
-            [LPLoadingView showLoadingInView:self.view];
-        }
     }
     
-    LPHttpRequest *newsListRequest = [LPGameNewsOperation requestNewsListWithTopId:_newsTopId pageIndex:curIndexPage];
+    LPHttpRequest *newsListRequest = [LPGameNewsOperation requestNewsListWithTopId:_newsTopId pageIndex:_curIndexPage];
     [newsListRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         NSArray *newsList = request.responseObject.data;
         if (context) {
@@ -143,52 +181,13 @@
             }else {
                 _haveMore = NO;
             }
-        }else {
-            // 加载最新
-            if (_newsList.count == 0) {
-                _newsList = request.responseObject.data;
-                [_tableNode.view reloadData];
-                _curIndexPage++;
-                [LPLoadingView hideLoadingForView:self.view];
-            }else {
-                LPNewsInfoModel *infoModel = _newsList.firstObject;
-                NSMutableArray *indexPaths = [NSMutableArray array];
-                NSInteger index = 0;
-                for (LPNewsInfoModel *newInfoModel in newsList) {
-                    if ([newInfoModel.docid isEqualToString:infoModel.docid]) {
-                        break;
-                    }
-                    [indexPaths addObject:[NSIndexPath indexPathForRow:index inSection:0]];
-                    ++index;
-                }
-                
-                if (indexPaths.count > 0) {
-                    NSArray *newAddList = [newsList objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, index)]];
-                    _newsList = [newAddList arrayByAddingObjectsFromArray:_newsList];
-                    [_tableNode.view insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-                    [self showUpdateNewsCountView:newAddList.count];
-                }
-            }
-            _haveMore = YES;
         }
-        
         if (context) {
             [context completeBatchFetching:YES];
-        }else {
-            [_tableNode.view.mj_header endRefreshing];
         }
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         if (context) {
             [context completeBatchFetching:YES];
-        }else {
-            [_tableNode.view.mj_header endRefreshing];
-            [LPLoadingView hideLoadingForView:self.view];
-            if (_newsList.count == 0) {
-                __weak typeof(self) weakSelf = self;
-                [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
-                    [weakSelf loadData];
-                }];
-            }
         }
     }];
 }
