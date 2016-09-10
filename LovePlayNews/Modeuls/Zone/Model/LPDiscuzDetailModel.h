@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <TYTextContainer.h>
 
 @class LPDiscuzThread;
 @interface LPDiscuzDetailModel : NSObject
@@ -41,6 +42,9 @@
 @property (nonatomic, strong) NSString *dateline;
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *replyText;
+
+@property (nonatomic, strong) TYTextContainer *textContainer;
 
 @end
 

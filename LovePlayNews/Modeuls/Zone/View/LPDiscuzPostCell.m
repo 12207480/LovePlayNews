@@ -14,6 +14,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
 }
 
 - (void)setPost:(LPDiscuzPost *)post floor:(NSInteger)floor
@@ -22,6 +23,7 @@
     self.nameLabel.text = post.author;
     self.timeLabel.text = [post.dateline stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
     self.floorLabel.text = @(floor).stringValue;
+    self.attributedLabel.textContainer = post.textContainer;
 }
 
 

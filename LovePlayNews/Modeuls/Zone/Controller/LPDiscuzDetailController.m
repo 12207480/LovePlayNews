@@ -17,6 +17,7 @@
 #import "NSString+Size.h"
 #import <YYWebImage.h>
 #import "LPDiscuzPostCell.h"
+#import "LPPostTextParser.h"
 
 @interface LPDiscuzDetailController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -114,22 +115,49 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
 {
     [LPLoadingView showLoadingInView:self.view];
     LPHttpRequest *discuzDetailRequest = [LPGameZoneOperation requestDiscuzDetailWithTid:_tid Index:1];
-    
+    discuzDetailRequest.asynCompleteQueue = YES;
     [discuzDetailRequest loadWithSuccessBlock:^(LPHttpRequest *request) {
         LPDiscuzDetailModel *discuzDetailModel = request.responseObject.data;
         _thread = discuzDetailModel.thread;
         _discuzPosts = discuzDetailModel.postlist;
-        
+        [self dividePostTextWithPosts:_discuzPosts];
+        [self parserTextContainerWithPosts:_discuzPosts];
         CGFloat textHeight = [_thread.subject boundingSizeWithFont:_headerView.titleLabel.font constrainedToSize:CGSizeMake(CGRectGetWidth(self.view.frame), 300)].height;
-        _headerView.titleLabel.text = _thread.subject;
-        _tableView.parallaxHeader.height = ceil(textHeight) + 80;
-        [_tableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _headerView.titleLabel.text = _thread.subject;
+            _tableView.parallaxHeader.height = ceil(textHeight) + 80;
+            [_tableView reloadData];
+        });
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
         [LPLoadingView hideLoadingForView:self.view];
         __weak typeof(self) weakSelf = self;
         [LPLoadFailedView showLoadFailedInView:self.view retryHandle:^{
             [weakSelf loadData];
         }];
+    }];
+}
+
+- (void)dividePostTextWithPosts:(NSArray *)posts
+{
+    [posts enumerateObjectsUsingBlock:^(LPDiscuzPost *post, NSUInteger idx, BOOL * stop) {
+        if (idx > 0) {
+            NSRange rangeStart = [post.message rangeOfString:@"<div"];
+            NSRange rangeEnd = [post.message rangeOfString:@"</div>"];
+            if (rangeStart.length > 0 && rangeEnd.length > 0 && rangeStart.location < rangeEnd.location) {
+                post.replyText = [post.message substringWithRange:NSMakeRange(rangeStart.location, rangeEnd.location+rangeEnd.length-rangeStart.location)];
+                post.message = [post.message stringByReplacingOccurrencesOfString:post.replyText withString:@""];
+            }
+        }
+    }];
+}
+
+- (void)parserTextContainerWithPosts:(NSArray *)posts
+{
+    [posts enumerateObjectsUsingBlock:^(LPDiscuzPost *post, NSUInteger idx, BOOL * stop) {
+        if (idx > 0) {
+            NSString *text = [LPPostTextParser replaceXMLLabelWithText:post.message];
+            post.textContainer = [LPPostTextParser parserPostText:text];
+        }
     }];
 }
 
@@ -171,7 +199,8 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
     if (indexPath.row == 0) {
         return _webViewHeight+kWebViewTopEdge;
     }
-    return 60;
+    LPDiscuzPost *post = _discuzPosts[indexPath.row];
+    return kDiscuzPostCellEdge + post.textContainer.textHeight;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

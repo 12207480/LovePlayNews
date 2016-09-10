@@ -20,6 +20,7 @@
 {
     if (self = [super init]) {
         _newsInfo = newsInfo;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

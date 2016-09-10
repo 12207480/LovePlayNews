@@ -106,6 +106,7 @@
 		A0AC7548470CCBA46E294FCF /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368E49576CDBD8B779D43C5 /* libPods-LovePlayNews.a */; };
 		B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00A86C11D729E1100B84F8F /* LPWebViewController.m */; };
 		B0126BA91D7DA06700BB9310 /* LPMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0126BA81D7DA06700BB9310 /* LPMineViewController.m */; };
+		B0331D7C1D82F1B8007886B7 /* LPPostTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B0331D7B1D82F1B8007886B7 /* LPPostTextParser.m */; };
 		B066BE8A1D82BD950028DD67 /* LPDiscuzTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B066BE891D82BD950028DD67 /* LPDiscuzTitleView.m */; };
 		B066BE8E1D82BDBD0028DD67 /* LPDiscuzTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B066BE8D1D82BDBD0028DD67 /* LPDiscuzTitleView.xib */; };
 		B066BE921D82C5920028DD67 /* LPDiscuzPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B066BE901D82C5920028DD67 /* LPDiscuzPostCell.m */; };
@@ -329,6 +330,8 @@
 		B00A86C11D729E1100B84F8F /* LPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWebViewController.m; sourceTree = "<group>"; };
 		B0126BA71D7DA06700BB9310 /* LPMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPMineViewController.h; sourceTree = "<group>"; };
 		B0126BA81D7DA06700BB9310 /* LPMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPMineViewController.m; sourceTree = "<group>"; };
+		B0331D7A1D82F1B8007886B7 /* LPPostTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPostTextParser.h; sourceTree = "<group>"; };
+		B0331D7B1D82F1B8007886B7 /* LPPostTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPostTextParser.m; sourceTree = "<group>"; };
 		B066BE881D82BD950028DD67 /* LPDiscuzTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzTitleView.h; sourceTree = "<group>"; };
 		B066BE891D82BD950028DD67 /* LPDiscuzTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzTitleView.m; sourceTree = "<group>"; };
 		B066BE8D1D82BDBD0028DD67 /* LPDiscuzTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPDiscuzTitleView.xib; sourceTree = "<group>"; };
@@ -985,6 +988,8 @@
 				2B7100071D7FBB2400A4D4FB /* LPDiscuzListModel.m */,
 				B07967871D8199F8003B830D /* LPDiscuzDetailModel.h */,
 				B07967881D8199F8003B830D /* LPDiscuzDetailModel.m */,
+				B0331D7A1D82F1B8007886B7 /* LPPostTextParser.h */,
+				B0331D7B1D82F1B8007886B7 /* LPPostTextParser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1263,6 +1268,7 @@
 				B0126BA91D7DA06700BB9310 /* LPMineViewController.m in Sources */,
 				2B8174F81D4F39A400BA297C /* TYResponseCache.m in Sources */,
 				2B8174C81D4F2B4400BA297C /* NSDate+Compare.m in Sources */,
+				B0331D7C1D82F1B8007886B7 /* LPPostTextParser.m in Sources */,
 				2BE4EF741D756A3C00CD50D3 /* LPNewsImageTitleCellNode.m in Sources */,
 				2B8174CA1D4F2B4400BA297C /* NSString+Encrypt.m in Sources */,
 				2BAEC3C31D6FD48E0048CBD3 /* LPRecommendController.m in Sources */,

@@ -26,6 +26,7 @@
 {
     if (self = [super init]) {
         _item = item;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         [self addTitleNode];
         
