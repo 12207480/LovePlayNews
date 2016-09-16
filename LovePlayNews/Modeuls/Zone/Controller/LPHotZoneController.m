@@ -54,12 +54,6 @@ static NSString * headerId = @"LPHotZoneSectionView";
     [self.node addSubnode:_tableNode];
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    _tableNode.frame = self.node.bounds;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -67,6 +61,12 @@ static NSString * headerId = @"LPHotZoneSectionView";
     [self configureTableView];
     
     [self loadData];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _tableNode.frame = self.node.bounds;
 }
 
 - (void)configureTableView

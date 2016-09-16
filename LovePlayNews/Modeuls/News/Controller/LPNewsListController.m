@@ -50,12 +50,6 @@
     [self.node addSubnode:_tableNode];
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    _tableNode.frame = self.node.bounds;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -65,6 +59,12 @@
     [self addRefreshHeader];
     
     [self loadData];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _tableNode.frame = self.node.bounds;
 }
 
 - (void)configureTableView
@@ -106,6 +106,7 @@
         }];
     }];
 }
+
 #pragma mark - load Data
 
 - (void)loadData

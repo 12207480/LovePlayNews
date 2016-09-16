@@ -37,19 +37,6 @@
     return self;
 }
 
-- (void)configurePagerStyles
-{
-    self.adjustStatusBarHeight = YES;
-    self.contentTopEdging = 44;
-    self.barStyle = TYPagerBarStyleProgressElasticView;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -59,6 +46,19 @@
     [self loadData];
     
     [self configureTabButtonPager];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)configurePagerStyles
+{
+    self.adjustStatusBarHeight = YES;
+    self.contentTopEdging = 44;
+    self.barStyle = TYPagerBarStyleProgressElasticView;
 }
 
 - (void)configureTabButtonPager
@@ -72,6 +72,8 @@
     self.cellSpacing = (kScreenWidth - _newsPageInfos.count*self.cellWidth - 2*self.collectionLayoutEdging)/(_newsPageInfos.count-1);
     self.progressBottomEdging = 3;
 }
+
+#pragma mark - load data
 
 - (void)loadData
 {

@@ -47,11 +47,6 @@
     
     [self.node addSubnode:_collectionNode];
 }
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    _collectionNode.frame = self.node.bounds;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +55,12 @@
     [self configureCollectionView];
     
     [self loadData];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _collectionNode.frame = self.node.bounds;
 }
 
 - (void)configureCollectionView

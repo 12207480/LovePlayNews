@@ -59,6 +59,16 @@ static NSString *footerId = @"UICollectionReusableView";
     [self.node addSubnode:_collectionNode];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"精选";
+    self.view.backgroundColor = [UIColor whiteColor];
+    [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionFooter];
+    
+    [self loadData];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -71,15 +81,7 @@ static NSString *footerId = @"UICollectionReusableView";
     _collectionNode.frame = self.node.bounds;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title = @"精选";
-    self.view.backgroundColor = [UIColor whiteColor];
-    [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionFooter];
-    
-    [self loadData];
-}
+#pragma mark - load data
 
 - (void)loadData
 {

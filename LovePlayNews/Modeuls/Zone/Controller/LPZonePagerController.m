@@ -16,8 +16,6 @@
 
 @end
 
-#define kPagerControllerCount 3
-
 @implementation LPZonePagerController
 
 #pragma mark - lifeCycle
@@ -40,19 +38,6 @@
     return self;
 }
 
-- (void)configurePagerStyles
-{
-    self.adjustStatusBarHeight = YES;
-    self.contentTopEdging = 44;
-    self.barStyle = TYPagerBarStyleProgressElasticView;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -63,6 +48,19 @@
     _datas = @[@"热门推荐",@"爱玩社区",@"凯恩之角"];
     
     [self configureTabButtonPager];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)configurePagerStyles
+{
+    self.adjustStatusBarHeight = YES;
+    self.contentTopEdging = 44;
+    self.barStyle = TYPagerBarStyleProgressElasticView;
 }
 
 - (void)configureTabButtonPager
@@ -77,6 +75,8 @@
     self.progressBottomEdging = 3;
     self.progressEdging = 16;
 }
+
+#pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController
 {

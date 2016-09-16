@@ -28,12 +28,6 @@
     return self;
 }
 
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-    _newsListVC.view.frame = self.node.bounds;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -41,6 +35,12 @@
     [self.view layoutIfNeeded];
     
     [self addNewsListController];
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    _newsListVC.view.frame = self.node.bounds;
 }
 
 - (void)addNewsListController

@@ -90,28 +90,25 @@ static NSString *tablePrizeCellId = @"LPPrizeViewCell";
 
 - (void)addTableViewItems
 {
-    NSArray *section0;
-    {
+    NSArray *section0 = ({
         LPTableViewItem *item0 = [[LPTableViewItem alloc]initWithTitle:@"积分福利" icon:@"mine_welfare_img"];
         LPTableViewItem *item1 = [[LPTableViewItem alloc]initWithTitle:@"游戏礼包" icon:@"mine_gift_img"];
-        section0 = @[item0,item1];
-    }
+        @[item0,item1];
+    });
     
-    NSArray *section1;
-    {
+    NSArray *section1 = ({
         LPTableViewItem *item0 = [[LPTableViewItem alloc]initWithTitle:@"消息"];
         LPTableViewItem *item1 = [[LPTableViewItem alloc]initWithTitle:@"任务"];
         LPTableViewItem *item2 = [[LPTableViewItem alloc]initWithTitle:@"收藏"];
         LPTableViewItem *item3 = [[LPTableViewItem alloc]initWithTitle:@"关注"];
-        section1 = @[item0,item1,item2,item3];
-    }
+        @[item0,item1,item2,item3];
+    });
     
-    NSArray *section2;
-    {
+    NSArray *section2 = ({
         LPTableViewItem *item0 = [[LPTableViewItem alloc]initWithTitle:@"设置"];
         LPTableViewItem *item1 = [[LPTableViewItem alloc]initWithTitle:@"意见反馈"];
-        section2 = @[item0,item1];
-    }
+        @[item0,item1];
+    });
     _sections = @[section0,section1,section2];
 }
 
