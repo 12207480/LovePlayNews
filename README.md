@@ -1,7 +1,7 @@
 # LovePlayNews
 LovePlayNews精仿爱玩app，使用AsyncDisplayKit提高UI流畅性，项目结构及代码清晰明了。
 
-1. 项目结构,代码清晰明了划分
+1. 项目结构划分,代码清晰明了
 2. 广告启动图封装实现
 3. TabBarController和NavigationController封装
 4. AsyncDisplayKit的使用，提高UI流畅性60fps
