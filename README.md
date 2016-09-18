@@ -4,6 +4,7 @@ LovePlayNews精仿爱玩app，使用AsyncDisplayKit提高UI流畅性，项目结
 编译环境：
 
 xcode7 + iOS7
+
 xcode8 + iOS8
 
 主要技术点：
