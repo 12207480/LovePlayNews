@@ -359,8 +359,4 @@ static NSString *footerId = @"LPNewsCommentFooterView";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc{
-    DLog(@"LPNewsDetailController dealloc");
-}
-
 @end

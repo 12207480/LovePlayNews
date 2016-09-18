@@ -140,7 +140,7 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
         NSArray *discuzPosts = discuzDetailModel.postlist;
         [self dividePostTextWithPosts:discuzPosts];
         [self parserTextContainerWithPosts:discuzPosts];
-        CGFloat textHeight = [_thread.subject boundingSizeWithFont:_headerView.titleLabel.font constrainedToSize:CGSizeMake(CGRectGetWidth(self.view.frame), 300)].height;
+        CGFloat textHeight = [_thread.subject boundingSizeWithFont:_headerView.titleLabel.font constrainedToSize:CGSizeMake(CGRectGetWidth(self.view.frame), 105)].height;
         dispatch_async(dispatch_get_main_queue(), ^{
             _discuzPosts = discuzPosts;
             _headerView.titleLabel.text = _thread.subject;
