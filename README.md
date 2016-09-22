@@ -18,3 +18,7 @@ xcode7 & iOS7+
 8. 新闻类视图webview封装为cell，css样式控制，cell高度计算，获取点击的图片，链接
 9. TYPagerController 水平滚动页面控制器
 10. TYAttributedLabel图文混排在tableview中实现
+
+截图
+
+![image](https://github.com/12207480/LovePlayNews/blob/master/ScreenShot/LovePlayNews.gif)
