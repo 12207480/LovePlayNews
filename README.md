@@ -20,6 +20,7 @@ xcode7 & iOS7+
 10. TYPagerController 水平滚动页面控制器
 11. TYAttributedLabel图文混排在tableview中实现
 
+
 截图
 
 ![image](https://github.com/12207480/LovePlayNews/blob/master/ScreenShot/LovePlayNews.gif)
