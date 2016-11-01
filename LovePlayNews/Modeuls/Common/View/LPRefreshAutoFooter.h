@@ -6,7 +6,7 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "UIScrollView+TYRefresh.h"
+#import "TYRefresh.h"
 
 @interface LPRefreshAutoFooter : TYFooterAutoRefresh
 
