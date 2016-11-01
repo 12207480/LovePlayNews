@@ -26,7 +26,7 @@
 {
     if (self = [super init]) {
         _adjustOriginBottomContentInset = YES;
-        _autoRefreshWhenScrollProgress = 1.0;
+        _autoRefreshWhenScrollProgress = 0.0;
         _isRefreshEndAutoHidden = YES;
     }
     return self;
