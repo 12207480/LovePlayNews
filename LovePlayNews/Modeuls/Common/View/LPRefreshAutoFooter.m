@@ -15,6 +15,7 @@
     TYAutoAnimatorView *autoAnimatorView = [TYAutoAnimatorView new];
     autoAnimatorView.titleLabelHidden = YES;
     LPRefreshAutoFooter *footer = [self footerWithAnimator:autoAnimatorView target:target action:action];
+    //footer.autoRefreshWhenScrollProgress = 0.0;
     return footer;
 }
 

@@ -176,6 +176,7 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
                 }
                 _discuzPosts = [_discuzPosts arrayByAddingObjectsFromArray:discuzPosts];
                 [_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+                //[_tableView reloadData];
                 _curIndexPage++;
             }
             
