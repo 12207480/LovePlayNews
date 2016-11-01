@@ -34,6 +34,7 @@ static NSString *tablePrizeCellId = @"LPPrizeViewCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self addTableView];
     

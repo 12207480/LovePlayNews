@@ -161,7 +161,7 @@
 
 - (void)refreshView:(TYRefreshView *)refreshView didChangeFromState:(TYRefreshState)fromState toState:(TYRefreshState)toState
 {
-    if (toState == TYRefreshStateNoMore || toState == TYRefreshStateError) {
+    if (toState == TYRefreshStateNormal || toState == TYRefreshStateNoMore || toState == TYRefreshStateError) {
         _titleLabel.hidden = YES;
         _imageView.hidden = YES;
         _messageLabel.hidden = NO;

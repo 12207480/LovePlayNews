@@ -139,7 +139,7 @@
 {
     _titleLabel.text = [self titleForState:toState];
     
-    if (toState == TYRefreshStateNoMore || toState == TYRefreshStateError) {
+    if (toState == TYRefreshStateNormal || toState == TYRefreshStateNoMore || toState == TYRefreshStateError) {
         _titleLabel.hidden = YES;
         _imageView.hidden = YES;
         _indicatorView.hidden = YES;
