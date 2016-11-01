@@ -6,8 +6,10 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import <MJRefresh/MJRefresh.h>
+#import "UIScrollView+TYRefresh.h"
 
-@interface LPRefreshGifHeader : MJRefreshGifHeader
+@interface LPRefreshGifHeader : TYHeaderRefresh
+
++ (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
 
 @end

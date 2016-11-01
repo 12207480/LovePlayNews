@@ -80,7 +80,7 @@
 - (void)addRefreshHeader
 {
     LPRefreshGifHeader *header = [LPRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
-    _tableNode.view.mj_header = header;
+    _tableNode.view.ty_refreshHeader = header;
 }
 
 // 显示更新新闻条数
@@ -146,9 +146,9 @@
             }
         }
         _haveMore = YES;
-        [_tableNode.view.mj_header endRefreshing];
+        [_tableNode.view.ty_refreshHeader endRefreshing];
     }failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
-        [_tableNode.view.mj_header endRefreshing];
+        [_tableNode.view.ty_refreshHeader endRefreshing];
         [LPLoadingView hideLoadingForView:self.view];
         if (_newsList.count == 0) {
             __weak typeof(self) weakSelf = self;

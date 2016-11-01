@@ -18,7 +18,7 @@
 #import <YYWebImage.h>
 #import "LPDiscuzPostCell.h"
 #import "LPPostTextParser.h"
-#import <MJRefresh.h>
+#import "LPRefreshAutoFooter.h"
 
 @interface LPDiscuzDetailController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -50,7 +50,7 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self addNavBarView];
     
     [self addTableView];
@@ -117,10 +117,8 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
 
 - (void)addFooterRefresh
 {
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    [footer setTitle:@"没有更多了" forState:MJRefreshStateNoMoreData];
-    footer.refreshingTitleHidden = YES;
-    _tableView.mj_footer = footer;
+    LPRefreshAutoFooter *footer = [LPRefreshAutoFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    _tableView.ty_refreshFooter = footer;
 }
 
 #pragma mark - load Data
@@ -183,14 +181,14 @@ static NSString *discuzPostCelllId = @"LPDiscuzPostCell";
             
             if (discuzPosts.count < _pageSize) {
                 _haveMore = NO;
-                [_tableView.mj_footer endRefreshingWithNoMoreData];
+                [_tableView.ty_refreshFooter endRefreshingWithNoMoreData];
             }else {
                 _haveMore = YES;
-                [_tableView.mj_footer endRefreshing];
+                [_tableView.ty_refreshFooter endRefreshing];
             }
         });
     } failureBlock:^(id<TYRequestProtocol> request, NSError *error) {
-        [_tableView.mj_footer endRefreshing];
+        [_tableView.ty_refreshFooter endRefreshing];
     }];
 }
 

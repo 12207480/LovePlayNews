@@ -24,8 +24,6 @@
 		2B50AB2F1D5DCA9000FB77AE /* LPNewsImageCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB2E1D5DCA9000FB77AE /* LPNewsImageCellNode.m */; };
 		2B50AB331D5DCB1C00FB77AE /* LPNewsBaseCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B50AB321D5DCB1C00FB77AE /* LPNewsBaseCellNode.m */; };
 		2B51A6B01D7806D900A4C7E3 /* LPADLaunchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A6AF1D7806D900A4C7E3 /* LPADLaunchController.m */; };
-		2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */; };
-		2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */; };
 		2B57C5821D534F9300F436DE /* LPNewsCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B57C5811D534F9300F436DE /* LPNewsCellNode.m */; };
 		2B5C40F11D7928C000296C3F /* UIImage+TYLaunchImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C40F01D7928C000296C3F /* UIImage+TYLaunchImage.m */; };
 		2B5C40F71D79398E00296C3F /* LPADLaunchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5C40F61D79398E00296C3F /* LPADLaunchView.m */; };
@@ -106,7 +104,17 @@
 		A0AC7548470CCBA46E294FCF /* libPods-LovePlayNews.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2368E49576CDBD8B779D43C5 /* libPods-LovePlayNews.a */; };
 		B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B00A86C11D729E1100B84F8F /* LPWebViewController.m */; };
 		B0126BA91D7DA06700BB9310 /* LPMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0126BA81D7DA06700BB9310 /* LPMineViewController.m */; };
+		B029935F1DC79C3100A2B925 /* LPRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = B029935E1DC79C3100A2B925 /* LPRefreshAutoFooter.m */; };
 		B0331D7C1D82F1B8007886B7 /* LPPostTextParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B0331D7B1D82F1B8007886B7 /* LPPostTextParser.m */; };
+		B058BA351DC76ABB00230E17 /* TYAnimatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA241DC76ABB00230E17 /* TYAnimatorView.m */; };
+		B058BA361DC76ABB00230E17 /* TYAutoAnimatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA261DC76ABB00230E17 /* TYAutoAnimatorView.m */; };
+		B058BA371DC76ABB00230E17 /* TYFooterAutoRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA281DC76ABB00230E17 /* TYFooterAutoRefresh.m */; };
+		B058BA381DC76ABB00230E17 /* TYFooterRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA2A1DC76ABB00230E17 /* TYFooterRefresh.m */; };
+		B058BA391DC76ABB00230E17 /* TYGifAnimatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA2C1DC76ABB00230E17 /* TYGifAnimatorView.m */; };
+		B058BA3A1DC76ABB00230E17 /* TYHeaderRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA2E1DC76ABB00230E17 /* TYHeaderRefresh.m */; };
+		B058BA3B1DC76ABB00230E17 /* TYRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B058BA2F1DC76ABB00230E17 /* TYRefresh.bundle */; };
+		B058BA3C1DC76ABB00230E17 /* TYRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA321DC76ABB00230E17 /* TYRefreshView.m */; };
+		B058BA3D1DC76ABB00230E17 /* UIScrollView+TYRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B058BA341DC76ABB00230E17 /* UIScrollView+TYRefresh.m */; };
 		B066BE8A1D82BD950028DD67 /* LPDiscuzTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B066BE891D82BD950028DD67 /* LPDiscuzTitleView.m */; };
 		B066BE8E1D82BDBD0028DD67 /* LPDiscuzTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B066BE8D1D82BDBD0028DD67 /* LPDiscuzTitleView.xib */; };
 		B066BE921D82C5920028DD67 /* LPDiscuzPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B066BE901D82C5920028DD67 /* LPDiscuzPostCell.m */; };
@@ -169,9 +177,6 @@
 		2B50AB321D5DCB1C00FB77AE /* LPNewsBaseCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsBaseCellNode.m; sourceTree = "<group>"; };
 		2B51A6AE1D7806D900A4C7E3 /* LPADLaunchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPADLaunchController.h; sourceTree = "<group>"; };
 		2B51A6AF1D7806D900A4C7E3 /* LPADLaunchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPADLaunchController.m; sourceTree = "<group>"; };
-		2B57C57B1D53293A00F436DE /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
-		2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
-		2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		2B57C5801D534F9300F436DE /* LPNewsCellNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNewsCellNode.h; sourceTree = "<group>"; };
 		2B57C5811D534F9300F436DE /* LPNewsCellNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNewsCellNode.m; sourceTree = "<group>"; };
 		2B5C40EF1D7928C000296C3F /* UIImage+TYLaunchImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TYLaunchImage.h"; sourceTree = "<group>"; };
@@ -330,8 +335,28 @@
 		B00A86C11D729E1100B84F8F /* LPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWebViewController.m; sourceTree = "<group>"; };
 		B0126BA71D7DA06700BB9310 /* LPMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPMineViewController.h; sourceTree = "<group>"; };
 		B0126BA81D7DA06700BB9310 /* LPMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPMineViewController.m; sourceTree = "<group>"; };
+		B029935D1DC79C3100A2B925 /* LPRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPRefreshAutoFooter.h; sourceTree = "<group>"; };
+		B029935E1DC79C3100A2B925 /* LPRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPRefreshAutoFooter.m; sourceTree = "<group>"; };
 		B0331D7A1D82F1B8007886B7 /* LPPostTextParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPPostTextParser.h; sourceTree = "<group>"; };
 		B0331D7B1D82F1B8007886B7 /* LPPostTextParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPPostTextParser.m; sourceTree = "<group>"; };
+		B058BA231DC76ABB00230E17 /* TYAnimatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAnimatorView.h; sourceTree = "<group>"; };
+		B058BA241DC76ABB00230E17 /* TYAnimatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAnimatorView.m; sourceTree = "<group>"; };
+		B058BA251DC76ABB00230E17 /* TYAutoAnimatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAutoAnimatorView.h; sourceTree = "<group>"; };
+		B058BA261DC76ABB00230E17 /* TYAutoAnimatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAutoAnimatorView.m; sourceTree = "<group>"; };
+		B058BA271DC76ABB00230E17 /* TYFooterAutoRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFooterAutoRefresh.h; sourceTree = "<group>"; };
+		B058BA281DC76ABB00230E17 /* TYFooterAutoRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYFooterAutoRefresh.m; sourceTree = "<group>"; };
+		B058BA291DC76ABB00230E17 /* TYFooterRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFooterRefresh.h; sourceTree = "<group>"; };
+		B058BA2A1DC76ABB00230E17 /* TYFooterRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYFooterRefresh.m; sourceTree = "<group>"; };
+		B058BA2B1DC76ABB00230E17 /* TYGifAnimatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYGifAnimatorView.h; sourceTree = "<group>"; };
+		B058BA2C1DC76ABB00230E17 /* TYGifAnimatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYGifAnimatorView.m; sourceTree = "<group>"; };
+		B058BA2D1DC76ABB00230E17 /* TYHeaderRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYHeaderRefresh.h; sourceTree = "<group>"; };
+		B058BA2E1DC76ABB00230E17 /* TYHeaderRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYHeaderRefresh.m; sourceTree = "<group>"; };
+		B058BA2F1DC76ABB00230E17 /* TYRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRefresh.bundle; sourceTree = "<group>"; };
+		B058BA301DC76ABB00230E17 /* TYRefreshView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TYRefreshView+Extension.h"; sourceTree = "<group>"; };
+		B058BA311DC76ABB00230E17 /* TYRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRefreshView.h; sourceTree = "<group>"; };
+		B058BA321DC76ABB00230E17 /* TYRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRefreshView.m; sourceTree = "<group>"; };
+		B058BA331DC76ABB00230E17 /* UIScrollView+TYRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TYRefresh.h"; sourceTree = "<group>"; };
+		B058BA341DC76ABB00230E17 /* UIScrollView+TYRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TYRefresh.m"; sourceTree = "<group>"; };
 		B066BE881D82BD950028DD67 /* LPDiscuzTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPDiscuzTitleView.h; sourceTree = "<group>"; };
 		B066BE891D82BD950028DD67 /* LPDiscuzTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPDiscuzTitleView.m; sourceTree = "<group>"; };
 		B066BE8D1D82BDBD0028DD67 /* LPDiscuzTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPDiscuzTitleView.xib; sourceTree = "<group>"; };
@@ -513,16 +538,6 @@
 			name = Request;
 			sourceTree = "<group>";
 		};
-		2B57C57A1D53293A00F436DE /* MBProgressHUD+MJ */ = {
-			isa = PBXGroup;
-			children = (
-				2B57C57B1D53293A00F436DE /* MBProgressHUD+MJ.h */,
-				2B57C57C1D53293A00F436DE /* MBProgressHUD+MJ.m */,
-				2B57C57D1D53293A00F436DE /* MBProgressHUD.bundle */,
-			);
-			path = "MBProgressHUD+MJ";
-			sourceTree = "<group>";
-		};
 		2B5C40F81D795FCE00296C3F /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +563,8 @@
 				2BE4EF691D752BB700CD50D3 /* LPNavigationBarView.xib */,
 				2B7C5DCE1D6D4433005B30B5 /* LPRefreshGifHeader.h */,
 				2B7C5DCF1D6D4433005B30B5 /* LPRefreshGifHeader.m */,
+				B029935D1DC79C3100A2B925 /* LPRefreshAutoFooter.h */,
+				B029935E1DC79C3100A2B925 /* LPRefreshAutoFooter.m */,
 				2B7C5DD11D6D4448005B30B5 /* LPLoadingView.h */,
 				2B7C5DD21D6D4448005B30B5 /* LPLoadingView.m */,
 				2B7C5DD41D6D9FCF005B30B5 /* LPLoadingView.xib */,
@@ -629,8 +646,8 @@
 		2B81744D1D4EF90D00BA297C /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				B058BA221DC76ABB00230E17 /* TYRefresh */,
 				2B00561F1D5418A900DDA531 /* JPFPSStatus */,
-				2B57C57A1D53293A00F436DE /* MBProgressHUD+MJ */,
 				2B00AC811D517B580048B5C2 /* TYJSONModel */,
 				2B8174E21D4F39A400BA297C /* TYHttpManager */,
 			);
@@ -951,6 +968,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B058BA221DC76ABB00230E17 /* TYRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B058BA331DC76ABB00230E17 /* UIScrollView+TYRefresh.h */,
+				B058BA341DC76ABB00230E17 /* UIScrollView+TYRefresh.m */,
+				B058BA301DC76ABB00230E17 /* TYRefreshView+Extension.h */,
+				B058BA311DC76ABB00230E17 /* TYRefreshView.h */,
+				B058BA321DC76ABB00230E17 /* TYRefreshView.m */,
+				B058BA2D1DC76ABB00230E17 /* TYHeaderRefresh.h */,
+				B058BA2E1DC76ABB00230E17 /* TYHeaderRefresh.m */,
+				B058BA291DC76ABB00230E17 /* TYFooterRefresh.h */,
+				B058BA2A1DC76ABB00230E17 /* TYFooterRefresh.m */,
+				B058BA271DC76ABB00230E17 /* TYFooterAutoRefresh.h */,
+				B058BA281DC76ABB00230E17 /* TYFooterAutoRefresh.m */,
+				B058BA231DC76ABB00230E17 /* TYAnimatorView.h */,
+				B058BA241DC76ABB00230E17 /* TYAnimatorView.m */,
+				B058BA2B1DC76ABB00230E17 /* TYGifAnimatorView.h */,
+				B058BA2C1DC76ABB00230E17 /* TYGifAnimatorView.m */,
+				B058BA251DC76ABB00230E17 /* TYAutoAnimatorView.h */,
+				B058BA261DC76ABB00230E17 /* TYAutoAnimatorView.m */,
+				B058BA2F1DC76ABB00230E17 /* TYRefresh.bundle */,
+			);
+			path = TYRefresh;
+			sourceTree = "<group>";
+		};
 		B08D88F21D6863300048557C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1114,8 +1156,8 @@
 				2B7C5DD51D6D9FCF005B30B5 /* LPLoadingView.xib in Resources */,
 				B066BE951D82CD070028DD67 /* LPDiscuzWebViewCell.xib in Resources */,
 				2B8174311D4EE5A200BA297C /* Assets.xcassets in Resources */,
+				B058BA3B1DC76ABB00230E17 /* TYRefresh.bundle in Resources */,
 				2BE4EF6B1D752BB700CD50D3 /* LPNavigationBarView.xib in Resources */,
-				2B57C57F1D53293A00F436DE /* MBProgressHUD.bundle in Resources */,
 				B066BE8E1D82BDBD0028DD67 /* LPDiscuzTitleView.xib in Resources */,
 				2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */,
 				B0E6A3B71D7C4E93007322B7 /* LPHotZoneSectionView.xib in Resources */,
@@ -1179,6 +1221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B058BA371DC76ABB00230E17 /* TYFooterAutoRefresh.m in Sources */,
 				B081CE151D8250A800628184 /* LPDiscuzWebViewCell.m in Sources */,
 				2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */,
 				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
@@ -1188,7 +1231,6 @@
 				B0CE0A651D7BC7C1001A18CE /* LPZonePagerController.m in Sources */,
 				2B93A4451D5C0C9A0016B53F /* LPNewsBreifCellNode.m in Sources */,
 				2B8A00FC1D5AB77800F04812 /* LPNewsCommentModel.m in Sources */,
-				2B57C57E1D53293A00F436DE /* MBProgressHUD+MJ.m in Sources */,
 				2BEDE91F1D7D4A840009DADB /* LPZoneDiscuzModel.m in Sources */,
 				2B6CC49F1D631E9900CE3F33 /* LPNewsFavorCellNode.m in Sources */,
 				2B00ACA51D517E5E0048B5C2 /* LPHttpRequest.m in Sources */,
@@ -1204,12 +1246,14 @@
 				2B8174D01D4F2B4400BA297C /* UIImage+Clip.m in Sources */,
 				2B8A00F91D5AB5F700F04812 /* LPNewsDetailModel.m in Sources */,
 				B0ED94B81D55FD66009B11C4 /* LPNewsDetailController.m in Sources */,
+				B058BA391DC76ABB00230E17 /* TYGifAnimatorView.m in Sources */,
 				2B8174DC1D4F2BFE00BA297C /* LPTabBarController.m in Sources */,
 				2B7100081D7FBB2400A4D4FB /* LPDiscuzListModel.m in Sources */,
 				2BEDE9221D7D4CFA0009DADB /* LPZoneDiscuzController.m in Sources */,
 				B0E744C81D71B68200B011E5 /* LPImageInfoCellNode.m in Sources */,
 				B08466E81D7C071500F5416A /* LPHotZoneController.m in Sources */,
 				2B71FFFF1D7FAD6F00A4D4FB /* LPDiscuzListController.m in Sources */,
+				B058BA3A1DC76ABB00230E17 /* TYHeaderRefresh.m in Sources */,
 				2B3913F11D5C7D510068B1D8 /* LPNewsTitleSectionView.m in Sources */,
 				2BAEC3C61D6FD7F60048CBD3 /* LPRecommendOperation.m in Sources */,
 				B0D8293F1D68871E000B9D84 /* UIView+ViewController.m in Sources */,
@@ -1235,10 +1279,13 @@
 				B08466EB1D7C0C7E00F5416A /* LPHotZoneModel.m in Sources */,
 				2B71000B1D7FEB7100A4D4FB /* LPDiscuzCellNode.m in Sources */,
 				2BBECF661D7E5DA0006C71B2 /* LPTableViewItem.m in Sources */,
+				B029935F1DC79C3100A2B925 /* LPRefreshAutoFooter.m in Sources */,
 				B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */,
 				2BA1A6F31D74350900BCED16 /* LPGameNewsController.m in Sources */,
+				B058BA381DC76ABB00230E17 /* TYFooterRefresh.m in Sources */,
 				B07967861D819531003B830D /* LPDiscuzDetailController.m in Sources */,
 				2B5C40FB1D79609700296C3F /* NSString+LPImageURL.m in Sources */,
+				B058BA3C1DC76ABB00230E17 /* TYRefreshView.m in Sources */,
 				B0E6A3B51D7C4D24007322B7 /* LPHotZoneSectionView.m in Sources */,
 				2BBECF721D7E642A006C71B2 /* LPTableItemCell.m in Sources */,
 				2B7C5DD01D6D4433005B30B5 /* LPRefreshGifHeader.m in Sources */,
@@ -1258,11 +1305,13 @@
 				2B8174D51D4F2B4400BA297C /* UIView+Frame.m in Sources */,
 				2BAEC3CC1D6FDB080048CBD3 /* LPTopicImageInfo.m in Sources */,
 				2B8174CB1D4F2B4400BA297C /* NSString+MD5.m in Sources */,
+				B058BA361DC76ABB00230E17 /* TYAutoAnimatorView.m in Sources */,
 				2B8174D61D4F2B4400BA297C /* UIView+Nib.m in Sources */,
 				2B7100051D7FB60800A4D4FB /* LPDiscuzResponse.m in Sources */,
 				2B8174291D4EE5A200BA297C /* AppDelegate.m in Sources */,
 				2B50AB2C1D5D5C5C00FB77AE /* LPNewsCommentCellNode.m in Sources */,
 				2BE9E1D41D6AFA6500834F08 /* LPNewsCommentOperation.m in Sources */,
+				B058BA3D1DC76ABB00230E17 /* UIScrollView+TYRefresh.m in Sources */,
 				2BEDE9281D7D74A40009DADB /* LPDiscuzHeaderNode.m in Sources */,
 				2BEDE9251D7D6B060009DADB /* LPZoneDiscuzCellNode.m in Sources */,
 				B0126BA91D7DA06700BB9310 /* LPMineViewController.m in Sources */,
@@ -1284,6 +1333,7 @@
 				2B8174C91D4F2B4400BA297C /* NSString+Base64.m in Sources */,
 				2B7100111D7FF42500A4D4FB /* LPDiscuzHeaderView.m in Sources */,
 				2B8174CF1D4F2B4400BA297C /* UIColor+Hex.m in Sources */,
+				B058BA351DC76ABB00230E17 /* TYAnimatorView.m in Sources */,
 				B07A5DF11D7138E900C18C27 /* LPRecommendCellNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1389,6 +1439,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZW52Q3KXX4;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LovePlayNews/LovePlayNews-Prefix.pch";
 				INFOPLIST_FILE = LovePlayNews/Info.plist;
@@ -1400,7 +1451,6 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/AsyncDisplayKit\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/JTSImageViewController\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MXParallaxHeader\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/PINCache\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/PINRemoteImage\"",
@@ -1416,7 +1466,6 @@
 					"-l\"AsyncDisplayKit\"",
 					"-l\"JTSImageViewController\"",
 					"-l\"MBProgressHUD\"",
-					"-l\"MJRefresh\"",
 					"-l\"MXParallaxHeader\"",
 					"-l\"PINCache\"",
 					"-l\"PINRemoteImage\"",
@@ -1460,7 +1509,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1475,6 +1524,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZW52Q3KXX4;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "LovePlayNews/LovePlayNews-Prefix.pch";
 				INFOPLIST_FILE = LovePlayNews/Info.plist;
@@ -1488,7 +1538,6 @@
 					"-l\"AsyncDisplayKit\"",
 					"-l\"JTSImageViewController\"",
 					"-l\"MBProgressHUD\"",
-					"-l\"MJRefresh\"",
 					"-l\"MXParallaxHeader\"",
 					"-l\"PINCache\"",
 					"-l\"PINRemoteImage\"",
@@ -1532,7 +1581,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

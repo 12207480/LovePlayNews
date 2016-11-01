@@ -8,22 +8,30 @@
 
 #import "LPRefreshGifHeader.h"
 
+static NSArray *refreshingImages = nil;
+
 @implementation LPRefreshGifHeader
+
++ (void)initialize
+{
+    if (!refreshingImages) {
+        NSMutableArray *images  = [NSMutableArray array];
+        for (int i = 1; i< 5; ++i) {
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"refresh%d",i]];
+            [images addObject:image];
+        }
+        refreshingImages = [images copy];
+    }
+}
 
 + (instancetype)headerWithRefreshingTarget:(id)target refreshingAction:(SEL)action
 {
-    LPRefreshGifHeader *header = [super headerWithRefreshingTarget:target refreshingAction:action];
-    header.lastUpdatedTimeLabel.hidden = YES;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    header.stateLabel.hidden = YES;
-    NSMutableArray *refreshingImages  = [NSMutableArray array];
-    for (int i = 1; i< 5; ++i) {
-        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"refresh%d",i]];
-        [refreshingImages addObject:image];
-    }
-    [header setImages:@[refreshingImages.firstObject] forState:MJRefreshStateIdle];
-    [header setImages:@[refreshingImages.firstObject] forState:MJRefreshStatePulling];
-    [header setImages:[refreshingImages copy] forState:MJRefreshStateRefreshing];
+    TYGifAnimatorView *gifAnimatorView = [TYGifAnimatorView new];
+    gifAnimatorView.animationDuration = 0.5;
+    gifAnimatorView.titleLabelHidden = YES;
+    [gifAnimatorView setGifImages:refreshingImages forState:TYRefreshStatePulling];
+    [gifAnimatorView setGifImages:refreshingImages forState:TYRefreshStateLoading];
+    LPRefreshGifHeader *header = [self headerWithAnimator:gifAnimatorView target:target action:action];
     return header;
 }
 

@@ -5,8 +5,7 @@ target "LovePlayNews" do
 
 pod 'AFNetworking'
 pod 'MBProgressHUD'
-pod 'MJRefresh'
-pod 'AsyncDisplayKit', '~> 1.9.90'
+pod 'AsyncDisplayKit', '~> 1.9.91'
 pod 'TOWebViewController'
 pod 'JTSImageViewController'
 pod 'YYWebImage'
