@@ -14,7 +14,7 @@
 
 @property (nonatomic,assign) CGFloat autoRefreshWhenScrollProgress; // default 1.0
 
-@property (nonatomic, assign) BOOL isAutomaticHidden; // default NO
+@property (nonatomic, assign) BOOL isRefreshEndAutoHidden; // default YES
 
 + (instancetype)footerWithAnimator:(UIView<TYRefreshAnimator> *)animator handler:(TYRefresHandler)handler;
 

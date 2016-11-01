@@ -13,6 +13,7 @@
 @interface TYFooterRefresh ()
 
 @property (nonatomic, assign) CGFloat beginRefreshOffset;
+@property (nonatomic, assign) BOOL isUpdateContentSize;
 
 @end
 
@@ -23,6 +24,7 @@
     if (self = [super init]) {
         _adjustOriginBottomContentInset = YES;
         _beginRefreshOffset = 0;
+        _isRefreshEndAutoHidden = YES;
     }
     return self;
 }
@@ -57,6 +59,19 @@
                                 bottomContentInset,
                                 CGRectGetWidth(scrollView.bounds),
                                 self.refreshHeight);
+    _isUpdateContentSize = YES;
+    if (self.hidden) {
+        self.hidden = NO;
+    }
+}
+
+- (void)setState:(TYRefreshState)state
+{
+    if (!_isUpdateContentSize && (state == TYRefreshStateNormal || state == TYRefreshStateNoMore || state == TYRefreshStateError)) {
+        _isUpdateContentSize = YES;
+        self.hidden = _isRefreshEndAutoHidden;
+    }
+    [super setState:state];
 }
 
 #pragma mark - begin refresh
@@ -96,13 +111,15 @@
             [self.animator refreshViewDidBeginRefresh:self];
         }
         
-        if (self.target && [self.target respondsToSelector:self.action]) {
-            ((void (*)(id, SEL))objc_msgSend)(self.target, self.action);
-        }
-        
-        if (self.handler) {
-            self.handler();
-        }
+        dispatch_delay_async_ty_refresh(0.35, ^{
+            if (self.target && [self.target respondsToSelector:self.action]) {
+                ((void (*)(id, SEL))objc_msgSend)(self.target, self.action);
+            }
+            
+            if (self.handler) {
+                self.handler();
+            }
+        });
     }];
 }
 
@@ -196,6 +213,10 @@
     if (scrollView.contentOffset.y < _beginRefreshOffset) {
         // 还没到刷新点
         return;
+    }
+    
+    if (self.hidden) {
+        self.hidden = NO;
     }
     
     if (![self canPullingRefresh]) {

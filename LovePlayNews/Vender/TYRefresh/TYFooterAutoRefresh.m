@@ -16,6 +16,8 @@
 
 @property (nonatomic, assign) UIEdgeInsets scrollViewAdjustContenInset;
 
+@property (nonatomic, assign) BOOL isUpdateContentSize;
+
 @end
 
 @implementation TYFooterAutoRefresh
@@ -25,7 +27,7 @@
     if (self = [super init]) {
         _adjustOriginBottomContentInset = YES;
         _autoRefreshWhenScrollProgress = 1.0;
-        self.isAutomaticHidden = YES;
+        _isRefreshEndAutoHidden = YES;
     }
     return self;
 }
@@ -57,6 +59,7 @@
                             bottomContentInset,
                             CGRectGetWidth(scrollView.bounds),
                             self.refreshHeight);
+    _isUpdateContentSize = YES;
     if (self.hidden) {
         self.hidden = NO;
     }
@@ -69,8 +72,9 @@
 
 - (void)setState:(TYRefreshState)state
 {
-    if (state == TYRefreshStateNormal || state == TYRefreshStateNoMore || state == TYRefreshStateError) {
-        self.hidden = _isAutomaticHidden;
+    if (!_isUpdateContentSize && (state == TYRefreshStateNormal || state == TYRefreshStateNoMore || state == TYRefreshStateError)) {
+        _isUpdateContentSize = YES;
+        self.hidden = _isRefreshEndAutoHidden;
     }
     [super setState:state];
 }
@@ -105,12 +109,11 @@
         [self.animator refreshViewDidBeginRefresh:self];
     }
     
-    dispatch_delay_async_ty_refresh(0.5, ^{
-        
+    dispatch_delay_async_ty_refresh(0.35, ^{
+        _isUpdateContentSize = NO;
         if (self.target && [self.target respondsToSelector:self.action]) {
             ((void (*)(id, SEL))objc_msgSend)(self.target, self.action);
         }
-        
         
         if (self.handler) {
             self.handler();
@@ -222,6 +225,10 @@
     if (scrollView.contentOffset.y < _beginRefreshOffset) {
         // 还没到刷新点
         return;
+    }
+    
+    if (self.hidden) {
+        self.hidden = NO;
     }
     
     if (![self canPullingRefresh]) {
