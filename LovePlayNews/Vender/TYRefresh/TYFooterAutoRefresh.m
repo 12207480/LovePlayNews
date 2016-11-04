@@ -94,7 +94,7 @@
         self.hidden = NO;
     }
     
-    dispatch_main_async_safe_ty_refresh(^{
+    dispatch_async(dispatch_get_main_queue(),^{
         [self beginRefreshingAnimationOnScrollView:scrollView];
     });
 }
@@ -133,7 +133,7 @@
     self.isRefreshing = NO;
     self.isEndRefreshAnimating = YES;
     
-    dispatch_main_async_safe_ty_refresh(^{
+    dispatch_async(dispatch_get_main_queue(),^{
         [self endRefreshingAnimationOnScrollView:scrollView state:state];
     });
 }

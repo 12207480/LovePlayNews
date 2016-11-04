@@ -15,15 +15,6 @@ NS_INLINE void dispatch_delay_async_ty_refresh(NSTimeInterval delay, dispatch_bl
     dispatch_after(popTime, dispatch_get_main_queue(),block);
 }
 
-// 主线程执行
-NS_INLINE void dispatch_main_async_safe_ty_refresh(dispatch_block_t block) {
-    if ([NSThread isMainThread]) {
-        block();
-    } else {
-        dispatch_async(dispatch_get_main_queue(), block);
-    }
-}
-
 @interface TYRefreshView ()
 
 @property (nonatomic, assign) TYRefreshState state;

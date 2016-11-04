@@ -87,7 +87,7 @@
         self.hidden = NO;
     }
     
-    dispatch_main_async_safe_ty_refresh(^{
+    dispatch_async(dispatch_get_main_queue(),^{
         [self beginRefreshingAnimationOnScrollView:scrollView];
     });
 }
@@ -126,7 +126,7 @@
     self.isRefreshing = NO;
     self.isEndRefreshAnimating = YES;
     
-    dispatch_main_async_safe_ty_refresh(^{
+    dispatch_async(dispatch_get_main_queue(),^{
         [self endRefreshingAnimationOnScrollView:scrollView state:state];
     });
 }
@@ -137,6 +137,7 @@
         UIEdgeInsets contentInset = scrollView.contentInset;
         contentInset.top = self.scrollViewOrignContenInset.top;
         scrollView.contentInset = contentInset;
+//        [scrollView setContentOffset:CGPointMake(0, -contentInset.top) animated:NO];
     } completion:^(BOOL finished) {
         self.isEndRefreshAnimating = NO;
         
