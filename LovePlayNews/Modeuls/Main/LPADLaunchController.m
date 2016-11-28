@@ -141,8 +141,9 @@
 - (void)requestDidFinish:(LPHttpRequest *)request
 {
     NSString *imageURL = (NSString *)request.responseObject.data;
-    if (!imageURL && ![imageURL isKindOfClass:[NSString class]]) {
+    if (!imageURL || ![imageURL isKindOfClass:[NSString class]]) {
         [self dismissController];
+        return;
     }
     
     [self showADImageWithURL:[NSURL URLWithString:imageURL]];
