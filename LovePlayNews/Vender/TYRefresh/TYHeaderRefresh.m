@@ -56,20 +56,45 @@
                                 self.refreshHeight);
 }
 
+- (void)adjustViewDidLoadCallBeginRefresh
+{
+    UIScrollView *scrollView = [self superScrollView];
+    if (!self.window && scrollView) {
+        UIEdgeInsets contentInset = self.scrollViewOrignContenInset;
+        UIViewController *VC = [self viewController];
+        if (VC.navigationController && !VC.navigationController.navigationBarHidden && VC.edgesForExtendedLayout&UIRectEdgeTop && VC.automaticallyAdjustsScrollViewInsets) {
+            contentInset.top += 64;
+        }
+        self.scrollViewOrignContenInset = contentInset;
+        if (!UIEdgeInsetsEqualToEdgeInsets(scrollView.contentInset, contentInset)) {
+            scrollView.contentInset = contentInset;
+            [self adjsutFrameToScrollView:scrollView];
+        }
+    }
+}
+
 - (CGFloat)adjustsViewControllerScrollViewTopInset:(UIScrollView *)scrollView
 {
-    UIViewController *VC = nil;
+    UIViewController *VC = [self viewController];
+    
+    if (VC && VC.navigationController && VC.automaticallyAdjustsScrollViewInsets) {
+        
+        return VC.navigationController.navigationBarHidden || scrollView.contentInset.top < 64 ? 0 : 64;
+    }
+    return 0;
+}
+
+- (UIViewController *)viewController
+{
+    UIScrollView *scrollView = [self superScrollView];
     if (scrollView.superview) {
         UIResponder* nextResponder = [scrollView.superview nextResponder];
         if ([nextResponder isKindOfClass:[UIViewController
                                           class]]) {
-            VC = (UIViewController *)nextResponder;
+            return (UIViewController *)nextResponder;
         }
     }
-    if (VC && VC.automaticallyAdjustsScrollViewInsets) {
-        return VC.navigationController.navigationBarHidden || scrollView.contentInset.top < 64 ? 0 : 64;
-    }
-    return 0;
+    return nil;
 }
 
 #pragma mark - begin refresh
@@ -87,7 +112,10 @@
         self.hidden = NO;
     }
     
+    [self adjustViewDidLoadCallBeginRefresh];
+    
     dispatch_async(dispatch_get_main_queue(),^{
+
         [self beginRefreshingAnimationOnScrollView:scrollView];
     });
 }

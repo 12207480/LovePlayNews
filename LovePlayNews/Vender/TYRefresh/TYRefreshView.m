@@ -24,7 +24,6 @@ static char kTYRefreshContentKey;
         _beginAnimateDuring = 0.25;
         _endAnimateDuring = 0.25;
         _adjustOriginleftContentInset = NO;
-        //self.backgroundColor = [UIColor redColor];
     }
     return self;
 }
