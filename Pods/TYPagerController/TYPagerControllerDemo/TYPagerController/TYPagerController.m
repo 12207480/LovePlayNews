@@ -50,7 +50,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.layout.scrollView.frame = UIEdgeInsetsInsetRect(self.view.bounds,_contentInset);
     [self.view addSubview:self.layout.scrollView];
 }
 
@@ -157,7 +156,6 @@
 }
 - (id)pagerViewLayout:(TYPagerViewLayout *)pagerViewLayout viewForItem:(id)item atIndex:(NSInteger)index {
     UIViewController *viewController = item;
-    viewController.view.frame = [pagerViewLayout frameForItemAtIndex:index];
     return viewController.view;
 }
 
