@@ -17,8 +17,9 @@ xcode7 & iOS7+
 7. TYRefresh上下拉刷新封装实现
 8. 封装loading加载中视图，及失败视图
 9. 新闻类视图webview封装为cell，css样式控制，cell高度计算，获取点击的图片，链接
-10. TYPagerController 水平滚动页面控制器
-11. TYAttributedLabel图文混排在tableview中实现
+10. TYCyclePagerView 轮播图
+11. TYPagerController 水平滚动页面控制器
+12. TYAttributedLabel图文混排在tableview中实现
 
 
 截图
