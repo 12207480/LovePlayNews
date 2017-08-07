@@ -57,7 +57,7 @@
 		2B8174D11D4F2B4400BA297C /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174B51D4F2B4400BA297C /* UIImage+Color.m */; };
 		2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174B71D4F2B4400BA297C /* UIImage+Size.m */; };
 		2B8174D31D4F2B4400BA297C /* UIImage+Snap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174B91D4F2B4400BA297C /* UIImage+Snap.m */; };
-		2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174BC1D4F2B4400BA297C /* UITabBarController+addChildVC.m */; };
+		2B8174D41D4F2B4400BA297C /* UITabBarController+AddChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174BC1D4F2B4400BA297C /* UITabBarController+AddChildVC.m */; };
 		2B8174D51D4F2B4400BA297C /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174BF1D4F2B4400BA297C /* UIView+Frame.m */; };
 		2B8174D61D4F2B4400BA297C /* UIView+Nib.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174C11D4F2B4400BA297C /* UIView+Nib.m */; };
 		2B8174DC1D4F2BFE00BA297C /* LPTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B8174DB1D4F2BFE00BA297C /* LPTabBarController.m */; };
@@ -248,7 +248,7 @@
 		2B8174B81D4F2B4400BA297C /* UIImage+Snap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Snap.h"; sourceTree = "<group>"; };
 		2B8174B91D4F2B4400BA297C /* UIImage+Snap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Snap.m"; sourceTree = "<group>"; };
 		2B8174BB1D4F2B4400BA297C /* UITabBarController+AddChildVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+AddChildVC.h"; sourceTree = "<group>"; };
-		2B8174BC1D4F2B4400BA297C /* UITabBarController+addChildVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+addChildVC.m"; sourceTree = "<group>"; };
+		2B8174BC1D4F2B4400BA297C /* UITabBarController+AddChildVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+AddChildVC.m"; sourceTree = "<group>"; };
 		2B8174BE1D4F2B4400BA297C /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		2B8174BF1D4F2B4400BA297C /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		2B8174C01D4F2B4400BA297C /* UIView+Nib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Nib.h"; sourceTree = "<group>"; };
@@ -788,7 +788,7 @@
 			isa = PBXGroup;
 			children = (
 				2B8174BB1D4F2B4400BA297C /* UITabBarController+AddChildVC.h */,
-				2B8174BC1D4F2B4400BA297C /* UITabBarController+addChildVC.m */,
+				2B8174BC1D4F2B4400BA297C /* UITabBarController+AddChildVC.m */,
 			);
 			path = UITabBarController;
 			sourceTree = "<group>";
@@ -1236,7 +1236,7 @@
 				B058BA371DC76ABB00230E17 /* TYFooterAutoRefresh.m in Sources */,
 				B081CE151D8250A800628184 /* LPDiscuzWebViewCell.m in Sources */,
 				2B8174D21D4F2B4400BA297C /* UIImage+Size.m in Sources */,
-				2B8174D41D4F2B4400BA297C /* UITabBarController+addChildVC.m in Sources */,
+				2B8174D41D4F2B4400BA297C /* UITabBarController+AddChildVC.m in Sources */,
 				2B7C5DD31D6D4448005B30B5 /* LPLoadingView.m in Sources */,
 				B00A86C21D729E1100B84F8F /* LPWebViewController.m in Sources */,
 				B066BE8A1D82BD950028DD67 /* LPDiscuzTitleView.m in Sources */,
@@ -1523,7 +1523,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1595,7 +1595,7 @@
 					"-weak_framework",
 					"\"UIKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tany.LovePlayNews12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

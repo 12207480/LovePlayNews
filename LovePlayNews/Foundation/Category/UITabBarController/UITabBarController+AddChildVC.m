@@ -6,7 +6,7 @@
 //  Copyright © 2015年 tanyang. All rights reserved.
 //
 
-#import "UITabBarController+addChildVC.h"
+#import "UITabBarController+AddChildVC.h"
 
 @implementation UITabBarController (TY_AddChildVC)
 
