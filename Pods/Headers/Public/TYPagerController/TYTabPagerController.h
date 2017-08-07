@@ -1,1 +1,1 @@
-../../../TYPagerController/TYPagerControllerDemo/TYPagerController/TYTabPagerController.h
+../../../TYPagerController/TYPagerControllerDemo/TYPagerController/TabPager/TYTabPagerController.h

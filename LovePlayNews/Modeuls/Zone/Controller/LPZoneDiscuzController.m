@@ -69,6 +69,7 @@
         _collectionNode.view.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
         _collectionNode.view.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
     }
+    _collectionNode.frame = self.node.bounds;
     _collectionNode.view.backgroundColor = RGB_255(245, 245, 245);
     [_collectionNode.view registerSupplementaryNodeOfKind:UICollectionElementKindSectionHeader];
 

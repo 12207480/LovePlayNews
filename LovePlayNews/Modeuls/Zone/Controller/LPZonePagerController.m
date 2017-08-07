@@ -10,7 +10,7 @@
 #import "LPHotZoneController.h"
 #import "LPZoneDiscuzController.h"
 
-@interface LPZonePagerController ()
+@interface LPZonePagerController ()<TYTabPagerControllerDataSource, TYTabPagerControllerDelegate>
 
 @property (nonatomic, strong) NSArray *datas;
 
@@ -48,6 +48,8 @@
     _datas = @[@"热门推荐",@"爱玩社区",@"凯恩之角"];
     
     [self configureTabButtonPager];
+    
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,37 +60,41 @@
 
 - (void)configurePagerStyles
 {
-    self.adjustStatusBarHeight = YES;
-    self.contentTopEdging = 44;
-    self.barStyle = TYPagerBarStyleProgressElasticView;
+    self.tabBarHeight = 56;
 }
 
 - (void)configureTabButtonPager
 {
-    self.pagerBarView.backgroundColor = RGB_255(34, 34, 34);
-    self.progressColor = RGB_255(237, 67, 89);
-    self.normalTextColor = [UIColor whiteColor];
-    self.selectedTextColor = RGB_255(237, 67, 89);
-    self.cellWidth = 80;
-    self.cellSpacing = 15;
-    self.collectionLayoutEdging = (kScreenWidth-_datas.count*self.cellWidth-(_datas.count-1)*self.cellSpacing)/2;
-    self.progressBottomEdging = 3;
-    self.progressEdging = 16;
+    self.dataSource = self;
+    self.delegate = self;
+    self.tabBar.layout.barStyle = TYPagerBarStyleProgressElasticView;
+    self.tabBar.backgroundColor = RGB_255(34, 34, 34);
+    self.tabBar.layout.normalTextFont = [UIFont systemFontOfSize:17];
+    self.tabBar.layout.selectedTextFont = [UIFont systemFontOfSize:20];
+    self.tabBar.layout.progressColor = RGB_255(237, 67, 89);
+    self.tabBar.layout.normalTextColor = [UIColor whiteColor];
+    self.tabBar.layout.selectedTextColor = RGB_255(237, 67, 89);
+    self.tabBar.layout.cellWidth = 80;
+    self.tabBar.layout.cellSpacing = 15;
+    CGFloat collectionLayoutEdging = (kScreenWidth-_datas.count*self.tabBar.layout.cellWidth-(_datas.count-1)*self.tabBar.layout.cellSpacing)/2;
+    self.tabBar.layout.sectionInset = UIEdgeInsetsMake(16, collectionLayoutEdging, 0, collectionLayoutEdging);
+    self.tabBar.layout.progressVerEdging = 3;
+    self.tabBar.layout.progressHorEdging = 16;
 }
 
 #pragma mark - TYPagerControllerDataSource
 
-- (NSInteger)numberOfControllersInPagerController
+- (NSInteger)numberOfControllersInTabPagerController
 {
     return _datas.count;
 }
 
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
+- (NSString *)tabPagerController:(TYTabPagerController *)tabPagerController titleForIndex:(NSInteger)index
 {
     return _datas[index];
 }
 
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
+- (UIViewController *)tabPagerController:(TYTabPagerController *)tabPagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching
 {
     switch (index) {
         case 0:
@@ -116,15 +122,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

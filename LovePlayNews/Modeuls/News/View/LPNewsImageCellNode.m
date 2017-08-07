@@ -79,7 +79,8 @@
 
 - (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
-    _imageNode.preferredFrameSize = CGSizeMake(constrainedSize.max.width-2*10, 118);
+    CGFloat width = constrainedSize.max.width > 0 ? constrainedSize.max.width : [UIScreen mainScreen].bounds.size.width;
+    _imageNode.preferredFrameSize = CGSizeMake(width-2*10, 118);
     _titleNode.flexShrink = YES;
     ASStackLayoutSpec *verTopStackLayout = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical spacing:10 justifyContent:ASStackLayoutJustifyContentStart alignItems:ASStackLayoutAlignItemsStretch children:@[_titleNode,_imageNode]];
     ASInsetLayoutSpec *insetLayout = [ASInsetLayoutSpec insetLayoutSpecWithInsets:UIEdgeInsetsMake(10, 10, 10, 10) child:verTopStackLayout];

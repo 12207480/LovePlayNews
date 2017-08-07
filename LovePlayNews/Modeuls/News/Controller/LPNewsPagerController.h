@@ -6,8 +6,8 @@
 //  Copyright © 2016年 tany. All rights reserved.
 //
 
-#import "TYTabButtonPagerController.h"
+#import "TYTabPagerController.h"
 
-@interface LPNewsPagerController : TYTabButtonPagerController
+@interface LPNewsPagerController : TYTabPagerController
 
 @end

@@ -37,7 +37,7 @@ PODS:
   - TOWebViewController/Core (2.2.6)
   - TYAttributedLabel (2.6.2)
   - TYCyclePagerView (1.0.0)
-  - TYPagerController (1.0.6)
+  - TYPagerController (2.0.0)
   - YYCache (1.0.4)
   - YYImage (1.0.4):
     - YYImage/Core (= 1.0.4)
@@ -56,7 +56,7 @@ DEPENDENCIES:
   - TOWebViewController
   - TYAttributedLabel (~> 2.6.2)
   - TYCyclePagerView
-  - TYPagerController (~> 1.0.6)
+  - TYPagerController
   - YYWebImage
 
 SPEC CHECKSUMS:
@@ -71,11 +71,11 @@ SPEC CHECKSUMS:
   TOWebViewController: a29908019f7e0e0f8eccfab8a1ee8dcdf4fc5aac
   TYAttributedLabel: 1c1f1e7604043ba584e005d4fd3aee8a1a7a2020
   TYCyclePagerView: f228d47651db3e7bec373a4b5082ef4c09d5dfed
-  TYPagerController: f24234d0234c5ada6609eadc62ba809f072ae8fe
+  TYPagerController: b590116e7571bc7609d0c3dcce38b28419bcd8cd
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 2afbfac1786027fb51928693cd8fcf30310c472d
+PODFILE CHECKSUM: fe732027ed7a73bd6f1b73498ac044f906a94d3b
 
 COCOAPODS: 1.1.1

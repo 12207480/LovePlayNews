@@ -9,7 +9,7 @@
 #import "LPNewsPagerController.h"
 #import "LPNewsListController.h"
 
-@interface LPNewsPagerController ()
+@interface LPNewsPagerController ()<TYTabPagerControllerDataSource, TYTabPagerControllerDelegate>
 
 @property (nonatomic, strong) NSArray *newsPageInfos;
 
@@ -46,6 +46,8 @@
     [self loadData];
     
     [self configureTabButtonPager];
+    
+    [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,21 +58,25 @@
 
 - (void)configurePagerStyles
 {
-    self.adjustStatusBarHeight = YES;
-    self.contentTopEdging = 44;
-    self.barStyle = TYPagerBarStyleProgressElasticView;
+    self.tabBarHeight = 56;
 }
 
 - (void)configureTabButtonPager
 {
-    self.pagerBarView.backgroundColor = RGB_255(34, 34, 34);
-    self.progressColor = RGB_255(237, 67, 89);
-    self.normalTextColor = [UIColor whiteColor];
-    self.selectedTextColor = RGB_255(237, 67, 89);
-    self.cellWidth = 38;
-    self.collectionLayoutEdging = 12;
-    self.cellSpacing = (kScreenWidth - _newsPageInfos.count*self.cellWidth - 2*self.collectionLayoutEdging)/(_newsPageInfos.count-1);
-    self.progressBottomEdging = 3;
+    self.dataSource = self;
+    self.delegate = self;
+    self.tabBar.layout.barStyle = TYPagerBarStyleProgressElasticView;
+    self.tabBar.layout.normalTextFont = [UIFont systemFontOfSize:17];
+    self.tabBar.layout.selectedTextFont = [UIFont systemFontOfSize:20];
+    self.tabBar.backgroundColor = RGB_255(34, 34, 34);
+    self.tabBar.layout.progressColor = RGB_255(237, 67, 89);
+    self.tabBar.layout.normalTextColor = [UIColor whiteColor];
+    self.tabBar.layout.selectedTextColor = RGB_255(237, 67, 89);
+    self.tabBar.layout.cellWidth = 38;
+    self.tabBar.layout.sectionInset = UIEdgeInsetsMake(16, 12, 0, 12);
+    self.tabBar.layout.cellSpacing = (kScreenWidth - _newsPageInfos.count*self.tabBar.layout.cellWidth - 2*self.tabBar.layout.sectionInset.left)/(_newsPageInfos.count-1);
+    self.tabBar.layout.cellEdging = 0;
+    self.tabBar.layout.progressVerEdging = 3;
 }
 
 #pragma mark - load data
@@ -84,19 +90,19 @@
 
 #pragma mark - TYPagerControllerDataSource
 
-- (NSInteger)numberOfControllersInPagerController
+- (NSInteger)numberOfControllersInTabPagerController
 {
     return _newsPageInfos.count;
 }
 
-- (NSString *)pagerController:(TYPagerController *)pagerController titleForIndex:(NSInteger)index
+- (NSString *)tabPagerController:(TYTabPagerController *)tabPagerController titleForIndex:(NSInteger)index
 {
     NSDictionary *newsPageInfo = _newsPageInfos[index];
     NSString *title = [newsPageInfo objectForKey:@"title"];
     return title ? title : @"";
 }
 
-- (UIViewController *)pagerController:(TYPagerController *)pagerController controllerForIndex:(NSInteger)index
+- (UIViewController *)tabPagerController:(TYTabPagerController *)tabPagerController controllerForIndex:(NSInteger)index prefetching:(BOOL)prefetching
 {
     NSDictionary *newsPageInfo = _newsPageInfos[index];
     LPNewsListController *newsVC = [[LPNewsListController alloc]init];
@@ -110,15 +116,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

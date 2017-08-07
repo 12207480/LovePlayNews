@@ -73,6 +73,7 @@
         _tableNode.view.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
         _tableNode.view.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
     }
+    _tableNode.frame = self.node.bounds;
     _tableNode.view.tableFooterView = [[UIView alloc]init];
     _tableNode.view.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
