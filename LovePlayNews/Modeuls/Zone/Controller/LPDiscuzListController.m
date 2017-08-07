@@ -105,7 +105,7 @@
     LPDiscuzHeaderView *headerView = [LPDiscuzHeaderView loadInstanceFromNib];
     _tableNode.view.parallaxHeader.view = headerView;
     _tableNode.view.parallaxHeader.height = kHeaderViewHeight;
-    _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeBottomFill;
+    _tableNode.view.parallaxHeader.mode = MXParallaxHeaderModeFill;
     _tableNode.view.parallaxHeader.contentView.layer.zPosition = 1;
     _headerView = headerView;
 }

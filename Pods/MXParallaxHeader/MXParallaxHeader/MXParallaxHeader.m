@@ -1,6 +1,6 @@
 // MXParallaxHeader.m
 //
-// Copyright (c) 2015 Maxime Epain
+// Copyright (c) 2017 Maxime Epain
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -115,9 +115,14 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     }
 }
 
-- (CGFloat)progress {
-    CGFloat div = self.height - self.minimumHeight;
-    return (self.contentView.frame.size.height - self.minimumHeight) / (div? : self.height);
+- (void)setProgress:(CGFloat)progress {
+    if(_progress != progress) {
+        _progress = progress;
+        
+        if ([self.delegate respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
+            [self.delegate parallaxHeaderDidScroll:self];
+        }
+    }
 }
 
 #pragma mark Constraints
@@ -140,10 +145,7 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         case MXParallaxHeaderModeTopFill:
             [self setTopFillModeConstraints];
             break;
-        case MXParallaxHeaderModeBottomFill:
-            [self setBottomFillModeConstraints];
-            break;
-
+            
         case MXParallaxHeaderModeTop:
             [self setTopModeConstraints];
             break;
@@ -201,13 +203,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[v(==height)]" options:0 metrics:metrics views:binding]];
 }
 
-- (void) setBottomFillModeConstraints {
-    NSDictionary *binding   = @{@"v" : self.view};
-    NSDictionary *metrics   = @{@"highPriority" : @(UILayoutPriorityDefaultHigh),@"height" : @(self.height)};
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[v]|" options:0 metrics:nil views:binding]];
-    [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0.0@highPriority-[v(>=height)]|" options:0 metrics:metrics views:binding]];
-}
-
 - (void)setBottomModeConstraints {
     NSDictionary *binding = @{@"v" : self.view};
     NSDictionary *metrics = @{@"height" : @(self.height)};
@@ -222,12 +217,17 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
     CGFloat relativeYOffset = self.scrollView.contentOffset.y + self.scrollView.contentInset.top - self.height;
     CGFloat relativeHeight  = -relativeYOffset;
     
-    self.contentView.frame = (CGRect){
+    CGRect frame = (CGRect){
         .origin.x       = 0,
         .origin.y       = relativeYOffset,
         .size.width     = self.scrollView.frame.size.width,
         .size.height    = MAX(relativeHeight, minimumHeight)
     };
+    
+    self.contentView.frame = frame;
+    
+    CGFloat div = self.height - self.minimumHeight;
+    self.progress = (self.contentView.frame.size.height - self.minimumHeight) / (div? : self.height);
 }
 
 - (void)adjustScrollViewTopInset:(CGFloat)top {
@@ -252,10 +252,6 @@ static void * const kMXParallaxHeaderKVOContext = (void*)&kMXParallaxHeaderKVOCo
         
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
             [self layoutContentView];
-            
-            if ([self.delegate respondsToSelector:@selector(parallaxHeaderDidScroll:)]) {
-                [self.delegate parallaxHeaderDidScroll:self];
-            }
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];

@@ -76,7 +76,7 @@ static NSString *tablePrizeCellId = @"LPPrizeViewCell";
     LPMineHeaderView *headerView = [LPMineHeaderView loadInstanceFromNib];
     _tableView.parallaxHeader.view = headerView;
     _tableView.parallaxHeader.height = 135;
-    _tableView.parallaxHeader.mode = MXParallaxHeaderModeBottomFill;
+    _tableView.parallaxHeader.mode = MXParallaxHeaderModeFill;
     _tableView.parallaxHeader.contentView.layer.zPosition = 1;
 }
 

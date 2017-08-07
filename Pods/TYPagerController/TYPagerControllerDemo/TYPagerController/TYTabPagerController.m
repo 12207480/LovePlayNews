@@ -97,7 +97,7 @@
 - (void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    _pagerBarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight]);
+    _pagerBarView.frame = CGRectMake(0, _collectionViewBarOffsetY, CGRectGetWidth(self.view.frame), self.contentTopEdging+[self statusBarHeight]);
     _pagerBarImageView.frame = _pagerBarView.bounds;
     _collectionViewBar.frame = CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging);
                                      
@@ -125,6 +125,9 @@
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, [self statusBarHeight], CGRectGetWidth(self.view.frame), self.contentTopEdging) collectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
+    if ([collectionView respondsToSelector:@selector(setPrefetchingEnabled:)]) {
+        collectionView.prefetchingEnabled = NO;
+    }
     collectionView.delegate = self;
     collectionView.dataSource = self;
     

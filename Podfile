@@ -10,9 +10,9 @@ pod 'TOWebViewController'
 pod 'JTSImageViewController'
 pod 'YYWebImage'
 pod 'KMNavigationBarTransition'
-pod 'SDCycleScrollView'
+pod 'TYCyclePagerView'
 pod 'MXParallaxHeader'
-pod 'TYPagerController'
+pod 'TYPagerController', '~> 1.0.6'
 pod 'TYAttributedLabel', '~> 2.6.2'
 
 end

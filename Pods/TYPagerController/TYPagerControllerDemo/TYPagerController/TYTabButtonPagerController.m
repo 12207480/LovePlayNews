@@ -160,6 +160,20 @@
     toCell.titleLabel.textColor = [UIColor colorWithRed:narR-detalR*progress green:narG-detalG*progress blue:narB-detalB*progress alpha:narA-detalA*progress];
 }
 
+- (void)pagerController:(TYTabPagerController *)pagerController didSelectAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_didSelectAtIndexPathHandle) {
+        _didSelectAtIndexPathHandle(indexPath);
+    }
+}
+
+- (void)pagerController:(TYTabPagerController *)pagerController didScrollToTabPageIndex:(NSInteger)index
+{
+    if (_didScrollToTabPageIndexHandle) {
+        _didScrollToTabPageIndexHandle(index);
+    }
+}
+
 #pragma mark - TYPagerControllerDataSource
 
 - (NSInteger)numberOfControllersInPagerController
@@ -176,9 +190,8 @@
 
 #pragma mark - TYTabPagerControllerDelegate
 
-- (void)pagerController:(TYTabPagerController *)pagerController configreCell:(TYTabTitleViewCell *)cell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath
+- (void)pagerController:(TYTabPagerController *)pagerController configreCell:(TYTabTitleViewCell *)titleCell forItemTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath
 {
-    TYTabTitleViewCell *titleCell = (TYTabTitleViewCell *)cell;
     titleCell.titleLabel.text = title;
     titleCell.titleLabel.font = self.selectedTextFont;
 }
@@ -203,15 +216,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0056211D5418A900DDA531 /* JPFPSStatus.m */; };
 		2B0056241D54392200DDA531 /* NewsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B0056231D54392200DDA531 /* NewsInfo.plist */; };
 		2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */; };
 		2B00AC8A1D517B580048B5C2 /* TYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B00AC851D517B580048B5C2 /* TYClassInfo.m */; };
@@ -91,6 +90,9 @@
 		2BBECF731D7E642A006C71B2 /* LPTableItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBECF711D7E642A006C71B2 /* LPTableItemCell.xib */; };
 		2BBECF761D7E835E006C71B2 /* LPMineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBECF751D7E835E006C71B2 /* LPMineHeaderView.m */; };
 		2BBECF781D7E83D2006C71B2 /* LPMineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBECF771D7E83D2006C71B2 /* LPMineHeaderView.xib */; };
+		2BD587591F38103700A79119 /* TYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD587561F38103700A79119 /* TYFPSLabel.m */; };
+		2BD5875A1F38103700A79119 /* TYFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD587581F38103700A79119 /* TYFPSMonitor.m */; };
+		2BD5875D1F3813A400A79119 /* LPBannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD5875C1F3813A400A79119 /* LPBannerViewCell.m */; };
 		2BE4EF6A1D752BB700CD50D3 /* LPNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE4EF681D752BB700CD50D3 /* LPNavigationBarView.m */; };
 		2BE4EF6B1D752BB700CD50D3 /* LPNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE4EF691D752BB700CD50D3 /* LPNavigationBarView.xib */; };
 		2BE4EF741D756A3C00CD50D3 /* LPNewsImageTitleCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE4EF731D756A3C00CD50D3 /* LPNewsImageTitleCellNode.m */; };
@@ -142,8 +144,6 @@
 
 /* Begin PBXFileReference section */
 		2368E49576CDBD8B779D43C5 /* libPods-LovePlayNews.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LovePlayNews.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B0056201D5418A900DDA531 /* JPFPSStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPFPSStatus.h; sourceTree = "<group>"; };
-		2B0056211D5418A900DDA531 /* JPFPSStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPFPSStatus.m; sourceTree = "<group>"; };
 		2B0056231D54392200DDA531 /* NewsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NewsInfo.plist; sourceTree = "<group>"; };
 		2B00AC821D517B580048B5C2 /* NSObject+TYJSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TYJSONModel.h"; sourceTree = "<group>"; };
 		2B00AC831D517B580048B5C2 /* NSObject+TYJSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TYJSONModel.m"; sourceTree = "<group>"; };
@@ -312,6 +312,12 @@
 		2BBECF741D7E835E006C71B2 /* LPMineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPMineHeaderView.h; sourceTree = "<group>"; };
 		2BBECF751D7E835E006C71B2 /* LPMineHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPMineHeaderView.m; sourceTree = "<group>"; };
 		2BBECF771D7E83D2006C71B2 /* LPMineHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPMineHeaderView.xib; sourceTree = "<group>"; };
+		2BD587551F38103700A79119 /* TYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFPSLabel.h; sourceTree = "<group>"; };
+		2BD587561F38103700A79119 /* TYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYFPSLabel.m; sourceTree = "<group>"; };
+		2BD587571F38103700A79119 /* TYFPSMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYFPSMonitor.h; sourceTree = "<group>"; };
+		2BD587581F38103700A79119 /* TYFPSMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYFPSMonitor.m; sourceTree = "<group>"; };
+		2BD5875B1F3813A400A79119 /* LPBannerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPBannerViewCell.h; sourceTree = "<group>"; };
+		2BD5875C1F3813A400A79119 /* LPBannerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPBannerViewCell.m; sourceTree = "<group>"; };
 		2BE4EF671D752BB700CD50D3 /* LPNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPNavigationBarView.h; sourceTree = "<group>"; };
 		2BE4EF681D752BB700CD50D3 /* LPNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPNavigationBarView.m; sourceTree = "<group>"; };
 		2BE4EF691D752BB700CD50D3 /* LPNavigationBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LPNavigationBarView.xib; sourceTree = "<group>"; };
@@ -414,15 +420,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2B00561F1D5418A900DDA531 /* JPFPSStatus */ = {
-			isa = PBXGroup;
-			children = (
-				2B0056201D5418A900DDA531 /* JPFPSStatus.h */,
-				2B0056211D5418A900DDA531 /* JPFPSStatus.m */,
-			);
-			path = JPFPSStatus;
-			sourceTree = "<group>";
-		};
 		2B00AC811D517B580048B5C2 /* TYJSONModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,8 +644,8 @@
 		2B81744D1D4EF90D00BA297C /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				2BD587541F38103700A79119 /* TYFPSLabel */,
 				B058BA221DC76ABB00230E17 /* TYRefresh */,
-				2B00561F1D5418A900DDA531 /* JPFPSStatus */,
 				2B00AC811D517B580048B5C2 /* TYJSONModel */,
 				2B8174E21D4F39A400BA297C /* TYHttpManager */,
 			);
@@ -916,6 +913,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2BD587541F38103700A79119 /* TYFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				2BD587551F38103700A79119 /* TYFPSLabel.h */,
+				2BD587561F38103700A79119 /* TYFPSLabel.m */,
+				2BD587571F38103700A79119 /* TYFPSMonitor.h */,
+				2BD587581F38103700A79119 /* TYFPSMonitor.m */,
+			);
+			path = TYFPSLabel;
+			sourceTree = "<group>";
+		};
 		B00A86B91D728EF700B84F8F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,6 +1074,8 @@
 				B066BE8F1D82C5920028DD67 /* LPDiscuzPostCell.h */,
 				B066BE901D82C5920028DD67 /* LPDiscuzPostCell.m */,
 				B066BE911D82C5920028DD67 /* LPDiscuzPostCell.xib */,
+				2BD5875B1F3813A400A79119 /* LPBannerViewCell.h */,
+				2BD5875C1F3813A400A79119 /* LPBannerViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1213,7 +1223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1273,6 +1283,7 @@
 				2BAEC3C91D6FD8B50048CBD3 /* LPRecommendItem.m in Sources */,
 				2B8174F21D4F39A400BA297C /* TYBaseRequest.m in Sources */,
 				B07967891D8199F8003B830D /* LPDiscuzDetailModel.m in Sources */,
+				2BD5875D1F3813A400A79119 /* LPBannerViewCell.m in Sources */,
 				2BBECF6A1D7E63F8006C71B2 /* LPPrizeViewCell.m in Sources */,
 				2BB90FF11D66F21D002B2B17 /* LPNewsReplyNode.m in Sources */,
 				2B00ACA61D517E5E0048B5C2 /* LPResponseObject.m in Sources */,
@@ -1284,6 +1295,7 @@
 				B029935F1DC79C3100A2B925 /* LPRefreshAutoFooter.m in Sources */,
 				B0ED94BB1D5604CD009B11C4 /* LPWebCellNode.m in Sources */,
 				2BA1A6F31D74350900BCED16 /* LPGameNewsController.m in Sources */,
+				2BD587591F38103700A79119 /* TYFPSLabel.m in Sources */,
 				B058BA381DC76ABB00230E17 /* TYFooterRefresh.m in Sources */,
 				B07967861D819531003B830D /* LPDiscuzDetailController.m in Sources */,
 				2B5C40FB1D79609700296C3F /* NSString+LPImageURL.m in Sources */,
@@ -1291,7 +1303,6 @@
 				B0E6A3B51D7C4D24007322B7 /* LPHotZoneSectionView.m in Sources */,
 				2BBECF721D7E642A006C71B2 /* LPTableItemCell.m in Sources */,
 				2B7C5DD01D6D4433005B30B5 /* LPRefreshGifHeader.m in Sources */,
-				2B0056221D5418A900DDA531 /* JPFPSStatus.m in Sources */,
 				2B6CC4A21D6323A900CE3F33 /* NSDictionary+Params.m in Sources */,
 				2B00AC891D517B580048B5C2 /* NSObject+TYJSONModel.m in Sources */,
 				B08D88F11D685E870048557C /* LPNewsCommentController.m in Sources */,
@@ -1332,6 +1343,7 @@
 				2BBECF761D7E835E006C71B2 /* LPMineHeaderView.m in Sources */,
 				2BB90FF41D670417002B2B17 /* LPNewsReplyCollectNode.m in Sources */,
 				2B50AB2F1D5DCA9000FB77AE /* LPNewsImageCellNode.m in Sources */,
+				2BD5875A1F38103700A79119 /* TYFPSMonitor.m in Sources */,
 				2B8174C91D4F2B4400BA297C /* NSString+Base64.m in Sources */,
 				2B7100111D7FF42500A4D4FB /* LPDiscuzHeaderView.m in Sources */,
 				2B8174CF1D4F2B4400BA297C /* UIColor+Hex.m in Sources */,

@@ -12,11 +12,14 @@
 #import "LPZonePostCellNode.h"
 #import "LPHotZoneSectionView.h"
 #import "LPLoadFailedView.h"
-#import "SDCycleScrollView.h"
+#import "TYCyclePagerView.h"
+#import "TYPageControl.h"
 #import "UIImage+Color.h"
 #import "LPDiscuzDetailController.h"
+#import "LPBannerViewCell.h"
+#import "YYWebImage.h"
 
-@interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource, SDCycleScrollViewDelegate>
+@interface LPHotZoneController ()<ASTableDelegate, ASTableDataSource, TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 
 // UI
 @property (nonatomic, strong) ASTableNode *tableNode;
@@ -25,6 +28,8 @@
 @property (nonatomic, strong) NSArray *focusList;
 @property (nonatomic, strong) NSArray *forumList;
 @property (nonatomic, strong) NSArray *threadList;
+
+@property (nonatomic, strong) NSArray *imageURLs;
 
 @property (nonatomic, assign) NSInteger curIndexPage;
 @property (nonatomic, assign) BOOL haveMore;
@@ -83,16 +88,18 @@ static NSString * headerId = @"LPHotZoneSectionView";
 
 - (void)addCycleScrollView
 {
-    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreenWidth, 105) delegate:self placeholderImage:nil];
-    cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
-    cycleScrollView.currentPageDotColor = [UIColor whiteColor];
-    cycleScrollView.placeholderImage = [UIImage imageWithColor:RGB_255(245, 245, 245)];
+    TYCyclePagerView *cycleScrollView = [[TYCyclePagerView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 105)];
+    cycleScrollView.dataSource = self;
+    cycleScrollView.delegate = self;
+    [cycleScrollView registerClass:[LPBannerViewCell class] forCellWithReuseIdentifier:@"LPBannerViewCell"];
+    TYPageControl *pageControl = [[TYPageControl alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(cycleScrollView.frame) - 26, CGRectGetWidth(cycleScrollView.frame), 26)];
+    [cycleScrollView addSubview:pageControl];
     
     NSMutableArray *imageURLs = [NSMutableArray array];
     for (LPZoneFocus *focus in _focusList) {
         [imageURLs addObject:focus.img];
     }
-    cycleScrollView.imageURLStringsGroup = [imageURLs copy];
+    _imageURLs = [imageURLs copy];
     _tableNode.view.tableHeaderView = cycleScrollView;
 }
 
@@ -212,11 +219,23 @@ static NSString * headerId = @"LPHotZoneSectionView";
     [self.navigationController pushViewController:discuzDetailVC animated:YES];
 }
 
-#pragma mark - SDCycleScrollViewDelegate
+#pragma mark - TYCyclePagerViewDataSource
 
-- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
-{
-    
+- (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView {
+    return _imageURLs.count;
+}
+
+- (TYCyclePagerViewLayout *)layoutForPagerView:(TYCyclePagerView *)pageView {
+    TYCyclePagerViewLayout *layout = [[TYCyclePagerViewLayout alloc]init];
+    layout.itemSize = CGSizeMake(CGRectGetWidth(pageView.frame), CGRectGetHeight(pageView.frame));
+     layout.itemSpacing = 10;
+    return layout;
+}
+
+- (UICollectionViewCell *)pagerView:(TYCyclePagerView *)pagerView cellForItemAtIndex:(NSInteger)index {
+    LPBannerViewCell *cell = [pagerView dequeueReusableCellWithReuseIdentifier:@"LPBannerViewCell" forIndex:index];
+    [cell.imageView setYy_imageURL:_imageURLs[index]];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

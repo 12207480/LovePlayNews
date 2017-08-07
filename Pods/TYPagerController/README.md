@@ -2,9 +2,13 @@
 page View controller,simple,high custom,and have tabBar styles.<br>
 TYPagerController 简单，支持定制，页面控制器,可以滚动内容和标题栏,包含多种style
 
+**TYPagerController v2.0 is coming soon...**
+
 * TYPagerController 水平滚动页面控制器，不包含任何其他的控件（TabBar），contentTopEdging 为距离top的高度。
 * TYTabPagerController 包含TabBar（我帮你创建了Tabbar），contentTopEdging为TabBar的高度，调用registerCellClass 注册cell（遵守TYTabTitleCellProtocol），然后在代理方法里改变cell。
 * TYTabButtonPagerController 同上，默认注册了TYTabTitleViewCell
+
+更详细的使用请看[LovePlayNews](https://github.com/12207480/LovePlayNews)项目
 
 ## CocoaPods
 ```
@@ -198,4 +202,3 @@ if you want to add coustom TabBar, you can inherit TYPagerController，and set c
 ### Contact
 如果你发现bug，please pull reqeust me <br>
 如果你有更好的改进，please pull reqeust me <br>
-如果你有更好的想法或者建议可以联系我，Email:122074809@qq.com

@@ -1,7 +1,7 @@
 //
 //  UIViewController+KMNavigationBarTransition.m
 //
-//  Copyright (c) 2016 Zhouqi Mo (https://github.com/MoZhouqi)
+//  Copyright (c) 2017 Zhouqi Mo (https://github.com/MoZhouqi)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
 #import <objc/runtime.h>
 #import "KMSwizzle.h"
 #import "UINavigationController+KMNavigationBarTransition.h"
+#import "UINavigationController+KMNavigationBarTransition_Internal.h"
 
 @implementation UIViewController (KMNavigationBarTransition)
 
@@ -63,7 +64,7 @@
     UIViewController *fromViewController = [tc viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [tc viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    if ([self isEqual:self.navigationController.viewControllers.lastObject] && [toViewController isEqual:self]) {
+    if ([self isEqual:self.navigationController.viewControllers.lastObject] && [toViewController isEqual:self] && self.navigationController.km_transitionContextToViewController) {
         if (self.navigationController.navigationBar.translucent) {
             [tc containerView].backgroundColor = [self.navigationController km_containerViewBackgroundColor];
         }

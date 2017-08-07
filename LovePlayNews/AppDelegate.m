@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LPTabBarController.h"
 #import "LPADLaunchController.h"
-#import "JPFPSStatus.h"
+#import "TYFPSLabel.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +25,7 @@
     [self addADLaunchController];
     
 #if defined(DEBUG)||defined(_DEBUG)
-    [[JPFPSStatus sharedInstance] open];
+    [TYFPSLabel showInStutasBar];
 #endif
     
     return YES;

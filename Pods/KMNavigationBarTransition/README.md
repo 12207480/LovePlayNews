@@ -25,7 +25,7 @@ The library can capture the background style of the navigation bar in the disapp
 
 You don't need to import any header file when using this library, the library uses [Method Swizzling](http://nshipster.com/method-swizzling/) to achieve the effect.
 
-It is recommended to set the default background style of the navgaion bar in the `viewDidLoad` method of the base view controller. When you need to change it, generally, you only need to do it in the `viewDidLoad` method of the *current* view controller.
+It is recommended to set the default background style of the navgaion bar in the `viewDidLoad` method of the base view controller. When you need to change it, generally, you only need to do it in the `viewDidLoad` method of the *current* view controller, but if you need to support peek and pop on 3D Touch, you can do it in the `viewWillAppear:` method.
 
 The following are some suggestions to set the background style of the navigation bar, and you can see the Example for details.
 
@@ -76,6 +76,25 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate KMNavigationBarTransition into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "MoZhouqi/KMNavigationBarTransition"
+```
+
+Run `carthage update` to build the framework and drag the built `KMNavigationBarTransition.framework` into your Xcode project.
 
 ## Requirements
 
