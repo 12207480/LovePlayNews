@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '53A97C1D82FAFBB4F6AE4A6DCFF0B016'
+               BlueprintIdentifier = '8D04134AD95005348B4BF7952FDD0CE9'
                BlueprintName = 'KMNavigationBarTransition'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libKMNavigationBarTransition.a'>

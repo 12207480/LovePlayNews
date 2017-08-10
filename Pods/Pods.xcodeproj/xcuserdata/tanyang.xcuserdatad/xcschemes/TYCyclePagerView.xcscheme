@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '839E96F31F46CC406A1C403F8C75171A'
-               BlueprintName = 'SDCycleScrollView'
+               BlueprintIdentifier = '9CE7CBFA55093C9573705B033A41F823'
+               BlueprintName = 'TYCyclePagerView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libSDCycleScrollView.a'>
+               BuildableName = 'libTYCyclePagerView.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
