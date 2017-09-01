@@ -37,7 +37,7 @@ PODS:
   - TOWebViewController/Core (2.2.6)
   - TYAttributedLabel (2.6.2)
   - TYCyclePagerView (1.0.0)
-  - TYPagerController (2.0.0)
+  - TYPagerController (2.0.1)
   - YYCache (1.0.4)
   - YYImage (1.0.4):
     - YYImage/Core (= 1.0.4)
@@ -71,7 +71,7 @@ SPEC CHECKSUMS:
   TOWebViewController: a29908019f7e0e0f8eccfab8a1ee8dcdf4fc5aac
   TYAttributedLabel: 1c1f1e7604043ba584e005d4fd3aee8a1a7a2020
   TYCyclePagerView: f228d47651db3e7bec373a4b5082ef4c09d5dfed
-  TYPagerController: b590116e7571bc7609d0c3dcce38b28419bcd8cd
+  TYPagerController: f86e3f85d723caa967655f23661d32beaee7db77
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
