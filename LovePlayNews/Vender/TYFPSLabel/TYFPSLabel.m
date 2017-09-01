@@ -15,6 +15,8 @@
 
 @end
 
+#define kStautsBarTag 32356356
+
 @implementation TYFPSLabel
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -53,9 +55,11 @@
 }
 
 + (void)showInStutasBar {
+    [self hideForStutasBar];
     TYFPSLabel *label = [[TYFPSLabel alloc]initWithFrame:CGRectMake(([self correctWindowWidth])/2+30, 0, 50, 20)];
+    label.tag = kStautsBarTag;
     label.layer.zPosition = 1000;
-    [[self mainWindow].rootViewController.view addSubview:label];
+    [[self mainWindow] addSubview:label];
     [label start];
 }
 
@@ -65,6 +69,18 @@
             TYFPSLabel *label = (TYFPSLabel *)subView;
             [label stop];
             [label removeFromSuperview];
+        }
+    }
+}
+
++ (void)hideForStutasBar {
+    for (UIView *subView in [self mainWindow].rootViewController.view.subviews) {
+        if ([subView isKindOfClass:[TYFPSLabel class]]) {
+            TYFPSLabel *label = (TYFPSLabel *)subView;
+            if (label.tag == kStautsBarTag) {
+                [label stop];
+                [label removeFromSuperview];
+            }
         }
     }
 }

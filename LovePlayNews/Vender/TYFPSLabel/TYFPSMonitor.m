@@ -8,6 +8,7 @@
 
 #import "TYFPSMonitor.h"
 #import <UIKit/UIKit.h>
+#import "TYWeakProxy.h"
 
 @interface TYFPSMonitor ()
 
@@ -33,7 +34,7 @@
 
 - (CADisplayLink *)displayLink {
     if (!_displayLink) {
-        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateFpsAction:)];
+        _displayLink = [CADisplayLink displayLinkWithTarget:[TYWeakProxy proxyWithTarget:self] selector:@selector(updateFPSAction:)];
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10) {
             _displayLink.preferredFramesPerSecond = 60;
         }else {
@@ -68,7 +69,7 @@
 
 #pragma mark - action
 
-- (void)updateFpsAction:(CADisplayLink *)displayLink {
+- (void)updateFPSAction:(CADisplayLink *)displayLink {
     if (_lastUpdateTime == 0) {
         _lastUpdateTime = displayLink.timestamp;
     }
@@ -83,6 +84,10 @@
     if (_delegateFlag) {
         [_delegate FPSMoitor:self didUpdateFPS:fps];
     }
+}
+
+- (void)dealloc {
+    [self stop];
 }
 
 @end
