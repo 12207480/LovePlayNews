@@ -54,6 +54,7 @@ static NSString *headerId = @"LPNewsTitleSectionView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"更多评论";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view layoutIfNeeded];
     
