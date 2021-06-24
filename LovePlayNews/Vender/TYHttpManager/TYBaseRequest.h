@@ -8,8 +8,8 @@
 
 #import "TYRequestProtocol.h"
 
-typedef void (^TYRequestSuccessBlock)(id<TYRequestProtocol> request);
-typedef void (^TYRequestFailureBlock)(id<TYRequestProtocol> request,NSError *error);
+typedef void (^TYRequestSuccessBlock)(id request);
+typedef void (^TYRequestFailureBlock)(id request,NSError *error);
 
 @protocol TYRequestOverride <NSObject>
 
